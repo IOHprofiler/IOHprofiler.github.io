@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  
+    <title>Programming Interface - IOHprofiler Wiki</title>
+
+    
+  
+
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="http://localhost:4000/assets/css/just-the-docs.css">
+
+  
+
+  
+    <script type="text/javascript" src="http://localhost:4000/assets/js/vendor/lunr.min.js"></script>
+  
+  <script type="text/javascript" src="http://localhost:4000/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Programming Interface | IOHprofiler Wiki</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Programming Interface" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is an introduction for IOHprofiler" />
+<meta property="og:description" content="This is an introduction for IOHprofiler" />
+<link rel="canonical" href="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" />
+<meta property="og:url" content="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" />
+<meta property="og:site_name" content="IOHprofiler Wiki" />
+<script type="application/ld+json">
+{"description":"This is an introduction for IOHprofiler","@type":"WebPage","url":"http://localhost:4000/IOHanalyzer/ProgrammingInterface/","headline":"Programming Interface","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": { fonts: ["TeX"] }
+    });
+</script>
+<script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_CHTML">
+</script>
+<body>
+
+  <div class="page-wrap">
+    <div class="side-bar">
+      <a href="http://localhost:4000" class="site-title fs-6 lh-tight">IOHprofiler Wiki</a>
+      <span class="fs-3"><button class="js-main-nav-trigger navigation-list-toggle btn btn-outline" type="button" data-text-toggle="Hide">Menu</button></span>
+      <div class="navigation main-nav js-main-nav">
+        <nav role="navigation" aria-label="Main navigation">
+  <ul class="navigation-list">
+    
+    
+      
+        
+          <li class="navigation-list-item active">
+            
+            <a href="http://localhost:4000/404/" class="navigation-list-link"></a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item active">
+            
+            <a href="http://localhost:4000/" class="navigation-list-link"></a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="http://localhost:4000/about/" class="navigation-list-link">About</a>
+            
+          </li>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="http://localhost:4000/News/" class="navigation-list-link">News</a>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="http://localhost:4000/IOHexperimenter/" class="navigation-list-link">IOHexperimenter</a>
+            
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/GettingStarted/" class="navigation-list-link">Getting Started</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/Examples/" class="navigation-list-link">Examples</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item active">
+            
+            <a href="http://localhost:4000/IOHanalyzer/" class="navigation-list-link">IOHanalyzer</a>
+            
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item  active">
+                      
+                      <a href="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" class="navigation-list-link active">Programming Interface</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHanalyzer/GraphicUserInterface/" class="navigation-list-link">Graphic User Interface</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+      
+        
+          <li class="navigation-list-item">
+            
+            <a href="http://localhost:4000/Benchmark/" class="navigation-list-link">Benchmark</a>
+            
+              
+              <ul class="navigation-list-child-list ">
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/Benchmark/Problems/" class="navigation-list-link">Problems</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/Benchmark/Transformation/" class="navigation-list-link">Transformation</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            
+          </li>
+        
+      
+    
+  </ul>
+</nav>
+
+      </div>
+      <footer role="contentinfo" class="site-footer">
+        <p class="text-small text-grey-dk-000 mb-0">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
+      </footer>
+    </div>
+    <div class="main-content-wrap js-main-content" tabindex="0">
+      <div class="page-header">
+        <div class="main-content">
+          
+          <div class="search js-search">
+            <div class="search-input-wrap">
+              <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search IOHprofiler Wiki" aria-label="Search IOHprofiler Wiki" autocomplete="off">
+              <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg>
+            </div>
+            <div class="js-search-results search-results-wrap"></div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <div class="main-content">
+        
+          
+            <nav class="breadcrumb-nav">
+              <ol class="breadcrumb-nav-list">
+                
+                  <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/IOHanalyzer/">IOHanalyzer</a></li>
+                
+                <li class="breadcrumb-nav-list-item"><span>Programming Interface</span></li>
+              </ol>
+            </nav>
+          
+        
+        <div id="main-content" class="page-content" role="main">
+          <h2 id="programming-interface">Programming Interface</h2>
+
+<h3 id="data-structure-and-manipulation">Data Structure and Manipulation</h3>
+<p>Here, it is assumed that the data to be loaded follow exactly the aforementioned format regulation. A method <em>DataSetList</em> is provided to load the data:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DataSetList</span><span class="p">(</span><span class="s1">'./data/RLS'</span><span class="p">)</span><span class="w">
+</span><span class="n">Processing</span><span class="w"> </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">IOHprofiler_f1_i1.info</span><span class="w"> </span><span class="n">...</span><span class="w">
+   </span><span class="n">algorithm</span><span class="w"> </span><span class="n">RLS...</span><span class="w">
+      </span><span class="m">25</span><span class="w"> </span><span class="n">instances</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D...</span><span class="w">
+      </span><span class="m">25</span><span class="w"> </span><span class="n">instances</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">100</span><span class="n">D...</span><span class="w">
+</span><span class="n">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The return value of method <em>DataSetList</em> is a <strong>S3</strong> object, that is inherited from the <em>list</em> class. Consequently, <em>dsList</em> object can be sliced, indexed and printed as with lists:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w">
+</span><span class="n">DataSetList</span><span class="o">:</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">100</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="o">---</span><span class="w">
+</span><span class="m">7</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">23</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="m">8</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">23</span><span class="w"> </span><span class="m">100</span><span class="n">D</span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span><span class="w">
+</span><span class="n">DataSetList</span><span class="o">:</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">100</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="m">3</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">19</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+</span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p>In addition, the <em>summary</em> method is implemented to show some basic information:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">summary</span><span class="p">(</span><span class="n">dsList</span><span class="p">)</span><span class="w">
+  </span><span class="n">funcId</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">algId</span><span class="w">                                           </span><span class="n">datafile</span><span class="w"> </span><span class="n">comment</span><span class="w">
+</span><span class="m">1</span><span class="w">      </span><span class="m">1</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f1</span><span class="o">/</span><span class="n">IOHprofiler_f1_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
+2      1 100   RLS    ./data/RLS/data_f1/IOHprofiler_f1_DIM100_i1.dat       %</span><span class="w">
+</span><span class="m">3</span><span class="w">     </span><span class="m">19</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">   </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f19</span><span class="o">/</span><span class="n">IOHprofiler_f19_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
+4     19 100   RLS  ./data/RLS/data_f19/IOHprofiler_f19_DIM100_i1.dat       %</span><span class="w">
+</span><span class="m">5</span><span class="w">      </span><span class="m">2</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f2</span><span class="o">/</span><span class="n">IOHprofiler_f2_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
+6      2 100   RLS    ./data/RLS/data_f2/IOHprofiler_f2_DIM100_i1.dat       %</span><span class="w">
+</span><span class="m">7</span><span class="w">     </span><span class="m">23</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">   </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f23</span><span class="o">/</span><span class="n">IOHprofiler_f23_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
+8     23 100   RLS  ./data/RLS/data_f23/IOHprofiler_f23_DIM100_i1.dat       %</span><span class="w">
+</span></code></pre></div></div>
+<p>Note that, column <em>funcId</em> stands for the numbering (ID) of test functions and <em>algId</em> is the identifier of the algorithm that is tested. Those columns (also <em>DIM</em>) are the attribute of <em>dsList</em> object, which are directly retrieved from the <em>meta data</em> (<em>*.info</em> files). Therefore, it is important to keep the meta data correct if it were prepared by the user manually. All the attributes <em>DataSetList</em> object are listed as follows:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">attributes</span><span class="p">(</span><span class="n">dsList</span><span class="p">)</span><span class="w">
+</span><span class="o">$</span><span class="n">class</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"list"</span><span class="w">        </span><span class="s2">"DataSetList"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">DIM</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">100</span><span class="w">
+
+</span><span class="o">$</span><span class="n">funcId</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">19</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">23</span><span class="w">
+
+</span><span class="o">$</span><span class="n">algId</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w"> </span><span class="s2">"RLS"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>When subsetting (filtering) is needed for <em>dsList</em>, attributes <em>DIM</em>, <em>funcId</em> and <em>algId</em> can be used as follows:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">DataSetList</span><span class="o">:</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">'RLS'</span><span class="p">)</span><span class="w">
+</span><span class="n">DataSetList</span><span class="o">:</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now we could load the data files of the $(1,\lambda)$-GA algorithm in the same way:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList_ga</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DataSetList</span><span class="p">(</span><span class="s1">'./data/self_GA'</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here, the argument <em>verbose</em> is set to <em>FALSE</em> to hide the prompting message. As with the <strong>R</strong> list, ``DataSetList’’ objects can be combined together:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">dsList_ga</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Each element of <em>dsList</em> is a \proglang{S3} object of type <em>DataSet</em>, which is again inherited from the <em>list</em> class.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dsList</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ds</span><span class="w">
+</span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">summary</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span><span class="w">
+</span><span class="n">DataSet</span><span class="w"> </span><span class="n">Object</span><span class="o">:</span><span class="w">
+</span><span class="n">Algorithm</span><span class="o">:</span><span class="w"> </span><span class="n">RLS</span><span class="w">
+</span><span class="n">Function</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="n">Dimension</span><span class="o">:</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="w">
+</span><span class="m">25</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">...</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="w">
+
+</span><span class="n">runtime</span><span class="w"> </span><span class="n">summary</span><span class="o">:</span><span class="w">
+    </span><span class="n">algId</span><span class="w"> </span><span class="n">target</span><span class="w">  </span><span class="n">mean</span><span class="w"> </span><span class="n">median</span><span class="w">        </span><span class="n">sd</span><span class="w"> </span><span class="m">2</span><span class="o">% 5%</span><span class="w"> </span><span class="m">10</span><span class="o">% 25%</span><span class="w"> </span><span class="m">50</span><span class="o">% 75%</span><span class="w"> </span><span class="m">90</span><span class="o">% 95%</span><span class="w"> </span><span class="m">98</span><span class="o">%   ERT runs ps
+ 1:   RLS      4  1.00      1  0.000000  1  1   1   1   1   1   1   1   1  1.00   25  1
+ 2:   RLS      5  1.04      1  0.200000  1  1   1   1   1   1   1   1   1  1.04   25  1
+ 3:   RLS      6  1.28      1  1.208305  1  1   1   1   1   1   1   2   2  1.28   25  1
+ ---
+11:   RLS     14 21.00     21  9.165151  5  5   7  14  18  26  34  37  37 21.00   25  1
+12:   RLS     15 29.16     29 10.466932 12 12  15  18  26  36  40  48  48 29.16   25  1
+13:   RLS     16 46.48     48 21.652790 13 13  19  26  42  58  71  83  83 46.48   25  1
+
+function value summary:
+    algId runtime runs  mean median        sd    2%</span><span class="w">   </span><span class="m">5</span><span class="o">%  10%</span><span class="w"> </span><span class="m">25</span><span class="o">% 50%</span><span class="w"> </span><span class="m">75</span><span class="o">%  90%</span><span class="w">  </span><span class="m">95</span><span class="o">%   98%</span><span class="w">
+ </span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">       </span><span class="m">1</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">7.68</span><span class="w">      </span><span class="m">7</span><span class="w"> </span><span class="m">1.7729448</span><span class="w">  </span><span class="m">4.48</span><span class="w">  </span><span class="m">5.2</span><span class="w">  </span><span class="m">6.0</span><span class="w">   </span><span class="m">7</span><span class="w">   </span><span class="m">7</span><span class="w">   </span><span class="m">9</span><span class="w"> </span><span class="m">10.0</span><span class="w"> </span><span class="m">10.8</span><span class="w"> </span><span class="m">11.00</span><span class="w">
+ </span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">       </span><span class="m">2</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">8.28</span><span class="w">      </span><span class="m">8</span><span class="w"> </span><span class="m">1.6206994</span><span class="w">  </span><span class="m">5.48</span><span class="w">  </span><span class="m">6.0</span><span class="w">  </span><span class="m">6.4</span><span class="w">   </span><span class="m">7</span><span class="w">   </span><span class="m">8</span><span class="w">   </span><span class="m">9</span><span class="w"> </span><span class="m">10.0</span><span class="w"> </span><span class="m">10.8</span><span class="w"> </span><span class="m">11.52</span><span class="w">
+ </span><span class="m">3</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">       </span><span class="m">3</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">8.76</span><span class="w">      </span><span class="m">9</span><span class="w"> </span><span class="m">1.5885003</span><span class="w">  </span><span class="m">5.48</span><span class="w">  </span><span class="m">6.2</span><span class="w">  </span><span class="m">7.0</span><span class="w">   </span><span class="m">8</span><span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">10</span><span class="w"> </span><span class="m">10.6</span><span class="w"> </span><span class="m">11.0</span><span class="w"> </span><span class="m">11.52</span><span class="w">
+</span><span class="o">---</span><span class="w">
+</span><span class="m">64</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">2511</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.00</span><span class="w">
+</span><span class="m">65</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">2818</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.00</span><span class="w">
+</span><span class="m">66</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">3162</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.00</span><span class="w">
+
+</span><span class="n">Attributes</span><span class="o">:</span><span class="w"> </span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">suite</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="p">,</span><span class="w"> </span><span class="n">algInfo</span><span class="p">,</span><span class="w"> </span><span class="n">comment</span><span class="p">,</span><span class="w"> </span><span class="n">datafile</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">,</span><span class="w"> 
+  </span><span class="n">maxRT</span><span class="p">,</span><span class="w"> </span><span class="n">finalFV</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="n">maximization</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In the <em>summary</em> method, the data set is summarized in two perspectives:</p>
+<ul>
+  <li><code class="highlighter-rouge">Fixed-target</code> perspective: the method looks for the <em>first hitting time</em>, that is the number of function evaluations an algorithm takes to reach a target function value (<em>target</em> above) for the first time. The target values are automatically determined and evenly spaced in the observed range. Some basic statistics on the running time sample are calculated for each target value: mean, median, standard deviation (<em>sd</em>), percentiles (<em>2% 5% 10% …</em>), the expected running time (<em>ERT</em>) and <em>success rate</em> (<em>ps</em>, the ratio of successful runs our of all the independent runs).</li>
+  <li><code class="highlighter-rouge">Fixed-budget</code> perspective: the method looks for the <em>best function value</em> reached by the algorithm, when a specific number of function evaluations (budget) are taken (<em>runtime</em> above). The budget values are automatically determined and evenly spaced in the observed range. Roughly the same set of statistics are provided as the fixed-target perspective.</li>
+</ul>
+
+<p>In the <em>ds</em> object, two matrices are always stored for those two perspectives explained above:</p>
+<ul>
+  <li><em>ds$RT</em>: running time samples in the fixed-target perspective and</li>
+  <li><em>ds$FV</em>: function value samples in the fixed-budget perspective.</li>
+</ul>
+
+<p>Note that, when the parameter tracking is enabled, the parameter of interest is also arranged in the <em>fixed-target perspective</em> and is appended to <em>ds</em> object. For instance, if <em>mutation_rate</em> is the parameter name given to the benchmark, the parameter can be obtained by <em>ds$mutation_rate</em>. We could take a glimpse at those two matrices:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">ds</span><span class="o">$</span><span class="n">RT</span><span class="p">)</span><span class="w">
+   </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">6</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">7</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">8</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">9</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">10</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">11</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">13</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">14</span><span class="p">]</span><span class="w"> 
+</span><span class="m">4</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span><span class="m">5</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span><span class="m">6</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span><span class="m">7</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">5</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span><span class="m">8</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">7</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span><span class="m">9</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">5</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">8</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">2</span><span class="w">    </span><span class="m">11</span><span class="w">     </span><span class="m">3</span><span class="w">     </span><span class="m">1</span><span class="w">   
+</span></code></pre></div></div>
+<p>Here, the column names are the target values and in the example below, those are the budget values:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">ds</span><span class="o">$</span><span class="n">FV</span><span class="p">)</span><span class="w">
+   </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">6</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">7</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">8</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">9</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">10</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">11</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">13</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">14</span><span class="p">]</span><span class="w">
+</span><span class="m">1</span><span class="w">   </span><span class="m">11</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">6</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">5</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">7</span><span class="w">    </span><span class="m">11</span><span class="w">   
+</span><span class="m">2</span><span class="w">   </span><span class="m">11</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">6</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">    </span><span class="m">6</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">9</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">8</span><span class="w">    </span><span class="m">12</span><span class="w">   
+</span><span class="m">3</span><span class="w">   </span><span class="m">11</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">7</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">    </span><span class="m">6</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">9</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">12</span><span class="w">
+</span><span class="m">4</span><span class="w">   </span><span class="m">12</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">8</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">11</span><span class="w">    </span><span class="m">6</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">13</span><span class="w">   
+</span><span class="m">5</span><span class="w">   </span><span class="m">12</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">12</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">14</span><span class="w">
+</span><span class="m">6</span><span class="w">   </span><span class="m">13</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">11</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">13</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">11</span><span class="w">    </span><span class="m">11</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">14</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="retrieving-performance-data">Retrieving Performance Data</h3>
+
+<p>For both <em>DataSet</em> and <em>DataSetList</em> objects, the overview of the observed running time/function value can obtained using:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">get_RT_overview</span><span class="p">(</span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'RLS'</span><span class="p">))</span><span class="w">
+   </span><span class="n">Algorithm</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">fID</span><span class="w"> </span><span class="n">miminal</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">maximal</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">runs</span><span class="w"> </span><span class="n">Budget</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="m">1</span><span class="w">               </span><span class="m">1</span><span class="w">              </span><span class="m">96</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">   </span><span class="m">1</span><span class="w">               </span><span class="m">1</span><span class="w">            </span><span class="m">1128</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">3</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">19</span><span class="w">               </span><span class="m">1</span><span class="w">              </span><span class="m">52</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">4</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="m">19</span><span class="w">               </span><span class="m">1</span><span class="w">             </span><span class="m">570</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">5</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="m">2</span><span class="w">               </span><span class="m">1</span><span class="w">             </span><span class="m">255</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">6</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">   </span><span class="m">2</span><span class="w">               </span><span class="m">1</span><span class="w">            </span><span class="m">6546</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">7</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">23</span><span class="w">               </span><span class="m">1</span><span class="w">              </span><span class="m">67</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">8</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="m">23</span><span class="w">               </span><span class="m">1</span><span class="w">             </span><span class="m">641</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_RT_overview</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span><span class="w">
+   </span><span class="n">algId</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="n">miminal</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">maximal</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">runs</span><span class="w"> </span><span class="n">Budget</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">      </span><span class="m">1</span><span class="w">               </span><span class="m">1</span><span class="w">              </span><span class="m">96</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here, <em>Budget</em> indicates the maximal allowable budget that is given when running the experiment while <em>maximal runtime</em> is the maximal observed running time in each triplet of (<em>algId</em>, <em>DIM</em>, <em>funcId</em>). For the function values, the similar methods are also implemented:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">get_FV_overview</span><span class="p">(</span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'RLS'</span><span class="p">))</span><span class="w">
+   </span><span class="n">algId</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="n">recorded</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">best</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">median</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">runs</span><span class="w"> </span><span class="n">succ</span><span class="w"> </span><span class="n">budget</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">      </span><span class="m">1</span><span class="w">              </span><span class="m">4</span><span class="w">            </span><span class="m">16</span><span class="w">           </span><span class="m">16</span><span class="w">        </span><span class="m">16.00</span><span class="w">             </span><span class="m">16</span><span class="w">   </span><span class="m">25</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">      </span><span class="m">1</span><span class="w">             </span><span class="m">44</span><span class="w">           </span><span class="m">100</span><span class="w">          </span><span class="m">100</span><span class="w">       </span><span class="m">100.00</span><span class="w">            </span><span class="m">100</span><span class="w">   </span><span class="m">25</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">3</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">     </span><span class="m">19</span><span class="w">              </span><span class="m">8</span><span class="w">            </span><span class="m">20</span><span class="w">           </span><span class="m">32</span><span class="w">        </span><span class="m">25.60</span><span class="w">             </span><span class="m">24</span><span class="w">   </span><span class="m">25</span><span class="w">    </span><span class="m">1</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">4</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">             </span><span class="m">92</span><span class="w">           </span><span class="m">152</span><span class="w">          </span><span class="m">172</span><span class="w">       </span><span class="m">162.56</span><span class="w">            </span><span class="m">164</span><span class="w">   </span><span class="m">25</span><span class="w">    </span><span class="m">3</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">5</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">      </span><span class="m">2</span><span class="w">              </span><span class="m">0</span><span class="w">            </span><span class="m">16</span><span class="w">           </span><span class="m">16</span><span class="w">        </span><span class="m">16.00</span><span class="w">             </span><span class="m">16</span><span class="w">   </span><span class="m">25</span><span class="w">   </span><span class="m">25</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">6</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">      </span><span class="m">2</span><span class="w">              </span><span class="m">0</span><span class="w">           </span><span class="m">100</span><span class="w">          </span><span class="m">100</span><span class="w">       </span><span class="m">100.00</span><span class="w">            </span><span class="m">100</span><span class="w">   </span><span class="m">25</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span><span class="m">7</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">     </span><span class="m">23</span><span class="w">           </span><span class="m">-100</span><span class="w">             </span><span class="m">3</span><span class="w">            </span><span class="m">4</span><span class="w">         </span><span class="m">3.24</span><span class="w">              </span><span class="m">3</span><span class="w">   </span><span class="m">25</span><span class="w">    </span><span class="m">6</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">8</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">23</span><span class="w">          </span><span class="m">-1868</span><span class="w">             </span><span class="m">7</span><span class="w">            </span><span class="m">9</span><span class="w">         </span><span class="m">8.20</span><span class="w">              </span><span class="m">8</span><span class="w">   </span><span class="m">25</span><span class="w">    </span><span class="m">9</span><span class="w"> </span><span class="m">100000</span><span class="w">
+</span></code></pre></div></div>
+
+<p>It is important to distinguish some columns in the example here: <em>worst recorded</em> stands for the worst (smallest) function value <em>observed</em> in all independent runs for each case of (<em>algId</em>, <em>DIM</em>, <em>funcId</em>). In contrast, <em>worst reached</em> means the smallest value <em>reached in the last iteration</em> (across independent runs) of the algorithm while <em>best reached</em> the largest value. <em>runs</em> gives the total number of independent runs in each case while <em>succ</em> is the number of runs where the corresponding <em>best reached</em> is hit. Note that, in our naming convention of methods, <em>RT</em> is always the abbreviation of running time and <em>FV</em> is for function value (the same below). To get a data summary at arbitrary running time/function value,  two methods, <em>get_RT_summary</em> and <em>get_FV_summary</em> are implemented. Let use the object <em>ds</em> (defined before) to illustrate the usage:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ds</span><span class="w">
+</span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_RT_summary</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">))</span><span class="w">
+   </span><span class="n">algId</span><span class="w"> </span><span class="n">target</span><span class="w">  </span><span class="n">mean</span><span class="w"> </span><span class="n">median</span><span class="w">        </span><span class="n">sd</span><span class="w"> </span><span class="m">2</span><span class="o">% 5%</span><span class="w"> </span><span class="m">10</span><span class="o">% 25%</span><span class="w"> </span><span class="m">50</span><span class="o">% 75%</span><span class="w"> </span><span class="m">90</span><span class="o">% 95%</span><span class="w"> </span><span class="m">98</span><span class="o">%   ERT runs ps
+1:   RLS      5  1.04      1  0.200000  1  1   1   1   1   1   1   1   1  1.04   25  1
+2:   RLS     10  5.24      5  3.455431  1  1   1   2   5   6  10  12  12  5.24   25  1
+3:   RLS     16 46.48     48 21.652790 13 13  19  26  42  58  71  83  83 46.48   25  1
+
+&gt; get_FV_summary(ds, runtime = c(10, 50, 100))
+   algId runtime runs  mean median        sd    2%</span><span class="w"> </span><span class="m">5</span><span class="o">%  10%</span><span class="w"> </span><span class="m">25</span><span class="o">% 50%</span><span class="w"> </span><span class="m">75</span><span class="o">% 90%</span><span class="w">  </span><span class="m">95</span><span class="o">% 98%</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">      </span><span class="m">10</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">11.52</span><span class="w">     </span><span class="m">12</span><span class="w"> </span><span class="m">1.5307950</span><span class="w">  </span><span class="m">8.48</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9.4</span><span class="w">  </span><span class="m">11</span><span class="w">  </span><span class="m">12</span><span class="w">  </span><span class="m">13</span><span class="w">  </span><span class="m">13</span><span class="w"> </span><span class="m">13.8</span><span class="w">  </span><span class="m">14</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">      </span><span class="m">50</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">15.64</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.4898979</span><span class="w"> </span><span class="m">15.00</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">15.0</span><span class="w">  </span><span class="m">15</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">
+</span><span class="m">3</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">100</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The input for the argument <em>ftarget</em> and <em>runtime</em> should be provided by the user. In this example, three values are chosen arbitrarily in the corresponding range of running time/function value (cf. the first lines of <em>get_RT_overview</em> and <em>get_FV_overview</em> above). Furthermore, using the <strong>magrittr</strong> package (please install it if necessary), it is possible to ``chain’’ all the methods introduced so far, making the code snippet more readable:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">magrittr</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="o">+</span><span class="w">   </span><span class="n">subset</span><span class="p">(</span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'RLS'</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">19</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="o">+</span><span class="w">   </span><span class="n">get_FV_summary</span><span class="p">(</span><span class="n">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w">
+   </span><span class="n">DIM</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">runs</span><span class="w">   </span><span class="n">mean</span><span class="w"> </span><span class="n">median</span><span class="w">       </span><span class="n">sd</span><span class="w">  </span><span class="m">2</span><span class="o">%    5%</span><span class="w">   </span><span class="m">10</span><span class="o">% 25%</span><span class="w"> </span><span class="m">50</span><span class="o">% 75%</span><span class="w">   </span><span class="m">90</span><span class="o">% 95%</span><span class="w"> </span><span class="m">98</span><span class="o">%</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">1.00</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">104.16</span><span class="w">    </span><span class="m">104</span><span class="w"> </span><span class="m">8.284926</span><span class="w">  </span><span class="m">92</span><span class="w">  </span><span class="m">92.0</span><span class="w">  </span><span class="m">93.6</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">104</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">116.8</span><span class="w"> </span><span class="m">120</span><span class="w"> </span><span class="m">120</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">1250.75</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">162.56</span><span class="w">    </span><span class="m">164</span><span class="w"> </span><span class="m">6.096994</span><span class="w"> </span><span class="m">152</span><span class="w"> </span><span class="m">152.8</span><span class="w"> </span><span class="m">156.0</span><span class="w"> </span><span class="m">156</span><span class="w"> </span><span class="m">164</span><span class="w"> </span><span class="m">168</span><span class="w"> </span><span class="m">170.4</span><span class="w"> </span><span class="m">172</span><span class="w"> </span><span class="m">172</span><span class="w">
+</span><span class="m">3</span><span class="o">:</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">2500.50</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">162.56</span><span class="w">    </span><span class="m">164</span><span class="w"> </span><span class="m">6.096994</span><span class="w"> </span><span class="m">152</span><span class="w"> </span><span class="m">152.8</span><span class="w"> </span><span class="m">156.0</span><span class="w"> </span><span class="m">156</span><span class="w"> </span><span class="m">164</span><span class="w"> </span><span class="m">168</span><span class="w"> </span><span class="m">170.4</span><span class="w"> </span><span class="m">172</span><span class="w"> </span><span class="m">172</span><span class="w">
+</span><span class="m">4</span><span class="o">:</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">3750.25</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">162.56</span><span class="w">    </span><span class="m">164</span><span class="w"> </span><span class="m">6.096994</span><span class="w"> </span><span class="m">152</span><span class="w"> </span><span class="m">152.8</span><span class="w"> </span><span class="m">156.0</span><span class="w"> </span><span class="m">156</span><span class="w"> </span><span class="m">164</span><span class="w"> </span><span class="m">168</span><span class="w"> </span><span class="m">170.4</span><span class="w"> </span><span class="m">172</span><span class="w"> </span><span class="m">172</span><span class="w">
+</span><span class="m">5</span><span class="o">:</span><span class="w"> </span><span class="m">100</span><span class="w">     </span><span class="m">19</span><span class="w">   </span><span class="n">RLS</span><span class="w"> </span><span class="m">5000.00</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">162.56</span><span class="w">    </span><span class="m">164</span><span class="w"> </span><span class="m">6.096994</span><span class="w"> </span><span class="m">152</span><span class="w"> </span><span class="m">152.8</span><span class="w"> </span><span class="m">156.0</span><span class="w"> </span><span class="m">156</span><span class="w"> </span><span class="m">164</span><span class="w"> </span><span class="m">168</span><span class="w"> </span><span class="m">170.4</span><span class="w"> </span><span class="m">172</span><span class="w"> </span><span class="m">172</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In addition, it is also straightforward to retrieve the raw sample points of the running time/function value, using the following methods, <em>get_RT_sample</em> and <em>get_FV_sample</em>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">get_RT_sample</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'long'</span><span class="p">)</span><span class="w">
+    </span><span class="n">algId</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">RT</span><span class="w">
+ </span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">   </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">   </span><span class="m">2</span><span class="w">  </span><span class="m">8</span><span class="w">
+ </span><span class="m">3</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">   </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w">
+</span><span class="o">---</span><span class="w">
+</span><span class="m">23</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">  </span><span class="m">23</span><span class="w"> </span><span class="m">12</span><span class="w">
+</span><span class="m">24</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">  </span><span class="m">24</span><span class="w">  </span><span class="m">1</span><span class="w">
+</span><span class="m">25</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="m">10</span><span class="w">  </span><span class="m">25</span><span class="w">  </span><span class="m">8</span><span class="w">
+</span></code></pre></div></div>
+
+<p>\begin{CodeChunk}
+\small
+\begin{CodeInput}</p>
+<blockquote>
+  <p>get_FV_sample(ds, runtime = c(5, 20), output = ‘wide’)
+   algId runtime run.1 run.2 run.3 run.4 run.5 run.6 run.7 run.8 run.9 run.10 run.11 run.12
+1:   RLS       5    12     9    10     9    10     9    10    12     7     10     10      5
+2:   RLS      20    16    12    15    14    14    13    14    15    14     12     14     13
+```
+Note that, all methods in this sub-section return a <em>data.table</em> object from the <strong>data.table</strong> package.</p>
+</blockquote>
+
+<h3 id="plotting">Plotting</h3>
+
+<p>To visualize the benchmark data, a collection of plotting methods are implemented in \iohana. In this section, we shall provide examples on some important plots using the data set in the last section. Here, only the plotting method for the <em>fixed-target</em> perspective is shown because the same set of methods are implemented for the fixed-budget perspective. Firstly, the progression of the function value is plotted against the running time:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ds_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Single_Func</span><span class="p">(</span><span class="n">ds_plot</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p>The data sets on $16D$, function $F1$ are plotted here, which is shown in the following figure. Note that, a interactive plot is created as the <strong>plotly</strong> library is used here by default. The static plotting library <em>*ggplot2</em> can also be selected by setting argument <em>backend = ‘ggplot2’</em> (this is only a difference in the plotting backend and thus it will not be demonstrated here). In the figure, the standard deviation of the running time is also drawn.</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT.Single_Func.pdf" alt="RT-singel-fct" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="o">?</span><span class="n">Plot.RT.Single_Func</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In addition, the previous plot can be grouped by functions, using <em>Plot.RT.Multi_Func</em> methods. The example is shown below.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Multi_Func</span><span class="p">(</span><span class="n">ds_plot</span><span class="p">,</span><span class="w"> </span><span class="n">scale.ylog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.Multi_Func.pdf" alt="RT-all-fct" /></p>
+
+<p>Given a target value, <em>Plot.RT.Histogram</em> methods renders the histogram of the running time required to reach this target value. Taking the data set on F23 and 16D as an example, it is important to view the range of function values through method <em>get_FV_overview</em> as shown in the previous section:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">23</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get_FV_overview</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span><span class="w">
+       </span><span class="n">algId</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="n">recorded</span><span class="w"> </span><span class="n">worst</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">best</span><span class="w"> </span><span class="n">reached</span><span class="w"> </span><span class="n">...</span><span class="w"> </span><span class="n">Budget</span><span class="w">
+</span><span class="m">1</span><span class="o">:</span><span class="w">       </span><span class="n">RLS</span><span class="w">  </span><span class="m">16</span><span class="w">     </span><span class="m">23</span><span class="w">           </span><span class="m">-100</span><span class="w">             </span><span class="m">3</span><span class="w">            </span><span class="m">4</span><span class="w"> </span><span class="n">...</span><span class="w">  </span><span class="m">16000</span><span class="w">
+</span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">self_GA</span><span class="w">  </span><span class="m">16</span><span class="w">     </span><span class="m">23</span><span class="w">            </span><span class="m">-96</span><span class="w">             </span><span class="m">4</span><span class="w">            </span><span class="m">4</span><span class="w"> </span><span class="n">...</span><span class="w">  </span><span class="m">16001</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then, we choose a target value $-3$ that is close to the best reached value and plot the histogram.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Histogram</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">plot_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'subplot'</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.Histogram.pdf" alt="RT-hist" /></p>
+
+<p>The argument <em>plot_mode = ‘subplot’</em> will create a separate sub-plot for each algorithm in the data set. In addition, the empirical density function of the running time, that is estimated by the Kernel Density Estimation (KDE) method, can be generated by method <em>Plot.RT.PMF</em>.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.PMF</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">show.sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.PMF.pdf" alt="RT-pmf" /></p>
+
+<p>Finally, it is also crucial to look at the Empirical Cumulative Distribution function (ECDF) of the running time. For this purpose,  three methods are implemented for different levels of data aggregation:</p>
+
+<ul>
+  <li><em>Plot.RT.ECDF_Per_Target</em>: it only compares the ECDF of algorithms on a <em>single</em> target value, e.g.,
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Per_Target</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+    <p><img src="http://localhost:4000/assets/fig/RT.ECDF_Per_Target.pdf" alt="RT-ecdf-single" /></p>
+  </li>
+  <li><em>Plot.RT.ECDF_Single_Func</em>: it takes as input an array of target values (controlled by arguments <em>fstart, fstop, fstep</em>) and aggregates the ECDF over those targets, e.g.,
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Single_Func</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">fstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-92</span><span class="p">,</span><span class="w"> </span><span class="n">fstop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">fstep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+    <p><img src="http://localhost:4000/assets/fig/RT.ECDF_Single_Func.pdf" alt="RT-ecdf-multi-target" /></p>
+  </li>
+  <li><em>Plot.RT.ECDF_Multi_Func</em>: it, in addition, aggregates different target values over all test function in a data set. To demonstrate its usage, let’s take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a <em>list</em> object. The resulting plot is shown i.
+```r
+    <blockquote>
+      <p>ds &lt;- subset(dsList, DIM == 100)
+get_FV_overview(ds)
+   algId DIM funcId worst recorded worst reached best reached … budget
+1:     RLS 100      1             44           100          100 … 100000
+2:     RLS 100     19             92           152          172 … 100000
+3:     RLS 100      2              0           100          100 … 100000
+4:     RLS 100     23          -1868             7            9 … 100000
+5: self_GA 100      1             38            98          100 … 100001
+6: self_GA 100     19             72           164          192 … 100001
+7: self_GA 100      2              0            39          100 … 100001
+8: self_GA 100     23          -1761             7           10 … 100001</p>
+    </blockquote>
+  </li>
+</ul>
+
+<blockquote>
+  <p>ftarget &lt;- list(<code class="highlighter-rouge">1</code> = c(80, 90, 100),</p>
+  <ul>
+    <li><code class="highlighter-rouge">2</code> = c(80, 90, 100),</li>
+    <li><code class="highlighter-rouge">19</code> = c(180, 190, 200),</li>
+    <li><code class="highlighter-rouge">23</code> = c(0, 5, 10))</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>Plot.RT.ECDF_Multi_Func(ds, ftarget)
+```
+<img src="http://localhost:4000/assets/fig/RT.ECDF_Multi_Func.pdf" alt="RT-ecdf-multi-fct" /></p>
+</blockquote>
+
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
