@@ -38,8 +38,8 @@
     "id": "5",
     "title": "IOHanalyzer",
     "content": "IOHanalyzer In this page, an example on IOHanalyzer is given based on the benchmark data generated in the previous section. In case it occurs to be time-consuming for the reader to execute the benchmarking example, the exactly same data set can also be downloaded from the site. We provide and maintain two versions of the IOHanalyzer package: a CRAN (Comprehensive R Archive Network) version R package a latest stable version that is hosted on Github page. The CRAN version can be obtained by: &gt;install.packages(&#39;IOHanalyzer&#39;) To install the latest stable version, pkg{devtools} is required again: &gt;devtools::install_github(&#39;IOHprofiler/IOHanalyzer&#39;) And please import the package after installation: &gt;library(&#39;IOHanalyzer&#39;) Note that those two versions only differ in some aesthetic aspects of the plotting method, which undergos a continuous and constant improvement. The example here is mainly two-fold: the usage of the programming interface and the Graphical User Interface.",
-    "url": "http://localhost:4000/IOHanalyzer/",
-    "relUrl": "/IOHanalyzer/"
+    "url": "http://localhost:4000/IOHanalyzer(Post-Processing)/",
+    "relUrl": "/IOHanalyzer(Post-Processing)/"
   },
   "6": {
     "id": "6",
