@@ -5,7 +5,7 @@ permalink: /News/
 nav_order: 2
 ---
 
-POst
+## News
 
 <ul>
   {% for post in site.posts %}
