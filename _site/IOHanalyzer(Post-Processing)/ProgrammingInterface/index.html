@@ -31,11 +31,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This is an introduction for IOHprofiler" />
 <meta property="og:description" content="This is an introduction for IOHprofiler" />
-<link rel="canonical" href="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" />
-<meta property="og:url" content="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" />
+<link rel="canonical" href="http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/" />
+<meta property="og:url" content="http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"description":"This is an introduction for IOHprofiler","@type":"WebPage","url":"http://localhost:4000/IOHanalyzer/ProgrammingInterface/","headline":"Programming Interface","@context":"https://schema.org"}</script>
+{"description":"This is an introduction for IOHprofiler","@type":"WebPage","url":"http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/","headline":"Programming Interface","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -203,7 +203,7 @@
                   
                     <li class="navigation-list-item  active">
                       
-                      <a href="http://localhost:4000/IOHanalyzer/ProgrammingInterface/" class="navigation-list-link active">Programming Interface</a>
+                      <a href="http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/" class="navigation-list-link active">Programming Interface</a>
                       
                     </li>
                   
@@ -217,7 +217,7 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHanalyzer/GraphicUserInterface/" class="navigation-list-link">Graphic User Interface</a>
+                      <a href="http://localhost:4000/IOHanalyzer(Post-Processing)/GraphicUserInterface/" class="navigation-list-link">Graphic User Interface</a>
                       
                     </li>
                   
@@ -571,8 +571,6 @@ Note that, all methods in this sub-section return a <em>data.table</em> object f
 </span></code></pre></div></div>
 <p>The data sets on $16D$, function $F1$ are plotted here, which is shown in the following figure. Note that, a interactive plot is created as the <strong>plotly</strong> library is used here by default. The static plotting library <em>*ggplot2</em> can also be selected by setting argument <em>backend = ‘ggplot2’</em> (this is only a difference in the plotting backend and thus it will not be demonstrated here). In the figure, the standard deviation of the running time is also drawn.</p>
 
-<p><img src="http://localhost:4000/assets/fig/RT.Single_Func.pdf" alt="RT-singel-fct" /></p>
-
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="o">?</span><span class="n">Plot.RT.Single_Func</span><span class="w">
 </span></code></pre></div></div>
 
@@ -580,8 +578,6 @@ Note that, all methods in this sub-section return a <em>data.table</em> object f
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Multi_Func</span><span class="p">(</span><span class="n">ds_plot</span><span class="p">,</span><span class="w"> </span><span class="n">scale.ylog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
-
-<p><img src="http://localhost:4000/assets/fig/RT.Multi_Func.pdf" alt="RT-all-fct" /></p>
 
 <p>Given a target value, <em>Plot.RT.Histogram</em> methods renders the histogram of the running time required to reach this target value. Taking the data set on F23 and 16D as an example, it is important to view the range of function values through method <em>get_FV_overview</em> as shown in the previous section:</p>
 
@@ -597,13 +593,9 @@ Note that, all methods in this sub-section return a <em>data.table</em> object f
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Histogram</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">plot_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'subplot'</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/fig/RT.Histogram.pdf" alt="RT-hist" /></p>
-
 <p>The argument <em>plot_mode = ‘subplot’</em> will create a separate sub-plot for each algorithm in the data set. In addition, the empirical density function of the running time, that is estimated by the Kernel Density Estimation (KDE) method, can be generated by method <em>Plot.RT.PMF</em>.</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.PMF</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">show.sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
-
-<p><img src="http://localhost:4000/assets/fig/RT.PMF.pdf" alt="RT-pmf" /></p>
 
 <p>Finally, it is also crucial to look at the Empirical Cumulative Distribution function (ECDF) of the running time. For this purpose,  three methods are implemented for different levels of data aggregation:</p>
 
@@ -611,12 +603,10 @@ Note that, all methods in this sub-section return a <em>data.table</em> object f
   <li><em>Plot.RT.ECDF_Per_Target</em>: it only compares the ECDF of algorithms on a <em>single</em> target value, e.g.,
     <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Per_Target</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="p">)</span><span class="w">
 </span></code></pre></div>    </div>
-    <p><img src="http://localhost:4000/assets/fig/RT.ECDF_Per_Target.pdf" alt="RT-ecdf-single" /></p>
   </li>
   <li><em>Plot.RT.ECDF_Single_Func</em>: it takes as input an array of target values (controlled by arguments <em>fstart, fstop, fstep</em>) and aggregates the ECDF over those targets, e.g.,
     <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Single_Func</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">fstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-92</span><span class="p">,</span><span class="w"> </span><span class="n">fstop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">fstep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
 </span></code></pre></div>    </div>
-    <p><img src="http://localhost:4000/assets/fig/RT.ECDF_Single_Func.pdf" alt="RT-ecdf-multi-target" /></p>
   </li>
   <li><em>Plot.RT.ECDF_Multi_Func</em>: it, in addition, aggregates different target values over all test function in a data set. To demonstrate its usage, let’s take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a <em>list</em> object. The resulting plot is shown i.
 ```r
@@ -648,7 +638,7 @@ get_FV_overview(ds)
 <blockquote>
   <p>Plot.RT.ECDF_Multi_Func(ds, ftarget)
 ```
-<img src="http://localhost:4000/assets/fig/RT.ECDF_Multi_Func.pdf" alt="RT-ecdf-multi-fct" /></p>
+<a href="# ![RT-ecdf-multi-target](http://localhost:4000/assets/fig/RT.ECDF_Single_Func.pdf)">//</a>: # <img src="http://localhost:4000/assets/fig/RT.ECDF_Multi_Func.pdf" alt="RT-ecdf-multi-fct" /></p>
 </blockquote>
 
 
