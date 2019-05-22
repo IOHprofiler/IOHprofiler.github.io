@@ -317,65 +317,11 @@
           
         
         <div id="main-content" class="page-content" role="main">
-          <h1 id="iohprofiler-a-benchmarking-and-profiling-tool-for-iterative-optimization-heuristics">IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</h1>
+          <h1 id="iohexperimenter">IOHexperimenter</h1>
 
-<p>IOHprofiler is a new tool for analyzing and comparing iterative optimization heuristics.
-Given as input algorithms and problems written in C, C++, or Python*, it provides as output an in-depth statistical evaluation of the algorithms’ fixed-target and fixed-budget running time distributions. In addition to these performance evaluations, IOHprofiler also allows to track the evolution of algorithm parameters, making our tool particularly useful for the analysis, comparison, and design of (self-)adaptive algorithms.</p>
+<p><strong>IOHexperimenter</strong> is a platform for testing iterative algorithms, which supplys interfaces achieving specific problems or collections of problems, and allows users to customize data storing process. In addition, it supports to create self-designed problems.</p>
 
-<p>IOHprofiler is a ready-to-use software. It consists of two parts: IOHExperimenter, which generates the running time data; and IOHanalyzer, which produces the summarizing comparisons and statistical evaluations. Currently IOHExperimenter is built on the <a href="https://github.com/numbbo/coco">COCO</a> software, but a new C++ based version is developing and will be released soon.</p>
-
-<p>[This code] implements the experimentation tool of IOHprofiler. 
-For the analyzer part, please visit <a href="https://github.com/IOHprofiler/IOHanalyzer">IOHanalyzer page</a>.</p>
-
-<h2 id="requirements--">Requirements  <a name="Requirements"></a></h2>
-<ol>
-  <li>The experimentation of IOHprofiler has been tested with:
-    <ul>
-      <li>gcc 5.4.1</li>
-      <li>python 2.7.12</li>
-      <li>R 3.4.4 and above (should also work on other versions)</li>
-    </ul>
-  </li>
-  <li>For a machine running the anylizing process,
-    <ul>
-      <li>Visit <a href="https://github.com/IOHprofiler/IOHanalyzer">IOHanalyzer page</a></li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="getting-started-">Getting Started <a name="Getting-Started"></a></h2>
-<ol>
-  <li>Check out the <a href="#Requirements"><em>Requirements</em></a> above.</li>
-</ol>
-
-<p>1a. To use the R-version of the IOHexperimenter, please look at the R-package branch of this repository <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R-package">link</a></p>
-
-<p>1b. For the other versions of the IOHexperimenter, <strong>Download</strong> IOHprofiler experimentation code from github <a href="https://github.com/IOHprofiler/IOHExperimenter">link</a> and unzip the <code class="highlighter-rouge">zip</code> file, or <strong>type</strong> <code class="highlighter-rouge">git clone https://github.com/IOHprofiler/Experimentation.git</code> (<code class="highlighter-rouge">git</code> needs to be installed)</p>
-
-<ol>
-  <li>In a system shell, <strong><code class="highlighter-rouge">cd</code> into</strong> the <code class="highlighter-rouge">Experimenter</code> folder, 
-  where the file <code class="highlighter-rouge">do.py</code> can be found. <strong>execute</strong> the following statement:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> python do.py `options`
-</code></pre></div>    </div>
-    <p>Available options are:</p>
-
-    <ul>
-      <li>
-        <p><code class="highlighter-rouge">build-c</code> Builds the C module. Two files, IOHprofiler.c and IOHprofiler.h, will be generated at <code class="highlighter-rouge">code-experiment/build/c</code></p>
-      </li>
-      <li>
-        <p><code class="highlighter-rouge">run-c</code> Builds the C module and runs as an example some experiments in C.</p>
-      </li>
-      <li>
-        <p><code class="highlighter-rouge">build-python</code> Builds the python module. A python package named IOHprofiler will be installed</p>
-      </li>
-      <li>
-        <p><code class="highlighter-rouge">run-python</code> Builds the python module and runs as an example some experiments in python.</p>
-      </li>
-    </ul>
-  </li>
-  <li>Using the analyzer by visiting <a href="https://github.com/IOHprofiler/IOHanalyzer">IOHanalyzer page</a></li>
-</ol>
+<p><a href="https://github.com/IOHprofiler/IOHexperimenter/tree/NewStructure/src">The source code</a> of <strong>IOHexperimenter</strong> is programmed by C++, and interface for Python, Java, R will be release soon.</p>
 
 
 

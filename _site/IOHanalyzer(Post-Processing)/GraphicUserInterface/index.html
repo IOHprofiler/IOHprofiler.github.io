@@ -327,15 +327,22 @@
         
         <div id="main-content" class="page-content" role="main">
           <h2 id="graphic-user-interface">Graphic User Interface</h2>
+<ul>
+  <li><a href="#Data loading">Data loading</a></li>
+  <li><a href="#Fixed-target results">Fixed-target results</a></li>
+  <li><a href="#Expected runtime">Expected runtime</a></li>
+  <li><a href="#Probability mass function">Probability mass function</a></li>
+  <li><a href="#Cumulative distribution">Cumulative distribution</a></li>
+</ul>
 
-<p>A web-based GUI is implemented in <strong>IOHanalyzer</strong> such that the user can analyze the experiment data easily in the web browser. using two R packages: <strong>shiny</strong> and <strong>plotly</strong>. In this section, we shall describe this Graphical User Interface (GUI) in detail. Moreover, for the users who are not familiar with R , a free GUI server is hosted online(http://iohprofiler.liacs.nl/) (For any bug report, feedback or requested change, the users are encouraged to contact us through <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a>). Alternatively, invoking the GUI is also straightforward on your local machine, given package <strong>IOHanalyzer</strong> is already installed:</p>
+<p>A web-based GUI is implemented in <strong>IOHanalyzer</strong> such that the user can analyze the experiment data easily in the web browser using two R packages: <strong>shiny</strong> and <strong>plotly</strong>. In this section, we shall describe this Graphical User Interface (GUI) in detail. Moreover, for the users who are not familiar with R , a free GUI server is hosted <a href="http://iohprofiler.liacs.nl/">online</a> (For any bug report, feedback or requested change, the users are encouraged to contact us through <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a>). Alternatively, invoking the GUI is also straightforward on your local machine, given package <strong>IOHanalyzer</strong> is already installed:</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">runServer</span><span class="p">()</span><span class="w">
 </span><span class="n">Loading</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">package</span><span class="o">:</span><span class="w"> </span><span class="n">shiny</span><span class="w">
 
 </span><span class="n">Listening</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="m">127.0.0.1</span><span class="o">:</span><span class="m">3943</span><span class="w">
 </span></code></pre></div></div>
-<p>which will start the GUI server on the local machine (hence using IP address 127.0.0.1) and a random port number. The web browser will be launched and connect to this address immediately after starting the server. There are tour groups of functionalities on the page.</p>
+<p>which will start the GUI server on the local machine (hence using IP address 127.0.0.1 and a random port number). The web browser will be launched and connect to this address immediately after starting the server. There are tour groups of functionalities on the page.</p>
 <ul>
   <li><strong>Upload Data</strong>: This section provides functionality to upload experiment results (the format of which is regulated in Sec.~\ref{subsec:data-format}) or load an ``official’’ data set that is provided by the author.</li>
   <li><strong>Fixed-Target Results</strong> This section provides statistics covering the fixed-target perspective of performance evaluation. That is, the results in this section mainly address the question about the statistical property of running time (i.e., function evaluations) that is needed to obtain a solution of a desired target quality.</li>
@@ -343,13 +350,16 @@
   <li><strong>Algorithm Parameters</strong> This section provides details about the evolution of the algorithm parameters that the user specified to be tracked in the experimental procedure.</li>
 </ul>
 
+<p><a name="Data loading"></a></p>
 <h3 id="data-loading">Data loading</h3>
 
-<p>The GUI interface to load the experiment data is shown in the following figure, in which the user is asked to upload a <em>compressed archive</em>. The following compression format are supported: <em>*.zip</em>, <em>*.bz</em>, <em>*.tar</em>, <em>*.xz</em>, <em>*.gz</em>. Note that, when the user’s data set is enormous to handle, it is possible to speed up the uploading (and hence plotting) procedure by toggling option Efficient mode on, in which a subset is taken from the huge data set. Moreover, when using the online version of GUI (<a href="http://iohprofiler.liacs.nl">http://iohprofiler.liacs.nl/</a>), the user can also load <code class="highlighter-rouge">official</code> data sets provided by the author, using the <code class="highlighter-rouge">Load Data from Repository</code> box on the right of the page. At the time of writing, two official data sets are made available, each of which contains results of $11$ algorithms on all $23$ test functions, over dimensions $16, 100, 625$. For the specification of those two data sets and updates on the data set, the user is suggested to visit <a href="https://github.com/IOHprofiler/IOHdata">https://github.com/IOHprofiler/IOHdata</a>.</p>
+<p>The GUI interface to load the experiment data is shown in the following figure, in which the user is asked to upload a <em>compressed archive</em>. The following compression format are supported: <em>*.zip</em>, <em>*.bz</em>, <em>*.tar</em>, <em>*.xz</em>, <em>*.gz</em>. Note that, when the user’s data set is enormous to handle, it is possible to speed up the uploading (and hence plotting) procedure by toggling option Efficient mode on, in which a subset is taken from the huge data set. Moreover, when using the <a href="http://iohprofiler.liacs.nl">online GUI</a>, the user can also load official data sets provided by the author, using the <code class="highlighter-rouge">Load Data from Repository</code> box on the right of the page. At the time of writing, two official data sets are made available, each of which contains results of 11 algorithms on all 23 test functions, over dimensions {16, 100, 625}. For the specification of those two data sets and updates on the data set, the user is suggested to visit <a href="https://github.com/IOHprofiler/IOHdata">data page</a>.</p>
 
 <p><img src="http://localhost:4000/assets/fig/ERT-single.png" alt="GUI-data-loading" /></p>
 
-<h3 id="fixed-target-results">Fixed-Target Results</h3>
+<p><a name="Fixed-target results"></a></p>
+<h3 id="fixed-target-results">Fixed-target results</h3>
+
 <p>The fixed-target section has four different subsections:</p>
 <ul>
   <li><em>Data Summary</em></li>
@@ -363,53 +373,71 @@
 <p><strong>Data Summary</strong> provides some statistics on the running time $T(A, f, d, v)$, meaning the function evaluation an algorithm $A$ would require to reach target value $v$ of test function $f$ on dimension $d$. In the following, the indexing parameter in $T$ will be dropped if no ambiguity is created. Assuming a number of independent runs of algorithm $A$ is performed on the tuple of $(f, d, v)$, the set of results from all runs $(t_i)_i$ is considered as a simple random sample of $T$. Here, three tables are provided to summarize the sample $(t_i)_i$ of $T$:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Data Overview</code> A screenshot of this table is given as below. As counterintuitive as it may seem, this table contains the overview of the <em>function value</em> observed in a data set. The main reason of showing this table here is to provide the user a quick summary of the range of function value, which is required to play with the following two functionalities. The detailed explanation on columns of this table is given in Sec.~\ref{subsec:data_summary}.</li>
+  <li><em>Data Overview</em> A screenshot of this table is given as below. As counterintuitive as it may seem, this table contains the overview of the <em>function value</em> observed in a data set. The main reason of showing this table here is to provide the user a quick summary of the range of function value, which is required to play with the following two functionalities. The detailed explanation on columns of this table is given in Sec.~\ref{subsec:data_summary}.</li>
 </ul>
 
 <p><img src="http://localhost:4000/assets/fig/RT-overview.png" alt="RT-overview" /></p>
 
 <ul>
-  <li>
-    <p><code class="highlighter-rouge">Runtime Statistics at Chosen Target Values</code> A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)&gt;v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the \emph{expected running time} (ERT) as defined in Eq.~\eqref{eq:ERT}. Additionally, the user can also download this table in CSV format, or as a \LaTeX{}~table.
-<img src="http://localhost:4000/assets/fig/RT-summary.png" alt="RT-summary" /></p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">Original Runtime Samples</code> The user interface is similar to the previous except that the sample points ${t_i}_{i}$ of running time $T(A, f, d, v)$ is shown here. Moreover, the user can choose between a <code class="highlighter-rouge">long</code> (all sample points are stored in a column) and a <code class="highlighter-rouge">wide</code> format (all sample points are stored in a row) for the table.</p>
-  </li>
+  <li><em>Runtime Statistics at Chosen Target Values</em> A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)&gt;v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the \emph{expected running time} (ERT) as defined in Eq.~\eqref{eq:ERT}. Additionally, the user can also download this table in CSV format, or as a LaTeX table.</li>
 </ul>
 
-<h3 id="expected-runtime">Expected Runtime</h3>
+<p><img src="http://localhost:4000/assets/fig/RT-summary.png" alt="RT-summary" /></p>
+
+<ul>
+  <li><em>Original Runtime Samples</em> The user interface is similar to the previous except that the sample points $(t_i)_{i}$ of running time $T(A, f, d, v)$ is shown here. Moreover, the user can choose between a <code class="highlighter-rouge">long</code> (all sample points are stored in a column) and a <code class="highlighter-rouge">wide</code> format (all sample points are stored in a row) for the table.</li>
+</ul>
+
+<p><a name="Expected runtime"></a></p>
+<h3 id="expected-runtime">Expected runtime</h3>
 
 <p>An interactive plot (using <strong>shiny</strong> package) illustrates the fixed-target running times. An example of this plot is shown as below as below. The interactive plot can be adjusted by a couple of options on the left menu as shown in figure, including showing/hiding mean and/or median values along with standard deviations and scaling axis logarithmically. The user also selects the algorithms to be displayed, the range of target values within which the curves are drawn. The displayed curves can be switched on and off by clicking on the legend on the right of the plot. In addition, the figure can be downloaded in the following format: <em>pdf</em>, <em>eps</em>, <em>svg</em> and <em>png</em> (which also applies to all the plots hereafter).</p>
 
 <p><img src="http://localhost:4000/assets/fig/ERT-single.png" alt="ERT-single" /></p>
 
-<h3 id="probability-mass-function">Probability Mass Function</h3>
+<p><a name="Probability mass function"></a></p>
+<h3 id="probability-mass-function">Probability mass function</h3>
 
-<p>For a selected target value $v$, the histogram of the running time, as displayed below,
-<img src="http://localhost:4000/assets/fig/RT-hist.png" alt="RT-hist" />
-shows the number of runs $i$ where the running time falls into a given interval $[t,t+1)$, namely $t \le t_i(A,f,d,v) &lt; t+1$. The bin size $[t,t+1)$ is automatically determined according to the so-called <em>Freedman-Diaconis</em> rule~\citep{Freedman1981}, which is based on the interquartile range of sample $(t_i)_i$. The user has two options:</p>
+<p>For a selected target value $v$, the histogram of the running time, as displayed below,</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-hist.png" alt="RT-hist" /></p>
+
+<p>shows the number of runs $i$ where the running time falls into a given interval $[t,t+1)$, namely $t \le t_i(A,f,d,v) &lt; t+1$. The bin size $[t,t+1)$ is automatically determined according to the so-called <em>Freedman-Diaconis rule</em>, which is based on the interquartile range of sample $(t_i)_i$. The user has two options:</p>
 <ul>
-  <li><code class="highlighter-rouge">overlayed display</code>, where all algorithms are displayed in the same plot</li>
-  <li><code class="highlighter-rouge">separated one</code>, where each algorithm is displayed in an individual sub-plot. 
-In addition to the histogram, the empirical probability mass function (See figure below) might be helpful to get a finer look at the shape of the empirical distribution of $T(A,f,d,v)$. The user can opt to show all sample points ${t_i}_{i}$ for each algorithm (which will be plotted as dots), or only the empirical probability mass function itself. It is important to point out that the probability mass function is estimated in a ““continuous’’ manner, where running time samples are considered as $\mathbb{R}$-valued and then a <em>Kernel Density Estimation</em> (KDE) is taken to obtain the curve. Note also that in the figure many sample points seem overlapping, this might be caused by turning (in the data upload part) the ‘‘efficient mode’’ on, in which the raw data set is trimmed.
-<img src="http://localhost:4000/assets/fig/RT-pmf.png" alt="RT-pmf" /></li>
+  <li><em>overlayed display</em>, where all algorithms are displayed in the same plot</li>
+  <li><em>separated one</em>, where each algorithm is displayed in an individual sub-plot. 
+In addition to the histogram, the empirical probability mass function (see figure below) might be helpful to get a finer look at the shape of the empirical distribution of $T(A,f,d,v)$. The user can opt to show all sample points $(t_i)_{i}$ for each algorithm (which will be plotted as dots), or only the empirical probability mass function itself. It is important to point out that the probability mass function is estimated in a ““continuous’’ manner, where running time samples are considered as $\mathbb{R}$-valued and then a <em>Kernel Density Estimation</em> (KDE) is taken to obtain the curve. Note also that in the figure many sample points seem overlapping, this might be caused by turning (in the data upload part) the <code class="highlighter-rouge">efficient mode</code> on, in which the raw data set is trimmed.</li>
 </ul>
 
-<h3 id="cumulative-distribution">Cumulative Distribution</h3>
+<p><img src="http://localhost:4000/assets/fig/RT-pmf.png" alt="RT-pmf" /></p>
 
-<p>The empirical cumulative distribution function of the running time are computed for target values specified by the user. In addition to showing ECDFs for a single target value, it is recommended to aggregate ECDFs over multiple target, to obtain an overall performance profile for all algorithms. Such a functionality is exemplified below
-<img src="http://localhost:4000/assets/fig/RT-ECDF-agg-target.png" alt="GUI-ECDF-target" /> 
-a set of evenly spaced target value can be generated by specifying the range and step of the target value. In this example, with the following setup, $f_{\min}=0.46$, $f_{\max}=4.91$, and $\Delta f=0.5$, the ECDF curves for target values $0.46,0.96,1.46,\ldots, 4.91$ are computed. The aggregation across targets is defined in the following sense: for a set of target values $V$, $r$ number of independent runs on each function, the aggregated ECDF considers running time samples of all target values and runs together.
+<p><a name="Cumulative distribution"></a></p>
+<h3 id="cumulative-distribution">Cumulative distribution</h3>
+
+<p>The empirical cumulative distribution function of the running time are computed for target values specified by the user. In addition to showing ECDFs for a single target value, it is recommended to aggregate ECDFs over multiple target, to obtain an overall performance profile for all algorithms. Such a functionality is exemplified below,</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-ECDF-agg-target.png" alt="GUI-ECDF-target" /></p>
+
+<p>a set of evenly spaced target value can be generated by specifying the range and step of the target value. In this example, with the following setup, $f_{\min}=0.46$, $f_{\max}=4.91$, and $\Delta f=0.5$, the ECDF curves for target values $0.46,0.96,1.46,\ldots, 4.91$ are computed. The aggregation across targets is defined in the following sense: for a set of target values $V$, $r$ number of independent runs on each function, the aggregated ECDF considers running time samples of all target values and runs together.
 In the upper figure, for algorithm $(30,30)$-vGA (blue curve) this is the case for around $70\%$ of the pairs after $t=2\,0000$ function evaluations. For algorithm RLS (purple curve) the fraction is $80\%$.</p>
 
-<p>Ideally, the best algorithm would sample the maximal function value $f_{\max}$ in the first function evaluation. This algorithm would have a 100\% cumulative probability for any running time. In practice, such an algorithm does not exist, but it serves as a theoretical upper bound. Furthermore, this way of performing the aggregation can be leveraged to a set of test functions, namely it is straightforward to define the aggregated profile for a range of functions</p>
+<p>Ideally, the best algorithm would sample the maximal function value $f_{\max}$ in the first function evaluation. This algorithm would have a 100% cumulative probability for any running time. In practice, such an algorithm does not exist, but it serves as a theoretical upper bound. Furthermore, this way of performing the aggregation can be leveraged to a set of test functions, namely it is straightforward to define the aggregated profile for a range of functions</p>
 
 <script type="math/tex; mode=display">\widehat{F}_T(t\; ; \; A,f,d,\mathcal{V}) = \frac{1}{r|\mathcal{V}|}\sum_{v\in \mathcal{V}}\sum_{i=1}^{r} \mathbb{1}(t_i(A,f,d,v) \leq t)</script>
 
-<p>This functionality is also materizalized in <strong>IOHanalyzer</strong> 
-<img src="http://localhost:4000/assets/fig/RT-ECDF-agg-fct.png" alt="RT-ECDF-agg-fct" />. 
-In the example figure, a table of pre-calculated target values are provided for each test function while all $23$ test functions are considered here by default. This table could also be customized by 1) downloading the current table (in a CSV-like format), 2) then modifying it according to user’s preference and 3) finally uploading the modified table again. The plot on the right will be re-computed upon uploading a new table of targets. Note that, please keep the format of the example table while editing it.</p>
+<p>This functionality is also materizalized in <strong>IOHanalyzer</strong>.</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-ECDF-agg-fct.png" alt="RT-ECDF-agg-fct" /></p>
+
+<p>In the example figure, a table of pre-calculated target values are provided for each test function while all 23 test functions are considered here by default. This table could also be customized by</p>
+
+<ul>
+  <li>1) downloading the current table (in a CSV-like format)</li>
+  <li>2) modifying it according to user’s preference</li>
+  <li>3) uploading the modified table again.</li>
+</ul>
+
+<p>The plot on the right will be re-computed upon uploading a new table of targets. Note that, please keep the format of the example table while editing it.</p>
 
 
 
