@@ -162,7 +162,7 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/Examples/" class="navigation-list-link">Examples</a>
+                      <a href="http://localhost:4000/IOHexperimenter/AddingProblems/" class="navigation-list-link">AddingProblems</a>
                       
                     </li>
                   
@@ -344,7 +344,7 @@
 </span></code></pre></div></div>
 <p>which will start the GUI server on the local machine (hence using IP address 127.0.0.1 and a random port number). The web browser will be launched and connect to this address immediately after starting the server. There are tour groups of functionalities on the page.</p>
 <ul>
-  <li><strong>Upload Data</strong>: This section provides functionality to upload experiment results (the format of which is regulated in Sec.~\ref{subsec:data-format}) or load an ``official’’ data set that is provided by the author.</li>
+  <li><strong>Upload Data</strong>: This section provides functionality to upload experiment results or load an official data set that is provided by the author.</li>
   <li><strong>Fixed-Target Results</strong> This section provides statistics covering the fixed-target perspective of performance evaluation. That is, the results in this section mainly address the question about the statistical property of running time (i.e., function evaluations) that is needed to obtain a solution of a desired target quality.</li>
   <li><strong>Fixed-Budget Results</strong> This sectioncovers the fixed-budget perspective, that is the statistics on objective function values obtained by the search points a given budget of function evaluations. In other words, the results in this section mainly address the question how good the search points are that a user can expect to see within a given frame of running time.</li>
   <li><strong>Algorithm Parameters</strong> This section provides details about the evolution of the algorithm parameters that the user specified to be tracked in the experimental procedure.</li>
@@ -373,13 +373,13 @@
 <p><strong>Data Summary</strong> provides some statistics on the running time $T(A, f, d, v)$, meaning the function evaluation an algorithm $A$ would require to reach target value $v$ of test function $f$ on dimension $d$. In the following, the indexing parameter in $T$ will be dropped if no ambiguity is created. Assuming a number of independent runs of algorithm $A$ is performed on the tuple of $(f, d, v)$, the set of results from all runs $(t_i)_i$ is considered as a simple random sample of $T$. Here, three tables are provided to summarize the sample $(t_i)_i$ of $T$:</p>
 
 <ul>
-  <li><em>Data Overview</em> A screenshot of this table is given as below. As counterintuitive as it may seem, this table contains the overview of the <em>function value</em> observed in a data set. The main reason of showing this table here is to provide the user a quick summary of the range of function value, which is required to play with the following two functionalities. The detailed explanation on columns of this table is given in Sec.~\ref{subsec:data_summary}.</li>
+  <li><em>Data Overview</em> A screenshot of this table is given as below. As counterintuitive as it may seem, this table contains the overview of the <em>function value</em> observed in a data set. The main reason of showing this table here is to provide the user a quick summary of the range of function value, which is required to play with the following two functionalities.</li>
 </ul>
 
 <p><img src="http://localhost:4000/assets/fig/RT-overview.png" alt="RT-overview" /></p>
 
 <ul>
-  <li><em>Runtime Statistics at Chosen Target Values</em> A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)&gt;v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the \emph{expected running time} (ERT) as defined in Eq.~\eqref{eq:ERT}. Additionally, the user can also download this table in CSV format, or as a LaTeX table.</li>
+  <li><em>Runtime Statistics at Chosen Target Values</em> A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)&gt;v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the <em>expected running time</em> (ERT). Additionally, the user can also download this table in CSV format, or as a LaTeX table.</li>
 </ul>
 
 <p><img src="http://localhost:4000/assets/fig/RT-summary.png" alt="RT-summary" /></p>
