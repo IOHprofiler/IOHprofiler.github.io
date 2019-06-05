@@ -40,14 +40,14 @@
 // $green-200: #009c7b;
 // $green-300: #026e57;
 //
-// $body-background-color: $white !default;
-// $sidebar-color: $grey-lt-000 !default;
-// $code-background-color: $grey-lt-000 !default;
+$body-background-color: rgb(240, 240, 240);;
+$sidebar-color: rgb(255,255,255);
+$code-background-color: rgb(255,255,255);
 
-// $body-text-color: $grey-dk-100 !default;
+$body-text-color: rgb(45,45,45);
 // $body-heading-color: $grey-dk-300 !default;
 // $nav-child-link-color: $grey-dk-100 !default;
-// $link-color: $purple-000 !default;
+$link-color: rgb(95, 155, 213)
 // $btn-primary-color: $purple-100 !default;
 // $base-button-color: #f7f7f7 !default;
 //
@@ -108,7 +108,7 @@
 //
 // $gutter-spacing: $sp-6;
 // $gutter-spacing-sm: $sp-4;
-// $nav-width: 232px;
+// $nav-width: 332px;
 // $content-width: 800px;
 //
 // $media-queries: (

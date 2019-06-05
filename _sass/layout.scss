@@ -36,7 +36,7 @@
   }
 
   @include mq(lg) {
-    width: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    width: calc(#{$nav-width} * 1.2);
     min-width: $nav-width;
   }
 }
@@ -61,7 +61,7 @@
 
   @include mq(md) {
     position: relative;
-    max-width: $content-width;
+    max-width:  calc((100% - #{$nav-width} * 1.2) * 0.9);
     padding-top: $gutter-spacing;
     padding-bottom: $gutter-spacing;
     padding-left: $gutter-spacing * 1.5;
@@ -70,7 +70,7 @@
 
   @include mq(lg) {
     padding-left: $gutter-spacing;
-    margin-left: calc((100% - #{$nav-width + $content-width}) / 2 + #{$nav-width});
+    margin-left:  calc(#{$nav-width} * 1.2);
   }
 }
 
