@@ -380,22 +380,57 @@
         <div id="main-content" class="page-content" role="main">
           <h1 id="iohprofiler-a-benchmarking-and-profiling-tool-for-iterative-optimization-heuristics">IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</h1>
 
-<p><strong>IOHprofiler</strong> is a new tool for analyzing and comparing iterative optimization heuristics.
-Given as input algorithms and problems written in C, C++, or Python*, it provides as output an in-depth statistical evaluation of the algorithms’ fixed-target and fixed-budget running time distributions. In addition to these performance evaluations, IOHprofiler also allows to track the evolution of algorithm parameters, making our tool particularly useful for the analysis, comparison, and design of (self-)adaptive algorithms.</p>
+<p><strong>IOHprofiler</strong> is a new tool for analyzing and comparing iterative optimization heuristics. It consists of two part: <strong>IOHexperimenter</strong> and <strong>IOHanalyzer</strong>.</p>
 
-<p>IOHprofiler is a ready-to-use software. It consists of two parts: <strong>IOHexperimenter</strong>, which generates the running time data; and <strong>IOHanalyzer</strong>, which produces the summarizing comparisons and statistical evaluations.</p>
+<p><strong>IOHexperimenter</strong> provides a tool for:</p>
+<ul>
+  <li>testing algorithm and generating result data with format of <strong>IOHanalyzer</strong></li>
+  <li>creating new test problems</li>
+  <li>configuring customized test suites (collection of problems)</li>
+  <li>mutliple data logging options (<strong>in development</strong>)</li>
+  <li>framework of algorithm design (<strong>in development</strong>)</li>
+</ul>
+
+<p><strong>IOHanalyzer</strong> provides:</p>
+<ul>
+  <li>a web-based interface to analyze and visualize the empirical performance of IOHs</li>
+  <li>interactive plot</li>
+  <li>statistical evaluation</li>
+  <li>report generation</li>
+  <li><code class="highlighter-rouge">R</code> programming interfaces in the backend</li>
+</ul>
 
 <h2 id="source">Source</h2>
-<p>Both source code of <strong>IOHexperimenter</strong> and <strong>IOHanalyzer</strong> are available in <a href="https://github.com/IOHprofiler">github</a>, <strong>IOHanalyze</strong> is also host <a href="http://iohprofiler.liacs.nl/">online</a>.</p>
-
-<h2 id="documentation">Documentation</h2>
-<p><a href="https://arxiv.org/abs/1810.05281">IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</a></p>
+<ul>
+  <li><strong>source code</strong> : <a href="https://github.com/IOHprofiler">https://github.com/IOHprofiler</a></li>
+  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">https://arxiv.org/abs/1810.05281</a></li>
+  <li><strong>Wiki page</strong>: <a href="https://iohprofiler.github.io/IOHanalyzer">https://iohprofiler.github.io/IOHanalyzer</a></li>
+  <li><strong>Bug reports (IOHanalyzer)</strong>: <a href="https://github.com/IOHprofiler/IOHAnalyzer/issues">https://github.com/IOHprofiler/IOHAnalyzer/issues</a></li>
+  <li><strong>Online service (IOHanalyzer)</strong>: <a href="http://iohprofiler.liacs.nl">http://iohprofiler.liacs.nl</a></li>
+  <li><strong>General Contact</strong>: <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a></li>
+  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler</a></li>
+</ul>
 
 <h2 id="contact">Contact</h2>
 
 <p>If you have any questions, comments, suggestions or pull requests, please don’t hesitate contacting us <a href="mailto:IOHprofiler@liacs.leidenuniv.nl">IOHprofiler@liacs.leidenuniv.nl</a>!</p>
 
-<h2 id="cite-us">Cite us</h2>
+<p>When using IOHprofiler and parts thereof, please kindly cite this work as</p>
+
+<p>Carola Doerr, Hao Wang, Furong Ye, Sander van Rijn, Thomas Bäck: <i>IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</i>, arXiv e-prints:1810.05281, 2018.</p>
+
+<pre><code class="language-bibtex">@ARTICLE{IOHprofiler,
+  author = {Carola Doerr and Hao Wang and Furong Ye and Sander van Rijn and Thomas B{\"a}ck},
+  title = {IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics},
+  journal = {arXiv e-prints:1810.05281},
+  archivePrefix = "arXiv",
+  eprint = {1810.05281},
+  year = 2018,
+  month = oct,
+  keywords = {Computer Science - Neural and Evolutionary Computing},
+  url = {https://arxiv.org/abs/1810.05281}
+}
+</code></pre>
 
 
 
