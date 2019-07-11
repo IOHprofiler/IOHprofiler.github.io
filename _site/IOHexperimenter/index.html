@@ -84,11 +84,19 @@
     
       
         
+      
+    
+      
+        
           <li class="navigation-list-item">
             
             <a href="http://localhost:4000/" class="navigation-list-link">About</a>
             
           </li>
+        
+      
+    
+      
         
       
     
@@ -112,6 +120,10 @@
     
       
         
+      
+    
+      
+        
           <li class="navigation-list-item active">
             
             <a href="http://localhost:4000/IOHexperimenter/" class="navigation-list-link active">IOHexperimenter</a>
@@ -122,9 +134,13 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/GettingStarted/" class="navigation-list-link">Getting Started</a>
+                      <a href="http://localhost:4000/IOHexperimenter/Experiments/" class="navigation-list-link">Experiments</a>
                       
                     </li>
+                  
+                
+                  
+                
                   
                 
                   
@@ -138,7 +154,7 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/AddingProblems/" class="navigation-list-link">AddingProblems</a>
+                      <a href="http://localhost:4000/IOHexperimenter/CreatingProblems/" class="navigation-list-link">CreatingProblems</a>
                       
                     </li>
                   
@@ -148,7 +164,66 @@
                   
                 
                   
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/CreatingSuites/" class="navigation-list-link">CreatingSuites</a>
+                      
+                    </li>
+                  
                 
+                  
+                
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/Loggers/" class="navigation-list-link">Loggers</a>
+                      
+                        
+                        <ul class="navigation-list-child-list">
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="http://localhost:4000/IOHexperimenter/Loggers/Observer/" class="navigation-list-link">Observer</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                              <li class="navigation-list-item ">
+                                <a href="http://localhost:4000/IOHexperimenter/Loggers/CSVLogger/" class="navigation-list-link">CSVLogger</a>
+                              </li>
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                            
+                          
+                        </ul>
+                      
+                    </li>
                   
                 
                   
@@ -173,11 +248,15 @@
                   
                 
                   
+                
+                  
                     <li class="navigation-list-item ">
                       
                       <a href="http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/" class="navigation-list-link">Programming Interface</a>
                       
                     </li>
+                  
+                
                   
                 
                   
@@ -202,9 +281,17 @@
                 
                   
                 
+                  
+                
+                  
+                
               </ul>
             
           </li>
+        
+      
+    
+      
         
       
     
@@ -216,6 +303,8 @@
             
               
               <ul class="navigation-list-child-list ">
+                
+                  
                 
                   
                 
@@ -235,6 +324,12 @@
                       <a href="http://localhost:4000/Benchmark/Transformation/" class="navigation-list-link">Transformation</a>
                       
                     </li>
+                  
+                
+                  
+                
+                  
+                
                   
                 
                   
@@ -287,9 +382,66 @@
         <div id="main-content" class="page-content" role="main">
           <h1 id="iohexperimenter">IOHexperimenter</h1>
 
-<p><strong>IOHexperimenter</strong> is a platform for testing iterative heuristic algorithms. It supplies a set of benchmark problems, allows users to test algorithms with well-desinged and customized output data format, and supports defining new test problems. Working with <a href="http://iohprofiler.liacs.nl/">IOHanalyzer</a>, users can easily generate output of algorithms with <strong>IOHexperimenter</strong> and analyze with <strong>IOHanalyzer</strong></p>
+<p>The <strong>experiment tool</strong> for <b>I</b>terative <b>O</b>ptimization <b>H</b>euristics (IOHs).</p>
 
-<p><a href="https://github.com/IOHprofiler/IOHexperimenter/tree/NewStructure/src">The source code</a> of <strong>IOHexperimenter</strong> is programmed by C++, and interface for Python, Java, R will be release soon.</p>
+<ul>
+  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">https://arxiv.org/abs/1810.05281</a></li>
+  <li><strong>Wiki page</strong>: <a href="https://iohprofiler.github.io/IOHanalyzer">https://iohprofiler.github.io/IOHanalyzer</a></li>
+  <li><strong>General Contact</strong>: <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a></li>
+  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler</a></li>
+</ul>
+
+<p>It <i>provides</i> a tool for:</p>
+
+<ul>
+  <li>testing algorithm and generating result data with format of <strong>IOHanalyzer</strong></li>
+  <li>creating new test problems</li>
+  <li>configuring customized test suites (collection of problems)</li>
+  <li>mutliple data logging options (<strong>in development</strong>)</li>
+  <li>framework of algorithm design (<strong>in development</strong>)</li>
+</ul>
+
+<p>It is <i>built on</i>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C++</code> (tested on <code class="highlighter-rouge">gcc 5.4.0</code>)</li>
+  <li><code class="highlighter-rouge">boost.filesystem</code> library for logging files.</li>
+</ul>
+
+<p>It supports:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C++</code></li>
+  <li><code class="highlighter-rouge">R</code> package <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R">https://github.com/IOHprofiler/IOHexperimenter/tree/R</a></li>
+</ul>
+
+<h2 id="using-iohexperimenter">Using IOHexperimenter</h2>
+
+<h3 id="running-experiments">Running Experiments</h3>
+
+<p>The <strong>IOHexperimenter</strong> has been built on <code class="highlighter-rouge">C++</code> and tested on complier <code class="highlighter-rouge">gcc 5.4.0</code>. To use the class logging <code class="highlighter-rouge">csv</code> output files, <code class="highlighter-rouge">boost.filesystem</code> library is required (To install boost library, please visit <a href="https://www.boost.org">https://www.boost.org</a>).</p>
+
+<h4 id="using-by-c">Using by C++</h4>
+
+<p>If you are using the tool for the first time, please download or clone the project and run <code class="highlighter-rouge">make</code> at the root directory of the project. After running <code class="highlighter-rouge">make</code> to compile,</p>
+<ul>
+  <li>object files will be generated in <code class="highlighter-rouge">build/c/obj</code></li>
+  <li>three exectuable files will be generated in <code class="highlighter-rouge">build/c/bin</code></li>
+</ul>
+
+<p>Afterwards, you can copy the folder <code class="highlighter-rouge">build/c</code> and use the <code class="highlighter-rouge">Makefile</code> for your future work.
+For the details of <code class="highlighter-rouge">C++</code> experiments, please visit <a href="/IOHexperimenter/Experiments/">here</a>.</p>
+
+<h4 id="using-by-r">Using by R</h4>
+<p>For the use of <code class="highlighter-rouge">R</code>, please visit <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R">R branch</a>.</p>
+
+<h3 id="creating-test-problems">Creating test problems</h3>
+
+<p>The supported problems of <strong>IOHexperimenter</strong> are with a vector of variables with a unique type and a vector of real objectives. For detailed steps of creating a problem, please visit <a href="/IOHexperimenter/AddingProblems/">here</a>.</p>
+
+<h3 id="configuring-test-suites">Configuring test suites</h3>
+<p>Suites are collections of test problems. By including problems into a suite, it is easier for users to maintain their experiments.
+Note that the variables type of problems of a suite need to be the same. For detailed steps of creating and using suites, please visit <a href="/src/Suites">here</a>.</p>
 
 
 
@@ -309,8 +461,12 @@
             
               
               <li>
-                <a href="http://localhost:4000/IOHexperimenter/GettingStarted/">Getting Started</a>
+                <a href="http://localhost:4000/IOHexperimenter/Experiments/">Experiments</a>
               </li>
+              
+            
+              
+            
               
             
               
@@ -323,7 +479,7 @@
             
               
               <li>
-                <a href="http://localhost:4000/IOHexperimenter/AddingProblems/">AddingProblems</a>
+                <a href="http://localhost:4000/IOHexperimenter/CreatingProblems/">CreatingProblems</a>
               </li>
               
             
@@ -332,7 +488,19 @@
               
             
               
+              <li>
+                <a href="http://localhost:4000/IOHexperimenter/CreatingSuites/">CreatingSuites</a>
+              </li>
+              
             
+              
+            
+              
+            
+              
+              <li>
+                <a href="http://localhost:4000/IOHexperimenter/Loggers/">Loggers</a>
+              </li>
               
             
               
