@@ -393,7 +393,7 @@
 <p><a href="">IOHprofiler_problem</a> is the base <code class="highlighter-rouge">class</code> of problems of <strong>IOHexperimenter</strong>. The property variables of problems include:</p>
 <ul>
   <li><code class="highlighter-rouge">problem_id</code>, will be assigned if the problem is added to a suite, otherwise default by 0.</li>
-  <li><code class="highlighter-rouge">instance_id</code>, sets transformation methods on problems. The original problem is with instance_id 1, <i>scale</i> and <i>shift</i> are applied on objectives for instance_id in [2,100], <i>XOR</i> will be applied on variables for instance_id in [2,50], and <i>sigma</i> function is applied on variables for instance_id in [51,100].</li>
+  <li><code class="highlighter-rouge">instance_id</code>,  sets transformation methods on problems. The original problem is with instance_id 1, <i>scale</i> and <i>shift</i> are applied on objectives for instance_id in [2,100], <i>XOR</i> is applied on variables for instance_id in [2,50], and <i>sigma</i> function is applied on variables for instance_id in [51,100].</li>
   <li><code class="highlighter-rouge">problem_name</code></li>
   <li><code class="highlighter-rouge">problem_type</code></li>
   <li><code class="highlighter-rouge">lowerbound</code>, is a vector of lowerbound for variables.</li>
@@ -420,7 +420,7 @@
   <li><i>IOHprofiler_set_instance_id(instance_id)</i></li>
 </ul>
 
-<p><strong>IOHexperimenter</strong> provides a variety of problems for testing algorithms, but it is also easy to add your own problem. Overall, to create a problem of <strong>IOHexperimenter</strong>, two functions need to be implemented: <i>construct functions</i> and <i>internel_evaluate</i>. Optionally, you can define <i>update_evaluate_double_info</i> and <i>update_evaluate_int_info</i> to make evluate process more efficiently.</p>
+<p><strong>IOHexperimenter</strong> provides a variety of problems for testing algorithms, but it is also easy to add your own problems. Overall, to create a problem of <strong>IOHexperimenter</strong>, two functions need to be implemented: <i>construct functions</i> and <i>internel_evaluate</i>. Additionally, you can define <i>update_evaluate_double_info</i> and <i>update_evaluate_int_info</i> to make evluate process more efficiently.</p>
 
 <p>Taking the implementation of <strong>OneMax</strong> as an instance, <i>construct functions</i> are as below. <code class="highlighter-rouge">problem_name</code> and <code class="highlighter-rouge">number_of_objectives</code> <strong>must</strong> be set. In general, two methods of construction of the problems are given. One is constructing without giving <code class="highlighter-rouge">instance_id</code> and <code class="highlighter-rouge">dimension</code>, and the other one is with.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OneMax</span><span class="p">()</span> <span class="p">{</span>
@@ -451,7 +451,7 @@
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>In addition, the <i>internal_evaluate</i> <strong>must</strong> be implemented as well. It will be used during evaluate process, returning a vector of (real) objective values of the corresponding variables <strong>x</strong>.</p>
+<p>The <i>internal_evaluate</i> <strong>must</strong> be implemented as well. It is used during evaluate process, returning a vector of (real) objective values of the corresponding variables <strong>x</strong>.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">internal_evaluate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">y</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
@@ -464,7 +464,7 @@
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>If you want to register your problem by <code class="highlighter-rouge">problem_name</code> and add it into a suite, please add following codes and modify names.</p>
+<p>If you want to register your problem by <code class="highlighter-rouge">problem_name</code> and add it into a suite, please add functions creating instance as following codes.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">OneMax</span> <span class="o">*</span> <span class="nf">createInstance</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="n">OneMax</span><span class="p">();</span>
 <span class="p">};</span>

@@ -392,15 +392,15 @@
           <h1 id="creating-suites">Creating Suites</h1>
 <p><a href="">IOHprofiler_suite</a> is the base <code class="highlighter-rouge">class</code> of suites of <strong>IOHexperimenter</strong>. The property variables of problems include:</p>
 <ul>
-  <li><code class="highlighter-rouge">problem_id</code>, a vector of id which problems are to be tested.</li>
-  <li><code class="highlighter-rouge">instance_id</code>, a vector of instance id of problems. intanced id sets the transformation on the problem. The original problem is with instance_id 1, <i>scale</i> and <i>shift</i> are applied on objectives for instance_id in [2,100], <i>XOR</i> will be applied on variables for instance_id in [2,50], and <i>sigma</i> function is applied on variables for instance_id in [51,100].</li>
-  <li><code class="highlighter-rouge">dimension</code>, a vector of dimension of problems.</li>
+  <li><code class="highlighter-rouge">problem_id</code>, a vector containing the ids of the problems to be tested.</li>
+  <li><code class="highlighter-rouge">instance_id</code>, a vector containing the ids of the instances of the problems. Intance ids specify which transformations will be applied to the problem. The original problem has instance_id 1; <i>scale</i> and <i>shift</i> are applied on objectives for instance_id in [2,100]; <i>XOR</i> will be applied on variables for instance_id in [2,50], and <i>sigma</i> function is applied on variables for instance_id in [51,100].</li>
+  <li><code class="highlighter-rouge">dimension</code>, a vector containing the dimensions of the problems.</li>
   <li><code class="highlighter-rouge">number_of_problems</code></li>
   <li><code class="highlighter-rouge">number_of_instances</code></li>
   <li><code class="highlighter-rouge">number_of_dimensions</code></li>
 </ul>
 
-<p>And some functions for experiments are supplied:</p>
+<p>The following functions for experiments are available to a suite:</p>
 <ul>
   <li><i>get_next_problem</i>, return a shared point of problems of the suite in order.</li>
   <li><i>addCSVLogger(logger)</i>, assigns a <strong>IOHprofiler_csv_logger</strong> class to the suite.</li>
@@ -410,9 +410,9 @@
   <li><i>mapIDTOName</i>, is to match problem id and name.</li>
 </ul>
 
-<p><strong>IOHexperimenter</strong> provides a <strong>PBO_suite</strong> for pseudo Boolean problems, but it is also easy to add your own suite. Creating a suite is to register problems in the suite and assign id to problems.</p>
+<p><strong>IOHexperimenter</strong> provides a <strong>PBO_suite</strong> for pseudo Boolean problems, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.</p>
 
-<p>Taking the implementation of <strong>PBO_suite</strong> as an instance, <i>construct functions</i> are as below. In the construct functions, the range of allowed <code class="highlighter-rouge">problem_id</code>, <code class="highlighter-rouge">instance_id</code> and <code class="highlighter-rouge">dimension</code> should be identified. In addition, <i>registerProblem()</i> must be called when a suite is constructed.</p>
+<p>Taking the implementation of <strong>PBO_suite</strong> as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed <code class="highlighter-rouge">problem_id</code>, <code class="highlighter-rouge">instance_id</code> and <code class="highlighter-rouge">dimension</code> should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PBO_suite</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">problem_id</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">instance_id</span><span class="p">;</span>
@@ -459,7 +459,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><i>registerProblem()</i> is a virtual function of the base <code class="highlighter-rouge">IOHprofiler_suite</code> class. When you create a suite, it <strong>must</strong> be implemented. In the function, problems included in the suite need to be registered, and problem id and name should be mapped. The following is the <i>registerProblem()</i> function of <strong>PBO_suite</strong>.</p>
+<p><i>registerProblem()</i> is a virtual function of the base <code class="highlighter-rouge">IOHprofiler_suite</code> class. When you create a suite, it <strong>must</strong> be implemented. Problems to be included in the suite can be registered by name. Afterwards, problem id and name should be mapped through <i>mapIDTOName&gt;</i> function, which enables the suite to recognize problems by problem id. Following is the <i>registerProblem()</i> function of <strong>PBO_suite</strong>.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">registerInFactory</span><span class="o">&lt;</span><span class="n">IOHprofiler_problem</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">OneMax</span><span class="o">&gt;</span> <span class="n">regOneMax</span><span class="p">(</span><span class="s">"OneMax"</span><span class="p">);</span>
   <span class="n">registerInFactory</span><span class="o">&lt;</span><span class="n">IOHprofiler_problem</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">OneMax_Dummy1</span><span class="o">&gt;</span> <span class="n">regOneMax_Dummy1</span><span class="p">(</span><span class="s">"OneMax_Dummy1"</span><span class="p">);</span>
   <span class="n">registerInFactory</span><span class="o">&lt;</span><span class="n">IOHprofiler_problem</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="n">OneMax_Dummy2</span><span class="o">&gt;</span> <span class="n">regOneMax_Dummy2</span><span class="p">(</span><span class="s">"OneMax_Dummy2"</span><span class="p">);</span>
@@ -511,7 +511,7 @@
   <span class="n">mapIDTOName</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="s">"NQueens"</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>If you want to register your problem by <code class="highlighter-rouge">suite_name</code>, please add following codes and modify names.</p>
+<p>If you want to register your suite called <code class="highlighter-rouge">suite_name</code>, please add following codes and modify names.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">PBO_suite</span> <span class="o">*</span> <span class="nf">createInstance</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="n">PBO_suite</span><span class="p">();</span>
 <span class="p">};</span>

@@ -382,7 +382,7 @@
         <div id="main-content" class="page-content" role="main">
           <h1 id="iohexperimenter">IOHexperimenter</h1>
 
-<p>The <strong>experiment tool</strong> for <b>I</b>terative <b>O</b>ptimization <b>H</b>euristics (IOHs).</p>
+<p>The <strong>benchmarking platform</strong> for <b>I</b>terative <b>O</b>ptimization <b>H</b>euristics (IOHs).</p>
 
 <ul>
   <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">https://arxiv.org/abs/1810.05281</a></li>
@@ -391,57 +391,57 @@
   <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler</a></li>
 </ul>
 
-<p>It <i>provides</i> a tool for:</p>
+<p><b>IOHexperimenter</b> <i>provides</i>:</p>
 
 <ul>
-  <li>testing algorithm and generating result data with format of <strong>IOHanalyzer</strong></li>
-  <li>creating new test problems</li>
-  <li>configuring customized test suites (collection of problems)</li>
-  <li>mutliple data logging options (<strong>in development</strong>)</li>
-  <li>framework of algorithm design (<strong>in development</strong>)</li>
+  <li>A framework for straightforward benchmarking of any iterative optimization heuristic</li>
+  <li>A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites</li>
+  <li>Logging methods to effortlesly store benchmarking data in a format compatible with <strong>IOHanalyzer</strong>, with future support for additional data logging options</li>
+  <li>(<strong>Soon to come</strong>:) A framework which significantly simplifies algorithm design</li>
 </ul>
 
-<p>It is <i>built on</i>:</p>
+<p><b>IOHexperimenter</b> is <i>built on</i>:</p>
 
 <ul>
   <li><code class="highlighter-rouge">C++</code> (tested on <code class="highlighter-rouge">gcc 5.4.0</code>)</li>
   <li><code class="highlighter-rouge">boost.filesystem</code> library for logging files.</li>
 </ul>
 
-<p>It supports:</p>
+<p><b>IOHexperimenter</b> is available for:</p>
 
 <ul>
   <li><code class="highlighter-rouge">C++</code></li>
   <li><code class="highlighter-rouge">R</code> package <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R">https://github.com/IOHprofiler/IOHexperimenter/tree/R</a></li>
+  <li><code class="highlighter-rouge">Python</code> interface (soon to come)</li>
+  <li><code class="highlighter-rouge">Java</code> interface (soon to come)</li>
 </ul>
 
 <h2 id="using-iohexperimenter">Using IOHexperimenter</h2>
 
 <h3 id="running-experiments">Running Experiments</h3>
 
-<p>The <strong>IOHexperimenter</strong> has been built on <code class="highlighter-rouge">C++</code> and tested on complier <code class="highlighter-rouge">gcc 5.4.0</code>. To use the class logging <code class="highlighter-rouge">csv</code> output files, <code class="highlighter-rouge">boost.filesystem</code> library is required (To install boost library, please visit <a href="https://www.boost.org">https://www.boost.org</a>).</p>
+<p>The <strong>IOHexperimenter</strong> has been built on <code class="highlighter-rouge">C++</code> and tested on complier <code class="highlighter-rouge">gcc 5.4.0</code>. To use the logging of <code class="highlighter-rouge">csv</code> output files, <code class="highlighter-rouge">boost.filesystem</code> library is required (To install boost library, please visit <a href="https://www.boost.org">https://www.boost.org</a>).</p>
 
 <h4 id="using-by-c">Using by C++</h4>
 
-<p>If you are using the tool for the first time, please download or clone the project and run <code class="highlighter-rouge">make</code> at the root directory of the project. After running <code class="highlighter-rouge">make</code> to compile,</p>
+<p>If you are using the tool for the first time, please download or clone this branch and run <code class="highlighter-rouge">make</code> at the root directory of the project. After running <code class="highlighter-rouge">make</code> to compile,</p>
 <ul>
   <li>object files will be generated in <code class="highlighter-rouge">build/c/obj</code></li>
   <li>three exectuable files will be generated in <code class="highlighter-rouge">build/c/bin</code></li>
 </ul>
 
-<p>Afterwards, you can copy the folder <code class="highlighter-rouge">build/c</code> and use the <code class="highlighter-rouge">Makefile</code> for your future work.
-For the details of <code class="highlighter-rouge">C++</code> experiments, please visit <a href="/IOHexperimenter/Experiments/">here</a>.</p>
+<p>Afterwards, you can use the folder <code class="highlighter-rouge">build/c</code> and use the <code class="highlighter-rouge">Makefile</code> therein for your experiments.
+For more details of how to use the <code class="highlighter-rouge">C++</code> version, please visit <a href="/IOHexperimenter/Experiments/">this page</a>.</p>
 
 <h4 id="using-by-r">Using by R</h4>
 <p>For the use of <code class="highlighter-rouge">R</code>, please visit <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R">R branch</a>.</p>
 
 <h3 id="creating-test-problems">Creating test problems</h3>
 
-<p>The supported problems of <strong>IOHexperimenter</strong> are with a vector of variables with a unique type and a vector of real objectives. For detailed steps of creating a problem, please visit <a href="/IOHexperimenter/AddingProblems/">here</a>.</p>
+<p>Benchmarking problems in <strong>IOHexperimenter</strong> are easy to create yourself. We provide support for any input type and any number of real-valued objectives. For a more detailed guidline of how to define a benchmarking problem within IOHexperimenter, please visit <a href="/IOHexperimenter/AddingProblems/">this page</a>.</p>
 
 <h3 id="configuring-test-suites">Configuring test suites</h3>
-<p>Suites are collections of test problems. By including problems into a suite, it is easier for users to maintain their experiments.
-Note that the variables type of problems of a suite need to be the same. For detailed steps of creating and using suites, please visit <a href="/src/Suites">here</a>.</p>
+<p>Suites are collections of benchmarking problems. By including problems into a suite, it is easier for users to maintain their experiments. If you create a set of similar problems, it is recommended to create a suite to collect them together, which can be done effortlesly within the IOHexperimenter. For detailed steps of creating and using suites, please visit <a href="/src/Suites">this page</a>.</p>
 
 
 
