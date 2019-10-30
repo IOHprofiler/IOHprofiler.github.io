@@ -8,7 +8,13 @@ permalink: /IOHexperimenter/Adding-Functions/
 
 Creating Problems
 ==================================
-[IOHprofiler_problem]() is the base `class` of problems of __IOHexperimenter__. The property variables of problems include:
+
+To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/).
+Once it is succesfully installed, please navigate to the folder `src/problems` and create the `.hpp` file of your problem there.
+
+For this tutorial, we will use the `f_one_max.hpp` file as an example. Use this file as the baseline for your own problem. 
+
+The structure of any problem within the __IOHexperimenter__ is based on the `IOHprofiler_problem`-class, which is a template class which should be instantiated with the required variable type (`int` or `double`). The class contains the following variables:
 * `problem_id`, will be assigned if the problem is added to a suite, otherwise default by 0.
 * `instance_id`,  sets transformation methods on problems. The original problem is with instance_id 1, <i>scale</i> and <i>shift</i> are applied on objectives for instance_id in [2,100], <i>XOR</i> is applied on variables for instance_id in [2,50], and <i>sigma</i> function is applied on variables for instance_id in [51,100].
 * `problem_name`
@@ -33,9 +39,9 @@ And some functions for personal experiments are supplied:
 * <i>IOHprofiler_set_number_of_variables(number_of_variables)</i>, sets dimension of the problem.
 * <i>IOHprofiler_set_instance_id(instance_id)</i>
 
-__IOHexperimenter__ provides a variety of problems for testing algorithms, but it is also easy to add your own problems. Overall, to create a problem of __IOHexperimenter__, two functions need to be implemented: <i>construct functions</i> and <i>internel_evaluate</i>. Additionally, you can define <i>update_evaluate_double_info</i> and <i>update_evaluate_int_info</i> to make evluate process more efficiently.
+To create a problem of __IOHexperimenter__, the correct `IOHprofiler_problem<T>` needs to be inherited, and two functions need to be implemented: <i>construct functions</i> and <i>internel_evaluate</i>. Additionally, you can define <i>update_evaluate_double_info</i> and <i>update_evaluate_int_info</i> to make evluate process more efficient.
 
-Taking the implementation of __OneMax__ as an instance, <i>construct functions</i> are as below. `problem_name` and `number_of_objectives` __must__ be set. In general, two methods of construction of the problems are given. One is constructing without giving `instance_id` and `dimension`, and the other one is with.
+Taking the implementation of __OneMax__ as an example, <i>construct functions</i> are as below. `problem_name` and `number_of_objectives` __must__ be set. In general, two methods of construction of the problems are given. One is a constructor with arguments `instance_id` and `dimension`, and the other one a default constructor without arguments.
 ```cpp
 OneMax() {
   IOHprofiler_set_problem_name("OneMax");
@@ -79,7 +85,7 @@ std::vector<double> internal_evaluate(std::vector<int> x) {
 };
 ```
 
-If you want to register your problem by `problem_name` and add it into a suite, please add functions creating instance as following codes.
+If you want to register your problem using `problem_name` and add it into a suite, please add functions for creating instances as following codes.
 ```cpp
 static OneMax * createInstance() {
   return new OneMax();

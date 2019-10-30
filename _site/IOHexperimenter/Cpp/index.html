@@ -411,15 +411,18 @@
 
 <p>Before using the <strong>IOHexperimenter</strong>, make sure the required preparation steps have been followed, as described <a href="/IOHexperimenter/Preparation/">Here</a></p>
 
+<h2 id="first-time-use">First time use</h2>
 <p>If you are using the tool for the first time, please download or clone <a href="https://github.com/IOHprofiler/IOHexperimenter">this branch</a> and run <code class="highlighter-rouge">make</code> at the root directory of the project. After running <code class="highlighter-rouge">make</code> to compile,</p>
 <ul>
-  <li>object files will be generated in <code class="highlighter-rouge">build/Cpp/obj</code></li>
-  <li>three exectuable files will be generated in <code class="highlighter-rouge">build/Cpp/bin</code></li>
+  <li>Object files will be generated in <code class="highlighter-rouge">build/Cpp/obj</code></li>
+  <li>Three exectuable files will be generated in <code class="highlighter-rouge">build/Cpp/bin</code></li>
 </ul>
 
-<p>Afterward this initial compilation, you can use the folder <code class="highlighter-rouge">build/Cpp</code> and use the <code class="highlighter-rouge">Makefile</code> therein for your experiments. The remainder of this tutorial assumes the working directory is set to the <code class="highlighter-rouge">build/Cpp</code> folder.</p>
+<h2 id="use-cases">Use cases</h2>
 
-<p>After compiling the tool by executing <code class="highlighter-rouge">make</code> in the root directory, <code class="highlighter-rouge">/bin</code> and <code class="highlighter-rouge">/obj</code> subfolders are to be created in this folder. To use <strong>IOHexperimenter</strong> to test your algorithms, you can create your algorithm in the provided <code class="highlighter-rouge">cpp</code> files and compile them by using the <code class="highlighter-rouge">make</code> statement.</p>
+<p>Afterward completing the initial compilation, you can use the folder <code class="highlighter-rouge">build/Cpp</code> and use the <code class="highlighter-rouge">Makefile</code> therein for your experiments. The remainder of this tutorial assumes the working directory is set to the <code class="highlighter-rouge">build/Cpp</code> folder.</p>
+
+<!-- After compiling the tool by executing `make` in the root directory, `/bin` and `/obj` subfolders are to be created in this folder. To use __IOHexperimenter__ to test your algorithms, you can create your algorithm in the provided `cpp` files and compile them by using the `make` statement. -->
 
 <p>There are three main ways to use <strong>IOHexperimenter</strong> benchmark algorithms:</p>
 <ul>
@@ -429,10 +432,13 @@
 </ul>
 
 <p><a name="problems"></a></p>
-<h3 id="test-on-individual-problems">Test on individual problems</h3>
-<p>All problems of <strong>IOHexperimenter</strong> are defined as specific derived <code class="highlighter-rouge">class</code> inheriting problem <code class="highlighter-rouge">IOHprofiler_problem</code> class, the source codes are available in the <a href="/src/Problems">Problems folder</a>. For the definition of the problems already implemented in IOHexperimenter, please visit the wiki page <a href="https://iohprofiler.github.io/Benchmark/Problems/">https://iohprofiler.github.io/Benchmark/Problems/</a>.</p>
+<h2 id="test-on-individual-problems">Test on individual problems</h2>
 
-<p>An example testing evolutionary algorithm with mutation operator on <strong>OneMax</strong> is implemented in <code class="highlighter-rouge">IOHprofiler_run_problem.cpp</code>.</p>
+<p>To use <strong>IOHexperimenter</strong> to run benchmarking on a specific problem, the template-file <code class="highlighter-rouge">IOHprofiler_run_problem.cpp</code> is provided. Since all problems within the <strong>IOHexperimenter</strong> are defined as specific derived <code class="highlighter-rouge">class</code> inheriting problem <code class="highlighter-rouge">IOHprofiler_problem</code> class, it is quite straightforward to use them.</p>
+
+<!-- , the source codes are available in the [Problems folder](https://github.com/IOHprofiler/IOHexperimenter/src/Problems). For the definition of the problems already implemented in IOHexperimenter, please visit the wiki page [https://iohprofiler.github.io/Benchmark/Problems/](https://iohprofiler.github.io/Benchmark/Problems/). -->
+
+<p>An example testing evolutionary algorithm with mutation operator on <strong>OneMax</strong> is implemented in <code class="highlighter-rouge">IOHprofiler_run_problem.cpp</code>. To use a different function, modify the include-statement to include the problem to use, and use the corresponding class-name instead of <strong>OneMax</strong>.</p>
 
 <p>For this example, a <code class="highlighter-rouge">OneMax</code> class is declared and initialized with dimension 1000 on the default instance of the probelem.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OneMax</span> <span class="n">om</span><span class="p">;</span>
@@ -441,19 +447,21 @@
 </code></pre></div></div>
 
 <p>During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of <code class="highlighter-rouge">x</code>. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">y</code>. In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_hit_optimal</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">copyVector</span><span class="p">(</span><span class="n">x_star</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">mutation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mutation_rate</span><span class="p">))</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_hit_optimal</span><span class="p">())</span> <span class="p">{</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x_star</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">mutation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mutation_rate</span><span class="p">))</span> <span class="p">{</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">om</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">best_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">best_value</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">best_value</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-    <span class="n">copyVector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x_star</span><span class="p">);</span>
+    <span class="n">x_star</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>If, for your experiment, you want to generate data to be used in the <strong>IOHanalyzer</strong>, a <code class="highlighter-rouge">IOHprofiler_csv_logger</code> should be added to the problem you are testing on. The arguments of <code class="highlighter-rouge">IOHprofiler_csv_logger</code> are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. For more details on the available triggers, please visit the introduction of <a href="/IOHexperimenter/Loggers/Observer"><code class="highlighter-rouge">IOHprofiler_observer</code></a>.</p>
+<p>If, for your experiment, you want to generate data to be used in the <strong>IOHanalyzer</strong>, a <code class="highlighter-rouge">IOHprofiler_csv_logger</code> should be added to the problem you are testing on. The arguments of <code class="highlighter-rouge">IOHprofiler_csv_logger</code> are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available <a href="/IOHexperimenter/Loggers/Observer">here</a>.</p>
+
+<!-- @Furong, please update this code-snippet to use the updated logger--->
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">time_points</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IOHprofiler_csv_logger</span><span class="o">&gt;</span> <span class="n">logger</span><span class="p">(</span><span class="k">new</span> <span class="n">IOHprofiler_csv_logger</span><span class="p">(</span><span class="s">"./"</span><span class="p">,</span><span class="s">"run_problem"</span><span class="p">,</span><span class="s">"EA"</span><span class="p">,</span><span class="s">"EA"</span><span class="p">));</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_complete_flag</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
@@ -464,8 +472,8 @@
 </code></pre></div></div>
 
 <p><a name="suites"></a></p>
-<h3 id="test-on-suites">Test on suites</h3>
-<p>Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties toghther makes it easier to test algorithms on a class of problems. Currently a suite called <strong>PBO</strong> consisting of 23 <strong>pseudo Boolean problems</strong> is provied by <strong>IOHexperimenter</strong>. To find out how to create your own suites, please visit <a href="/IOHexperimenter/CreatingSuites/">this page</a>.</p>
+<h2 id="test-on-suites">Test on suites</h2>
+<p>Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties toghther makes it easier to test algorithms on a class of problems. Currently, two pre-defined suites are available: <a href="Benchmark/"><strong>PBO</strong></a>, consisting of 23 <strong>pseudo Boolean problems</strong>, and <a href="https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf"><strong>BBOB</strong></a>, consisting of 24 <strong>real-valued problems</strong>. To find out how to create your own suites, please visit <a href="/IOHexperimenter/Adding-Functions/">this page</a>.</p>
 
 <p>An example of testing an evolutionary algorithm with mutation operator on  the <strong>PBO</strong> suite is implemented in <code class="highlighter-rouge">IOHprofiler_run_suite.cpp</code>. <strong>PBO</strong> suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">problem_id</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">};</span>
@@ -507,7 +515,7 @@
 </code></pre></div></div>
 
 <p><a name="experimenter"></a></p>
-<h3 id="test-using-an-experiment-with-a-configuration-file">Test using an experiment with a configuration file</h3>
+<h2 id="test-using-an-experiment-with-a-configuration-file">Test using an experiment with a configuration file</h2>
 
 <p>By using the provided <code class="highlighter-rouge">IOHprofiler_experiment</code> class, you can use a configuration file to configure both the suite and the logger for csv files.</p>
 
