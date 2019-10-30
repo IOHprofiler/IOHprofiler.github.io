@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
   
-    <title>Experiments - IOHprofiler Wiki</title>
+    <title>C++ - IOHprofiler Wiki</title>
 
     
   
@@ -25,17 +25,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>Experiments | IOHprofiler Wiki</title>
+<title>C++ | IOHprofiler Wiki</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Experiments" />
+<meta property="og:title" content="C++" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This is an introduction for IOHprofiler" />
 <meta property="og:description" content="This is an introduction for IOHprofiler" />
-<link rel="canonical" href="http://localhost:4000/IOHexperimenter/Experiments/" />
-<meta property="og:url" content="http://localhost:4000/IOHexperimenter/Experiments/" />
+<link rel="canonical" href="http://localhost:4000/IOHexperimenter/Cpp/" />
+<meta property="og:url" content="http://localhost:4000/IOHexperimenter/Cpp/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"description":"This is an introduction for IOHprofiler","@type":"WebPage","url":"http://localhost:4000/IOHexperimenter/Experiments/","headline":"Experiments","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"C++","url":"http://localhost:4000/IOHexperimenter/Cpp/","description":"This is an introduction for IOHprofiler","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -120,10 +120,6 @@
     
       
         
-      
-    
-      
-        
           <li class="navigation-list-item active">
             
             <a href="http://localhost:4000/IOHexperimenter/" class="navigation-list-link">IOHexperimenter</a>
@@ -132,9 +128,29 @@
               <ul class="navigation-list-child-list ">
                 
                   
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/Preparation/" class="navigation-list-link">Preparation</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
                     <li class="navigation-list-item  active">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/Experiments/" class="navigation-list-link active">Experiments</a>
+                      <a href="http://localhost:4000/IOHexperimenter/Cpp/" class="navigation-list-link active">C++</a>
                       
                     </li>
                   
@@ -146,27 +162,17 @@
                   
                 
                   
-                
-                  
-                
-                  
-                
-                  
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/CreatingProblems/" class="navigation-list-link">CreatingProblems</a>
+                      <a href="http://localhost:4000/IOHexperimenter/R/" class="navigation-list-link">R</a>
                       
                     </li>
                   
                 
                   
-                
-                  
-                
-                  
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/CreatingSuites/" class="navigation-list-link">CreatingSuites</a>
+                      <a href="http://localhost:4000/IOHexperimenter/Adding-Functions/" class="navigation-list-link">Adding Functions</a>
                       
                     </li>
                   
@@ -184,11 +190,11 @@
                         <ul class="navigation-list-child-list">
                           
                             
-                          
-                            
                               <li class="navigation-list-item ">
                                 <a href="http://localhost:4000/IOHexperimenter/Loggers/Observer/" class="navigation-list-link">Observer</a>
                               </li>
+                            
+                          
                             
                           
                             
@@ -221,16 +227,24 @@
                           
                             
                           
+                            
+                          
                         </ul>
                       
                     </li>
                   
                 
-                  
-                
               </ul>
             
           </li>
+        
+      
+    
+      
+        
+      
+    
+      
         
       
     
@@ -285,13 +299,11 @@
                 
                   
                 
+                  
+                
               </ul>
             
           </li>
-        
-      
-    
-      
         
       
     
@@ -346,9 +358,15 @@
                 
                   
                 
+                  
+                
               </ul>
             
           </li>
+        
+      
+    
+      
         
       
     
@@ -383,7 +401,7 @@
                 
                   <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/IOHexperimenter/">IOHexperimenter</a></li>
                 
-                <li class="breadcrumb-nav-list-item"><span>Experiments</span></li>
+                <li class="breadcrumb-nav-list-item"><span>C++</span></li>
               </ol>
             </nav>
           
@@ -391,25 +409,27 @@
         <div id="main-content" class="page-content" role="main">
           <h1 id="getting-started">Getting Started</h1>
 
+<p>Before using the <strong>IOHexperimenter</strong>, make sure the required preparation steps have been followed, as described <a href="/IOHexperimenter/Preparation/">Here</a></p>
+
+<p>If you are using the tool for the first time, please download or clone <a href="https://github.com/IOHprofiler/IOHexperimenter">this branch</a> and run <code class="highlighter-rouge">make</code> at the root directory of the project. After running <code class="highlighter-rouge">make</code> to compile,</p>
 <ul>
-  <li><a href="#startC++">Getting started by C++</a></li>
-  <li><a href="#startR">Getting started by R</a></li>
+  <li>object files will be generated in <code class="highlighter-rouge">build/Cpp/obj</code></li>
+  <li>three exectuable files will be generated in <code class="highlighter-rouge">build/Cpp/bin</code></li>
 </ul>
 
-<p><a name="startC++"></a></p>
-<h2 id="using-iohexperimenter-by-c">Using IOHexperimenter by C++</h2>
+<p>Afterward this initial compilation, you can use the folder <code class="highlighter-rouge">build/Cpp</code> and use the <code class="highlighter-rouge">Makefile</code> therein for your experiments. The remainder of this tutorial assumes the working directory is set to the <code class="highlighter-rouge">build/Cpp</code> folder.</p>
 
-<p>After compiling the tool by executing <code class="highlighter-rouge">make</code> in the root directory, <code class="highlighter-rouge">/bin</code> and <code class="highlighter-rouge">/obj</code> subfolders are to be created in this folder. To use <strong>IOHexperimenter</strong> to test your algorithms, you can work this <code class="highlighter-rouge">C</code> folder and replace the <code class="highlighter-rouge">Makefile</code> by <code class="highlighter-rouge">Makefile-local</code>. Afterwards, you can edit your algorithm in the provided <code class="highlighter-rouge">cpp</code> files and compile them by using the <code class="highlighter-rouge">make</code> statement.</p>
+<p>After compiling the tool by executing <code class="highlighter-rouge">make</code> in the root directory, <code class="highlighter-rouge">/bin</code> and <code class="highlighter-rouge">/obj</code> subfolders are to be created in this folder. To use <strong>IOHexperimenter</strong> to test your algorithms, you can create your algorithm in the provided <code class="highlighter-rouge">cpp</code> files and compile them by using the <code class="highlighter-rouge">make</code> statement.</p>
 
-<p>There are three ways to test algorithms:</p>
+<p>There are three main ways to use <strong>IOHexperimenter</strong> benchmark algorithms:</p>
 <ul>
-  <li>Test using individual problems</li>
-  <li>Test using collections of problems (suites)</li>
-  <li>Test using an experiment with a configuration file</li>
+  <li><a href="#problems">Test on individual problems</a></li>
+  <li><a href="#suites">Test on suites, which are predefined collections of problems</a></li>
+  <li><a href="#experimenter">Test using an experiment with a configuration file (<strong>recommended</strong>)</a></li>
 </ul>
 
-<p><a name="Tclass"></a></p>
-<h3 id="test-using-individual-problems">Test using individual problems</h3>
+<p><a name="problems"></a></p>
+<h3 id="test-on-individual-problems">Test on individual problems</h3>
 <p>All problems of <strong>IOHexperimenter</strong> are defined as specific derived <code class="highlighter-rouge">class</code> inheriting problem <code class="highlighter-rouge">IOHprofiler_problem</code> class, the source codes are available in the <a href="/src/Problems">Problems folder</a>. For the definition of the problems already implemented in IOHexperimenter, please visit the wiki page <a href="https://iohprofiler.github.io/Benchmark/Problems/">https://iohprofiler.github.io/Benchmark/Problems/</a>.</p>
 
 <p>An example testing evolutionary algorithm with mutation operator on <strong>OneMax</strong> is implemented in <code class="highlighter-rouge">IOHprofiler_run_problem.cpp</code>.</p>
@@ -443,8 +463,8 @@
 <span class="n">om</span><span class="p">.</span><span class="n">addCSVLogger</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">logger</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p><a name="Tsuite"></a></p>
-<h3 id="test-using-suites">Test using suites</h3>
+<p><a name="suites"></a></p>
+<h3 id="test-on-suites">Test on suites</h3>
 <p>Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties toghther makes it easier to test algorithms on a class of problems. Currently a suite called <strong>PBO</strong> consisting of 23 <strong>pseudo Boolean problems</strong> is provied by <strong>IOHexperimenter</strong>. To find out how to create your own suites, please visit <a href="/IOHexperimenter/CreatingSuites/">this page</a>.</p>
 
 <p>An example of testing an evolutionary algorithm with mutation operator on  the <strong>PBO</strong> suite is implemented in <code class="highlighter-rouge">IOHprofiler_run_suite.cpp</code>. <strong>PBO</strong> suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:</p>
@@ -486,7 +506,7 @@
 <span class="n">pbo</span><span class="p">.</span><span class="n">addCSVLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><a name="Tconfig"></a></p>
+<p><a name="experimenter"></a></p>
 <h3 id="test-using-an-experiment-with-a-configuration-file">Test using an experiment with a configuration file</h3>
 
 <p>By using the provided <code class="highlighter-rouge">IOHprofiler_experiment</code> class, you can use a configuration file to configure both the suite and the logger for csv files.</p>
@@ -532,10 +552,6 @@ For <code class="highlighter-rouge">PBO</code>:
   <li><strong>number_target_triggers</strong> configures the <code class="highlighter-rouge">.tdat</code> files, which works with <strong>time-based tracking</strong> strategy.</li>
   <li><strong>base_evaluation_triggers</strong> configures the <code class="highlighter-rouge">.tdat</code> files, which works with <strong>time-based tracking</strong> strategy. To switch off <code class="highlighter-rouge">.tdat</code> files, set both <strong>number_target_triggers</strong> and <strong>base_evaluation_triggers</strong> as 0.</li>
 </ul>
-
-<p><a name="startR"></a></p>
-<h2 id="using-iohexperimenter-by-r">Using IOHexperimenter by R</h2>
-<p>For the use of <code class="highlighter-rouge">R</code>, please visit <a href="https://github.com/IOHprofiler/IOHexperimenter/tree/R">R branch</a>.</p>
 
 
 

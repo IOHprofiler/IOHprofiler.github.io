@@ -11,17 +11,25 @@ IOHexperimenter
 
 The __benchmarking platform__ for <b>I</b>terative <b>O</b>ptimization <b>H</b>euristics (IOHs).
 
-* __Documentation__: [https://arxiv.org/abs/1810.05281](https://arxiv.org/abs/1810.05281)
-* __Wiki page__: [https://iohprofiler.github.io/IOHanalyzer](https://iohprofiler.github.io/IOHanalyzer)
-* __General Contact__: [iohprofiler@liacs.leidenuniv.nl](iohprofiler@liacs.leidenuniv.nl)
-* __Mailing List__: [https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler)
+* __Code repository__ : [IOHexperimenter GitHub Page](https://github.com/IOHprofiler/IOHexperimenter)
+* __Documentation__: [Arxiv Verion of "IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics"](https://arxiv.org/abs/1810.05281)
+* __Bug reports__: [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter/issues)
+* __General Contact__: [iohprofiler@liacs.leidenuniv.nl](mailto:iohprofiler@liacs.leidenuniv.nl)
+* __Mailing List__: [IOHprofiler mailing list](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler)
 
-<b>IOHexperimenter</b> <i>provides</i>:
-
+<b>IOHexperimenter</b> provides easy-to-use benchmarking functionality, including:
 * A framework for straightforward benchmarking of any iterative optimization heuristic
-* A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites 
+* Generic benchmarking procedure using suites, with two pre-installed suites: [PBO](Benchmark/) for pseudo-boolean optimization and [BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous.
 * Logging methods to effortlesly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options
 * (__Soon to come__:) A framework which significantly simplifies algorithm design
+
+## Usage
+
+To use IOHexperimenter, please use the following tutorials:
+* [Preparation](Preparation/)
+* [Benchmarking using C++](CPP/)
+* [Benchmarking using R](R/)
+* [Adding new Functions / Suites](Adding-Functions/)
 
 <b>IOHexperimenter</b> is <i>built on</i>:
 
@@ -30,18 +38,12 @@ The __benchmarking platform__ for <b>I</b>terative <b>O</b>ptimization <b>H</b>e
 
 <b>IOHexperimenter</b> is available for:
 
-* `C++`
-* `R` package [https://github.com/IOHprofiler/IOHexperimenter/tree/R](https://github.com/IOHprofiler/IOHexperimenter/tree/R)
-* `Python` interface (soon to come)
-* `Java` interface (soon to come)
+* `C++` on [GitHub](https://github.com/IOHprofiler)
+* `R`, as a package on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R) (or on on CRAN in the future)
+* `Python` (under development)
+* `Java` (at a later date)
 
-## Using IOHexperimenter
-
-### Running Experiments
-
-The __IOHexperimenter__ has been built on `C++` and tested on complier `gcc 5.4.0`. To use the logging of `csv` output files, `boost.filesystem` library is required (To install boost library, please visit [https://www.boost.org](https://www.boost.org)).
-
-#### Using by C++
+#### Using IOHexperimenter in C++
 
 If you are using the tool for the first time, please download or clone this branch and run `make` at the root directory of the project. After running `make` to compile,
 * object files will be generated in `build/c/obj`
@@ -50,7 +52,7 @@ If you are using the tool for the first time, please download or clone this bran
 Afterwards, you can use the folder `build/c` and use the `Makefile` therein for your experiments.
 For more details of how to use the `C++` version, please visit [this page](/IOHexperimenter/Experiments/).
 
-#### Using by R
+#### Using IOHexperimenter in R
 For the use of `R`, please visit [R branch](https://github.com/IOHprofiler/IOHexperimenter/tree/R).
 
 ### Creating test problems

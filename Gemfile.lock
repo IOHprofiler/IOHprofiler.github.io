@@ -33,6 +33,9 @@ GEM
       sass (~> 3.4)
     jekyll-seo-tag (2.6.0)
       jekyll (~> 3.3)
+    jekyll-theme-cayman (0.1.1)
+      jekyll (~> 3.5)
+      jekyll-seo-tag (~> 2.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     just-the-docs (0.2.5)
@@ -72,9 +75,10 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 3.8.5)
   jekyll-feed (~> 0.6)
+  jekyll-theme-cayman
   just-the-docs
   minima (~> 2.0)
   tzinfo-data
 
 BUNDLED WITH
-   1.11.2
+   2.0.2

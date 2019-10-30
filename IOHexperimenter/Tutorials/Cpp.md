@@ -1,29 +1,31 @@
 ---
 layout: page
-title: Experiments
+title: C++
 parent: IOHexperimenter
-nav_order: 1
-permalink: /IOHexperimenter/Experiments/
+nav_order: 2
+permalink: /IOHexperimenter/Cpp/
 --- 
 
 Getting Started
 ==============================================
 
-* [Getting started by C++](#startC++)
-* [Getting started by R](#startR)
+Before using the __IOHexperimenter__, make sure the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/)
 
-<a name="startC++"></a>
-## Using IOHexperimenter by C++
+If you are using the tool for the first time, please download or clone [this branch](https://github.com/IOHprofiler/IOHexperimenter) and run `make` at the root directory of the project. After running `make` to compile,
+* object files will be generated in `build/Cpp/obj`
+* three exectuable files will be generated in `build/Cpp/bin`
 
-After compiling the tool by executing `make` in the root directory, `/bin` and `/obj` subfolders are to be created in this folder. To use __IOHexperimenter__ to test your algorithms, you can work this `C` folder and replace the `Makefile` by `Makefile-local`. Afterwards, you can edit your algorithm in the provided `cpp` files and compile them by using the `make` statement.
+Afterward this initial compilation, you can use the folder `build/Cpp` and use the `Makefile` therein for your experiments. The remainder of this tutorial assumes the working directory is set to the `build/Cpp` folder.
 
-There are three ways to test algorithms:
-* Test using individual problems
-* Test using collections of problems (suites)
-* Test using an experiment with a configuration file
+After compiling the tool by executing `make` in the root directory, `/bin` and `/obj` subfolders are to be created in this folder. To use __IOHexperimenter__ to test your algorithms, you can create your algorithm in the provided `cpp` files and compile them by using the `make` statement.
 
-<a name="Tclass"></a>
-### Test using individual problems
+There are three main ways to use __IOHexperimenter__ benchmark algorithms:
+* [Test on individual problems](#problems)
+* [Test on suites, which are predefined collections of problems](#suites)
+* [Test using an experiment with a configuration file (__recommended__)](#experimenter)
+
+<a name="problems"></a>
+### Test on individual problems
 All problems of __IOHexperimenter__ are defined as specific derived `class` inheriting problem `IOHprofiler_problem` class, the source codes are available in the [Problems folder](/src/Problems). For the definition of the problems already implemented in IOHexperimenter, please visit the wiki page [https://iohprofiler.github.io/Benchmark/Problems/](https://iohprofiler.github.io/Benchmark/Problems/).
 
 An example testing evolutionary algorithm with mutation operator on __OneMax__ is implemented in `IOHprofiler_run_problem.cpp`. 
@@ -60,8 +62,8 @@ logger->activate_logger();
 om.addCSVLogger(std::move(logger));
 ```
 
-<a name="Tsuite"></a>
-### Test using suites
+<a name="suites"></a>
+### Test on suites
 Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties toghther makes it easier to test algorithms on a class of problems. Currently a suite called __PBO__ consisting of 23 __pseudo Boolean problems__ is provied by __IOHexperimenter__. To find out how to create your own suites, please visit [this page](/IOHexperimenter/CreatingSuites/).
 
 An example of testing an evolutionary algorithm with mutation operator on  the __PBO__ suite is implemented in `IOHprofiler_run_suite.cpp`. __PBO__ suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:
@@ -104,7 +106,7 @@ logger->activate_logger();
 pbo.addCSVLogger(logger);
 ```
 
-<a name="Tconfig"></a>
+<a name="experimenter"></a>
 ### Test using an experiment with a configuration file
 
 By using the provided `IOHprofiler_experiment` class, you can use a configuration file to configure both the suite and the logger for csv files.
@@ -142,8 +144,3 @@ __observer__ configures parameters of `IOHprofiler_server`, which is used in `IO
 * __number_interval_triggers__ configures the `.idat` files, which works with __interval tracking__  number_target_triggers sets the value of the frequecny. If you do not want to generate `.idat` files, set `number_target_triggers` as 0.
 * __number_target_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy.
 * __base_evaluation_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy. To switch off `.tdat` files, set both __number_target_triggers__ and __base_evaluation_triggers__ as 0.
-
-
-<a name="startR"></a>
-## Using IOHexperimenter by R
-For the use of `R`, please visit [R branch](https://github.com/IOHprofiler/IOHexperimenter/tree/R).

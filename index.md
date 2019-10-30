@@ -9,31 +9,28 @@ IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuris
 
 **IOHprofiler** is a new tool for analyzing and comparing iterative optimization heuristics. It consists of two part: __IOHexperimenter__ and __IOHanalyzer__. 
 
-[https://iohprofiler.github.io/IOHexperimeter](__IOHexperimenter__) provides a tool for:
+[__IOHexperimenter__](IOHexperimenter/) provides easy-to-use benchmarking functionality, including:
 * A framework for straightforward benchmarking of any iterative optimization heuristic
-* A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites 
+<!-- * A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites  -->
+* Generic benchmarking procedure using suites, with two pre-installed suites: [PBO](Benchmark/) for pseudo-boolean optimization and [BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous.
 * Logging methods to effortlesly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options
 * (__Soon to come__:) A framework which significantly simplifies algorithm design
 
-__IOHanalyzer__ provides:
-* a web-based interface to analyze and visualize the empirical performance of IOHs
-* interactive plot
-* statistical evaluation
-* report generation
-* `R` programming interfaces in the backend
+[__IOHanalyzer__](IOHanalyzer/) provides an intuitive tool for performance analysis, including:
+* A web-based interface (based on `R`) to analyze and visualize the empirical performance of IOHs
+* Interactive plotting of performance data from fixed-target and fixed-budget perspectives
+* Rigorous statistical evaluation
+* (__Beta__:) Automatic report generation
 
 ## Source
-* __source code__ : [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
-* __Documentation__: [https://arxiv.org/abs/1810.05281](https://arxiv.org/abs/1810.05281)
-* __Wiki page__: [https://iohprofiler.github.io/IOHanalyzer](https://iohprofiler.github.io/IOHanalyzer)
-* __Bug reports (IOHanalyzer)__: [https://github.com/IOHprofiler/IOHAnalyzer/issues](https://github.com/IOHprofiler/IOHAnalyzer/issues)
+* __Base repository__ : [IOHprofilers GitHub Profile](https://github.com/IOHprofiler)
+* __Documentation__: [Arxiv Verion of "IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics"](https://arxiv.org/abs/1810.05281)
+* __Bug reports__: [IOHanalyzer](https://github.com/IOHprofiler/IOHanalyzer/issues) or [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter/issues)
 * __Online service (IOHanalyzer)__: [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl)
-* __General Contact__: [iohprofiler@liacs.leidenuniv.nl](iohprofiler@liacs.leidenuniv.nl)
-* __Mailing List__: [https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler)
+* __General Contact__: [iohprofiler@liacs.leidenuniv.nl](mailto:iohprofiler@liacs.leidenuniv.nl)
+* __Mailing List__: [IOHprofiler mailing list](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler)
 
-## Contact
-
-If you have any questions, comments, suggestions or pull requests, please don't hesitate contacting us <IOHprofiler@liacs.leidenuniv.nl>!
+## Citing
 
 When using IOHprofiler and parts thereof, please kindly cite this work as
 
