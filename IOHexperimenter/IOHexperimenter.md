@@ -21,7 +21,7 @@ The __benchmarking platform__ for <b>I</b>terative <b>O</b>ptimization <b>H</b>e
 * A framework for straightforward benchmarking of any iterative optimization heuristic
 * Generic benchmarking procedure using suites, with two pre-installed suites: [PBO](Benchmark/) for pseudo-boolean optimization and [BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous.
 * Logging methods to effortlesly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options
-* (__Soon to come__:) A framework which significantly simplifies algorithm design
+* (__Soon to come__) A framework which significantly simplifies algorithm design
 
 ## Usage
 
@@ -31,7 +31,7 @@ To use IOHexperimenter, please use the following tutorials:
 * [Benchmarking using R](R/)
 * [Adding new Functions / Suites](Adding-Functions/)
 
-<b>IOHexperimenter</b> is <i>built on</i>:
+<!-- <b>IOHexperimenter</b> is <i>built on</i>:
 
 * `C++` (tested on `gcc 5.4.0`)
 * `boost.filesystem` library for logging files.
@@ -41,9 +41,9 @@ To use IOHexperimenter, please use the following tutorials:
 * `C++` on [GitHub](https://github.com/IOHprofiler)
 * `R`, as a package on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R) (or on on CRAN in the future)
 * `Python` (under development)
-* `Java` (at a later date)
+* `Java` (at a later date) -->
 
-#### Using IOHexperimenter in C++
+<!-- #### Using IOHexperimenter in C++
 
 If you are using the tool for the first time, please download or clone this branch and run `make` at the root directory of the project. After running `make` to compile,
 * object files will be generated in `build/c/obj`
@@ -60,4 +60,4 @@ For the use of `R`, please visit [R branch](https://github.com/IOHprofiler/IOHex
 Benchmarking problems in __IOHexperimenter__ are easy to create yourself. We provide support for any input type and any number of real-valued objectives. For a more detailed guidline of how to define a benchmarking problem within IOHexperimenter, please visit [this page](/IOHexperimenter/AddingProblems/).
 
 ### Configuring test suites
-Suites are collections of benchmarking problems. By including problems into a suite, it is easier for users to maintain their experiments. If you create a set of similar problems, it is recommended to create a suite to collect them together, which can be done effortlesly within the IOHexperimenter. For detailed steps of creating and using suites, please visit [this page](/src/Suites).
+Suites are collections of benchmarking problems. By including problems into a suite, it is easier for users to maintain their experiments. If you create a set of similar problems, it is recommended to create a suite to collect them together, which can be done effortlesly within the IOHexperimenter. For detailed steps of creating and using suites, please visit [this page](/src/Suites). -->

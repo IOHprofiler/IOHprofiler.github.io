@@ -1,6 +1,6 @@
 ---
 layout: page
-title: C++
+title: Benchmarking (C++)
 parent: IOHexperimenter
 nav_order: 2
 permalink: /IOHexperimenter/Cpp/

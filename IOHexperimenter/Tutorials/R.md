@@ -1,6 +1,6 @@
 ---
 layout: page
-title: R
+title: Benchmarking (R)
 parent: IOHexperimenter
 nav_order: 3
 permalink: /IOHexperimenter/R/
