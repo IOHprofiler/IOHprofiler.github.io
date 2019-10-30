@@ -9,7 +9,7 @@ IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuris
 
 **IOHprofiler** is a new tool for analyzing and comparing iterative optimization heuristics. It consists of two part: __IOHexperimenter__ and __IOHanalyzer__. 
 
-__IOHexperimenter__ provides a tool for:
+[https://iohprofiler.github.io/IOHexperimeter](__IOHexperimenter__) provides a tool for:
 * A framework for straightforward benchmarking of any iterative optimization heuristic
 * A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites 
 * Logging methods to effortlesly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options
