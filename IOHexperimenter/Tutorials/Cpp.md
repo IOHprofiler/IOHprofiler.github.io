@@ -45,23 +45,23 @@ int dimension = 1000;
 om.Initilize_problem(dimension);
 ```
 
-During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of `x`. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of `x` in `y`. In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.
+During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of `x`. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of `x` in `y`. `logger` is an __IOHprofiler_csv_logger__ class, which stores function evaluations in a format compatible with __IOHanalyzer__. <i>logger.write_line(om.loggerInfo())</i> deliveries the lastest information of tested `om` to the `logger`.  In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.
 ```cpp
 while (!om.IOHprofiler_hit_optimal()) {
   x = x_star;
   if (mutation(x, mutation_rate)) {
     y = om.evaluate(x);
+    logger.write_line(om.loggerInfo());
   }
   if (y[0] > best_value) {
-    best_value = y[0];
+    best_value = y;
     x_star = x;
   }
 }
 ```
 
-If, for your experiment, you want to generate data to be used in the __IOHanalyzer__, a `IOHprofiler_csv_logger` should be added to the problem you are testing on. The arguments of `IOHprofiler_csv_logger` are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available [here](/IOHexperimenter/Loggers/Observer).
+If, for your experiment, you want to generate data to be used in the __IOHanalyzer__, a `IOHprofiler_csv_logger` should be added to the problem you are testing on. The arguments of `IOHprofiler_csv_logger` are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available [here](/IOHexperimenter/Loggers/Observer). Before optimizing a problem, `logger` must be targeted with the problem using the statement <i>logger.target_problem()</i>, with which arguments are problem id, dimension, instance id, problem name, and the type of optimization (maximization or minimization).
 
-<!-- @Furong, please update this code-snippet to use the updated logger--->
 ```cpp
 std::vector<int> time_points{1,2,5};
 std::shared_ptr<IOHprofiler_csv_logger> logger(new IOHprofiler_csv_logger("./","run_problem","EA","EA"));
@@ -69,7 +69,11 @@ logger->set_complete_flag(true);
 logger->set_interval(0);
 logger->set_time_points(time_points,10);
 logger->activate_logger();
-om.addCSVLogger(std::move(logger));
+logger.target_problem(om.IOHprofiler_get_problem_id(), 
+                      om.IOHprofiler_get_number_of_variables(), 
+                      om.IOHprofiler_get_instance_id(),
+                      om.IOHprofiler_get_problem_name(),
+                      om.IOHprofiler_get_optimization_type());
 ```
 
 <a name="suites"></a>
@@ -113,7 +117,7 @@ logger->set_complete_flag(true);
 logger->set_interval(2);
 logger->set_time_points(time_points,3);
 logger->activate_logger();
-pbo.addCSVLogger(logger);
+logger->target_suite(pbo.IOHprofiler_suite_get_suite_name());
 ```
 
 <a name="experimenter"></a>
@@ -154,3 +158,38 @@ __observer__ configures parameters of `IOHprofiler_server`, which is used in `IO
 * __number_interval_triggers__ configures the `.idat` files, which works with __interval tracking__  number_target_triggers sets the value of the frequecny. If you do not want to generate `.idat` files, set `number_target_triggers` as 0.
 * __number_target_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy.
 * __base_evaluation_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy. To switch off `.tdat` files, set both __number_target_triggers__ and __base_evaluation_triggers__ as 0.
+
+<a name="memberfunctions"></a>
+## Useful functions
+`IOHprofiler_problem` and `IOHprofiler_suite` provide public member functions so that the optimizer can acquire useful information during optimization process.
+
+A list of useful member functions of `IOHprofiler_problem` is below:
+* <i>evaluate(x)</i>, returns a fitness values. The argument __x__ is a vector of variables.
+* <i>evaluate(x,y)</i>, updates __y__ with a fitness values, and __x__ is a vector of variables.
+* <i>reset_problem()</i>, reset the history information of problem evaluations. You should call this function at first when you plan to do another test on the same problem class.
+* <i>IOHprofiler_hit_optimal()</i>, returns true if the optimum of the problem has been found.
+* <i>IOHprofiler_get_number_of_variables(number_of_variables)</i>, returns dimension of the problem.
+* <i>IOHprofiler_get_evaluations()</i>, returns the number of function evaluations that has been used.
+* <i>loggerInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, current found raw objective, best so far found raw objective, current found transformed objective, and best of far best found transformed objective.
+* <i>loggerCOCOInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, precision of current found objective, best so far found precision, current found objective, and best so far found objective.
+* <i>IOHprofiler_get_problem_id()</i>
+* <i>IOHprofiler_get_instance_id()</i>
+* <i>IOHprofiler_get_problem_name()</i>
+* <i>IOHprofiler_get_problem_type()</i>
+* <i>IOHprofiler_get_lowerbound()</i>
+* <i>IOHprofiler_get_upperbound()</i>
+* <i>IOHprofiler_get_number_of_objectives()</i>
+* <i>IOHprofiler_get_optimization_type()</i>
+
+A list of useful member functions of `IOHprofiler_suite` is below:
+* <i>get_next_problem</i>, return a shared point of problems of the suite in order.
+* <i>get_current_problem()</i>, returns current problem and reset it.
+* <i>get_problem(problem_name,instance,dimension)</i>, returns the specific problem.
+* <i>IOHprofiler_suite_get_number_of_problems</i>
+* <i>IOHprofiler_suite_get_number_of_instances</i>
+* <i>IOHprofiler_suite_get_number_of_dimensions</i>
+* <i>IOHprofiler_suite_get_problem_id</i>
+* <i>IOHprofiler_suite_get_instance_id()</i>
+* <i>IOHprofiler_suite_get_dimension()</i>
+* <i>IOHprofiler_suite_get_suite_name()</i>
+
