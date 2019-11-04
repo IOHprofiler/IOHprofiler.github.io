@@ -35,7 +35,7 @@
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"name":"IOHprofiler Wiki","description":"This is an introduction for IOHprofiler","@type":"WebSite","url":"http://localhost:4000/","headline":"About","@context":"https://schema.org"}</script>
+{"@type":"WebSite","headline":"About","url":"http://localhost:4000/","name":"IOHprofiler Wiki","description":"This is an introduction for IOHprofiler","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -84,19 +84,11 @@
     
       
         
-      
-    
-      
-        
           <li class="navigation-list-item active">
             
             <a href="http://localhost:4000/" class="navigation-list-link active">About</a>
             
           </li>
-        
-      
-    
-      
         
       
     
@@ -120,10 +112,6 @@
     
       
         
-      
-    
-      
-        
           <li class="navigation-list-item">
             
             <a href="http://localhost:4000/IOHexperimenter/" class="navigation-list-link">IOHexperimenter</a>
@@ -134,7 +122,7 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/Experiments/" class="navigation-list-link">Experiments</a>
+                      <a href="http://localhost:4000/IOHexperimenter/Preparation/" class="navigation-list-link">Preparation</a>
                       
                     </li>
                   
@@ -148,13 +136,31 @@
                   
                 
                   
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/Cpp/" class="navigation-list-link">Benchmarking (C++)</a>
+                      
+                    </li>
+                  
+                
+                  
+                
+                  
                 
                   
                 
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/CreatingProblems/" class="navigation-list-link">CreatingProblems</a>
+                      <a href="http://localhost:4000/IOHexperimenter/R/" class="navigation-list-link">Benchmarking (R)</a>
+                      
+                    </li>
+                  
+                
+                  
+                    <li class="navigation-list-item ">
+                      
+                      <a href="http://localhost:4000/IOHexperimenter/Adding-Functions/" class="navigation-list-link">Adding Functions</a>
                       
                     </li>
                   
@@ -166,19 +172,7 @@
                   
                     <li class="navigation-list-item ">
                       
-                      <a href="http://localhost:4000/IOHexperimenter/CreatingSuites/" class="navigation-list-link">CreatingSuites</a>
-                      
-                    </li>
-                  
-                
-                  
-                
-                  
-                
-                  
-                    <li class="navigation-list-item ">
-                      
-                      <a href="http://localhost:4000/IOHexperimenter/Loggers/" class="navigation-list-link">Loggers</a>
+                      <a href="http://localhost:4000/IOHexperimenter/Loggers/" class="navigation-list-link">Logging</a>
                       
                         
                         <ul class="navigation-list-child-list">
@@ -186,10 +180,6 @@
                             
                           
                             
-                              <li class="navigation-list-item ">
-                                <a href="http://localhost:4000/IOHexperimenter/Loggers/Observer/" class="navigation-list-link">Observer</a>
-                              </li>
-                            
                           
                             
                           
@@ -197,12 +187,6 @@
                           
                             
                           
-                            
-                          
-                            
-                              <li class="navigation-list-item ">
-                                <a href="http://localhost:4000/IOHexperimenter/Loggers/CSVLogger/" class="navigation-list-link">CSVLogger</a>
-                              </li>
                             
                           
                             
@@ -226,11 +210,17 @@
                     </li>
                   
                 
-                  
-                
               </ul>
             
           </li>
+        
+      
+    
+      
+        
+      
+    
+      
         
       
     
@@ -248,15 +238,11 @@
                   
                 
                   
-                
-                  
                     <li class="navigation-list-item ">
                       
                       <a href="http://localhost:4000/IOHanalyzer(Post-Processing)/ProgrammingInterface/" class="navigation-list-link">Programming Interface</a>
                       
                     </li>
-                  
-                
                   
                 
                   
@@ -285,13 +271,11 @@
                 
                   
                 
+                  
+                
               </ul>
             
           </li>
-        
-      
-    
-      
         
       
     
@@ -303,8 +287,6 @@
             
               
               <ul class="navigation-list-child-list ">
-                
-                  
                 
                   
                 
@@ -352,6 +334,10 @@
         
       
     
+      
+        
+      
+    
   </ul>
 </nav>
 
@@ -382,37 +368,34 @@
 
 <p><strong>IOHprofiler</strong> is a new tool for analyzing and comparing iterative optimization heuristics. It consists of two part: <strong>IOHexperimenter</strong> and <strong>IOHanalyzer</strong>.</p>
 
-<p><strong>IOHexperimenter</strong> provides a tool for:</p>
+<p><a href="IOHexperimenter/"><strong>IOHexperimenter</strong></a> provides easy-to-use benchmarking functionality, including:</p>
 <ul>
-  <li>A framework for straightforward benchmarking of any iterative optimization heuristic</li>
-  <li>A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites</li>
+  <li>A framework for straightforward benchmarking of any iterative optimization heuristic
+<!-- * A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites  --></li>
+  <li>Generic benchmarking procedure using suites, with two pre-installed suites: <a href="Benchmark/">PBO</a> for pseudo-boolean optimization and <a href="https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf">BBOB</a> for continuous.</li>
   <li>Logging methods to effortlesly store benchmarking data in a format compatible with <strong>IOHanalyzer</strong>, with future support for additional data logging options</li>
   <li>(<strong>Soon to come</strong>:) A framework which significantly simplifies algorithm design</li>
 </ul>
 
-<p><strong>IOHanalyzer</strong> provides:</p>
+<p><a href="IOHanalyzer/"><strong>IOHanalyzer</strong></a> provides an intuitive tool for performance analysis, including:</p>
 <ul>
-  <li>a web-based interface to analyze and visualize the empirical performance of IOHs</li>
-  <li>interactive plot</li>
-  <li>statistical evaluation</li>
-  <li>report generation</li>
-  <li><code class="highlighter-rouge">R</code> programming interfaces in the backend</li>
+  <li>A web-based interface (based on <code class="highlighter-rouge">R</code>) to analyze and visualize the empirical performance of IOHs</li>
+  <li>Interactive plotting of performance data from fixed-target and fixed-budget perspectives</li>
+  <li>Rigorous statistical evaluation</li>
+  <li>(<strong>Beta</strong>:) Automatic report generation</li>
 </ul>
 
 <h2 id="source">Source</h2>
 <ul>
-  <li><strong>source code</strong> : <a href="https://github.com/IOHprofiler">https://github.com/IOHprofiler</a></li>
-  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">https://arxiv.org/abs/1810.05281</a></li>
-  <li><strong>Wiki page</strong>: <a href="https://iohprofiler.github.io/IOHanalyzer">https://iohprofiler.github.io/IOHanalyzer</a></li>
-  <li><strong>Bug reports (IOHanalyzer)</strong>: <a href="https://github.com/IOHprofiler/IOHAnalyzer/issues">https://github.com/IOHprofiler/IOHAnalyzer/issues</a></li>
+  <li><strong>Base repository</strong> : <a href="https://github.com/IOHprofiler">IOHprofilers GitHub Profile</a></li>
+  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">Arxiv Verion of “IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics”</a></li>
+  <li><strong>Bug reports</strong>: <a href="https://github.com/IOHprofiler/IOHanalyzer/issues">IOHanalyzer</a> or <a href="https://github.com/IOHprofiler/IOHexperimenter/issues">IOHexperimenter</a></li>
   <li><strong>Online service (IOHanalyzer)</strong>: <a href="http://iohprofiler.liacs.nl">http://iohprofiler.liacs.nl</a></li>
-  <li><strong>General Contact</strong>: <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a></li>
-  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler</a></li>
+  <li><strong>General Contact</strong>: <a href="mailto:iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a></li>
+  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">IOHprofiler mailing list</a></li>
 </ul>
 
-<h2 id="contact">Contact</h2>
-
-<p>If you have any questions, comments, suggestions or pull requests, please don’t hesitate contacting us <a href="mailto:IOHprofiler@liacs.leidenuniv.nl">IOHprofiler@liacs.leidenuniv.nl</a>!</p>
+<h2 id="citing">Citing</h2>
 
 <p>When using IOHprofiler and parts thereof, please kindly cite this work as</p>
 
