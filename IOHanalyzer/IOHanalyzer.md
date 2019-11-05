@@ -3,7 +3,7 @@ layout: page
 title: IOHanalyzer
 nav_order: 4
 has_children: true
-permalink: /IOHanalyzer/
+permalink: /IOHanalyzer(Post-Processing)/
 ---
 
 IOHanalyzer
