@@ -27,8 +27,7 @@ search_enabled: true
 
 # Build settings
 markdown: kramdown
-theme: "jekyll-theme-cayman"
-remote_theme: pmarsceill/jekyll-theme-cayman
+theme: jekyll-theme-cayman
 
 plugins:
   - jekyll-feed
