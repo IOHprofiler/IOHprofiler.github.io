@@ -74,29 +74,33 @@
 <span class="n">om</span><span class="p">.</span><span class="n">Initilize_problem</span><span class="p">(</span><span class="n">dimension</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of <code class="highlighter-rouge">x</code>. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">y</code>. In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.</p>
+<p>During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of <code class="highlighter-rouge">x</code>. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">y</code>. <code class="highlighter-rouge">logger</code> is an <strong>IOHprofiler_csv_logger</strong> class, which stores function evaluations in a format compatible with <strong>IOHanalyzer</strong>. <i>logger.write_line(om.loggerInfo())</i> deliveries the lastest information of tested <code class="highlighter-rouge">om</code> to the <code class="highlighter-rouge">logger</code>.  In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_hit_optimal</span><span class="p">())</span> <span class="p">{</span>
   <span class="n">x</span> <span class="o">=</span> <span class="n">x_star</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">mutation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mutation_rate</span><span class="p">))</span> <span class="p">{</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">om</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">write_line</span><span class="p">(</span><span class="n">om</span><span class="p">.</span><span class="n">loggerInfo</span><span class="p">());</span>
   <span class="p">}</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">best_value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">best_value</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">best_value</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
     <span class="n">x_star</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>If, for your experiment, you want to generate data to be used in the <strong>IOHanalyzer</strong>, a <code class="highlighter-rouge">IOHprofiler_csv_logger</code> should be added to the problem you are testing on. The arguments of <code class="highlighter-rouge">IOHprofiler_csv_logger</code> are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available <a href="/IOHexperimenter/Loggers/Observer">here</a>.</p>
+<p>If, for your experiment, you want to generate data to be used in the <strong>IOHanalyzer</strong>, a <code class="highlighter-rouge">IOHprofiler_csv_logger</code> should be added to the problem you are testing on. The arguments of <code class="highlighter-rouge">IOHprofiler_csv_logger</code> are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available <a href="/IOHexperimenter/Loggers/Observer">here</a>. Before optimizing a problem, <code class="highlighter-rouge">logger</code> must be targeted with the problem using the statement <i>logger.target_problem()</i>, with which arguments are problem id, dimension, instance id, problem name, and the type of optimization (maximization or minimization).</p>
 
-<!-- @Furong, please update this code-snippet to use the updated logger--->
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">time_points</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
 <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IOHprofiler_csv_logger</span><span class="o">&gt;</span> <span class="n">logger</span><span class="p">(</span><span class="k">new</span> <span class="n">IOHprofiler_csv_logger</span><span class="p">(</span><span class="s">"./"</span><span class="p">,</span><span class="s">"run_problem"</span><span class="p">,</span><span class="s">"EA"</span><span class="p">,</span><span class="s">"EA"</span><span class="p">));</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_complete_flag</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_interval</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_time_points</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">activate_logger</span><span class="p">();</span>
-<span class="n">om</span><span class="p">.</span><span class="n">addCSVLogger</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">logger</span><span class="p">));</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">target_problem</span><span class="p">(</span><span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_get_problem_id</span><span class="p">(),</span> 
+                      <span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_get_number_of_variables</span><span class="p">(),</span> 
+                      <span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_get_instance_id</span><span class="p">(),</span>
+                      <span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_get_problem_name</span><span class="p">(),</span>
+                      <span class="n">om</span><span class="p">.</span><span class="n">IOHprofiler_get_optimization_type</span><span class="p">());</span>
 </code></pre></div></div>
 
 <p><a name="suites"></a></p>
@@ -139,7 +143,7 @@
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_interval</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_time_points</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">logger</span><span class="o">-&gt;</span><span class="n">activate_logger</span><span class="p">();</span>
-<span class="n">pbo</span><span class="p">.</span><span class="n">addCSVLogger</span><span class="p">(</span><span class="n">logger</span><span class="p">);</span>
+<span class="n">logger</span><span class="o">-&gt;</span><span class="n">target_suite</span><span class="p">(</span><span class="n">pbo</span><span class="p">.</span><span class="n">IOHprofiler_suite_get_suite_name</span><span class="p">());</span>
 </code></pre></div></div>
 
 <p><a name="experimenter"></a></p>
@@ -188,6 +192,45 @@ For <code class="highlighter-rouge">PBO</code>:
   <li><strong>number_target_triggers</strong> configures the <code class="highlighter-rouge">.tdat</code> files, which works with <strong>time-based tracking</strong> strategy.</li>
   <li><strong>base_evaluation_triggers</strong> configures the <code class="highlighter-rouge">.tdat</code> files, which works with <strong>time-based tracking</strong> strategy. To switch off <code class="highlighter-rouge">.tdat</code> files, set both <strong>number_target_triggers</strong> and <strong>base_evaluation_triggers</strong> as 0.</li>
 </ul>
+
+<p><a name="memberfunctions"></a></p>
+<h2 id="useful-functions">Useful functions</h2>
+<p><code class="highlighter-rouge">IOHprofiler_problem</code> and <code class="highlighter-rouge">IOHprofiler_suite</code> provide public member functions so that the optimizer can acquire useful information during optimization process.</p>
+
+<p>A list of useful member functions of <code class="highlighter-rouge">IOHprofiler_problem</code> is below:</p>
+<ul>
+  <li><i>evaluate(x)</i>, returns a fitness values. The argument <strong>x</strong> is a vector of variables.</li>
+  <li><i>evaluate(x,y)</i>, updates <strong>y</strong> with a fitness values, and <strong>x</strong> is a vector of variables.</li>
+  <li><i>reset_problem()</i>, reset the history information of problem evaluations. You should call this function at first when you plan to do another test on the same problem class.</li>
+  <li><i>IOHprofiler_hit_optimal()</i>, returns true if the optimum of the problem has been found.</li>
+  <li><i>IOHprofiler_get_number_of_variables(number_of_variables)</i>, returns dimension of the problem.</li>
+  <li><i>IOHprofiler_get_evaluations()</i>, returns the number of function evaluations that has been used.</li>
+  <li><i>loggerInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, current found raw objective, best so far found raw objective, current found transformed objective, and best of far best found transformed objective.</li>
+  <li><i>loggerCOCOInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, precision of current found objective, best so far found precision, current found objective, and best so far found objective.</li>
+  <li><i>IOHprofiler_get_problem_id()</i></li>
+  <li><i>IOHprofiler_get_instance_id()</i></li>
+  <li><i>IOHprofiler_get_problem_name()</i></li>
+  <li><i>IOHprofiler_get_problem_type()</i></li>
+  <li><i>IOHprofiler_get_lowerbound()</i></li>
+  <li><i>IOHprofiler_get_upperbound()</i></li>
+  <li><i>IOHprofiler_get_number_of_objectives()</i></li>
+  <li><i>IOHprofiler_get_optimization_type()</i></li>
+</ul>
+
+<p>A list of useful member functions of <code class="highlighter-rouge">IOHprofiler_suite</code> is below:</p>
+<ul>
+  <li><i>get_next_problem</i>, return a shared point of problems of the suite in order.</li>
+  <li><i>get_current_problem()</i>, returns current problem and reset it.</li>
+  <li><i>get_problem(problem_name,instance,dimension)</i>, returns the specific problem.</li>
+  <li><i>IOHprofiler_suite_get_number_of_problems</i></li>
+  <li><i>IOHprofiler_suite_get_number_of_instances</i></li>
+  <li><i>IOHprofiler_suite_get_number_of_dimensions</i></li>
+  <li><i>IOHprofiler_suite_get_problem_id</i></li>
+  <li><i>IOHprofiler_suite_get_instance_id()</i></li>
+  <li><i>IOHprofiler_suite_get_dimension()</i></li>
+  <li><i>IOHprofiler_suite_get_suite_name()</i></li>
+</ul>
+
 
  
 
