@@ -3,7 +3,7 @@ layout: page
 title: Graphic User Interface
 parent: IOHanalyzer
 nav_order: 2
-permalink: /IOHanalyzer(Post-Processing)/GraphicUserInterface/
+permalink: /IOHanalyzer/GraphicUserInterface/
 --- 
 
 ## Graphic User Interface

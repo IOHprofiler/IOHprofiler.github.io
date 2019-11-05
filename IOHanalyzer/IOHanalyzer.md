@@ -29,3 +29,7 @@ And please import the package after installation:
 Note that those two versions only differ in some *aesthetic aspects* of the plotting method, which undergos a continuous and constant improvement.
 The example here is mainly two-fold: the usage of the *programming interface* and the *Graphical User Interface*.
 
+To use IOHexperimenter, please use the following tutorials:
+* [Programming Interface](ProgrammingInterface/)
+* [Graphic User Interface](GraphicUserInterface/)
+* [Supported Data Format](dataformat/)

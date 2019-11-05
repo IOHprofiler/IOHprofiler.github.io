@@ -9,3 +9,7 @@ permalink: /Benchmark/
 # Benchmark
 
 + PBO_suite : 23 pseudo-Boolean Problems.
+
+For details:
+* [Problems](Problems/)
+* [Transformation](Transformation/)
