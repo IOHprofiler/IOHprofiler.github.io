@@ -23,6 +23,7 @@ Generally, in the folder (e.g., `./` here) that contains the data set, the follo
 * _Meta-data_ (e.g., `IOHprofiler_f1_i1.info`) summarizes the algorithmic performance for each problem instance, with naming the following naming convention: `IOHprofiler_f[:num:]_i[:num:].info`  for problem $f1$ and instance $1$. Note that one meta-data file can consist of several dimensions. Please see the detail below.
 * _Raw-data_ (e.g., `IOHprofiler_f1_DIM100_i1.dat`) are CSV-based files that contain performance information indexed by the running time. Raw-data files are named in the similar manner as with the meta-data, for example, `IOHprofiler_f1_DIM100_i1.dat` for problem $f1$, dimension $100$ and instance $1$. By default, the data files are organized in the group of test functions and stored in folders with naming convention: `data_[function ID]/`. It is important to note that those three data formats only differ in structure of the raw-data files.
 
+
 ### Meta-data
 
 When benchmarking, it is common to specify a number of different dimensions, functions and instances, resulting in a quite large number of data files (e.g., `*.dat` files). It would make the data organization more structured if some meta data are provided. Here, the meta data are implemented in a format that is very similar to that in the well-known **COCO** environment. The meta data are indicated with suffix \verb|.info|. An small example is provided as follows:
@@ -50,6 +51,7 @@ Note that, as this meta information is also used in **IOHanalyzer** when loading
 * **The first line** stores some meta-information of the experiment as (name, value) pairs. Note that, such pairs are separated by commas and three names, `funcId`, `DIM` and `algId` are _case-sensitive_ and _mandatory_.
 * **The second line** always starts with a single `%`, indicating what follows this symbol should be the general comments from the user on this experiment. By default, it is left empty.
 * **The third line** starts with the relative path to the actual data file, followed by the meta-information obtained on each instance, with the following format: $$\underbrace{1}_{\text{instance ID}}:\underbrace{1953125}_{\text{running time}}|\;\underbrace{5.59000e+02}_{\text{best-so-far f(x)}}$$
+
 
 ### Raw-data
 
