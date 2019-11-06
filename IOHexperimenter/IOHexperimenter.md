@@ -28,7 +28,7 @@ The __benchmarking platform__ for <b>I</b>terative <b>O</b>ptimization <b>H</b>e
 
 To use IOHexperimenter, please use the following tutorials:
 * [Preparation](Preparation/)
-* [Benchmarking using C++](CPP/)
+* [Benchmarking using C++](Cpp/)
 * [Benchmarking using R](R/)
 * [Adding new Functions / Suites](Adding-Functions/)
 
