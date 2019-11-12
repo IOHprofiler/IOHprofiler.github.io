@@ -9,6 +9,10 @@ permalink: /IOHexperimenter/Cpp/
 Getting Started
 ==============================================
 
+* [Preparation](/IOHexperimenter/Preparation/)
+* [Benchmarking using R](/IOHexperimenter/R/)
+* [Adding new Functions / Suites](/IOHexperimenter/Adding-Functions/)
+
 Before using the __IOHexperimenter__, make sure the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/)
 
 

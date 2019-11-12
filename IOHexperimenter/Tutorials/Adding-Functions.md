@@ -6,8 +6,13 @@ nav_order: 4
 permalink: /IOHexperimenter/Adding-Functions/
 --- 
 
+
 Creating Problems
 ==================================
+
+* [Preparation](/IOHexperimenter/Preparation/)
+* [Benchmarking using C++](/IOHexperimenter/Cpp/)
+* [Benchmarking using R](/IOHexperimenter/R/)
 
 To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/).
 Once it is succesfully installed, please navigate to the folder `src/problems` and create the `.hpp` file of your problem there.

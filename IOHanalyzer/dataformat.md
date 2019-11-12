@@ -8,6 +8,9 @@ permalink: /IOHanalyzer(Post-Processing)/dataformat/
 
 ## Supported Data Format
 
+* [Programming Interface](/IOHanalyzer(Post-Processing)/ProgrammingInterface/)
+* [Graphic User Interface](/IOHanalyzer(Post-Processing)/GraphicUserInterface/)
+
 The user is encouraged to analyze your own benchmark data using **IOHanalyzer**. For this purpose, users have prepare their own data set according to the supported data formats. At the time of writing, three data formats are supported by **IOHanalyzer**:
 
 * **COCO** data format as regulated in [1].

@@ -3,10 +3,15 @@ layout: page
 title: Graphic User Interface
 parent: IOHanalyzer
 nav_order: 2
-permalink: /IOHanalyzer/GraphicUserInterface/
+permalink: /IOHanalyzer(Post-Processing)/GraphicUserInterface/
 --- 
 
 ## Graphic User Interface
+
+* [Programming Interface](/IOHanalyzer(Post-Processing)/ProgrammingInterface/)
+* [Supported Data Format](/IOHanalyzer(Post-Processing)/dataformat/)
+
+-----
 * [Data loading](#Data loading)
 * [Fixed-target results](#Fixed-target results)
 * [Expected runtime](#Expected runtime)

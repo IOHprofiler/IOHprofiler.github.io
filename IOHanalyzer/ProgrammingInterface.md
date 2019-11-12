@@ -7,6 +7,11 @@ permalink: /IOHanalyzer(Post-Processing)/ProgrammingInterface/
 --- 
 
 ## Programming Interface
+
+* [Graphic User Interface](/IOHanalyzer(Post-Processing)/GraphicUserInterface/)
+* [Supported Data Format](/IOHanalyzer(Post-Processing)/dataformat/)
+
+-----
 * [Data structure and manipulation](#Data structure and manipulation)
 * [Retrieving performance data](#Retrieving performance data)
 * [Plotting](#Plotting)

@@ -9,6 +9,10 @@ permalink: /IOHexperimenter/Preparation/
 Preparation
 ============================================
 
+* [Benchmarking using C++](/IOHexperimenter/Cpp/)
+* [Benchmarking using R](/IOHexperimenter/R/)
+* [Adding new Functions / Suites](/IOHexperimenter/Adding-Functions/)
+
 <b>IOHexperimenter</b> is <i>built on</i>:
 
 * `C++` (tested on `gcc 5.4.0`)
