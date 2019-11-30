@@ -6,108 +6,218 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.6.0 -->
-<title>About | IOHprofiler Wiki</title>
+<title>IOHprofiler | IOHprofiler Wiki</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="About" />
+<meta property="og:title" content="IOHprofiler" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is an introduction for IOHprofiler" />
-<meta property="og:description" content="This is an introduction for IOHprofiler" />
+<meta name="description" content="Profiling Iterative Optimization Heuristics" />
+<meta property="og:description" content="Profiling Iterative Optimization Heuristics" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"name":"IOHprofiler Wiki","description":"This is an introduction for IOHprofiler","@type":"WebSite","url":"http://localhost:4000/","headline":"About","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/","headline":"IOHprofiler","name":"IOHprofiler Wiki","description":"Profiling Iterative Optimization Heuristics","@type":"WebSite","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    
+    <style>
+      body {
+        margin:0; 
+        padding:0
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      
+        border: 2px dashed rgba(255, 255, 255, 0);
+        height: 100%;
+        background: rgba(255, 255, 255, 0);
+      }
+    
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+      }
+
+      ol {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li {
+        display: block;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li:before {
+        content: counters(item, ".")" ";
+        counter-increment: item
+      }
+
+      b {
+        margin: 0px;
+        margin-bottom: 0px
+      }
+
+    </style>
+
   </head>
   <body>
-    <header class="page-header" role="banner">
-      <h1 class="project-name">About</h1>
-      <h2 class="project-tagline">This is an introduction for IOHprofiler</h2>
+
+    <header class="page-headerb" role="banner">
+      <h1 class="project-name">IOHprofiler</h1>
+      <h2 class="project-tagline">Profiling Iterative Optimization Heuristics</h2>
       
       
     </header>
 
-    <main id="content" class="main-content" role="main">
-      <a href=/>About</a> | <a href=/IOHexperimenter>IOHexperimenter</a> | <a href=/IOHanalyzer(Post-Processing)>IOHanalyzer</a> | <a href=/News>News</a> | <a href=/Benchmark>Benchmark</a>
+    <div class="wrap" style="margin: auto;width: 100%;">
+      <div style="margin-left: 0px;width: 17%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <ol class='toc'>
+              <li><a href=/>Introduction</a></li>
+              <li><a href=/IOHexperimenter>IOHexperimenter</a>
+                <ol class='toc'> 
+                    <li><a href=/IOHexperimenter/Cpp/>C++</a></li> 
+                    <li><a href=/IOHexperimenter/R/>R</a></li> 
+                    <li><a href=/IOHexperimenter/Adding-Functions/>Extension</a></li>
+                </ol>
+              </li>
+              <li><a href=/IOHanalyzer>IOHanalyzer</a>
+                <ol class='toc'>
+                  <li><a href=/IOHanalyzer/data/>Data Format</a></li>
+                  <li><a href=/IOHanalyzer/GUI/>Graphical User Interface</a></li>
+                  <ol class='toc'>
+                    <li><a href="#loading-data">Loading Data</a></li>
+                    <li><a href="#fixed-target">Fixed-target Results</a></li>
+                    <li><a href="#fixed-target">Fixed-budget Results</a></li>
+                  </ol>
+                  <li><a href=/IOHanalyzer/R/>R Interface</a></li>
+                </ol>
+              </li>
+              <li><a href=/News>News</a></li>
+              <li><a href=/Benchmark>Benchmark</a></li>
+              <li><a href=/citation>Citation</a></li>
+              <li><a href=/license>License</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
 
-      <h1 id="iohprofiler-a-benchmarking-and-profiling-tool-for-iterative-optimization-heuristics">IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</h1>
+      <div class="mid">
+        <main id="content" class="main-content" role="main">
+          <div class="main">
+          <h1 id="profiling-iterative-optimization-heuristics">Profiling Iterative Optimization Heuristics</h1>
 
-<p><strong>IOHprofiler</strong> is a new tool for analyzing and comparing iterative optimization heuristics. It consists of two part: <strong>IOHexperimenter</strong> and <strong>IOHanalyzer</strong>.</p>
+<p><strong>IOHprofiler</strong> is a tool for benchmarking and analyzing and <em>iterative optimization heuristics</em> (IOHs), e.g., Evolutionary Algorithms and Swarm-based Algorithms. It consists of two parts:</p>
 
-<p><a href="IOHexperimenter/"><strong>IOHexperimenter</strong></a> provides easy-to-use benchmarking functionality, including:</p>
 <ul>
-  <li>A framework for straightforward benchmarking of any iterative optimization heuristic
-<!-- * A suite consisting of 23 pre-made Pseudo-Boolean benchmarking function, with easily accessible methods for adding custom functions and suites  --></li>
-  <li>Generic benchmarking procedure using suites, with two pre-installed suites: <a href="Benchmark/">PBO</a> for pseudo-boolean optimization and <a href="https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf">BBOB</a> for continuous.</li>
-  <li>Logging methods to effortlesly store benchmarking data in a format compatible with <strong>IOHanalyzer</strong>, with future support for additional data logging options</li>
-  <li>(<strong>Soon to come</strong>:) A framework which significantly simplifies algorithm design</li>
+  <li><strong>IOHexperimenter</strong> for generating benchmarking suites, which produce experiment data, and</li>
+  <li><strong>IOHanalyzer</strong> for the statistical analysis and visualization of the experiment data.</li>
 </ul>
 
-<p><a href="IOHanalyzer/"><strong>IOHanalyzer</strong></a> provides an intuitive tool for performance analysis, including:</p>
+<p>The common workflow of benchmaking and empirical analysis is shown as follows:
+<img src="/assets/fig/overview.jpg" alt="" /></p>
+
+<p><a href="IOHexperimenter/"><strong>IOHexperimenter</strong></a> provides,</p>
+
 <ul>
-  <li>A web-based interface (based on <code class="highlighter-rouge">R</code>) to analyze and visualize the empirical performance of IOHs</li>
-  <li>Interactive plotting of performance data from fixed-target and fixed-budget perspectives</li>
-  <li>Rigorous statistical evaluation</li>
-  <li>(<strong>Beta</strong>:) Automatic report generation</li>
+  <li>a generic framework to generate benchmarking suite for the optimization task you’re insterested in,</li>
+  <li>a <em>Pseudo-Boolean Opitimization</em> (<a href="Benchmark/">PBO</a>) benchmark suite, containing 23 test problems of the kind $f\colon \{0,1\}^d \rightarrow \mathbb{R}$, and</li>
+  <li>the integration of 24 <em>Black-Box Optimization Benchmarking</em> (<a href="https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf">BBOB</a>) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.</li>
 </ul>
 
-<h2 id="source">Source</h2>
+<p><a href="IOHanalyzer/"><strong>IOHanalyzer</strong></a> provides:</p>
+
 <ul>
-  <li><strong>Base repository</strong> : <a href="https://github.com/IOHprofiler">IOHprofilers GitHub Profile</a></li>
-  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">Arxiv Verion of “IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics”</a></li>
-  <li><strong>Bug reports</strong>: <a href="https://github.com/IOHprofiler/IOHanalyzer/issues">IOHanalyzer</a> or <a href="https://github.com/IOHprofiler/IOHexperimenter/issues">IOHexperimenter</a></li>
-  <li><strong>Online service (IOHanalyzer)</strong>: <a href="http://iohprofiler.liacs.nl">http://iohprofiler.liacs.nl</a></li>
+  <li>a web-based interface to analyze and visualize the empirical performance of IOHs,</li>
+  <li>interactive plot,</li>
+  <li>statistical evaluation,</li>
+  <li>report generation, and</li>
+  <li><code class="highlighter-rouge">R</code> programming interfaces in the backend.</li>
+</ul>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><strong>Project repository</strong> : <a href="https://github.com/IOHprofiler">https://github.com/IOHprofiler</a></li>
+  <li><strong>Documentation</strong>: <a href="https://arxiv.org/abs/1810.05281">IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</a></li>
+  <li><strong>Bug reports</strong>:
+    <ul>
+      <li><strong>IOHanalyzer</strong>: <a href="https://github.com/IOHprofiler/IOHanalyzer/issues">https://github.com/IOHprofiler/IOHanalyzer/issues</a></li>
+      <li><strong>IOHexperimenter</strong>: <a href="https://github.com/IOHprofiler/IOHexperimenter/issues">https://github.com/IOHprofiler/IOHexperimenter/issues</a></li>
+    </ul>
+  </li>
+  <li><strong>IOHanalyzer Online Service</strong>: <a href="http://iohprofiler.liacs.nl">http://iohprofiler.liacs.nl</a></li>
   <li><strong>General Contact</strong>: <a href="mailto:iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a></li>
-  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">IOHprofiler mailing list</a></li>
-</ul>
-
-<h2 id="citing">Citing</h2>
-
-<p>When using IOHprofiler and parts thereof, please kindly cite this work as</p>
-
-<p>Carola Doerr, Hao Wang, Furong Ye, Sander van Rijn, Thomas Bäck: <i>IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics</i>, arXiv e-prints:1810.05281, 2018.</p>
-
-<pre><code class="language-bibtex">@ARTICLE{IOHprofiler,
-  author = {Carola Doerr and Hao Wang and Furong Ye and Sander van Rijn and Thomas B{\"a}ck},
-  title = {IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics},
-  journal = {arXiv e-prints:1810.05281},
-  archivePrefix = "arXiv",
-  eprint = {1810.05281},
-  year = 2018,
-  month = oct,
-  keywords = {Computer Science - Neural and Evolutionary Computing},
-  url = {https://arxiv.org/abs/1810.05281}
-}
-</code></pre>
-
-<h2 id="collection-of-work-using-iohprofiler">Collection of work using <strong>IOHprofiler</strong></h2>
-<h3 id="full-papers">Full papers:</h3>
-<ul>
-  <li>Furong Ye, Carola Doerr, and Thomas Bäck. <i>Interpolating Local and Global Search by Controlling the Variance of Standard Bit Mutation</i>. CEC’19 [Wednesday, 5:00 pm in Special Session CEC-21: Theory of Bio-Inspired Computation]</li>
-  <li>Carola Doerr, Furong Ye, Sander van Rijn, Hao Wang, Thomas Bäck. <i>Towards a theory-guided benchmarking suite for discrete black-box optimization heuristics: profiling (1 + λ) EA variants on OneMax and LeadingOnes</i>. GECCO’18</li>
-  <li>Naama Horesh, Thomas Bäck, Ofer M. Shir. <i>Predict or Screen Your Expensive Assay? DoE vs. Surrogates in Experimental Combinatorial Optimization</i>. GECCO’19</li>
-  <li>Nguyen Dang, Carola Doerr. <i>Hyper-Parameter Tuning for the (1+(λ, λ)) GA</i>. GECCO’19</li>
-</ul>
-
-<h3 id="workshop-papers">Workshop papers:</h3>
-<ul>
-  <li>Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. <i>Benchmarking Discrete Optimization Heuristics with IOHprofiler</i>. GECCO ‘19</li>
-  <li>Borja Calvo, Ofer M. Shir, Josu Ceberio, Carola Doerr, Hao Wang, Thomas Bäck, and Jose A. Lozano. <i>Bayesian Performance Analysis for Black-Box Optimization Benchmarking</i>. GECCO ‘19</li>
-  <li>Ivan Ignashov, Arina Buzdalova, Maxim Buzdalov, and Carola Doerr. <i>Illustrating the Trade-Off between Time, Quality, and Success Probability in Heuristic Search</i>. GECCO ‘19</li>
-  <li>Nathan Buskulic and Carola Doerr. <i>Maximizing Drift is Not Optimal for Solving OneMax</i>. GECCO ‘19</li>
+  <li><strong>Mailing List</strong>: <a href="https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler">https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler</a></li>
 </ul>
 
  
+        </main>
+      </div>
 
-      <footer class="site-footer">
-        
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-      </footer>
-    </main>
+      <div id='wrapper' style="margin-right: 40px;width: 15%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <p>
+              <b style="font-size:22px;">Links</b><br>
+              <a href=https://github.com/IOHprofiler>GitHub</a>
+              <br><br>
+              <b style="font-size:22px">License</b><br>
+              <a href=/license>BSD 3-Clause</a>
+              <br><br>
+              <b style="font-size:22px">Cite us</b><br>
+              <a href=/Citation>Citing IOHprofiler</a>
+              <br><br>
+              <b style="font-size:22px">Developers</b><br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/hao-wang>Hao Wang</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/diederick-vermetten>Diederick Vermetten</a></br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/furong-ye>Furong Ye</a><br/>
+              <a href=https://ofersh.github.io/telhai>Ofer M. Shir</a><br/>
+              <a href=http://www-ia.lip6.fr/~doerr/>Carola Doerr</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/thomas-back>Thomas Bäck</a><br/>
+            </p>
+            <img src=/assets/fig/Leiden.png height="60"/><br>
+            <img src=/assets/fig/sorbonne.jpeg height="60"/><br>
+            <img src=/assets/fig/cnrs.gif height="60"/><br>
+            <img src=/assets/fig/tel-hai.png height="60"/><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+    </footer>
   </body>
 </html>

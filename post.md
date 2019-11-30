@@ -2,7 +2,6 @@
 layout: page
 title: News
 permalink: /News/
-nav_order: 2
 ---
 
 ## News

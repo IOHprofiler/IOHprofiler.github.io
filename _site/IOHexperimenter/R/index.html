@@ -10,32 +10,137 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Benchmarking (R)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is an introduction for IOHprofiler" />
-<meta property="og:description" content="This is an introduction for IOHprofiler" />
+<meta name="description" content="Profiling Iterative Optimization Heuristics" />
+<meta property="og:description" content="Profiling Iterative Optimization Heuristics" />
 <link rel="canonical" href="http://localhost:4000/IOHexperimenter/R/" />
 <meta property="og:url" content="http://localhost:4000/IOHexperimenter/R/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"description":"This is an introduction for IOHprofiler","@type":"WebPage","url":"http://localhost:4000/IOHexperimenter/R/","headline":"Benchmarking (R)","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/IOHexperimenter/R/","headline":"Benchmarking (R)","description":"Profiling Iterative Optimization Heuristics","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    
+    <style>
+      body {
+        margin:0; 
+        padding:0
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      
+        border: 2px dashed rgba(255, 255, 255, 0);
+        height: 100%;
+        background: rgba(255, 255, 255, 0);
+      }
+    
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+      }
+
+      ol {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li {
+        display: block;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li:before {
+        content: counters(item, ".")" ";
+        counter-increment: item
+      }
+
+      b {
+        margin: 0px;
+        margin-bottom: 0px
+      }
+
+    </style>
+
   </head>
   <body>
-    <header class="page-header" role="banner">
+
+    <header class="page-headerb" role="banner">
       <h1 class="project-name">Benchmarking (R)</h1>
-      <h2 class="project-tagline">This is an introduction for IOHprofiler</h2>
+      <h2 class="project-tagline">Profiling Iterative Optimization Heuristics</h2>
       
       
     </header>
 
-    <main id="content" class="main-content" role="main">
-      <a href=/>About</a> | <a href=/IOHexperimenter>IOHexperimenter</a> | <a href=/IOHanalyzer(Post-Processing)>IOHanalyzer</a> | <a href=/News>News</a> | <a href=/Benchmark>Benchmark</a>
+    <div class="wrap" style="margin: auto;width: 100%;">
+      <div style="margin-left: 0px;width: 17%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <ol class='toc'>
+              <li><a href=/>Introduction</a></li>
+              <li><a href=/IOHexperimenter>IOHexperimenter</a>
+                <ol class='toc'> 
+                    <li><a href=/IOHexperimenter/Cpp/>C++</a></li> 
+                    <li><a href=/IOHexperimenter/R/>R</a></li> 
+                    <li><a href=/IOHexperimenter/Adding-Functions/>Extension</a></li>
+                </ol>
+              </li>
+              <li><a href=/IOHanalyzer>IOHanalyzer</a>
+                <ol class='toc'>
+                  <li><a href=/IOHanalyzer/data/>Data Format</a></li>
+                  <li><a href=/IOHanalyzer/GUI/>Graphical User Interface</a></li>
+                  <ol class='toc'>
+                    <li><a href="#loading-data">Loading Data</a></li>
+                    <li><a href="#fixed-target">Fixed-target Results</a></li>
+                    <li><a href="#fixed-target">Fixed-budget Results</a></li>
+                  </ol>
+                  <li><a href=/IOHanalyzer/R/>R Interface</a></li>
+                </ol>
+              </li>
+              <li><a href=/News>News</a></li>
+              <li><a href=/Benchmark>Benchmark</a></li>
+              <li><a href=/citation>Citation</a></li>
+              <li><a href=/license>License</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
 
-      <h1 id="getting-started">Getting Started</h1>
+      <div class="mid">
+        <main id="content" class="main-content" role="main">
+          <div class="main">
+          <h1 id="getting-started">Getting Started</h1>
+
+<ul>
+  <li><a href="/IOHexperimenter/Preparation/">Preparation</a></li>
+  <li><a href="/IOHexperimenter/Cpp/">Benchmarking using C++</a></li>
+  <li><a href="/IOHexperimenter/Adding-Functions/">Adding new Functions / Suites</a></li>
+</ul>
 
 <p>Before using the <strong>IOHexperimenter</strong>, make sure the required preparation steps have been followed, as described <a href="/IOHexperimenter/Preparation/">Here</a></p>
 
@@ -81,11 +186,43 @@ This object contains the following information about the current problem:</p>
 <p>Once your algorithm is compatible with an IOHproblem, you can benchmark it using the <code class="highlighter-rouge">benchmark_algorithm</code> function, with as the first parameter your (wrapped) algorithm. For information about how to configure this benchmarking procedure, please refer to the internal documentation in R, accesible by using <code class="highlighter-rouge">??benchmark_algorithm</code>.</p>
 
  
+        </main>
+      </div>
 
-      <footer class="site-footer">
-        
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-      </footer>
-    </main>
+      <div id='wrapper' style="margin-right: 40px;width: 15%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <p>
+              <b style="font-size:22px;">Links</b><br>
+              <a href=https://github.com/IOHprofiler>GitHub</a>
+              <br><br>
+              <b style="font-size:22px">License</b><br>
+              <a href=/license>BSD 3-Clause</a>
+              <br><br>
+              <b style="font-size:22px">Cite us</b><br>
+              <a href=/Citation>Citing IOHprofiler</a>
+              <br><br>
+              <b style="font-size:22px">Developers</b><br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/hao-wang>Hao Wang</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/diederick-vermetten>Diederick Vermetten</a></br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/furong-ye>Furong Ye</a><br/>
+              <a href=https://ofersh.github.io/telhai>Ofer M. Shir</a><br/>
+              <a href=http://www-ia.lip6.fr/~doerr/>Carola Doerr</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/thomas-back>Thomas Bäck</a><br/>
+            </p>
+            <img src=/assets/fig/Leiden.png height="60"/><br>
+            <img src=/assets/fig/sorbonne.jpeg height="60"/><br>
+            <img src=/assets/fig/cnrs.gif height="60"/><br>
+            <img src=/assets/fig/tel-hai.png height="60"/><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+    </footer>
   </body>
 </html>

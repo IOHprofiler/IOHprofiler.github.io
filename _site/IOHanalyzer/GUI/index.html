@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Graphic User Interface | IOHprofiler Wiki</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Graphic User Interface" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Profiling Iterative Optimization Heuristics" />
+<meta property="og:description" content="Profiling Iterative Optimization Heuristics" />
+<link rel="canonical" href="http://localhost:4000/IOHanalyzer/GUI/" />
+<meta property="og:url" content="http://localhost:4000/IOHanalyzer/GUI/" />
+<meta property="og:site_name" content="IOHprofiler Wiki" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/IOHanalyzer/GUI/","headline":"Graphic User Interface","description":"Profiling Iterative Optimization Heuristics","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    
+    <style>
+      body {
+        margin:0; 
+        padding:0
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      
+        border: 2px dashed rgba(255, 255, 255, 0);
+        height: 100%;
+        background: rgba(255, 255, 255, 0);
+      }
+    
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+      }
+
+      ol {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc {
+        counter-reset: item;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li {
+        display: block;
+        margin-top: 0px;
+        padding-left: 12px;
+      }
+
+      ol.toc>li:before {
+        content: counters(item, ".")" ";
+        counter-increment: item
+      }
+
+      b {
+        margin: 0px;
+        margin-bottom: 0px
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <header class="page-headerb" role="banner">
+      <h1 class="project-name">Graphic User Interface</h1>
+      <h2 class="project-tagline">Profiling Iterative Optimization Heuristics</h2>
+      
+      
+    </header>
+
+    <div class="wrap" style="margin: auto;width: 100%;">
+      <div style="margin-left: 0px;width: 17%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <ol class='toc'>
+              <li><a href=/>Introduction</a></li>
+              <li><a href=/IOHexperimenter>IOHexperimenter</a>
+                <ol class='toc'> 
+                    <li><a href=/IOHexperimenter/Cpp/>C++</a></li> 
+                    <li><a href=/IOHexperimenter/R/>R</a></li> 
+                    <li><a href=/IOHexperimenter/Adding-Functions/>Extension</a></li>
+                </ol>
+              </li>
+              <li><a href=/IOHanalyzer>IOHanalyzer</a>
+                <ol class='toc'>
+                  <li><a href=/IOHanalyzer/data/>Data Format</a></li>
+                  <li><a href=/IOHanalyzer/GUI/>Graphical User Interface</a></li>
+                  <ol class='toc'>
+                    <li><a href="#loading-data">Loading Data</a></li>
+                    <li><a href="#fixed-target">Fixed-target Results</a></li>
+                    <li><a href="#fixed-target">Fixed-budget Results</a></li>
+                  </ol>
+                  <li><a href=/IOHanalyzer/R/>R Interface</a></li>
+                </ol>
+              </li>
+              <li><a href=/News>News</a></li>
+              <li><a href=/Benchmark>Benchmark</a></li>
+              <li><a href=/citation>Citation</a></li>
+              <li><a href=/license>License</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <main id="content" class="main-content" role="main">
+          <div class="main">
+          <h1 id="graphic-user-interface">Graphic User Interface</h1>
+
+<p>A web-based GUI is implemented in <strong>IOHanalyzer</strong> such that the user can analyze the experiment data easily in the web browser using two R packages: <strong>shiny</strong> and <strong>plotly</strong>. In this section, we shall describe this Graphical User Interface (GUI) in detail. Moreover, for the users who are not familiar with R , a free GUI server is hosted <a href="http://iohprofiler.liacs.nl/">online</a> (For any bug report, feedback or requested change, the users are encouraged to contact us through <a href="iohprofiler@liacs.leidenuniv.nl">iohprofiler@liacs.leidenuniv.nl</a>). Alternatively, invoking the GUI is also straightforward on your local machine, given package <strong>IOHanalyzer</strong> is already installed:</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">runServer</span><span class="p">()</span><span class="w">
+</span><span class="n">Loading</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">package</span><span class="o">:</span><span class="w"> </span><span class="n">shiny</span><span class="w">
+
+</span><span class="n">Listening</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">http</span><span class="o">://</span><span class="m">127.0.0.1</span><span class="o">:</span><span class="m">3943</span><span class="w">
+</span></code></pre></div></div>
+<p>which will start the GUI server on the local machine (hence using IP address 127.0.0.1 and a random port number). The web browser will be launched and connect to this address immediately after starting the server. There are tour groups of functionalities on the page.</p>
+
+<ul>
+  <li><strong>Upload Data</strong>: This section provides functionality to upload experiment results or load an official data set that is provided by the author.</li>
+  <li><strong>Fixed-Target Results</strong> This section provides statistics covering the fixed-target perspective of performance evaluation. That is, the results in this section mainly address the question about the statistical property of running time (i.e., function evaluations) that is needed to obtain a solution of a desired target quality.</li>
+  <li><strong>Fixed-Budget Results</strong> This sectioncovers the fixed-budget perspective, that is the statistics on objective function values obtained by the search points a given budget of function evaluations. In other words, the results in this section mainly address the question how good the search points are that a user can expect to see within a given frame of running time.</li>
+  <li><strong>Algorithm Parameters</strong> This section provides details about the evolution of the algorithm parameters that the user specified to be tracked in the experimental procedure.</li>
+</ul>
+
+<h2 id="data-loading"><a name="loading-data"></a>Data loading</h2>
+
+<p>The GUI interface to load the experiment data is shown in the following figure, in which the user is asked to upload a <em>compressed archive</em>. The following compression format are supported: <em>*.zip</em>, <em>*.bz</em>, <em>*.tar</em>, <em>*.xz</em>, <em>*.gz</em>. Note that, when the user’s data set is enormous to handle, it is possible to speed up the uploading (and hence plotting) procedure by toggling option Efficient mode on, in which a subset is taken from the huge data set. Moreover, when using the <a href="http://iohprofiler.liacs.nl">online GUI</a>, the user can also load official data sets provided by the author, using the <code class="highlighter-rouge">Load Data from Repository</code> box on the right of the page. At the time of writing, two official data sets are made available, each of which contains results of 11 algorithms on all 23 test functions, over dimensions {16, 100, 625}. For the specification of those two data sets and updates on the data set, the user is suggested to visit <a href="https://github.com/IOHprofiler/IOHdata">data page</a>.</p>
+
+<p><img src="http://localhost:4000/assets/fig/ERT-single.png" alt="GUI-data-loading" /></p>
+
+<h2 id="fixed-target-results"><a name="fixed-target"></a>Fixed-target results</h2>
+
+<p>The fixed-target section has four different subsections:</p>
+<ul>
+  <li><em>Data Summary</em></li>
+  <li><em>Expected Runtime</em></li>
+  <li><em>Probability Mass Function</em></li>
+  <li><em>Cumulative Distribution</em>.</li>
+</ul>
+
+<p>The analysis provided in those sections are described as follows:</p>
+
+<p><strong>Data Summary</strong> provides some statistics on the running time $T(A, f, d, v)$, meaning the function evaluation an algorithm $A$ would require to reach target value $v$ of test function $f$ on dimension $d$. In the following, the indexing parameter in $T$ will be dropped if no ambiguity is created. Assuming a number of independent runs of algorithm $A$ is performed on the tuple of $(f, d, v)$, the set of results from all runs $(t_i)_i$ is considered as a simple random sample of $T$. Here, three tables are provided to summarize the sample $(t_i)_i$ of $T$:</p>
+
+<ul>
+  <li><em>Data Overview</em> A screenshot of this table is given as below. As counterintuitive as it may seem, this table contains the overview of the <em>function value</em> observed in a data set. The main reason of showing this table here is to provide the user a quick summary of the range of function value, which is required to play with the following two functionalities.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/fig/RT-overview.png" alt="RT-overview" /></p>
+
+<ul>
+  <li><em>Runtime Statistics at Chosen Target Values</em> A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)&gt;v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the <em>expected running time</em> (ERT). Additionally, the user can also download this table in CSV format, or as a LaTeX table.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/fig/RT-summary.png" alt="RT-summary" /></p>
+
+<ul>
+  <li><em>Original Runtime Samples</em> The user interface is similar to the previous except that the sample points $(t_i)_{i}$ of running time $T(A, f, d, v)$ is shown here. Moreover, the user can choose between a <code class="highlighter-rouge">long</code> (all sample points are stored in a column) and a <code class="highlighter-rouge">wide</code> format (all sample points are stored in a row) for the table.</li>
+</ul>
+
+<p><a name="Expected runtime"></a></p>
+<h3 id="expected-runtime">Expected runtime</h3>
+
+<p>An interactive plot (using <strong>shiny</strong> package) illustrates the fixed-target running times. An example of this plot is shown as below as below. The interactive plot can be adjusted by a couple of options on the left menu as shown in figure, including showing/hiding mean and/or median values along with standard deviations and scaling axis logarithmically. The user also selects the algorithms to be displayed, the range of target values within which the curves are drawn. The displayed curves can be switched on and off by clicking on the legend on the right of the plot. In addition, the figure can be downloaded in the following format: <em>pdf</em>, <em>eps</em>, <em>svg</em> and <em>png</em> (which also applies to all the plots hereafter).</p>
+
+<p><img src="http://localhost:4000/assets/fig/ERT-single.png" alt="ERT-single" /></p>
+
+<p><a name="Probability mass function"></a></p>
+<h3 id="probability-mass-function">Probability mass function</h3>
+
+<p>For a selected target value $v$, the histogram of the running time, as displayed below,</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-hist.png" alt="RT-hist" /></p>
+
+<p>shows the number of runs $i$ where the running time falls into a given interval $[t,t+1)$, namely $t \le t_i(A,f,d,v) &lt; t+1$. The bin size $[t,t+1)$ is automatically determined according to the so-called <em>Freedman-Diaconis rule</em>, which is based on the interquartile range of sample $(t_i)_i$. The user has two options:</p>
+<ul>
+  <li><em>overlayed display</em>, where all algorithms are displayed in the same plot</li>
+  <li><em>separated one</em>, where each algorithm is displayed in an individual sub-plot. 
+In addition to the histogram, the empirical probability mass function (see figure below) might be helpful to get a finer look at the shape of the empirical distribution of $T(A,f,d,v)$. The user can opt to show all sample points $(t_i)_{i}$ for each algorithm (which will be plotted as dots), or only the empirical probability mass function itself. It is important to point out that the probability mass function is estimated in a ““continuous’’ manner, where running time samples are considered as $\mathbb{R}$-valued and then a <em>Kernel Density Estimation</em> (KDE) is taken to obtain the curve. Note also that in the figure many sample points seem overlapping, this might be caused by turning (in the data upload part) the <code class="highlighter-rouge">efficient mode</code> on, in which the raw data set is trimmed.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/fig/RT-pmf.png" alt="RT-pmf" /></p>
+
+<p><a name="Cumulative distribution"></a></p>
+<h3 id="cumulative-distribution">Cumulative distribution</h3>
+
+<p>The empirical cumulative distribution function of the running time are computed for target values specified by the user. In addition to showing ECDFs for a single target value, it is recommended to aggregate ECDFs over multiple target, to obtain an overall performance profile for all algorithms. Such a functionality is exemplified below,</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-ECDF-agg-target.png" alt="GUI-ECDF-target" /></p>
+
+<p>a set of evenly spaced target value can be generated by specifying the range and step of the target value. In this example, with the following setup, $f_{\min}=0.46$, $f_{\max}=4.91$, and $\Delta f=0.5$, the ECDF curves for target values $0.46,0.96,1.46,\ldots, 4.91$ are computed. The aggregation across targets is defined in the following sense: for a set of target values $V$, $r$ number of independent runs on each function, the aggregated ECDF considers running time samples of all target values and runs together.
+In the upper figure, for algorithm $(30,30)$-vGA (blue curve) this is the case for around $70\%$ of the pairs after $t=2\,0000$ function evaluations. For algorithm RLS (purple curve) the fraction is $80\%$.</p>
+
+<p>Ideally, the best algorithm would sample the maximal function value $f_{\max}$ in the first function evaluation. This algorithm would have a 100% cumulative probability for any running time. In practice, such an algorithm does not exist, but it serves as a theoretical upper bound. Furthermore, this way of performing the aggregation can be leveraged to a set of test functions, namely it is straightforward to define the aggregated profile for a range of functions</p>
+
+<script type="math/tex; mode=display">\widehat{F}_T(t\; ; \; A,f,d,\mathcal{V}) = \frac{1}{r|\mathcal{V}|}\sum_{v\in \mathcal{V}}\sum_{i=1}^{r} \mathbb{1}(t_i(A,f,d,v) \leq t)</script>
+
+<p>This functionality is also materizalized in <strong>IOHanalyzer</strong>.</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT-ECDF-agg-fct.png" alt="RT-ECDF-agg-fct" /></p>
+
+<p>In the example figure, a table of pre-calculated target values are provided for each test function while all 23 test functions are considered here by default. This table could also be customized by</p>
+
+<ul>
+  <li>1) downloading the current table (in a CSV-like format)</li>
+  <li>2) modifying it according to user’s preference</li>
+  <li>3) uploading the modified table again.</li>
+</ul>
+
+<p>The plot on the right will be re-computed upon uploading a new table of targets. Note that, please keep the format of the example table while editing it.</p>
+
+ 
+        </main>
+      </div>
+
+      <div id='wrapper' style="margin-right: 40px;width: 15%;">
+        <br/>
+        <div class="container">
+          <div class="item sticky">
+            <p>
+              <b style="font-size:22px;">Links</b><br>
+              <a href=https://github.com/IOHprofiler>GitHub</a>
+              <br><br>
+              <b style="font-size:22px">License</b><br>
+              <a href=/license>BSD 3-Clause</a>
+              <br><br>
+              <b style="font-size:22px">Cite us</b><br>
+              <a href=/Citation>Citing IOHprofiler</a>
+              <br><br>
+              <b style="font-size:22px">Developers</b><br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/hao-wang>Hao Wang</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/diederick-vermetten>Diederick Vermetten</a></br>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/furong-ye>Furong Ye</a><br/>
+              <a href=https://ofersh.github.io/telhai>Ofer M. Shir</a><br/>
+              <a href=http://www-ia.lip6.fr/~doerr/>Carola Doerr</a><br/>
+              <a href=https://www.universiteitleiden.nl/en/staffmembers/thomas-back>Thomas Bäck</a><br/>
+            </p>
+            <img src=/assets/fig/Leiden.png height="60"/><br>
+            <img src=/assets/fig/sorbonne.jpeg height="60"/><br>
+            <img src=/assets/fig/cnrs.gif height="60"/><br>
+            <img src=/assets/fig/tel-hai.png height="60"/><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+    </footer>
+  </body>
+</html>
