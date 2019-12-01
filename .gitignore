@@ -1,4 +1,10 @@
 *.csv
+.DS_Store
+.jekyll
+.bundle
 
+# Jekyll stuff
+/_site/
 _site/
-.sass-cache
+.sass-cache/
+.jekyll-metadata

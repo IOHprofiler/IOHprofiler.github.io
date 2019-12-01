@@ -5,7 +5,7 @@ permalink: /citation
 --- 
 
 
-# Cite us
+## Cite us
 
 When using IOHprofiler and parts thereof, please kindly cite this work as
 
@@ -27,14 +27,14 @@ Carola Doerr, Hao Wang, Furong Ye, Sander van Rijn, Thomas Bäck: _IOHprofiler: 
 
 ## Collection of work using __IOHprofiler__
 
-### Full papers:
+### Full papers
 
 - Ye, Furong, Carola Doerr, and Thomas Bäck. "Interpolating Local and Global Search by Controlling the Variance of Standard Bit Mutation." In 2019 IEEE Congress on Evolutionary Computation (CEC), pp. 2292-2299. IEEE, 2019.
 - Carola Doerr, Furong Ye, Sander van Rijn, Hao Wang, Thomas Bäck. <i>Towards a theory-guided benchmarking suite for discrete black-box optimization heuristics: profiling (1 + λ) EA variants on OneMax and LeadingOnes</i>. GECCO’18
 - Naama Horesh, Thomas Bäck, Ofer M. Shir. <i>Predict or Screen Your Expensive Assay? DoE vs. Surrogates in Experimental Combinatorial Optimization</i>. GECCO’19
 - Nguyen Dang, Carola Doerr. <i>Hyper-Parameter Tuning for the (1+(λ, λ)) GA</i>. GECCO’19
 
-### Workshop papers:
+### Workshop papers
 
 - Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. <i>Benchmarking Discrete Optimization Heuristics with IOHprofiler</i>. GECCO '19
 - Borja Calvo, Ofer M. Shir, Josu Ceberio, Carola Doerr, Hao Wang, Thomas Bäck, and Jose A. Lozano. <i>Bayesian Performance Analysis for Black-Box Optimization Benchmarking</i>. GECCO '19
