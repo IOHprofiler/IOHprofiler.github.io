@@ -618,20 +618,20 @@ a {
         margin-top: 1rem;
         margin-left: 0; } }
 
-.page-headerb {
+.page-header {
   color: #fff;
   text-align: center;
   background-color: #159957;
   background-image: linear-gradient(120deg, #155799, #159957); }
   @media screen and (min-width: 64em) {
-    .page-headerb {
-      padding: 2.5rem 6rem; } }
+    .page-header {
+      padding: 5rem 6rem; } }
   @media screen and (min-width: 42em) and (max-width: 64em) {
-    .page-headerb {
-      padding: 1.5 4rem; } }
+    .page-header {
+      padding: 3rem 4rem; } }
   @media screen and (max-width: 42em) {
-    .page-headerb {
-      padding: 1em 1rem; } }
+    .page-header {
+      padding: 2rem 1rem; } }
 
 .project-name {
   margin-top: 0;
@@ -661,22 +661,22 @@ a {
       font-size: 1rem; } }
 
 .main-content {
-  word-wrap: break-word;}
+  word-wrap: break-word; }
   .main-content :first-child {
     margin-top: 0; }
   @media screen and (min-width: 64em) {
     .main-content {
       max-width: 64rem;
-      padding: 1rem 2rem;
+      padding: 2rem 6rem;
       margin: 0 auto;
       font-size: 1.1rem; } }
   @media screen and (min-width: 42em) and (max-width: 64em) {
     .main-content {
-      padding: 1rem 2rem;
+      padding: 2rem 4rem;
       font-size: 1.1rem; } }
   @media screen and (max-width: 42em) {
     .main-content {
-      padding: 1rem 0.5rem;
+      padding: 2rem 1rem;
       font-size: 1rem; } }
   .main-content img {
     max-width: 100%; }
@@ -789,8 +789,6 @@ a {
     border: 0; }
 
 .site-footer {
-  margin:0 auto;
-   text-align: center;
   padding-top: 2rem;
   margin-top: 2rem;
   border-top: solid 1px #eff0f1; }
@@ -810,284 +808,3 @@ a {
 
 .site-footer-credits {
   color: #819198; }
-
-
-.main-menu {
-  word-wrap: break-word;}
-  .main-menu :first-child {
-    margin-top: 0; }
-  @media screen and (min-width: 64em) {
-    .main-menu {
-      max-width: 64rem;
-      padding: 2rem 0rem;
-      margin: 0 auto;
-      font-size: 1.1rem; } }
-  @media screen and (min-width: 42em) and (max-width: 64em) {
-    .main-menu {
-      padding: 1rem 0rem;
-      font-size: 1.1rem; } }
-  @media screen and (max-width: 42em) {
-    .main-menu {
-      padding: 1rem 0rem;
-      font-size: 1rem; } }
-  .main-menu img {
-    max-width: 100%; }
-  .main-menu h1,
-  .main-menu h2,
-  .main-menu h3,
-  .main-menu h4,
-  .main-menu h5,
-  .main-menu h6 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: normal;
-    color: #159957; }
-  .main-menu p {
-    margin-bottom: 1em; }
-  .main-menu code {
-    padding: 2px 4px;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 0.9rem;
-    color: #567482;
-    background-color: #f3f6fa;
-    border-radius: 0.3rem; }
-  .main-menu pre {
-    padding: 0.8rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    color: #567482;
-    word-wrap: normal;
-    background-color: #f3f6fa;
-    border: solid 1px #dce6f0;
-    border-radius: 0.3rem; }
-    .main-menu pre > code {
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
-      color: #567482;
-      word-break: normal;
-      white-space: pre;
-      background: transparent;
-      border: 0; }
-  .main-menu .highlight {
-    margin-bottom: 1rem; }
-    .main-menu .highlight pre {
-      margin-bottom: 0;
-      word-break: normal; }
-  .main-menu .highlight pre,
-  .main-menu pre {
-    padding: 0.8rem;
-    overflow: auto;
-    font-size: 0.9rem;
-    line-height: 1.45;
-    border-radius: 0.3rem;
-    -webkit-overflow-scrolling: touch; }
-  .main-menu pre code,
-  .main-menu pre tt {
-    display: inline;
-    max-width: initial;
-    padding: 0;
-    margin: 0;
-    overflow: initial;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0; }
-    .main-menu pre code:before, .main-menu pre code:after,
-    .main-menu pre tt:before,
-    .main-menu pre tt:after {
-      content: normal; }
-  .main-menu ul,
-  .main-menu ol {
-    margin-top: 0; }
-  .main-menu blockquote {
-    padding: 0 1rem;
-    margin-left: 0;
-    color: #819198;
-    border-left: 0.3rem solid #dce6f0; }
-    .main-menu blockquote > :first-child {
-      margin-top: 0; }
-    .main-menu blockquote > :last-child {
-      margin-bottom: 0; }
-  .main-menu table {
-    display: block;
-    width: 100%;
-    overflow: auto;
-    word-break: normal;
-    word-break: keep-all;
-    -webkit-overflow-scrolling: touch; }
-    .main-menu table th {
-      font-weight: bold; }
-    .main-menu table th,
-    .main-menu table td {
-      padding: 0.5rem 1rem;
-      border: 1px solid #e9ebec; }
-  .main-menu dl {
-    padding: 0; }
-    .main-menu dl dt {
-      padding: 0;
-      margin-top: 1rem;
-      font-size: 1rem;
-      font-weight: bold; }
-    .main-menu dl dd {
-      padding: 0;
-      margin-bottom: 1rem; }
-  .main-menu hr {
-    height: 2px;
-    padding: 0;
-    margin: 1rem 0;
-    background-color: #eff0f1;
-    border: 0; }
-
-
-.side-bar {
-  word-wrap: break-word;}
-  .side-bar :first-child {
-    margin-top: 0; }
-  @media screen and (min-width: 64em) {
-    .side-bar {
-      max-width: 64rem;
-      padding: 2rem 0rem;
-      margin: 0 auto;
-      font-size: 0.9rem; } }
-  @media screen and (min-width: 42em) and (max-width: 64em) {
-    .side-bar {
-      padding: 1rem 0rem;
-      font-size: 1.1rem; } }
-  @media screen and (max-width: 42em) {
-    .side-bar {
-      padding: 1rem 0rem;
-      font-size: 1rem; } }
-  .side-bar img {
-    max-width: 100%; }
-  .side-bar h1,
-  .side-bar h2,
-  .side-bar h3,
-  .side-bar h4,
-  .side-bar h5,
-  .side-bar h6 {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    font-weight: normal;
-    color: #159957; }
-  .side-bar p {
-    margin-bottom: 1em; }
-  .side-bar code {
-    padding: 2px 4px;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 0.9rem;
-    color: #567482;
-    background-color: #f3f6fa;
-    border-radius: 0.3rem; }
-  .side-bar pre {
-    padding: 0.8rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    color: #567482;
-    word-wrap: normal;
-    background-color: #f3f6fa;
-    border: solid 1px #dce6f0;
-    border-radius: 0.3rem; }
-    .side-bar pre > code {
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
-      color: #567482;
-      word-break: normal;
-      white-space: pre;
-      background: transparent;
-      border: 0; }
-  .side-bar .highlight {
-    margin-bottom: 1rem; }
-    .side-bar .highlight pre {
-      margin-bottom: 0;
-      word-break: normal; }
-  .side-bar .highlight pre,
-  .side-bar pre {
-    padding: 0.8rem;
-    overflow: auto;
-    font-size: 0.9rem;
-    line-height: 1.45;
-    border-radius: 0.3rem;
-    -webkit-overflow-scrolling: touch; }
-  .side-bar pre code,
-  .side-bar pre tt {
-    display: inline;
-    max-width: initial;
-    padding: 0;
-    margin: 0;
-    overflow: initial;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0; }
-    .side-bar pre code:before, .side-bar pre code:after,
-    .side-bar pre tt:before,
-    .side-bar pre tt:after {
-      content: normal; }
-  .side-bar ul,
-  .side-bar ol {
-    margin-top: 0; }
-  .side-bar blockquote {
-    padding: 0 1rem;
-    margin-left: 0;
-    color: #819198;
-    border-left: 0.3rem solid #dce6f0; }
-    .side-bar blockquote > :first-child {
-      margin-top: 0; }
-    .side-bar blockquote > :last-child {
-      margin-bottom: 0; }
-  .side-bar table {
-    display: block;
-    width: 100%;
-    overflow: auto;
-    word-break: normal;
-    word-break: keep-all;
-    -webkit-overflow-scrolling: touch; }
-    .side-bar table th {
-      font-weight: bold; }
-    .side-bar table th,
-    .side-bar table td {
-      padding: 0.5rem 1rem;
-      border: 1px solid #e9ebec; }
-  .side-bar dl {
-    padding: 0; }
-    .side-bar dl dt {
-      padding: 0;
-      margin-top: 1rem;
-      font-size: 1rem;
-      font-weight: bold; }
-    .side-bar dl dd {
-      padding: 0;
-      margin-bottom: 1rem; }
-  .side-bar hr {
-    height: 2px;
-    padding: 0;
-    margin: 1rem 0;
-    background-color: #eff0f1;
-    border: 0; }
-
-.wrap{
-  margin:0 auto;
-  width:80%;
-  height:100%;
-  display:flex;         
-  }
-  .left{
-    text-align: right;
-      width:10%;
-      height:100%;
-  }
-  .mid{
-    margin:0 auto;
-    width:75%;
-    border:1px;
-  }
-  .right{
-    text-align: left;
-    width:15%;
-    height:100%;       
-  }
-

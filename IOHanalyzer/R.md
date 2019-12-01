@@ -6,10 +6,9 @@ nav_order: 1
 permalink: /IOHanalyzer/R/
 --- 
 
-## Programming Interface
+This part is ONLY meant for the user who would like program a bit, namely to use the data manipulation and plotting procedures _directly in R_.
 
-<a name="Data structure and manipulation"></a>
-### Data structure and manipulation
+## <a name="Data structure and manipulation"></a>Data structure and manipulation
 Here, it is assumed that the data to be loaded follow exactly the aforementioned format regulation. A method `DataSetList` is provided to load the data:  
 
 ```r
@@ -22,6 +21,7 @@ Processing ./data/RLS/IOHprofiler_f1_i1.info ...
 ```
 
 The return value of method `DataSetList` is a `S3` object, that is inherited from the *list* class. Consequently, `list` object can be sliced, indexed and printed as with lists:
+
 ```r
 > dsList
 DataSetList:
@@ -40,7 +40,9 @@ DataSetList:
 > dsList[[1]]
 DataSet(RLS on f1 16D)
 ```
+
 In addition, the `summary` method is implemented to show some basic information:
+
 ```r
 > summary(dsList)
   funcId DIM algId                                           datafile comment
@@ -53,7 +55,9 @@ In addition, the `summary` method is implemented to show some basic information:
 7     23  16   RLS   ./data/RLS/data_f23/IOHprofiler_f23_DIM16_i1.dat       %
 8     23 100   RLS  ./data/RLS/data_f23/IOHprofiler_f23_DIM100_i1.dat       %
 ```
+
 Note that, column *funcId* stands for the numbering (ID) of test functions and *algId* is the identifier of the algorithm that is tested. Those columns (also *DIM*) are the attribute of `list` object, which are directly retrieved from the `meta data` (**.info* files). Therefore, it is important to keep the meta data correct if it were prepared by the user manually. All the attributes `DataSetList` object are listed as follows:
+
 ```r
 > attributes(dsList)
 $class
@@ -126,7 +130,7 @@ function value summary:
 65:   RLS    2818   25 16.00     16 0.0000000 16.00 16.0 16.0  16  16  16 16.0 16.0 16.00
 66:   RLS    3162   25 16.00     16 0.0000000 16.00 16.0 16.0  16  16  16 16.0 16.0 16.00
 
-Attributes: names, class, suite, funcId, DIM, algId, algInfo, comment, datafile, instance, 
+Attributes: names, class, suite, funcId, DIM, algId, algInfo, comment, datafile, instance,
   maxRT, finalFV, format, maximization
 ```
 
@@ -135,12 +139,13 @@ In the `summary` method, the data set is summarized in two perspectives:
 + **Fixed-target** perspective: the method looks for the *first hitting time*, that is the number of function evaluations an algorithm takes to reach a target function value (*target* above) for the first time. The target values are automatically determined and evenly spaced in the observed range. Some basic statistics on the running time sample are calculated for each target value: mean, median, standard deviation (*sd*), percentiles (*2% 5% 10% ...*), the expected running time (*ERT*) and *success rate* (*ps*, the ratio of successful runs our of all the independent runs).
 + **Fixed-budget** perspective: the method looks for the *best function value* reached by the algorithm, when a specific number of function evaluations (budget) are taken (*runtime* above). The budget values are automatically determined and evenly spaced in the observed range. Roughly the same set of statistics are provided as the fixed-target perspective.
 
-In the `ds` object, two matrices are always stored for those two perspectives explained above: 
+In the `ds` object, two matrices are always stored for those two perspectives explained above:
 
 + `ds$RT`: running time samples in the fixed-target perspective and
 + `ds$FV`: function value samples in the fixed-budget perspective.
 
 Note that, when the parameter tracking is enabled, the parameter of interest is also arranged in the **fixed-target** perspective and is appended to `ds` object. For instance, if *mutation_rate* is the parameter name given to the benchmark, the parameter can be obtained by `ds$mutation_rate`. We could take a glimpse at those two matrices:
+
 ```r
 > head(ds$RT)
    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14] 
@@ -151,7 +156,9 @@ Note that, when the parameter tracking is enabled, the parameter of interest is 
 8    1    3    2    2    1    4    1    1    7     2     1    10     2     1   
 9    1    4    3    3    4    5    1    1    8     4     2    11     3     1   
 ```
+
 Here, the column names are the target values and in the example below, those are the budget values:
+
 ```r
 > head(ds$FV)
    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
@@ -163,8 +170,7 @@ Here, the column names are the target values and in the example below, those are
 6   13    9   11   10   10   10   10   13    7    11    11     5    10    14
 ```
 
-<a name="Retrieving performance data"></a>
-### Retrieving performance data
+## <a name="Retrieving performance data"></a>Retrieving performance data
 
 For both `DataSet` and `DataSetList` objects, the overview of the observed running time/function value can obtained using:
 
@@ -219,6 +225,7 @@ DataSet(RLS on f1 16D)
 ```
 
 The input for the argument `ftarget` and `runtime` should be provided by the user. In this example, three values are chosen arbitrarily in the corresponding range of running time/function value (cf. the first lines of `get_RT_overview` and `get_FV_overview` above). Furthermore, using the **magrittr** package (please install it if necessary), it is possible to chain all the methods introduced so far, making the code snippet more readable:
+
 ```r
 > library(magrittr)
 > dsList %>% 
@@ -230,7 +237,7 @@ The input for the argument `ftarget` and `runtime` should be provided by the use
 3: 100     19   RLS 2500.50   25 162.56    164 6.096994 152 152.8 156.0 156 164 168 170.4 172 172
 4: 100     19   RLS 3750.25   25 162.56    164 6.096994 152 152.8 156.0 156 164 168 170.4 172 172
 5: 100     19   RLS 5000.00   25 162.56    164 6.096994 152 152.8 156.0 156 164 168 170.4 172 172
-``` 
+```
 
 In addition, it is also straightforward to retrieve the raw sample points of the running time/function value, using the following methods, `get_RT_sample` and `get_FV_sample`:
 
@@ -252,10 +259,10 @@ In addition, it is also straightforward to retrieve the raw sample points of the
 1:   RLS       5    12     9    10     9    10     9    10    12     7     10     10      5
 2:   RLS      20    16    12    15    14    14    13    14    15    14     12     14     13
 ```
+
 Note that, all methods in this sub-section return a `data.table` object from the **data.table** package.
 
-<a name="Plotting"></a>
-### Plotting
+## <a name="Plotting"></a>Plotting
 
 To visualize the benchmark data, a collection of plotting methods are implemented in \iohana. In this section, we shall provide examples on some important plots using the data set in the last section. Here, only the plotting method for the *fixed-target* perspective is shown because the same set of methods are implemented for the fixed-budget perspective. Firstly, the progression of the function value is plotted against the running time:
 
@@ -263,9 +270,10 @@ To visualize the benchmark data, a collection of plotting methods are implemente
 > ds_plot <- subset(dsList, DIM == 16, funcId == 1)
 > Plot.RT.Single_Func(ds_plot)
 ```
+
 The data sets on 16D, function F1 are plotted here, which is shown in the following figure. Note that, a interactive plot is created as the ``plotly`` library is used here by default. The static plotting library `ggplot2` can also be selected by setting argument `backend = 'ggplot2'` (this is only a difference in the plotting backend and thus it will not be demonstrated here). In the figure, the standard deviation of the running time is also drawn.
 
-[//]: # ![RT-singel-fct]({{ site.url }}/assets/fig/RT.Single_Func.pdf)
+![RT-singel-fct]({{ site.url }}/assets/fig/RT.Single_Func.jpg)
 
 ```r
 > ?Plot.RT.Single_Func
@@ -277,7 +285,7 @@ In addition, the previous plot can be grouped by functions, using `Plot.RT.Multi
 > Plot.RT.Multi_Func(ds_plot, scale.ylog = T)
 ```
 
-[//]: # ![RT-all-fct]({{ site.url }}/assets/fig/RT.Multi_Func.pdf)
+![RT-all-fct]({{ site.url }}/assets/fig/RT.Multi_Func.jpg)
 
 Given a target value, `Plot.RT.Histogram` methods renders the histogram of the running time required to reach this target value. Taking the data set on F23 and 16D as an example, it is important to view the range of function values through method `get_FV_overview` as shown in the previous section:
 
@@ -295,29 +303,34 @@ Then, we choose a target value -3 that is close to the best reached value and pl
 > Plot.RT.Histogram(ds, ftarget = -3, plot_mode = 'subplot')
 ```
 
-[//]: # ![RT-hist]({{ site.url }}/assets/fig/RT.Histogram.pdf)
+![RT-hist]({{ site.url }}/assets/fig/RT.Histogram.jpg)
 
 The argument `plot_mode = 'subplot'` will create a separate sub-plot for each algorithm in the data set. In addition, the empirical density function of the running time, that is estimated by the Kernel Density Estimation (KDE) method, can be generated by method `Plot.RT.PMF`.
+
 ```r
 > Plot.RT.PMF(ds, ftarget = -3, show.sample = TRUE)
 ```
 
-[//]: # ![RT-pmf]({{ site.url }}/assets/fig/RT.PMF.pdf)
+![RT-pmf]({{ site.url }}/assets/fig/RT.PMF.jpg)
 
 Finally, it is also crucial to look at the Empirical Cumulative Distribution function (ECDF) of the running time. For this purpose,  three methods are implemented for different levels of data aggregation:
 
-+ `Plot.RT.ECDF_Per_Target`: it only compares the ECDF of algorithms on a *single* target value, e.g., 
++ `Plot.RT.ECDF_Per_Target`: it only compares the ECDF of algorithms on a *single* target value, e.g.,
+
 ```r
 > Plot.RT.ECDF_Per_Target(ds, ftarget = -1)
 ```
-[//]: # ![RT-ecdf-single]({{ site.url }}/assets/fig/RT.ECDF_Per_Target.pdf)
+
+![RT-ecdf-single]({{ site.url }}/assets/fig/RT.ECDF_Per_Target.jpg)
 
 + `Plot.RT.ECDF_Single_Func`: it takes as input an array of target values (controlled by arguments *fstart, fstop, fstep*) and aggregates the ECDF over those targets, e.g.,
+
 ```r
 > Plot.RT.ECDF_Single_Func(ds, fstart = -92, fstop = 4, fstep = 10)
 ```
-[//]: # ![RT-ecdf-multi-target]({{ site.url }}/assets/fig/RT.ECDF_Single_Func.pdf)
-    
+
+![RT-ecdf-multi-target]({{ site.url }}/assets/fig/RT.ECDF_Single_Func.jpg)
+
 + `Plot.RT.ECDF_Multi_Func`: it, in addition, aggregates different target values over all test function in a data set. To demonstrate its usage, let's take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a *list* object. The resulting plot is shown i.
 
 ```r
@@ -339,6 +352,7 @@ Finally, it is also crucial to look at the Empirical Cumulative Distribution fun
 +                  `23` = c(0, 5, 10))
 
 > Plot.RT.ECDF_Multi_Func(ds, ftarget)
-```
-[//]: # ![RT-ecdf-multi-fct]({{ site.url }}/assets/fig/RT.ECDF_Multi_Func.pdf)
 
+```
+
+![RT-ecdf-multi-fct]({{ site.url }}/assets/fig/RT.ECDF_Multi_Func.jpg)

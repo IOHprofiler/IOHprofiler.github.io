@@ -1,0 +1,4 @@
+*.csv
+
+_site/
+.sass-cache

@@ -10,13 +10,13 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Programming Interface" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Profiling Iterative Optimization Heuristics" />
-<meta property="og:description" content="Profiling Iterative Optimization Heuristics" />
+<meta name="description" content="Iterative Optimization Heuristics Profiler" />
+<meta property="og:description" content="Iterative Optimization Heuristics Profiler" />
 <link rel="canonical" href="http://localhost:4000/IOHanalyzer/R/" />
 <meta property="og:url" content="http://localhost:4000/IOHanalyzer/R/" />
 <meta property="og:site_name" content="IOHprofiler Wiki" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/IOHanalyzer/R/","headline":"Programming Interface","description":"Profiling Iterative Optimization Heuristics","@type":"WebPage","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/IOHanalyzer/R/","headline":"Programming Interface","description":"Iterative Optimization Heuristics Profiler","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,7 +91,7 @@
 
     <header class="page-headerb" role="banner">
       <h1 class="project-name">Programming Interface</h1>
-      <h2 class="project-tagline">Profiling Iterative Optimization Heuristics</h2>
+      <h2 class="project-tagline">Iterative Optimization Heuristics Profiler</h2>
       
       
     </header>
@@ -115,15 +115,15 @@
                   <li><a href=/IOHanalyzer/data/>Data Format</a></li>
                   <li><a href=/IOHanalyzer/GUI/>Graphical User Interface</a></li>
                   <ol class='toc'>
-                    <li><a href="#loading-data">Loading Data</a></li>
-                    <li><a href="#fixed-target">Fixed-target Results</a></li>
-                    <li><a href="#fixed-target">Fixed-budget Results</a></li>
+                    <li><a href="/IOHanalyzer/GUI/#loading-data">Data Loading</a></li>
+                    <li><a href="/IOHanalyzer/GUI/#fixed-target">Fixed-target Results</a></li>
+                    <!-- <li><a href="/IOHanalyzer/GUI/#fixed-target">Fixed-budget Results</a></li> -->
                   </ol>
-                  <li><a href=/IOHanalyzer/R/>R Interface</a></li>
+                  <li><a href=/IOHanalyzer/R/>R Programming Interface</a></li>
                 </ol>
               </li>
               <li><a href=/News>News</a></li>
-              <li><a href=/Benchmark>Benchmark</a></li>
+              <!-- <li><a href=/Benchmark>Benchmark</a></li> -->
               <li><a href=/citation>Citation</a></li>
               <li><a href=/license>License</a></li>
             </ol>
@@ -134,10 +134,9 @@
       <div class="mid">
         <main id="content" class="main-content" role="main">
           <div class="main">
-          <h2 id="programming-interface">Programming Interface</h2>
+          <p>This part is ONLY meant for the user who would like program a bit, namely to use the data manipulation and plotting procedures <em>directly in R</em>.</p>
 
-<p><a name="Data structure and manipulation"></a></p>
-<h3 id="data-structure-and-manipulation">Data structure and manipulation</h3>
+<h2 id="data-structure-and-manipulation"><a name="Data structure and manipulation"></a>Data structure and manipulation</h2>
 <p>Here, it is assumed that the data to be loaded follow exactly the aforementioned format regulation. A method <code class="highlighter-rouge">DataSetList</code> is provided to load the data:</p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DataSetList</span><span class="p">(</span><span class="s1">'./data/RLS'</span><span class="p">)</span><span class="w">
@@ -149,6 +148,7 @@
 </span></code></pre></div></div>
 
 <p>The return value of method <code class="highlighter-rouge">DataSetList</code> is a <code class="highlighter-rouge">S3</code> object, that is inherited from the <em>list</em> class. Consequently, <code class="highlighter-rouge">list</code> object can be sliced, indexed and printed as with lists:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w">
 </span><span class="n">DataSetList</span><span class="o">:</span><span class="w">
 </span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
@@ -166,7 +166,9 @@
 </span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
 </span><span class="n">DataSet</span><span class="p">(</span><span class="n">RLS</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">f</span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="n">D</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
+
 <p>In addition, the <code class="highlighter-rouge">summary</code> method is implemented to show some basic information:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">summary</span><span class="p">(</span><span class="n">dsList</span><span class="p">)</span><span class="w">
   </span><span class="n">funcId</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="n">algId</span><span class="w">                                           </span><span class="n">datafile</span><span class="w"> </span><span class="n">comment</span><span class="w">
 </span><span class="m">1</span><span class="w">      </span><span class="m">1</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">     </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f1</span><span class="o">/</span><span class="n">IOHprofiler_f1_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
@@ -178,7 +180,9 @@
 </span><span class="m">7</span><span class="w">     </span><span class="m">23</span><span class="w">  </span><span class="m">16</span><span class="w">   </span><span class="n">RLS</span><span class="w">   </span><span class="n">.</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">RLS</span><span class="o">/</span><span class="n">data_f23</span><span class="o">/</span><span class="n">IOHprofiler_f23_DIM16_i1.dat</span><span class="w">       </span><span class="o">%
 8     23 100   RLS  ./data/RLS/data_f23/IOHprofiler_f23_DIM100_i1.dat       %</span><span class="w">
 </span></code></pre></div></div>
+
 <p>Note that, column <em>funcId</em> stands for the numbering (ID) of test functions and <em>algId</em> is the identifier of the algorithm that is tested. Those columns (also <em>DIM</em>) are the attribute of <code class="highlighter-rouge">list</code> object, which are directly retrieved from the <code class="highlighter-rouge">meta data</code> (<em>*.info</em> files). Therefore, it is important to keep the meta data correct if it were prepared by the user manually. All the attributes <code class="highlighter-rouge">DataSetList</code> object are listed as follows:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="nf">attributes</span><span class="p">(</span><span class="n">dsList</span><span class="p">)</span><span class="w">
 </span><span class="o">$</span><span class="n">class</span><span class="w">
 </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"list"</span><span class="w">        </span><span class="s2">"DataSetList"</span><span class="w">
@@ -246,7 +250,7 @@ function value summary:
 </span><span class="m">65</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">2818</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.00</span><span class="w">
 </span><span class="m">66</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">    </span><span class="m">3162</span><span class="w">   </span><span class="m">25</span><span class="w"> </span><span class="m">16.00</span><span class="w">     </span><span class="m">16</span><span class="w"> </span><span class="m">0.0000000</span><span class="w"> </span><span class="m">16.00</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w">  </span><span class="m">16</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.0</span><span class="w"> </span><span class="m">16.00</span><span class="w">
 
-</span><span class="n">Attributes</span><span class="o">:</span><span class="w"> </span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">suite</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="p">,</span><span class="w"> </span><span class="n">algInfo</span><span class="p">,</span><span class="w"> </span><span class="n">comment</span><span class="p">,</span><span class="w"> </span><span class="n">datafile</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">,</span><span class="w"> 
+</span><span class="n">Attributes</span><span class="o">:</span><span class="w"> </span><span class="n">names</span><span class="p">,</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">suite</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="p">,</span><span class="w"> </span><span class="n">algInfo</span><span class="p">,</span><span class="w"> </span><span class="n">comment</span><span class="p">,</span><span class="w"> </span><span class="n">datafile</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">,</span><span class="w">
   </span><span class="n">maxRT</span><span class="p">,</span><span class="w"> </span><span class="n">finalFV</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="n">maximization</span><span class="w">
 </span></code></pre></div></div>
 
@@ -265,6 +269,7 @@ function value summary:
 </ul>
 
 <p>Note that, when the parameter tracking is enabled, the parameter of interest is also arranged in the <strong>fixed-target</strong> perspective and is appended to <code class="highlighter-rouge">ds</code> object. For instance, if <em>mutation_rate</em> is the parameter name given to the benchmark, the parameter can be obtained by <code class="highlighter-rouge">ds$mutation_rate</code>. We could take a glimpse at those two matrices:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">ds</span><span class="o">$</span><span class="n">RT</span><span class="p">)</span><span class="w">
    </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">6</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">7</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">8</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">9</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">10</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">11</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">13</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">14</span><span class="p">]</span><span class="w"> 
 </span><span class="m">4</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">     </span><span class="m">1</span><span class="w">   
@@ -274,7 +279,9 @@ function value summary:
 </span><span class="m">8</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">2</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">7</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">2</span><span class="w">     </span><span class="m">1</span><span class="w">   
 </span><span class="m">9</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">5</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">8</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">2</span><span class="w">    </span><span class="m">11</span><span class="w">     </span><span class="m">3</span><span class="w">     </span><span class="m">1</span><span class="w">   
 </span></code></pre></div></div>
+
 <p>Here, the column names are the target values and in the example below, those are the budget values:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">ds</span><span class="o">$</span><span class="n">FV</span><span class="p">)</span><span class="w">
    </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">6</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">7</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">8</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">9</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">10</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">11</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">13</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">14</span><span class="p">]</span><span class="w">
 </span><span class="m">1</span><span class="w">   </span><span class="m">11</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">8</span><span class="w">    </span><span class="m">6</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">9</span><span class="w">    </span><span class="m">5</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">8</span><span class="w">     </span><span class="m">4</span><span class="w">     </span><span class="m">7</span><span class="w">    </span><span class="m">11</span><span class="w">   
@@ -285,8 +292,7 @@ function value summary:
 </span><span class="m">6</span><span class="w">   </span><span class="m">13</span><span class="w">    </span><span class="m">9</span><span class="w">   </span><span class="m">11</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">10</span><span class="w">   </span><span class="m">13</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">11</span><span class="w">    </span><span class="m">11</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">14</span><span class="w">
 </span></code></pre></div></div>
 
-<p><a name="Retrieving performance data"></a></p>
-<h3 id="retrieving-performance-data">Retrieving performance data</h3>
+<h2 id="retrieving-performance-data"><a name="Retrieving performance data"></a>Retrieving performance data</h2>
 
 <p>For both <code class="highlighter-rouge">DataSet</code> and <code class="highlighter-rouge">DataSetList</code> objects, the overview of the observed running time/function value can obtained using:</p>
 
@@ -338,6 +344,7 @@ function value summary:
 </span></code></pre></div></div>
 
 <p>The input for the argument <code class="highlighter-rouge">ftarget</code> and <code class="highlighter-rouge">runtime</code> should be provided by the user. In this example, three values are chosen arbitrarily in the corresponding range of running time/function value (cf. the first lines of <code class="highlighter-rouge">get_RT_overview</code> and <code class="highlighter-rouge">get_FV_overview</code> above). Furthermore, using the <strong>magrittr</strong> package (please install it if necessary), it is possible to chain all the methods introduced so far, making the code snippet more readable:</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">magrittr</span><span class="p">)</span><span class="w">
 </span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsList</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
 </span><span class="o">+</span><span class="w">   </span><span class="n">subset</span><span class="p">(</span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">algId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'RLS'</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">19</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
@@ -368,17 +375,20 @@ function value summary:
 </span><span class="m">1</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">       </span><span class="m">5</span><span class="w">    </span><span class="m">12</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">10</span><span class="w">     </span><span class="m">9</span><span class="w">    </span><span class="m">10</span><span class="w">    </span><span class="m">12</span><span class="w">     </span><span class="m">7</span><span class="w">     </span><span class="m">10</span><span class="w">     </span><span class="m">10</span><span class="w">      </span><span class="m">5</span><span class="w">
 </span><span class="m">2</span><span class="o">:</span><span class="w">   </span><span class="n">RLS</span><span class="w">      </span><span class="m">20</span><span class="w">    </span><span class="m">16</span><span class="w">    </span><span class="m">12</span><span class="w">    </span><span class="m">15</span><span class="w">    </span><span class="m">14</span><span class="w">    </span><span class="m">14</span><span class="w">    </span><span class="m">13</span><span class="w">    </span><span class="m">14</span><span class="w">    </span><span class="m">15</span><span class="w">    </span><span class="m">14</span><span class="w">     </span><span class="m">12</span><span class="w">     </span><span class="m">14</span><span class="w">     </span><span class="m">13</span><span class="w">
 </span></code></pre></div></div>
+
 <p>Note that, all methods in this sub-section return a <code class="highlighter-rouge">data.table</code> object from the <strong>data.table</strong> package.</p>
 
-<p><a name="Plotting"></a></p>
-<h3 id="plotting">Plotting</h3>
+<h2 id="plotting"><a name="Plotting"></a>Plotting</h2>
 
 <p>To visualize the benchmark data, a collection of plotting methods are implemented in \iohana. In this section, we shall provide examples on some important plots using the data set in the last section. Here, only the plotting method for the <em>fixed-target</em> perspective is shown because the same set of methods are implemented for the fixed-budget perspective. Firstly, the progression of the function value is plotted against the running time:</p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">ds_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">subset</span><span class="p">(</span><span class="n">dsList</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">funcId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
 </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Single_Func</span><span class="p">(</span><span class="n">ds_plot</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
+
 <p>The data sets on 16D, function F1 are plotted here, which is shown in the following figure. Note that, a interactive plot is created as the <code class="highlighter-rouge">plotly</code> library is used here by default. The static plotting library <code class="highlighter-rouge">ggplot2</code> can also be selected by setting argument <code class="highlighter-rouge">backend = 'ggplot2'</code> (this is only a difference in the plotting backend and thus it will not be demonstrated here). In the figure, the standard deviation of the running time is also drawn.</p>
+
+<p><img src="http://localhost:4000/assets/fig/RT.Single_Func.jpg" alt="RT-singel-fct" /></p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="o">?</span><span class="n">Plot.RT.Single_Func</span><span class="w">
 </span></code></pre></div></div>
@@ -387,6 +397,8 @@ function value summary:
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Multi_Func</span><span class="p">(</span><span class="n">ds_plot</span><span class="p">,</span><span class="w"> </span><span class="n">scale.ylog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.Multi_Func.jpg" alt="RT-all-fct" /></p>
 
 <p>Given a target value, <code class="highlighter-rouge">Plot.RT.Histogram</code> methods renders the histogram of the running time required to reach this target value. Taking the data set on F23 and 16D as an example, it is important to view the range of function values through method <code class="highlighter-rouge">get_FV_overview</code> as shown in the previous section:</p>
 
@@ -402,21 +414,36 @@ function value summary:
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.Histogram</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">plot_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'subplot'</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
+<p><img src="http://localhost:4000/assets/fig/RT.Histogram.jpg" alt="RT-hist" /></p>
+
 <p>The argument <code class="highlighter-rouge">plot_mode = 'subplot'</code> will create a separate sub-plot for each algorithm in the data set. In addition, the empirical density function of the running time, that is estimated by the Kernel Density Estimation (KDE) method, can be generated by method <code class="highlighter-rouge">Plot.RT.PMF</code>.</p>
+
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.PMF</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="n">show.sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.PMF.jpg" alt="RT-pmf" /></p>
 
 <p>Finally, it is also crucial to look at the Empirical Cumulative Distribution function (ECDF) of the running time. For this purpose,  three methods are implemented for different levels of data aggregation:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Plot.RT.ECDF_Per_Target</code>: it only compares the ECDF of algorithms on a <em>single</em> target value, e.g.,
-    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Per_Target</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="p">)</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
-  <li><code class="highlighter-rouge">Plot.RT.ECDF_Single_Func</code>: it takes as input an array of target values (controlled by arguments <em>fstart, fstop, fstep</em>) and aggregates the ECDF over those targets, e.g.,
-    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Single_Func</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">fstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-92</span><span class="p">,</span><span class="w"> </span><span class="n">fstop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">fstep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
+  <li><code class="highlighter-rouge">Plot.RT.ECDF_Per_Target</code>: it only compares the ECDF of algorithms on a <em>single</em> target value, e.g.,</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Per_Target</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.ECDF_Per_Target.jpg" alt="RT-ecdf-single" /></p>
+
+<ul>
+  <li><code class="highlighter-rouge">Plot.RT.ECDF_Single_Func</code>: it takes as input an array of target values (controlled by arguments <em>fstart, fstop, fstep</em>) and aggregates the ECDF over those targets, e.g.,</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Single_Func</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">fstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-92</span><span class="p">,</span><span class="w"> </span><span class="n">fstop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">fstep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/fig/RT.ECDF_Single_Func.jpg" alt="RT-ecdf-multi-target" /></p>
+
+<ul>
   <li><code class="highlighter-rouge">Plot.RT.ECDF_Multi_Func</code>: it, in addition, aggregates different target values over all test function in a data set. To demonstrate its usage, let’s take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a <em>list</em> object. The resulting plot is shown i.</li>
 </ul>
 
@@ -438,8 +465,10 @@ function value summary:
 </span><span class="o">+</span><span class="w">                  </span><span class="n">`23`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">))</span><span class="w">
 
 </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Plot.RT.ECDF_Multi_Func</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="n">ftarget</span><span class="p">)</span><span class="w">
+
 </span></code></pre></div></div>
 
+<p><img src="http://localhost:4000/assets/fig/RT.ECDF_Multi_Func.jpg" alt="RT-ecdf-multi-fct" /></p>
 
  
         </main>
@@ -451,7 +480,7 @@ function value summary:
           <div class="item sticky">
             <p>
               <b style="font-size:22px;">Links</b><br>
-              <a href=https://github.com/IOHprofiler>GitHub</a>
+              <a href=https://github.com/IOHprofiler>GitHub Page</a>
               <br><br>
               <b style="font-size:22px">License</b><br>
               <a href=/license>BSD 3-Clause</a>
