@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Performance Indicators
-permalink: /Background/performance-indicators
+permalink: /Background/performance-indicators/
 ---
 
 ## Selected Performance Indicators
