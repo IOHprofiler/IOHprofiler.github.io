@@ -1,18 +1,12 @@
 ---
 layout: page
-title: Adding Functions
+title: Extending IOHexperimenter
 parent: IOHexperimenter
-nav_order: 4
-permalink: /IOHexperimenter/Adding-Functions/
+permalink: /IOHexperimenter/extension/
 --- 
 
 
-Creating Problems
-==================================
-
-* [Preparation](/IOHexperimenter/Preparation/)
-* [Benchmarking using C++](/IOHexperimenter/Cpp/)
-* [Benchmarking using R](/IOHexperimenter/R/)
+## <a name="adding-new-problems"></a>Add new problems
 
 To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/).
 Once it is succesfully installed, please navigate to the folder `src/problems` and create the `.hpp` file of your problem there.
@@ -20,6 +14,7 @@ Once it is succesfully installed, please navigate to the folder `src/problems` a
 For this tutorial, we will use the `f_one_max_dummy1.hpp` file as an example. Use this file as the baseline for your own problem. 
 
 The structure of any problem within the __IOHexperimenter__ is based on the `IOHprofiler_problem`-class, which is a template class which should be instantiated with the required variable type (`int` or `double`). The class contains the following variables:
+
 * `problem_id` (optional), will be assigned if the problem is added to a suite, otherwise default by 0.
 * `instance_id` (optional),  sets transformation methods on problems. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [transformation](/IOHexperimenter/Transformation).
 * `problem_name`
@@ -68,13 +63,16 @@ double internal_evaluate(const std::vector<int> &x) {
 ```
 
 If you want to register your problem using `problem_name` and add it into a suite, please add functions for creating instances as following codes.
+
 ```cpp
 static OneMax_Dummy1 * createInstance(int instance_id = DEFAULT_INSTANCE, int dimension = DEFAULT_DIMENSION) {
     return new OneMax_Dummy1(instance_id, dimension);
   };
 };
 ```
+
 To register the problem, you can use the <i>geniricGenerator</i> in [IOHprofiler_class_generator](https://github.com/IOHprofiler/IOHexperimenter/blob/developing/src/Template/IOHprofiler_class_generator.hpp). For example, you can use the following statement to register and create __OneMax__ with reduction transformation,
+
 ```cpp
 // Register
 static registerInFactory<IOHprofiler_problem<int>,OneMax_Dummy1> regOneMax_Dummy1("OneMax_Dummy1");
@@ -82,14 +80,13 @@ static registerInFactory<IOHprofiler_problem<int>,OneMax_Dummy1> regOneMax_Dummy
 std::shared_ptr<IOHprofiler_problem<int>> problem = genericGenerator<IOHprofiler_problem<int>>::instance().create("OneMax_Dummy1");
 ```
 
-<a name="transformation"></a>
-## Transformation
+## <a name="adding-new-transformations"></a>Adding new transformations
 Transformations methods are applied during evaluate process of __IOHexperimenter__. Different transfromation interfaces have been create for integer (`int`) type variables and real (`double`) type variables. One class of transformation methods are available for new added function with int variables and `pseudo_Boolean_problem` problem type. the original problem is with instance_id 1, scale and shift are applied on objectives for instance_id in [2,100], XOR is applied on variables for instance_id in [2,50], and sigma function is applied on variables for instance_id in [51,100]. 
 If you want to adapt specfic transformation methods for new added problems, methods shoud be implemented in `IOHprofiler_transformation.hpp` and revoked by the corresponding <i>variables_transformation</i> function and <i>objectives_transformation</i> function.
 
 
-Creating Suites
-==================================
+## <a name="adding-new-suites"></a>Adding new suites
+
 [IOHprofiler_suite]() is the base `class` of suites of __IOHexperimenter__. The property variables of problems include:
 * `problem_id`, a vector containing the ids of the problems to be tested.
 * `instance_id`, a vector containing the ids of the instances of the problems. Intance ids specify which transformations will be applied to the problem. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [transformation](/IOHexperimenter/Transformation).
@@ -98,10 +95,10 @@ Creating Suites
 * `number_of_instances`
 * `number_of_dimensions`
 
-
 __IOHexperimenter__ provides [__PBO_suite__](Benchmark/) for pseudo Boolean problems [__BBOB suite__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous problems of COCO, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.
 
 Taking the implementation of [__PBO_suite__](Benchmark/) as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed `problem_id`, `instance_id` and `dimension` should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.
+
 ```cpp
 PBO_suite() {
   std::vector<int> problem_id;

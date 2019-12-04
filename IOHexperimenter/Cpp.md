@@ -1,23 +1,14 @@
 ---
 layout: page
-title: Benchmarking (C++)
+title: IOHexperimenter - C++ Interface
 parent: IOHexperimenter
-nav_order: 2
 permalink: /IOHexperimenter/Cpp/
 --- 
 
-Getting Started
-==============================================
+## Compilation the package
 
-* [Preparation](/IOHexperimenter/Preparation/)
-* [Benchmarking using R](/IOHexperimenter/R/)
-* [Adding new Functions / Suites](/IOHexperimenter/Adding-Functions/)
-
-Before using the __IOHexperimenter__, make sure the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/)
-
-
-## First time use
 If you are using the tool for the first time, please download or clone [this branch](https://github.com/IOHprofiler/IOHexperimenter) and run `make` at the root directory of the project. After running `make` to compile,
+
 * Object files will be generated in `build/Cpp/obj`
 * Three exectuable files will be generated in `build/Cpp/bin`
 
@@ -27,22 +18,16 @@ Afterward completing the initial compilation, you can use the folder `build/Cpp`
 
 <!-- After compiling the tool by executing `make` in the root directory, `/bin` and `/obj` subfolders are to be created in this folder. To use __IOHexperimenter__ to test your algorithms, you can create your algorithm in the provided `cpp` files and compile them by using the `make` statement. -->
 
-There are three main ways to use __IOHexperimenter__ benchmark algorithms:
-* [Test on individual problems](#problems)
-* [Test on suites, which are predefined collections of problems](#suites)
-* [Test using an experiment with a configuration file (__recommended__)](#experimenter)
 
-<a name="problems"></a>
-## Test on individual problems
+## <a name="using-individual-problems"></a>Using individual test problems
 
-To use __IOHexperimenter__ to run benchmarking on a specific problem, the template-file `IOHprofiler_run_problem.cpp` is provided. Since all problems within the __IOHexperimenter__ are defined as specific derived `class` inheriting problem `IOHprofiler_problem` class, it is quite straightforward to use them. 
+To use __IOHexperimenter__ to run benchmarking on a specific problem, the template-file `IOHprofiler_run_problem.cpp` is provided. Since all problems within the __IOHexperimenter__ are defined as specific derived `class` inheriting problem `IOHprofiler_problem` class, it is quite straightforward to use them.
 
-
-<!-- , the source codes are available in the [Problems folder](https://github.com/IOHprofiler/IOHexperimenter/src/Problems). For the definition of the problems already implemented in IOHexperimenter, please visit the wiki page [https://iohprofiler.github.io/Benchmark/Problems/](https://iohprofiler.github.io/Benchmark/Problems/). -->
 
 An example testing evolutionary algorithm with mutation operator on __OneMax__ is implemented in `IOHprofiler_run_problem.cpp`. To use a different function, modify the include-statement to include the problem to use, and use the corresponding class-name instead of __OneMax__.
 
 For this example, a `OneMax` class is declared and initialized with dimension 1000 on the default instance of the probelem.
+
 ```cpp
 OneMax om;
 int dimension = 1000;
@@ -80,8 +65,8 @@ logger.target_problem(om.IOHprofiler_get_problem_id(),
                       om.IOHprofiler_get_optimization_type());
 ```
 
-<a name="suites"></a>
-## Test on suites
+## <a name="using-suites"></a>Using pre-installed Benchmark Suites
+
 Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties toghther makes it easier to test algorithms on a class of problems. Currently, two pre-defined suites are available: [__PBO__](Benchmark/), consisting of 23 __pseudo Boolean problems__, and [__BBOB__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf), consisting of 24 __real-valued problems__. To find out how to create your own suites, please visit [this page](/IOHexperimenter/Adding-Functions/).
 
 An example of testing an evolutionary algorithm with mutation operator on  the __PBO__ suite is implemented in `IOHprofiler_run_suite.cpp`. __PBO__ suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:
@@ -124,8 +109,7 @@ logger->activate_logger();
 logger->target_suite(pbo.IOHprofiler_suite_get_suite_name());
 ```
 
-<a name="experimenter"></a>
-## Test using an experiment with a configuration file
+## <a name="using-conf"></a>Conducting experiments with a configuration file
 
 By using the provided `IOHprofiler_experiment` class, you can use a configuration file to configure both the suite and the logger for csv files.
 
@@ -163,8 +147,7 @@ __observer__ configures parameters of `IOHprofiler_server`, which is used in `IO
 * __number_target_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy.
 * __base_evaluation_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy. To switch off `.tdat` files, set both __number_target_triggers__ and __base_evaluation_triggers__ as 0.
 
-<a name="memberfunctions"></a>
-## Useful functions
+## <a name="memberfunctions"></a>Useful functions
 `IOHprofiler_problem` and `IOHprofiler_suite` provide public member functions so that the optimizer can acquire useful information during optimization process.
 
 A list of useful member functions of `IOHprofiler_problem` is below:

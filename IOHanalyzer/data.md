@@ -8,7 +8,7 @@ permalink: /IOHanalyzer/data/
 Specific formats are required to load your benchmark data to **IOHanalyzer**. If your data sets are generated in the format of
 
 * **COCO/BBOB** data format as regulated in [https://hal.inria.fr/inria-00362649](https://hal.inria.fr/inria-00362649),
-* **Nevergrad** data format, or
+* **Nevergrad** data format (explained in [https://github.com/facebookresearch/nevergrad](https://github.com/facebookresearch/nevergrad)), or
 * **IOHprofiler** data format, which is motivated and modified from **COCO** data format,
 
 then you could skip this section. Needless to say, **you are encouraged to convert your own benchmark data to the format regulated here!**
