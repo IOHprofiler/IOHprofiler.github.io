@@ -8,6 +8,10 @@ permalink: /IOHanalyzer/
 
 This is the __performance analyzer__ of **I**terative **O**ptimization **H**euristics (IOHs), e.g., Evolutionary Algorithms. **IOHanalyzer** takes as input the benchmark data from the user and provides very detailed analysis on, e.g., the empirical running time.
 
+
+![]({{ site.url }}/assets/fig/demo.gif)
+
+
 It _provides_:
 
 * a web-based Graphical User Interface (GUI),
@@ -66,4 +70,4 @@ library('IOHanalyzer')
 runServer()
 ```
 
-Have fun! For the complete reference on usage, please check out our Wiki page or documentation.
+Have fun! For the complete reference on usage, pleaese continue reading this documentation.

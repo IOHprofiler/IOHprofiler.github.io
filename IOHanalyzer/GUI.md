@@ -23,11 +23,9 @@ which will start the GUI server on the local machine (hence using IP address 127
 + **Fixed-Target Results** This section provides statistics covering the fixed-target perspective of performance evaluation. That is, the results in this section mainly address the question about the statistical property of **running time** (i.e., function evaluations) that is needed to obtain a solution of a desired target quality.
 + **Fixed-Budget Results** This sectioncovers the fixed-budget perspective, that is the statistics on **objective function values** obtained by the search points a given budget of function evaluations. In other words, the results in this section mainly address the question how good the search points are that a user can expect to see within a given frame of running time.
 
-
-
 ## <a name="loading-data"></a>Data loading
 
-The GUI interface to load the experiment data is shown in the following figure, in which the user is asked to upload a *compressed archive*. The following compression format are supported: *\*.zip*, *\*.bz*, *\*.tar*, *\*.xz*, *\*.gz*. Note that, when the user's data set is enormous to handle, it is possible to speed up the uploading (and hence plotting) procedure by toggling option Efficient mode on, in which a subset is taken from the huge data set. Moreover, when using the [online GUI](http://iohprofiler.liacs.nl), the user can also load official data sets provided by the author, using the ``Load Data from Repository`` box on the right of the page. At the time of writing, two official data sets are made available, each of which contains results of 11 algorithms on all 23 test functions, over dimensions {16, 100, 625}. For the specification of those two data sets and updates on the data set, the user is suggested to visit [data page](https://github.com/IOHprofiler/IOHdata).
+The GUI interface to load the experiment data is shown in the following figure, in which the user is asked to upload a *compressed archive*. The following compression format are supported: *\*.zip*, *\*.bz*, *\*.tar*, *\*.xz*, *\*.gz*. Note that, when the user's data set is enormous to handle, it is possible to speed up the uploading (and hence plotting) procedure by toggling option Efficient mode on, in which a subset is taken from the huge data set. Moreover, when using the [online GUI](http://iohprofiler.liacs.nl), the user can also load official data sets provided by the author, using the `Load Data from Repository` box on the right of the page. At the time of writing, two official data sets are made available, each of which contains results of 11 algorithms on all 23 test functions, over dimensions {16, 100, 625}. For the specification of those two data sets and updates on the data set, the user is suggested to visit [data page](https://github.com/IOHprofiler/IOHdata).
 
 ![GUI-data-loading]({{ site.url }}/assets/fig/iohanalyzer-data.png)
 
@@ -35,10 +33,10 @@ The GUI interface to load the experiment data is shown in the following figure, 
 
 The fixed-target section has four different subsections:
 
-+ *Data Summary*
-+ *Expected Runtime*
-+ *Probability Mass Function*
-+ *Cumulative Distribution*
+* *Data Summary*
+* *Expected Runtime*
+* *Probability Mass Function*
+* *Cumulative Distribution*
 
 ### Data Summary
 
@@ -48,12 +46,11 @@ It provides some statistics on the running time $T(A, f, d, v)$, meaning the fun
 
 ![RT-overview]({{ site.url }}/assets/fig/RT-overview.png)
 
-+ *Runtime Statistics at Chosen Target Values* A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)>v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the *expected running time* (ERT). Additionally, the user can also download this table in CSV format, or as a LaTeX table.
+* *Runtime Statistics at Chosen Target Values* A screenshot of this table is given as below. The table is obtained from The user can set the range and the granularity of the results in the box on the left. The table shows fixed-target running times for evenly spaced target values. More precisely, for each  tuple of (algorithm $A$, target value $v$, dimension $d$) the table provides 1) successful runs: the number of runs (sample points) of algorithm $A$ in which at least one solution $x$ satisfying $f(x)>v$ has been found 2) sample mean, median, standard deviation 3) sample quantiles: $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ and 4) the *expected running time* (ERT). Additionally, the user can also download this table in CSV format, or as a LaTeX table.
 
 ![RT-summary]({{ site.url }}/assets/fig/RT-summary.png)
 
-
-+ *Original Runtime Samples* The user interface is similar to the previous except that the sample points $(t_i)_{i}$ of running time $T(A, f, d, v)$ is shown here. Moreover, the user can choose between a `long` (all sample points are stored in a column) and a `wide` format (all sample points are stored in a row) for the table.
+* *Original Runtime Samples* The user interface is similar to the previous except that the sample points $(t_i)_{i}$ of running time $T(A, f, d, v)$ is shown here. Moreover, the user can choose between a `long` (all sample points are stored in a column) and a `wide` format (all sample points are stored in a row) for the table.
 
 ### <a name="Expected runtime"></a>Expected runtime
 
