@@ -2,7 +2,7 @@
 layout: page
 title: Background on Black-Box Benchmarking
 has_children: true
-permalink: /background
+permalink: /Background
 --- 
 
 ## <a name="real-valued-black-box-optimization"></a>Real-valued Black-Box Optimization
