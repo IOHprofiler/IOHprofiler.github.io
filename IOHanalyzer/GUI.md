@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Graphic User Interface
+title: Graphical User Interface
 parent: IOHanalyzer
 permalink: /IOHanalyzer/GUI/
 --- 

@@ -31,9 +31,9 @@ The common workflow of benchmaking and empirical analysis is shown as follows:
 ## Links
 
 * __Project repositories__:
-    * Main repository: [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
-    * Algorithms: [https://github.com/IOHprofiler/IOHalgorithm](https://github.com/IOHprofiler/IOHalgorithm)
-    * Performance data: (for the time being, these are available via the web-interface at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), or at [https://github.com/IOHprofiler/IOHdata](https://github.com/IOHprofiler/IOHdata))
+  * Main repository: [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
+  * Algorithms: [https://github.com/IOHprofiler/IOHalgorithm](https://github.com/IOHprofiler/IOHalgorithm)
+  * Performance data: (for the time being, these are available via the web-interface at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), or at [https://github.com/IOHprofiler/IOHdata](https://github.com/IOHprofiler/IOHdata))
 * __Documentation__: [Documentation on arXiv (Preliminary, an updated version will be made available soon)](https://arxiv.org/abs/1810.05281)
 * __Bug reports__:
   * __IOHanalyzer__: [https://github.com/IOHprofiler/IOHanalyzer/issues](https://github.com/IOHprofiler/IOHanalyzer/issues)
@@ -41,3 +41,13 @@ The common workflow of benchmaking and empirical analysis is shown as follows:
 * __IOHanalyzer Online Service__: [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl)
 * __General Contact__: [iohprofiler@liacs.leidenuniv.nl](mailto:iohprofiler@liacs.leidenuniv.nl)
 * __Mailing List__: [https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler)
+
+## Acknowledgments
+
+We thank our colleagues Anne Auger, Dimo Brockhoff, Arina Buzdalova, Maxim Buzdalov, Johann Dréo, Nikolaus Hansen, Pietro S. Oliveto, Ofer Shir, Markus Wagner, and Thomas Weise for various discussions around the benchmarking of iterative optimization heuristics.  
+
+Parts of our work have been inspired by working group 3 of COST Action CA15140 'Improving Applicability of Nature-Inspired Optimisation by Joining Theory and Practice (ImAppNIO)' supported by the European Cooperation in Science and Technology.
+
+Our work has been supported by a public grant as part of the Investissement d'avenir project, reference ANR-11-LABX-0056-LMH, LabEx LMH, in a joint call with the Gaspard Monge Program for optimization, operations research, and their interactions with data sciences.
+
+Furong Ye acknowledges financial support from the China Scholarship Council, CSC No. 201706310143.

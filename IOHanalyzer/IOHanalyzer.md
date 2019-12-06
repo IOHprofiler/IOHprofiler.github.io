@@ -70,4 +70,4 @@ library('IOHanalyzer')
 runServer()
 ```
 
-Have fun! For the complete reference on usage, pleaese continue reading this documentation.
+Have fun! For the complete reference on usage, please continue reading this documentation.

@@ -43,5 +43,5 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Note that some part of **IOHexperimenter** have been writthen by other teams.
 We acknowledge that:
 
-* The pseudo random number generator is implemented by NumBBO/CCCO team in the
+* The pseudo random number generator is implemented by NumBBO/COCO team in the
 Numerical Black-Box Optimization Benchmarking Framework (https://github.com/numbbo/coco).
