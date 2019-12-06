@@ -2,7 +2,7 @@
 layout: page
 title: Pseudo-Boolean Optimization (PBO) Benchmark Suite
 nav_order: 1
-permalink: /Suites/PBO
+permalink: /Suites/PBO/
 --- 
 
 ## Problems definition
