@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Problems
-parent: Benchmark
+title: Pseudo-Boolean Optimization (PBO) Benchmark Suite
 nav_order: 1
-permalink: /Benchmark/Problems/
+permalink: /Suites/PBO
 --- 
 
-## Problems Definition
+## Problems definition
+In this section, we give the detailed definitions of all test problems in the **Pseudo-Boolean Optimization (PBO)** suite. The usage of this pre-installed benchmark suite can be found [here](/IOHexperimenter/Cpp/#using-suites). To add new test problems or create new benchmark suite, please follow the [Section 4.4](/IOHexperimenter/extension/).
 
 ### F1: OneMax (Hamming Distance）
 It asks to optimize $OM:{0,1} \rightarrow [0..n], x \mapsto \sum_{i=1}^n{x_i}$. The problem has a very smooth and non-deceptive fitness landscape. Due to the well-known coupon collector effect, it is relatively easy to make progress when the function values are small, and the probability to obtain an improving move decreases considerably with increasing function value.
@@ -17,7 +17,7 @@ The problem asks to maximize the function $LO:{0,1}^n \to [0..n], x\mapsto \max 
 ### F3: A Linear Function with Harmonic Weights
 The problem is a linear function $f:{0,1}^n \to \mathbb{R}, x \mapsto \sum_{i} i x_i$ with harmonic weights.
 
-### F4-F17: The W-model
+### F4 - F17: The W-model
 The W-model comprises 4 basic transformations, each coming with different instances. We use $W(\cdot,\cdot,\cdot,\cdot)$ to denote the configuration chosen in our benchmark set.
 
  - Reduction of dummy variables $W(k,\ast,\ast,\ast)$: a reduction mapping each string $(x_1, \ldots, x_n)$ to a substring $(x_{i_1}, \ldots, x_{i_k})$ for randomly chosen, pairwise different $i_1,\ldots, i_k \in [n]$.
@@ -51,7 +51,7 @@ The Low Autocorrelation Binary Sequences (LABS) problem poses a non-linear objec
 
 where the sequence is of length n $S:=\left(s_1,\ldots,s_n\right)$ with $s_i=\pm 1$ . To obtain a pseudo-Boolean problem, we use the straightforward interpretation $s_i=2x_i-1$ for all $i \in [n]$. 
 
-### F19-F21: The Ising Model
+### F19 - F21: The Ising Model
 The classical Ising model \cite{Ising_Barahona1982} considers a set of spins placed on a regular lattice $G=([n],E)$, where each edge $(i,j) \in {E}$ is associated with an interaction strength $J_{ij}$. Given a configuration of $n$ spins, $S:=\left(s_1,\ldots,s_n\right)$, this problem poses a quadratic function, representing the system's energy and depending on its structure $J_{ij}$. Assuming zero external magnetic fields and using $s_i=2x_i-1$ we obtain the following pseudo-Boolean maximization problem:
 
 $[ISING:] \sum\limits_{ {i,j} \in {E}} \left[x_{i}x_{j} - \left(1-x_{i} \right)\left(1-x_{j} \right) \right] $

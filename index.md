@@ -17,7 +17,7 @@ The common workflow of benchmaking and empirical analysis is shown as follows:
 [__IOHexperimenter__](IOHexperimenter/) provides,
 
 * a generic framework to generate benchmarking suite for the optimization task you're insterested in,
-* a _Pseudo-Boolean Opitimization_ ([PBO](Benchmark/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
+* a _Pseudo-Boolean Opitimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
 * the integration of 24 _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.
 
 [__IOHanalyzer__](IOHanalyzer/) provides:
@@ -30,8 +30,11 @@ The common workflow of benchmaking and empirical analysis is shown as follows:
 
 ## Links
 
-* __Project repository__ : [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
-* __Documentation__: [IOHprofiler: A Benchmarking and Profiling Tool for Iterative Optimization Heuristics](https://arxiv.org/abs/1810.05281)
+* __Project repositories__:
+    * Main repository: [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
+    * Algorithms: [https://github.com/IOHprofiler/IOHalgorithm](https://github.com/IOHprofiler/IOHalgorithm)
+    * Performance data: (for the time being, these are available via the web-interface at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), or at [https://github.com/IOHprofiler/IOHdata](https://github.com/IOHprofiler/IOHdata))
+* __Documentation__: [Documentation on arXiv (Preliminary, an updated version will be made available soon)](https://arxiv.org/abs/1810.05281)
 * __Bug reports__:
   * __IOHanalyzer__: [https://github.com/IOHprofiler/IOHanalyzer/issues](https://github.com/IOHprofiler/IOHanalyzer/issues)
   * __IOHexperimenter__: [https://github.com/IOHprofiler/IOHexperimenter/issues](https://github.com/IOHprofiler/IOHexperimenter/issues)

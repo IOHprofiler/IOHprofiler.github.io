@@ -22,7 +22,7 @@ Regardless of whether the fixed-target analysis or the fixed-budget one is taken
 	<li><b>ample quantiles</b> of running time/function value. When the distribution of $T(A,f,d,v)$ and $V(A,f,d,t)$ shows a high skewness and/or kurtosis, the sample mean can be interpreted wrongly. Therefore <b>IOHanalyzer</b> also computes different quantiles of these distributions. By default, the following quantiles, $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$ are calculated.</li>
 	<li><b>empirical success rate</b> shows among all runs, the number of independent runs that an algorithm $A$ reaches the given target $v$ on some function:
 	$$
-		\widehat{p}_s = \sum_{i=1}^r\mathbb{1}(t_i(A,f,d,v) < \infty) / r, 
+	\widehat{p}_s = \sum_{i=1}^r\mathbb{1}(t_i(A,f,d,v) < \infty) / r, 
 	$$
 	where $\mathbb{1}$ is the characteristic function. The empirical success rate estimates the <b>probability of success</b> $p_s(A,f,d,v) := \mathbb{E}\mathbb{1}(T(A,f,d,v) < \infty)$, that is an intrinsic characteristic of IOHs.</li>
 </ul>
@@ -34,7 +34,7 @@ Consider $R>0$ independent restarts are performed and the running time of each r
 where $R$ follows a geometric distribution with expectation $\widehat{p}_s$. It is shown in [https://ieeexplore.ieee.org/document/1554902](https://ieeexplore.ieee.org/document/1554902) that the expectation $\mathbb{E}\tilde{T}$ can be estimated consistently using the so-called <b>Expected Running Time</b> (ERT):
 
 $$
-	\operatorname{ERT}(A, f, d, v) = \frac{\sum_{i=1}^{r} \min\left\{t_i(A,f,d,v), B\right\}}{\sum_{i=1}^{r} \mathbb{1}(t_i(A,f,d,v) < \infty)}.
+\operatorname{ERT}(A, f, d, v) = \frac{\sum_{i=1}^{r} \min\left\{t_i(A,f,d,v), B\right\}}{\sum_{i=1}^{r} \mathbb{1}(t_i(A,f,d,v) < \infty)}.
 $$
 
 Note that ERT can take an infinite value when all the runs are unsuccessful to reach the target value. In **IOHanalyzer**, ERT is an important performance indicator in the fixed-target analysis.
@@ -59,5 +59,5 @@ For fixed-target and fixed-budget analysis, **IOHanalyzer** provides empirical p
 The aggregated ECDFs for function value $V(A,f,d,t)$ can be defined in the similar way, e.g., for aggregations over a set of budget values $\mathcal{T}$:
 
 $$
-    \hat{F}_V(v\; ; \; A,f,d,\mathcal{T}) = \frac{1}{r|\mathcal{T}|}\sum_{t\in \mathcal{T}}\sum_{i=1}^{r} \mathbb{1}(v_i(A,f,d,t) \leq v).
+\hat{F}_V(v\; ; \; A,f,d,\mathcal{T}) = \frac{1}{r|\mathcal{T}|}\sum_{t\in \mathcal{T}}\sum_{i=1}^{r} \mathbb{1}(v_i(A,f,d,t) \leq v).
 $$
