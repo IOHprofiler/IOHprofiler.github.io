@@ -12,7 +12,3 @@ permalink: /News/
 * 18 Feb. 2019, Málaga (ES): Hao Wang gave a talk on *IOHanalyzer* in a progress meeting of COST Action ImAppNIO.
 * July 2018: Carola Doerr presents IOHprofiler at the BB-DOB workshop and at the Genetic Algorithms track at GECCO'18.
 * September 2018: Carola Doerr presents IOHprofiler at PPSN'18.
-
-
-
-
