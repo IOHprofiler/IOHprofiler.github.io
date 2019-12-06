@@ -17,7 +17,7 @@ The common workflow of benchmaking and empirical analysis is shown as follows:
 [__IOHexperimenter__](IOHexperimenter/) provides,
 
 * a generic framework to generate benchmarking suite for the optimization task you're insterested in,
-* a _Pseudo-Boolean Opitimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
+* a _Pseudo-Boolean Optimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
 * the integration of 24 _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.
 
 [__IOHanalyzer__](IOHanalyzer/) provides:

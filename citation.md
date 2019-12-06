@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Citation
+title: References
 permalink: /citation
 --- 
 
