@@ -5,7 +5,7 @@ parent: IOHanalyzer
 permalink: /IOHanalyzer/GUI/
 --- 
 
-To guide you through this use case, please feel free to use
+To guide you through the GUI of **IOHanalyzer**, please feel free to use
 
 * either the free GUI server hosted at [http://iohprofiler.liacs.nl/](http://iohprofiler.liacs.nl/), or
 * starting up the GUI locally given **IOHanalyzer** is already installed:
@@ -17,7 +17,7 @@ Loading required package: shiny
 Listening on http://127.0.0.1:xxxx
 ```
 
-which will start the GUI server on the local machine (hence using IP address 127.0.0.1 and a random port number). The web browser will be launched and connect to this address immediately after starting the server. The functionalities are grouped as follows:
+This command will start the GUI server on your local machine (using the IP address 127.0.0.1 and a random port number). The web browser will be launched and connect to this address immediately after starting the server. The functionalities are grouped as follows:
 
 + **Upload Data**: This section provides functionality to upload experiment results or load an official data set that is provided by the author.
 + **Fixed-Target Results** This section provides statistics covering the fixed-target perspective of performance evaluation. That is, the results in this section mainly address the question about the statistical property of **running time** (i.e., function evaluations) that is needed to obtain a solution of a desired target quality.
