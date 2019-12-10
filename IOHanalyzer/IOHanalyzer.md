@@ -8,9 +8,7 @@ permalink: /IOHanalyzer/
 
 This is the __performance analyzer__ of **I**terative **O**ptimization **H**euristics (IOHs), e.g., Evolutionary Algorithms. **IOHanalyzer** takes as input the benchmark data from the user and provides very detailed analysis on, e.g., the empirical running time.
 
-
 ![]({{ site.url }}/assets/fig/demo.gif)
-
 
 It _provides_:
 
@@ -23,7 +21,8 @@ It _provides_:
 It _takes as input_:
 
 * **COCO/BBOB** data format (see [https://github.com/numbbo/coco](https://github.com/numbbo/coco)),
-* **IOHprofiler** data format, which is motivated and modified from **COCO/BBOB** data format (Please read the [data format section](/IOHanalyzer/data/) for specifications on the supported data format).
+* **IOHprofiler** data format, which is motivated and modified from **COCO/BBOB** data format (Please read the [data format section](/IOHanalyzer/data/) for specifications on the supported data format), or
+* **Nevergrad** data format (explained in [https://github.com/facebookresearch/nevergrad](https://github.com/facebookresearch/nevergrad)).
 
 It is _built on_:
 
@@ -33,7 +32,7 @@ It is _built on_:
 It is _available through_:
 
 * a free online service available at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), and
-* local [installation](#install) of the package.
+* a local [installation](#install) of the package.
 
 ## <a name="install"></a>Installation
 
