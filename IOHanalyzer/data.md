@@ -20,20 +20,20 @@ In general, when benchmarking IOHs on several test functions/problems and dimens
 Generally, in the data folder (<tt>./</tt> here), the following files are mandatory for **IOHanalyzer**:
 
 <ul>
-    <li><a name="meta-data"><i>Meta-data</i></a> (e.g., <tt>IOHprofiler_f1.info</tt>) summarizes the algorithmic performance for each problem instance, with naming the following naming convention:
-    <p style="text-align:center"><tt>IOHprofiler_f&lt<code>function ID</code>&gt[_<code>function name</code>].info</tt></p>  
-    <ul style="margin-left:-15px;">
-        <li> Here, &lt<code>function ID</code>&gt is required. [_<code>function name</code>] is optional.
-        <li><code>function ID</code>: can take  either an integer or a string as its value.</li>
-        <li><code>function name</code> is only <i>optional</i> and is typically when the function ID is an integer.</li>
-    </ul>
+    <li><a href="#meta-data"><i>Meta-data</i></a> (e.g., <tt>IOHprofiler_f1.info</tt>) summarizes the algorithmic performance for each problem instance, with naming the following naming convention:
+    <p style="text-align:center"><tt>IOHprofiler_f<<code>function ID</code>>[_<code>function name</code>].info</tt></p>  
+        <ul style="margin-left:-15px;">
+            <li> Here, <<code>function ID</code>> is required. [_<code>function name</code>] is optional.</li>
+            <li><code>function ID</code>: can take  either an integer or a string as its value.</li>
+            <li><code>function name</code> is only <i>optional</i> and is typically when the function ID is an integer.</li>
+        </ul>
     </li>
-    <li><a name="raw-data"><i>Raw-data</i></a> (e.g., <tt>IOHprofiler_f1_DIM100.dat</tt>) are CSV-like files that contain performance information indexed by the running time. Raw-data files are named in the similar manner as with the meta-data:
-    <p style="text-align:center"><tt>IOHprofiler_f&lt<code>function ID</code>&gt_DIM_&lt<code>dimension</code>&gt.[t|i|c]dat</tt></p>
+    <li><a href="#raw-data"><i>Raw-data</i></a> (e.g., <tt>IOHprofiler_f1_DIM100.dat</tt>) are CSV-like files that contain performance information indexed by the running time. Raw-data files are named in the similar manner as with the meta-data:
+    <p style="text-align:center"><tt>IOHprofiler_f<<code>function ID</code>>_DIM_<<code>dimension</code>>.[t|i|c]dat</tt></p>
     <ul style="margin-left:-15px;">
         <li><code>dimension</code> must be an integer.</li>
         <li><tt>[t|i|c]</tt> indicates three choices for this option.</li>
-        <li>Using <b>IOHexperimenter</b>, you could produce four types of raw data files: <tt>*.dat</tt>, <tt>*.idat</tt>, <tt>*.tdat</tt>, and <tt>*.cdat</tt>, which share exactly the same format and only differ in the <a name="logging-events">logging events</a> at which data are recorded.</li>
+        <li>Using <b>IOHexperimenter</b>, you could produce four types of raw data files: <tt>*.dat</tt>, <tt>*.idat</tt>, <tt>*.tdat</tt>, and <tt>*.cdat</tt>, which share exactly the same format and only differ in the <a href="#logging-events">logging events</a> at which data are recorded.</li>
     </ul>
     </li>
 </ul>
@@ -65,8 +65,9 @@ A three-line structure is used for each dimension:
 * **The first line** stores some meta-information of the experiment as (key, value) pairs. Note that such pairs are separated by commas. Three keys, <tt>funcId</tt>, <tt>DIM</tt>, and <tt>algId</tt> are **case-sensitive** and **mandatory**.
 * **The second line** always starts with a single <tt>%</tt>, indicating what follows this symbol should be the general comments from the user on this experiment. _By default, it is left empty_.
 * **The third line** starts with the relative path to the actual data file, followed by the meta-information obtained on each instance, with the following format: 
-<p style="text-align:center">$$\underbrace{1}_{\text{instance number}}:\underbrace{1953125}_{\text{\#FE}}|\;\underbrace{5.59000\text{e+02}}_{\text{best-so-far f(x)}}$$</p>
-$\text{\#FE}$ stands for the number of function evaluations.
+<p style="text-align:center">$$\underbrace{1}_{\text{instance number}}:\underbrace{1953125}_{\text{#FE}}|\;\underbrace{5.59000\text{e+02}}_{\text{best-so-far f(x)}}$$</p>
+
+$\text{#FE}$ stands for the number of function evaluations.
 
 ## <a name="raw-data"></a>Raw-data
 
