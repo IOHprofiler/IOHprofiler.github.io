@@ -19,14 +19,24 @@ In general, when benchmarking IOHs on several test functions/problems and dimens
 
 Generally, in the data folder (<tt>./</tt> here), the following files are mandatory for **IOHanalyzer**:
 
-* [_Meta-data_](#meta-data) (e.g., <tt>IOHprofiler_f1_i1.info</tt>) summarizes the algorithmic performance for each problem instance, with naming the following naming convention:
-
-<p style="text-align:center"><tt>IOHprofiler_f[function ID]_i[instance number].info</tt></p>
-
-* [_Raw-data_](#raw-data) (e.g., <tt>IOHprofiler_f1_DIM100_i1.dat</tt>) are CSV-like files that contain performance information indexed by the running time. Raw-data files are named in the similar manner as with the meta-data:
-
-<p style="text-align:center"><tt>IOHprofiler_f[function ID]_DIM_[dimension]_i[instance number].[t|i|c]?dat</tt></p>
-Note that, using **IOHexperimenter**, you could produce four types of raw data files: <tt>*.dat</tt>, <tt>*.idat</tt>, <tt>*.tdat</tt>, and <tt>*.cdat</tt>, which share exactly the same format and only differ in the [logging events](#logging-events) at which data are recorded.
+<ul>
+    <li><a name="meta-data"><i>Meta-data</i></a> (e.g., <tt>IOHprofiler_f1.info</tt>) summarizes the algorithmic performance for each problem instance, with naming the following naming convention:
+    <p style="text-align:center"><tt>IOHprofiler_f&lt<code>function ID</code>&gt[_<code>function name</code>].info</tt></p>  
+    <ul style="margin-left:-15px;">
+        <li> Here, &lt<code>function ID</code>&gt is required. [_<code>function name</code>] is optional.
+        <li><code>function ID</code>: can take  either an integer or a string as its value.</li>
+        <li><code>function name</code> is only <i>optional</i> and is typically when the function ID is an integer.</li>
+    </ul>
+    </li>
+    <li><a name="raw-data"><i>Raw-data</i></a> (e.g., <tt>IOHprofiler_f1_DIM100.dat</tt>) are CSV-like files that contain performance information indexed by the running time. Raw-data files are named in the similar manner as with the meta-data:
+    <p style="text-align:center"><tt>IOHprofiler_f&lt<code>function ID</code>&gt_DIM_&lt<code>dimension</code>&gt.[t|i|c]dat</tt></p>
+    <ul style="margin-left:-15px;">
+        <li><code>dimension</code> must be an integer.</li>
+        <li><tt>[t|i|c]</tt> indicates three choices for this option.</li>
+        <li>Using <b>IOHexperimenter</b>, you could produce four types of raw data files: <tt>*.dat</tt>, <tt>*.idat</tt>, <tt>*.tdat</tt>, and <tt>*.cdat</tt>, which share exactly the same format and only differ in the <a name="logging-events">logging events</a> at which data are recorded.</li>
+    </ul>
+    </li>
+</ul>
 
 ## <a name="meta-data"></a>Meta-data
 
@@ -55,7 +65,8 @@ A three-line structure is used for each dimension:
 * **The first line** stores some meta-information of the experiment as (key, value) pairs. Note that such pairs are separated by commas. Three keys, <tt>funcId</tt>, <tt>DIM</tt>, and <tt>algId</tt> are **case-sensitive** and **mandatory**.
 * **The second line** always starts with a single <tt>%</tt>, indicating what follows this symbol should be the general comments from the user on this experiment. _By default, it is left empty_.
 * **The third line** starts with the relative path to the actual data file, followed by the meta-information obtained on each instance, with the following format: 
-<p style="text-align:center">$$\underbrace{1}_{\text{instance number}}:\underbrace{1953125}_{\text{running time}}|\;\underbrace{5.59000\text{e+02}}_{\text{best-so-far f(x)}}$$</p>
+<p style="text-align:center">$$\underbrace{1}_{\text{instance number}}:\underbrace{1953125}_{\text{\#FE}}|\;\underbrace{5.59000\text{e+02}}_{\text{best-so-far f(x)}}$$</p>
+$\text{\#FE}$ stands for the number of function evaluations.
 
 ## <a name="raw-data"></a>Raw-data
 
@@ -83,7 +94,7 @@ The format of raw data is illustrated by the example below (with dummy data reco
 Note that, the columns and header of this format is regulated as follows:
 
 1. **[mandatory]** each _separation line_ (the line that starts with <tt>"function evaluation"</tt>) serves as a separator among different independent runs of the same algorithm. Therefore, it is clear that the data block between two separation lines corresponds to a single run a triplet of (dimension, function, instance). The _double quotation_ (<tt>"</tt>) in the separation line shall always be kept, and it cannot be replaced with single quotation (<tt>'</tt>).
-2. **[mandatory]** <tt>"function evaluation"</tt> the current number of function evaluations. In the target-based tracking file (<tt>*.dat</tt>), each block of records (as divided by the separation line) **must** end with the last function evaluation. This is critical for calculating the correct _expected running time_ (ERT) value: please see the [logging events](#logging-events) section for the detail.
+2. **[mandatory]** <tt>"function evaluation"</tt> the current number of function evaluations. In the target-based tracking file (<tt>*.dat</tt>), **a block of records (representing one independent run, separated by the separation line) MUST end with the last function evaluation, if the target value is not reached in this run**. This is critical for calculating the correct _expected running time_ (ERT) value: please see the [logging events](#logging-events) section for the detail.
 3. **[mandatory]** <tt>"best-so-far f(x)"</tt> keeps track of the best function value observed since the beginning of one run.
 4. **[optional]** <tt>"current f(x)"</tt> stands for the function value observed when the corresponding number of function evaluations is consumed.
 5. **[optional]** The value stored under <tt>"current af(x)+b"</tt> and <tt>"best af(x)+b"</tt>, are so-called _transformed_ function values obtained on each function instances that are generated by translating the original function in its domain and co-domain.
@@ -110,7 +121,7 @@ The raw data file comes in its simplest form, if we only keep the mandatory item
 ### <a name="logging-events"></a>Logging Events
 It is important to decide on which occasions data of the running algorithm should be recorded. On the one hand, it is straightforward to register the information for every function evaluation. However, this might lead to a huge amount of data to store, where some degree of data redundancy would occur since an iterative optimization heuristic would not make progress on every function evaluation. On the other hand, it is also possible to bookkeep the information of the algorithm once in a while, when an "interesting" event happens during the optimization process, e.g., the best function value found so far is improved, or the algorithm yields a numerical error. To make a trade-off here, four different data files (one mandatory and three optional ones) are provided in **IOHexperimenter**:
 
-* **[Mandatory]** _Target-based tracking_ (<tt>*.dat</tt>): a record is collected if an improvement on the <tt>"best-so-far f(x)"</tt> value is observed. Note that this data file is always generated. In this case, each block of records in the raw data **must** end with the last function evaluation. This is critical for calculating the correct _expected running time_ (ERT) value: since a new line of record would be written if an improvement on the <tt>"best-so-far f(x)"</tt> is seen, the actual running time of an algorithm is never registered if this algorithm fails to reach the final target and terminates before depleting the budget of running time.
+* **[Mandatory]** _Target-based tracking_ (<tt>*.dat</tt>): a record is collected if an improvement on the <tt>"best-so-far f(x)"</tt> value is observed. Note that this data file is always generated. **In this case, a block of records (representing one independent run) in the raw data MUST end with the last function evaluation, if the target value is not reached in this run**. This is critical for calculating the correct _expected running time_ (ERT) value: *.dat is an improvement-based tracking file, where one new line is written only if it is improving <tt>"best-so-far f(x)"</tt>. If the final target is actually reached, the line of the final FE will be recorded as the algorithm terminates in the same time. If the final target is not reached, we might loose the final number of FEs since the algorithm can stagnate and hence no new line will be written.
 * **[Optional]** _Interval tracking_ (<tt>*.idat</tt>): a record is collected every $\tau$-th function evaluation, where the interval $\tau$ can be controlled by the user. By default $\tau$ is set to zero and the interval tracking functionality is turned off.
 * **[Optional]** _Time-based tracking_ (<tt>*.tdat</tt>): a record is collected when the user-specified checkpoints on the running time are reached. These checkpoints are evenly spaced in the $\log_{10}$ scale, taking the following two forms: 1) $\{v10^i \mid i = 0, 1,2, \ldots\}$ with $v\in \{1,2,5\}$ by default and 2) $\{10^{i / t} \mid i=0, 1,2,\ldots\}$ with $t=3$ by default.
 * **[Optional]** _Complete tracking_ (<tt>*.cdat</tt>): a record is collected for every function evaluation, providing the highest granularity. This functionality is also turned off by default, as it might incur a large volume of data.
