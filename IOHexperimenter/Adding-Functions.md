@@ -8,7 +8,7 @@ permalink: /IOHexperimenter/extension/
 
 ## <a name="adding-new-problems"></a>Add new problems
 
-To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Preparation/).
+To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Cpp//).
 Once it is succesfully installed, please navigate to the folder `src/problems` and create the `.hpp` file of your problem there.
 
 For this tutorial, we will use the `f_one_max_dummy1.hpp` file as an example. Use this file as the baseline for your own problem. 
@@ -16,15 +16,15 @@ For this tutorial, we will use the `f_one_max_dummy1.hpp` file as an example. Us
 The structure of any problem within the __IOHexperimenter__ is based on the `IOHprofiler_problem`-class, which is a template class which should be instantiated with the required variable type (`int` or `double`). The class contains the following variables:
 
 * `problem_id` (optional), will be assigned if the problem is added to a suite, otherwise default by 0.
-* `instance_id` (optional),  sets transformation methods on problems. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [transformation](/IOHexperimenter/Transformation).
+* `instance_id` (optional),  sets transformation methods on problems. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [here 2.2](https://arxiv.org/pdf/1810.05281.pdf).
 * `problem_name`
 * `problem_type` (optional)
 * `lowerbound`, is a vector of lowerbound for variables.
 * `upperbound`, is a vector of upperbound for variables.
 * `number_of_variables` (optional), is the dimension of the problem.
 * `number_of_objectives`, is only available as 1 now. The functionality of multi-objectives is under development.
-* `best_variables` (optional), is a vector of optimal solution, which is used to calculate the optimum. If both best_variables and optimum are not given, the optimum will be set as __DBL_MAX__ for maximization optimization, and as __-DBL_MAX__ for minimization optimization.
-* `optimal` (optional), is a vector of optimal objectives, but currently only single objective is supported. If both best_variables and optimum are not given, the optimum will be set as __DBL_MAX__ for maximization optimization, and as __-DBL_MAX__ for minimization optimization.
+* `best_variables` (optional), is a vector of optimal solution, which is used to calculate the optimum. If both best_variables and optimum are not given, the optimum will be set as `std::numeric_limits<double>::max()` for maximization optimization, and as `std::numeric_limits<double>::lowest()` for minimization optimization.
+* `optimal` (optional), is a vector of optimal objectives, but currently only single objective is supported. If both best_variables and optimum are not given, the optimum will be set as `std::numeric_limits<double>::max()` for maximization optimization, and as `std::numeric_limits<double>::lowest()` for minimization optimization.
 * `maximization_minimization_flag`, sets as 1 for maximization, otherwise for minimization.
 
 To create a problem of __IOHexperimenter__, the correct `IOHprofiler_problem<T>` needs to be inherited, and two functions need to be implemented: <i>construct functions</i> and <i>internel_evaluate</i>. Additionally, you can add pre-processing codes of allocating a problem in the virtual <i>prepare_problem</i> function, to make evluate process more efficient.
@@ -39,7 +39,7 @@ OneMax_Dummy1(int instance_id = DEFAULT_INSTANCE, int dimension = DEFAULT_DIMENS
   IOHprofiler_set_lowerbound(0);
   IOHprofiler_set_upperbound(1);
   IOHprofiler_set_best_variables(1);
-  Initilize_problem(dimension);
+  IOHprofiler_set_number_of_variables(dimension);
 }
 
 ~OneMax_Dummy1() {};
@@ -89,15 +89,15 @@ If you want to adapt specfic transformation methods for new added problems, meth
 
 [IOHprofiler_suite]() is the base `class` of suites of __IOHexperimenter__. The property variables of problems include:
 * `problem_id`, a vector containing the ids of the problems to be tested.
-* `instance_id`, a vector containing the ids of the instances of the problems. Intance ids specify which transformations will be applied to the problem. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [transformation](/IOHexperimenter/Transformation).
+* `instance_id`, a vector containing the ids of the instances of the problems. Intance ids specify which transformations will be applied to the problem. Methods of transformation are implemented in __IOHprofiler_transformation__ class, as described [here 2.2](https://arxiv.org/pdf/1810.05281.pdf).
 * `dimension`, a vector containing the dimensions of the problems.
 * `number_of_problems`
 * `number_of_instances`
 * `number_of_dimensions`
 
-__IOHexperimenter__ provides [__PBO_suite__](Benchmark/) for pseudo Boolean problems [__BBOB suite__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous problems of COCO, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.
+__IOHexperimenter__ provides [__PBO_suite__](/Suites/PBO/) for pseudo Boolean problems [__BBOB suite__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous problems of COCO, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.
 
-Taking the implementation of [__PBO_suite__](Benchmark/) as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed `problem_id`, `instance_id` and `dimension` should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.
+Taking the implementation of [__PBO_suite__](/Suites/PBO/) as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed `problem_id`, `instance_id` and `dimension` should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.
 
 ```cpp
 PBO_suite() {
@@ -117,6 +117,7 @@ PBO_suite() {
   IOHprofiler_set_suite_dimension(dimension);
   IOHprofiler_set_suite_name("PBO");
   registerProblem();
+  loadProblem();
 };
 
 PBO_suite(std::vector<int> problem_id, std::vector<int> instance_id, std::vector<int> dimension) {
@@ -143,6 +144,7 @@ PBO_suite(std::vector<int> problem_id, std::vector<int> instance_id, std::vector
   IOHprofiler_set_suite_dimension(dimension);
   IOHprofiler_set_suite_name("PBO");
   registerProblem();
+  loadProblem();
 }
 ```
 
