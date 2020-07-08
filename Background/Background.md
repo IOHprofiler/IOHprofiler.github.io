@@ -16,12 +16,11 @@ The class of algorithms that we are interested in are _Iterative Optimization He
 
 ## Selected Performance Indicators
 
-Unlike in classical algorithmics, %where arithmetic operations are counted to determine the running time of an algorithm, the most commonly studied performance measures in black-box optimization are based on the number of function evaluations. That is, instead of counting arithmetic operations or CPU time, we count the number of evaluations to determine the running time of an IOH.
+Unlike in classical algorithmics, the most commonly studied performance measures in black-box optimization are based on the number of function evaluations. That is, instead of counting arithmetic operations or CPU time, we count the number of evaluations to determine the running time of an IOH.
 
 As discussed above, many state-of-the-art IOHs are randomized in nature, therefore yielding random performance traces even when the underlying problem $f$ is deterministic. The performance space is therefore spanned by the number of evaluations, by the quality of the assessed solutions, and by the probability that the algorithm has found within a given budget of function evaluations a solution that is at least as good as a given quality threshold. The figure below illustrates this three-dimensional space.
 
 <center><img src="../assets/fig/performance-space.png"/></center>
-
 
 To define the performance measures covered by **IOHanalyzer** we use the following notation. 
 <ul> 
@@ -57,9 +56,9 @@ In order to assess the empirical performance of IOHs, some performance indicator
 	$$
 	\operatorname{PAR-c}(v)=\frac{1}{r}\sum_{i=1}^r \min\left\{T(A,f,d,B,v,i), cB\right\}, 
 	$$
-	i.e., the PAR-$c$ score is identical to the sample mean when all runs successfully identified a solution of quality at least $v$ within the given budget $B$, whereas non-successful runs are counted as $cB$. In **IOHanalyzer** we typically study the PAR-1 score, which, in abuse of notation, we also refer to as the mean.
+	i.e., the PAR-$c$ score is identical to the sample mean when all runs successfully identified a solution of quality at least $v$ within the given budget $B$, whereas non-successful runs are counted as $cB$. In <b>IOHanalyzer</b> we typically study the PAR-1 score, which, in abuse of notation, we also refer to as the mean.
     </li>
-	<li> Apart from mean values, we are often interested in quantiles, and in particular in the <i>sample median</i> of the $r$ values $\left\{T(A,f,d,B,v,i\}\right)_{i=1}^r$ and $\left\{V(A,f,d,b,i\}\right)_{i=1}^r$, respectively. By default, \iohana calculates the $2\%, 5\%, 10\%, 25\%, 50\%, 75\%, 90\%, 95\%$, and $98\%$ percentiles (denoted as $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$) for both running times and function values.
+	<li> Apart from mean values, we are often interested in quantiles, and in particular in the <i>sample median</i> of the $r$ values $\left\{T(A,f,d,B,v,i\}\right)_{i=1}^r$ and $\left\{V(A,f,d,b,i\}\right)_{i=1}^r$, respectively. By default, <b>IOHanalyzer</b> calculates the $2\%, 5\%, 10\%, 25\%, 50\%, 75\%, 90\%, 95\%$, and $98\%$ percentiles (denoted as $Q_{2\%}, Q_{5\%},\ldots, Q_{98\%}$) for both running times and function values.
     </li>
 	<li> We also study the <i>sample standard deviation</i> of the running times and function values, respectively.
     </li>

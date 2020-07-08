@@ -6,7 +6,7 @@ nav_order: 1
 permalink: /IOHanalyzer/R/
 --- 
 
-This part is ONLY meant for the user who would like program a bit, namely to use the data manipulation and plotting procedures _directly in R_.
+This part is ONLY meant for the user who would like program a bit (or at least type some command in the `R` console), namely to use the data manipulation and plotting procedures _directly in R_.
 
 ## <a name="Data structure and manipulation"></a>Data structure and manipulation
 Here, it is assumed that the data to be loaded follow exactly the aforementioned format regulation. A method `DataSetList` is provided to load the data:  

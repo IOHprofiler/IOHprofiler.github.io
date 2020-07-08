@@ -46,4 +46,4 @@ We acknowledge that:
 * The pseudo random number generator is implemented by NumBBO/COCO team in the
 Numerical Black-Box Optimization Benchmarking Framework (https://github.com/numbbo/coco).
 * The BBOB problem set is taken from the [COCO framework](https://github.com/numbbo/coco).
-* The W-model was originally proposed in~\cite{}.
+* The W-model was originally proposed in [Weise, Thomas, and Zijun Wu. "Difficult features of combinatorial optimization problems and the tunable W-model benchmark problem for simulating them." In _Proceedings of the Genetic and Evolutionary Computation Conference Companion_, pp. 1769-1776. 2018.](https://dl.acm.org/doi/10.1145/3205651.3208240).
