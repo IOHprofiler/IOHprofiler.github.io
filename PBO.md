@@ -1,11 +1,12 @@
 ---
 layout: page
-title: Pseudo-Boolean Optimization (PBO) Benchmark Suite
-permalink: /Suites/PBO/
+title: IOHproblem
+permalink: /IOHproblem
 --- 
 
-<h3><font color="red">This page is under construction!</font></h3>
-## Pseudo-Boolean Optimization (PBO) Benchmark Suite
+At this moment, **IOHproblem** consisted of the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$.
+
+## Pseudo-Boolean Optimization (PBO) Problem Set
 
 While we are interested in covering different types of fitness landscapes, we care much less about their actual embedding, and mainly seek to understand algorithms that are invariant under the problem representation. In the context of pseudo-Boolean optimization $f:\\{0,1\\}^n \to \mathbb{R}$, a well-recognized approach to request representation invariance is to demand that an algorithm shows the same or similar performance on any instance mapping each bit string $x \in \\{0,1\\}^n$ to the function value $f(\sigma(x \oplus z))$, where $z$ is an arbitrary bit string of length $n$, $\oplus$ denotes the bit-wise XOR function, and $\sigma(y)$ is to be read as the string $(y_{\sigma(1)},\ldots,y_{\sigma(n)})$ in which the entries are swapped according to the permutation $\sigma:[n] \to [n]$. Using these transformations, we obtain from one particular problem $f$ a whole set of instances $\\{ f(\sigma(\cdot \oplus z)) \mid z \in \\{0,1\\}^n, \sigma \text{ permutation of } [n] \\}$, all of which have fitness landscapes that are pairwise isomorphic. To allow future comparisons with non-ranking-based algorithms, objectives of instances are shifted by a multiplicative and an additive offset. That is, instead of receiving the values $f(\sigma(x\oplus z))$, only the transformed values $a f(\sigma(x\oplus z)) + b$ are made available to the algorithms.
 

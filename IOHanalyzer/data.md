@@ -14,6 +14,7 @@ Specific formats are required to load your benchmark data to **IOHanalyzer**. If
 then you could skip this section. Needless to say, **you are encouraged to convert your own benchmark data to the format regulated here!**
 
 ## File Structure
+
 In general, when benchmarking IOHs on several test functions/problems and dimensions, the raw data files are grouped by the test function and stored in sub-folders (the same with the **COCO/BBOB** data format). For example, one example file structure is outlined as follows:
 ![](/assets/fig/data.jpg)
 

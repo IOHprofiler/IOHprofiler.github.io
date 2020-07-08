@@ -38,10 +38,12 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-### Remarks ###
+### Contributions from other teams
 
 Note that some part of **IOHexperimenter** have been writthen by other teams.
 We acknowledge that:
 
 * The pseudo random number generator is implemented by NumBBO/COCO team in the
 Numerical Black-Box Optimization Benchmarking Framework (https://github.com/numbbo/coco).
+* The BBOB problem set is taken from the [COCO framework](https://github.com/numbbo/coco).
+* The W-model was originally proposed in~\cite{}.

@@ -1,8 +1,7 @@
 ---
 layout: page
-title: Algorithms
-parent: Background
-permalink: /Background/algorithms/
+title: IOHalgorithm
+permalink: /IOHalgorithm
 ---
 
 ## Algorithms
