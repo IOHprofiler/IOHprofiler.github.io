@@ -95,9 +95,9 @@ If you want to adapt specfic transformation methods for new added problems, meth
 * `number_of_instances`
 * `number_of_dimensions`
 
-__IOHexperimenter__ provides [__PBO_suite__](/Suites/PBO/) for pseudo Boolean problems [__BBOB suite__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous problems of COCO, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.
+__IOHexperimenter__ provides the PBO problem set for pseudo Boolean problems [__BBOB suite__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous problems of COCO, but it is also easy to add your own suite. Creating a suite is done by registering problems in the suite and assigning ids to them.
 
-Taking the implementation of [__PBO_suite__](/Suites/PBO/) as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed `problem_id`, `instance_id` and `dimension` should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.
+Taking the implementation of the PBO problem set as an example, <i>constructor functions</i> are as below. In the constructor functions, the range of allowed `problem_id`, `instance_id` and `dimension` should be identified. In addition, <i>registerProblem()</i> must be included in the constructor functions.
 
 ```cpp
 PBO_suite() {
