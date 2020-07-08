@@ -1,7 +1,7 @@
 ---
 layout: page
 title: IOHproblem
-permalink: /IOHproblem
+permalink: /IOHproblem/
 --- 
 
 At this moment, **IOHproblem** consisted of the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$.

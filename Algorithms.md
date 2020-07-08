@@ -1,7 +1,7 @@
 ---
 layout: page
 title: IOHalgorithm
-permalink: /IOHalgorithm
+permalink: /IOHalgorithm/
 ---
 
 ## Algorithms
