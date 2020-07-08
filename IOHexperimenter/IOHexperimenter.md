@@ -17,16 +17,15 @@ This is the **benchmarking framework** for <b>I</b>terative <b>O</b>ptimization 
 
 <b>IOHexperimenter</b> is available for:
 
-* `C++` on [GitHub](https://github.com/IOHprofiler)
-* `R`, as a package on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R) (the stabble release will be pushed to CRAN soon)
-* `Python` (under development)
-* `Java` (under development)
+* `C++` on [GitHub](https://github.com/IOHprofiler).
+* `R`, as a package on [CRAN](https://CRAN.R-project.org/package=IOHexperimenter). Also on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R).
+* `Python`, as a [pip package](https://pypi.org/project/IOHexperimenter/). Also on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/python-interface).
 
-## Prerequisite
+## Prerequisites
 
 Before installing <b>IOHexperimenter</b>, it is necessary to install the following dependencies:
 
-* `C++` (tested on `gcc 5.4.0`)
+* A `C++` compiler (tested with `gcc 5.4.0`)
 
 ## Links
 
