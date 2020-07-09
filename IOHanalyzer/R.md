@@ -6,7 +6,7 @@ nav_order: 1
 permalink: /IOHanalyzer/R/
 --- 
 
-This part is ONLY meant for the user who would like program a bit (or at least type some command in the `R` console), namely to use the data manipulation and plotting procedures _directly in R_.
+This part is meant for the user who would like a more customizable analysis and visualization experience by manipulating the data directly in an `R`-environment.
 
 ## <a name="Data structure and manipulation"></a>Data structure and manipulation
 Here, it is assumed that the data to be loaded follow exactly the aforementioned format regulation. A method `DataSetList` is provided to load the data:  
@@ -331,7 +331,7 @@ Finally, it is also crucial to look at the Empirical Cumulative Distribution fun
 
 ![RT-ecdf-multi-target]({{ site.url }}/assets/fig/RT.ECDF_Single_Func.jpg)
 
-+ `Plot.RT.ECDF_Multi_Func`: it, in addition, aggregates different target values over all test function in a data set. To demonstrate its usage, let's take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a *list* object. The resulting plot is shown i.
++ `Plot.RT.ECDF_Multi_Func`: This ECDF plot also aggregates different target values over all test function in the data set. To demonstrate its usage, let's take the data set on 100D and check the overview of the function values. Then three target values are chosen manually for each function, which are collected in a *list* object. The resulting plot is shown in the figure below.
 
 ```r
 > ds <- subset(dsList, DIM == 100)

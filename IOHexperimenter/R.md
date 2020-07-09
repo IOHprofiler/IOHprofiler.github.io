@@ -53,7 +53,7 @@ And the following functions:
 * target_hit()
 * set_parameters()
 
-Several example algorithms with corresponding wrappers have been implemented (in the `algorithms.R` file). These algorithms are:
+Several example algorithms with corresponding wrappers have been implemented (in the `algorithms.R` file). These algorithms are (see [this page](IOHalagorithm for more details on their definitions):
 - IOH_random_search (can work on functions from either PBO or COCO suites)
 - IOH_random_local_search (only for PBO functions)
 - IOH_self_adaptive_GA (only for PBO functions)

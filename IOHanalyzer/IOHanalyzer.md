@@ -12,10 +12,9 @@ This is the __performance analyzer__ of **I**terative **O**ptimization **H**euri
 
 It _provides_:
 
-* a web-based Graphical User Interface (GUI),
-* interactive plotting,
-* statistical evaluation,
-* report generation, and
+* A web-based Graphical User Interface (GUI).
+* Interactive plotting in two perspectives (fixed-budget and fixed-target) of both performance and tracked parameters.
+* Statistical evaluation methods.
 * `R` programming interfaces in the backend.
 
 It _takes as input_:
@@ -38,7 +37,7 @@ It is _available through_:
 
 ### Software dependency
 
-* **[mandatory]** `R` As __IOHanalyzer__ is written as a `R` package, the `R` environment has to be installed first. The binary file and installation manual for R can be found here [https://cran.r-project.org/](https://cran.r-project.org/).
+* **[mandatory]** `R` As __IOHanalyzer__ is written as a `R` package, the `R` environment has to be installed first. The binary file and installation manual for R can be found at [https://cran.r-project.org/](https://cran.r-project.org/).
 * **[optional]** `orca` required to download _plotly_ figures. Please see [https://github.com/plotly/orca](https://github.com/plotly/orca) for the installation instruction.
 
 ### Stable version
