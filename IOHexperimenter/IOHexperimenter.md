@@ -12,8 +12,10 @@ This is the **benchmarking framework** for <b>I</b>terative <b>O</b>ptimization 
 * A framework for straightforward benchmarking of any iterative optimization heuristic
 * A generic framework to generate benchmarking suite for the optimization task you're insterested in,
 * A _Pseudo-Boolean Optimization_ (PBO) problem set, containing 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
-* The integration of 24 noiseless, single-objective _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$. <b>We directly take the <tt>C</tt> implementation of BBOB test functions from [https://github.com/numbbo/coco](https://github.com/numbbo/coco), with some modifications to accommodate our framework.</b>
-* Logging methods to effortlessly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options
+* The integration of 24 noiseless, single-objective _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$. <b>We adopt the `C` implementation of BBOB test functions from [https://github.com/numbbo/coco](https://github.com/numbbo/coco), with some modifications to accommodate our framework.</b>
+* Logging methods to effortlessly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options.
+
+**If you are interested in the coding details or would like to contribute to the `C++` code, please check out the [documentation](https://iohprofiler.github.io/IOHexperimenter) of the code base.**
 
 <b>IOHexperimenter</b> is available for:
 
