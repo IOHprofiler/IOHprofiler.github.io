@@ -20,7 +20,7 @@ The composition of **IOHprofiler** and the coordinations of its components are d
 [__IOHexperimenter__](IOHexp/) provides,
 
 * A generic framework to generate benchmarking suite for the optimization task you're insterested in.
-* A _Pseudo-Boolean Optimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$.
+* A _Pseudo-Boolean Optimization_ ([PBO](/IOHproblem)) benchmark suite, containing 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$.
 * The integration of 24 _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.
 
 [__IOHanalyzer__](IOHanalyzer/) provides:
