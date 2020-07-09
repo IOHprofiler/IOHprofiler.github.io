@@ -7,7 +7,7 @@ permalink: /Background
 
 ## Iterative Optimization Heuristics
 
-We study the optimization of a problem $f\colon \mathcal{S} \rightarrow \mathbb{R}$, i.e., we assume our problem to be a single-objective, real-valued objective function, defined over a search space $\mathcal{S}$. We do not make any assumption on the set $\mathcal{S}$; it can be discrete or continuous, constrained or unconstrained. 
+We study the optimization of a problem $f\colon \mathcal{S} \rightarrow \mathbb{R}$, i.e., we assume our problem to be a single-objective, real-valued objective function, defined over a search space $\mathcal{S}$. We do not make any assumption on the set $\mathcal{S}$; it can be discrete or continuous, constrained or unconstrained.
 We do not require that $f$ is explicitly modeled, i.e., $f$ can very well be a _black-box optimization problem_, for which we are able to evaluate the quality of points $x \in \mathcal{S}$ -- e.g., through computer simulations or through physical experiments -- but for which we do not have any other information. Intermediate _grey-box_ settings are also possible, e.g., when some information about the variable interaction is known. To ease notation, we nevertheless speak of black-box optimization in such cases, i.e., even when some a priori information about the problem $f$ is available. We emphasize that the query-based optimization algorithms studied in our work can be competitive even when the problem $f$ is explicitly known.
 
 <center><img src="../assets/fig/IOH.png"/></center>
