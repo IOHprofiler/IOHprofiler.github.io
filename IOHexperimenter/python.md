@@ -2,7 +2,7 @@
 layout: page
 title: IOHexperimenter - Python Interface
 parent: IOHexperimenter
-permalink: /IOHexperimenter/python/
+permalink: /IOHexp/python/
 --- 
 
 

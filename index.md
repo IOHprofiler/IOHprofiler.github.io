@@ -8,7 +8,7 @@ nav_order: 2
 
 **IOHprofiler**, a benchmarking platform for evaluating the performance of _iterative optimization heuristics_ (IOHs), e.g., Evolutionary Algorithms and Swarm-based Algorithms. We aim to the integrate various elements of the entire benchmarking pipeline, ranging from problem (instance) generators and modular algorithm frameworks over automated algorithm configuration techniques and feature extraction methods to the actual experimentation, data analysis, and visualization. It consists of the following major components:
 
-* [__IOHexperimenter__](IOHexperimenter/) for generating benchmarking suites, which produce experiment data,
+* [__IOHexperimenter__](IOHexp/) for generating benchmarking suites, which produce experiment data,
 * [__IOHanalyzer__](IOHanalyzer/) for the statistical analysis and visualization of the experiment data,
 * [__IOHproblem__](IOHproblem) for providing a collection of test functions.
 * [__IOHdata__](IOHdata) for hosting the benchmarking data sets from __IOHexperimenter__ as well as other platforms, e.g., _BBOB/COCO_ and _Nevergrad_ [under construction], and
@@ -17,7 +17,7 @@ nav_order: 2
 The composition of **IOHprofiler** and the coordinations of its components are depicted below:
 ![](/assets/fig/overview.png)
 
-[__IOHexperimenter__](IOHexperimenter/) provides,
+[__IOHexperimenter__](IOHexp/) provides,
 
 * a generic framework to generate benchmarking suite for the optimization task you're insterested in,
 * a _Pseudo-Boolean Optimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and

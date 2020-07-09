@@ -2,7 +2,7 @@
 layout: page
 title: IOHexperimenter - R Interface
 parent: IOHexperimenter
-permalink: /IOHexperimenter/R/
+permalink: /IOHexp/R/
 --- 
 
 

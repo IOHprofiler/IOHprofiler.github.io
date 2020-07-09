@@ -2,7 +2,7 @@
 layout: page
 title: IOHexperimenter
 has_children: true
-permalink: /IOHexperimenter/
+permalink: /IOHexp/
 description: Experimenting IOHs
 ---
 
