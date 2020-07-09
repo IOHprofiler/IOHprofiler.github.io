@@ -4,7 +4,8 @@ title: IOHproblem
 permalink: /IOHproblem/
 --- 
 
-At this moment, **IOHproblem** consists of the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 test problems of the kind $f\colon \{0,1\}^d \rightarrow \mathbb{R}$. The selection of PBO problems is suggested in [Doerr, Carola, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1145/3319619.3326810).
+At this moment, **IOHproblem** consists of the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 test problems of the kind $f\colon \{0,1\}^d \rightarrow \mathbb{R}$. The selection of PBO problems is suggested in
+[Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1145/3319619.3326810).
 
 ## Pseudo-Boolean Optimization (PBO) Problem Set
 
@@ -25,16 +26,19 @@ Note that, for the continuous optimization problem, this has been practiced in t
 ### F1: OneMax
 
 $$\text{OM}:\{0,1\}^n \rightarrow [0..n], x \mapsto \sum_{i=1}^n{x_i}.$$
+
 The problem has a very smooth and non-deceptive fitness landscape. Due to the well-known coupon collector effect, it is relatively easy to make progress when the function values are small, and the probability to obtain an improving move decreases considerably with increasing function value.
 
 ### F2: LeadingOnes
 
 $$\text{LO}:\{0,1\}^n \to [0..n], x\mapsto \max \{i \in [0..n] \mid \forall {j} \le {i}: x_j=1\} = \sum_{i=1}^n{\prod_{j=1}^i{x_i}},$$
+
 which counts the number of initial ones.
 
 ### F3: A Linear Function with Harmonic Weights
 
 $$f:\{0,1\}^n \to \mathbb{R}, x \mapsto \sum_{i} i x_i$$
+
 The problem is a linear function with harmonic weights.
 
 ### F4 - F17: W-model-transformed OneMax and LeadingOnes
@@ -46,7 +50,7 @@ The W-model comprises 4 basic transformations, each coming with different instan
 * **Epistasis** $W(\ast,\ast,\nu,\ast)$: The idea of epistasis is to introduce local perturbations to the bit strings. To this end, a string $x=(x_1,\ldots,x_n)$ is divided into subsequent blocks of size $\nu$. Using a permutation $e_{\nu}:\{0,1\}^{\nu} \to \{0,1\}^{\nu}$, each substring $(x_{(i-1)\nu+1},\ldots,x_{i\nu})$ is mapped to another string $(y_{(i-1)\nu+1},\ldots,y_{i\nu})=e_{\nu}((x_{(i-1)\nu+1},\ldots,x_{i\nu}))$. The permutation $e_{\nu}$ is chosen in a way that Hamming-1 neighbors $u,v \in \{0,1\}^{\nu}$ are mapped to strings of Hamming distance at least $\nu-1$. In our evaluation, we use $\nu=4$ only.
 * **Fitness perturbation** $W(\ast,\ast,\ast,r)$. With this transformation we can determine the ruggedness and deceptiveness of a function. Unlike the previous transformations, this perturbation operates on the function values, not on the bit strings. To this end, a *ruggedness* function $r:\{f(x) \mid {x} \in \{0,1\}^n \}=:V \to {V}$ is chosen. The new function value of a string $x$ is then set to $r(f(x))$ , so that effectively the problem to be solved by the algorithm becomes $r \circ f$. We use the following three ruggedness functions.
   * $r_1:[0..s] \to [0..\lceil{s/2}\rceil+1$ with $r_1(s)= \lceil {s/2} \rceil +1$ and $r_1(i)=\lfloor {i/2} \rfloor+1$ for $i<s$ and even s, and $r_1(i)=\lceil {i/2} \rceil+1$ for $i<s$ and odd $s$. This function maintains the order of the search points
-  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv {s  {mod}  2}$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level. 
+  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv {s  {mod}  2}$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level.
   * $r_3:[0..s] \to [0..s]$ with $r_3(s)=s$ and $r_3(s-5j+k)=s-5j+(4-k)$ for all $j \in {[s/5]}$ and $k {\in} [0..4]$ and $r_3(k)=s - (5\lfloor {s/5} \rfloor - 1 )- k$ for $k \in [0..s - 5\lfloor {s/5} \rfloor -1]$. With this function the problems become quite deceptive, since the distance between two local optima implies a difference of $5$ in the function values.
 
 F4-F17 present superpositions of individual W-model transformations to the OneMax (F1) and the LeadingOnes (F2) problem. Precisely, F4-F17 are
@@ -82,7 +86,7 @@ In PBO, we consider three instances of lattices: the one-dimensional _ring_ (F19
 
 ### F22: Maximum Independent Vertex Set
 
-Given a graph $G=([n],E)$, an independent vertex set is a subset of vertices where no two vertices are  are direct neighbors. A maximum independent vertex set (MIVS) is defined as an independent vertex set $V^{\prime} \subset [n]$ having largest possible size. Using the standard binary encoding $V'=\{i\in[n]\;|\;x_i= 1\}$, solving MIVS is equvilant to maximizing the following function:
+Given a graph $G=([n],E)$, an independent vertex set is a subset of vertices where no two vertices are  are direct neighbors. A maximum independent vertex set (MIVS) is defined as an independent vertex set $V' \subset [n]$ having largest possible size. Using the standard binary encoding $V'=\{i\in[n]|x_i = 1\}$, solving MIVS is equivalent to maximizing the following function:
 
 $$\text{MIVS}\colon x\mapsto \sum_i x_i - n\sum_{i,j} x_i x_j e_{ij} = 0.$$
 
@@ -90,7 +94,9 @@ $$\text{MIVS}\colon x\mapsto \sum_i x_i - n\sum_{i,j} x_i x_j e_{ij} = 0.$$
 
 The N-queens problem (NQP) is defined as the task to place N queens on an ${N}\times{N}$ chessboard in such a way that they cannot attack each other. The figure below provides an illustration for the 8-queens problem. Notably, the NQP is actually an instance  of the  MIVS  problem– when consideringa graph on which all possible queen-attacks are defined as edge.
 
+<center>
 ![The 8-Queens Problem](/assets/fig/8QP.png)
+</center>
 
 ### F24: Concatenated Trap
 
