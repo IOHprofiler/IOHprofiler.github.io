@@ -4,7 +4,7 @@ title: IOHproblem
 permalink: /IOHproblem/
 --- 
 
-At this moment, **IOHproblem** consists of the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 test problems of the kind $f\colon \{0,1\}^d \rightarrow \mathbb{R}$. The selection of PBO problems is suggested in
+At this moment, we have designed and implemented the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 real-valued test problems on $\{0,1\}^n$. The selection of PBO problems is suggested in
 [Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1145/3319619.3326810).
 
 ## Pseudo-Boolean Optimization (PBO) Problem Set
@@ -94,9 +94,7 @@ $$\text{MIVS}\colon x\mapsto \sum_i x_i - n\sum_{i,j} x_i x_j e_{ij} = 0.$$
 
 The N-queens problem (NQP) is defined as the task to place N queens on an ${N}\times{N}$ chessboard in such a way that they cannot attack each other. The figure below provides an illustration for the 8-queens problem. Notably, the NQP is actually an instance  of the  MIVS  problem– when consideringa graph on which all possible queen-attacks are defined as edge.
 
-<center>
-![The 8-Queens Problem](/assets/fig/8QP.png)
-</center>
+<center><img src="/assets/fig/8QP.png"/></center>
 
 ### F24: Concatenated Trap
 
