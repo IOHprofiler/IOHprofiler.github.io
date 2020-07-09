@@ -11,7 +11,7 @@ nav_order: 2
 * [__IOHexperimenter__](IOHexp/) for generating benchmarking suites, which produce experiment data,
 * [__IOHanalyzer__](IOHanalyzer/) for the statistical analysis and visualization of the experiment data,
 * [__IOHproblem__](IOHproblem) for providing a collection of test functions.
-* [__IOHdata__](IOHdata) for hosting the benchmarking data sets from __IOHexperimenter__ as well as other platforms, e.g., _BBOB/COCO_ and _Nevergrad_ [under construction], and
+* [__IOHdata__](IOHdata) for hosting the benchmarking data sets from __IOHexperimenter__ as well as other platforms, e.g., [_BBOB/COCO_](https://github.com/numbbo/coco) and [_Nevergrad_](https://github.com/facebookresearch/nevergrad).
 * [__IOHalgorithm__](IOHalgorithm) for efficient implemention of various classic optimization algorithms.
   
 The composition of **IOHprofiler** and the coordinations of its components are depicted below:
@@ -19,18 +19,16 @@ The composition of **IOHprofiler** and the coordinations of its components are d
 
 [__IOHexperimenter__](IOHexp/) provides,
 
-* a generic framework to generate benchmarking suite for the optimization task you're insterested in,
-* a _Pseudo-Boolean Optimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 23 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
-* the integration of 24 _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.
+* A generic framework to generate benchmarking suite for the optimization task you're insterested in.
+* A _Pseudo-Boolean Optimization_ ([PBO](/Suites/PBO/)) benchmark suite, containing 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$.
+* The integration of 24 _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$.
 
 [__IOHanalyzer__](IOHanalyzer/) provides:
 
-* fixed-target analysis,
-* fixed-budget analysis,
-* a web-based interface to analyze and visualize the empirical performance of IOHs,
-* interactive plot,
-* statistical evaluation, and
-* `R` programming interfaces in the backend.
+* Performance analysis in both a <i>fixed-target</i> and <i>fixed-budget</i> perspective
+* A web-based interface to interactively analyze and visualize the empirical performance of IOHs.
+* Statistical evaluation of algorithm performance.
+* `R` programming interfaces in the backend for even more customizable analysis.
 
 ## Links
 
