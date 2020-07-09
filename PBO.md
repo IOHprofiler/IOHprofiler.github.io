@@ -4,15 +4,15 @@ title: IOHproblem
 permalink: /IOHproblem/
 --- 
 
-At this moment, we have designed and implemented the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 real-valued test problems on $\{0,1\}^n$. The selection of PBO problems is suggested in
+At this moment, we have designed and implemented the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 real-valued test problems on $\\{0,1\\}^n$. The selection of PBO problems is suggested in
 [Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1145/3319619.3326810).
 
 ## Pseudo-Boolean Optimization (PBO) Problem Set
 
-In general, for a pseudo-Boolean function $f\colon \{0,1\}^n \rightarrow \mathbb{R}$, we proposed to creare an _instance_ of it using the following transformation $af(\sigma(x \oplus z)) + b$, in which,
+In general, for a pseudo-Boolean function $f\colon \\{0,1\\}^n \rightarrow \mathbb{R}$, we proposed to creare an _instance_ of it using the following transformation $af(\sigma(x \oplus z)) + b$, in which,
 
-* $z$ is an arbitrary bit string of length $n$ and $\oplus$ denotes the bit-wise XOR function ("translation" in $\{0,1\}^n$),
-* $\sigma:[n] \to [n], y \mapsto (y_{\sigma(1)},\ldots,y_{\sigma(n)})$ is a random permutation on the bit string ((loosely speaking, "rotation" in $\{0,1\}^n$)), and
+* $z$ is an arbitrary bit string of length $n$ and $\oplus$ denotes the bit-wise XOR function ("translation" in $\\{0,1\\}^n$),
+* $\sigma:[n] \to [n], y \mapsto (y_{\sigma(1)},\ldots,y_{\sigma(n)})$ is a random permutation on the bit string ((loosely speaking, "rotation" in $\\{0,1\\}^n$)), and
 * $a,b$ are the multiplicative and the additive offset, respectively.
   
 Intuitively, such transformations are devised to test the invariance property of an optimization algorithm,
@@ -47,10 +47,10 @@ The W-model comprises 4 basic transformations, each coming with different instan
 
 * **Dummy variables** $W(k,\ast,\ast,\ast)$: a reduction mapping each string $(x_1, \ldots, x_n)$ to a substring $(x_{i_1}, \ldots, x_{i_k})$ for randomly chosen, pairwise different $i_1,\ldots, i_k \in [n]$.
 * **Neutrality** $W(\ast,\mu,\ast,\ast)$: The bit string $(x_1,\ldots,x_n)$ is reduced to a string$(y_1,\ldots,y_m)$ with $m:=\frac{n}{\mu}$, where $\mu$ is a parameter of the transformation. For each $i \in [m]$ the value of $y_i$ is the majority of the bit values in a size-$\mu$ substring of $x$. More precisely, $y_i=1$ if and only if there are at least $\frac{\mu}{2}$ ones in the substring $(x_{(i-1)\mu+1},x_{(i-1)\mu+2},\ldots,x_{i\mu})$. When $\frac{n}{\mu} \notin \mathbb{N}$, the last bits of $x$ are $y$. In our assessment, we regard only the case $\mu=3$.
-* **Epistasis** $W(\ast,\ast,\nu,\ast)$: The idea of epistasis is to introduce local perturbations to the bit strings. To this end, a string $x=(x_1,\ldots,x_n)$ is divided into subsequent blocks of size $\nu$. Using a permutation $e_{\nu}:\{0,1\}^{\nu} \to \{0,1\}^{\nu}$, each substring $(x_{(i-1)\nu+1},\ldots,x_{i\nu})$ is mapped to another string $(y_{(i-1)\nu+1},\ldots,y_{i\nu})=e_{\nu}((x_{(i-1)\nu+1},\ldots,x_{i\nu}))$. The permutation $e_{\nu}$ is chosen in a way that Hamming-1 neighbors $u,v \in \{0,1\}^{\nu}$ are mapped to strings of Hamming distance at least $\nu-1$. In our evaluation, we use $\nu=4$ only.
-* **Fitness perturbation** $W(\ast,\ast,\ast,r)$. With this transformation we can determine the ruggedness and deceptiveness of a function. Unlike the previous transformations, this perturbation operates on the function values, not on the bit strings. To this end, a *ruggedness* function $r:\{f(x) \mid {x} \in \{0,1\}^n \}=:V \to {V}$ is chosen. The new function value of a string $x$ is then set to $r(f(x))$ , so that effectively the problem to be solved by the algorithm becomes $r \circ f$. We use the following three ruggedness functions.
+* **Epistasis** $W(\ast,\ast,\nu,\ast)$: The idea of epistasis is to introduce local perturbations to the bit strings. To this end, a string $x=(x_1,\ldots,x_n)$ is divided into subsequent blocks of size $\nu$. Using a permutation $e_{\nu}:\\{0,1\\}^{\nu} \to \\{0,1\\}^{\nu}$, each substring $(x_{(i-1)\nu+1},\ldots,x_{i\nu})$ is mapped to another string $(y_{(i-1)\nu+1},\ldots,y_{i\nu})=e_{\nu}((x_{(i-1)\nu+1},\ldots,x_{i\nu}))$. The permutation $e_{\nu}$ is chosen in a way that Hamming-1 neighbors $u,v \in \\{0,1\\}^{\nu}$ are mapped to strings of Hamming distance at least $\nu-1$. In our evaluation, we use $\nu=4$ only.
+* **Fitness perturbation** $W(\ast,\ast,\ast,r)$. With this transformation we can determine the ruggedness and deceptiveness of a function. Unlike the previous transformations, this perturbation operates on the function values, not on the bit strings. To this end, a *ruggedness* function $r:\\{f(x) \mid {x} \in \{0,1\}^n \\}=:V \to {V}$ is chosen. The new function value of a string $x$ is then set to $r(f(x))$ , so that effectively the problem to be solved by the algorithm becomes $r \circ f$. We use the following three ruggedness functions.
   * $r_1:[0..s] \to [0..\lceil{s/2}\rceil+1$ with $r_1(s)= \lceil {s/2} \rceil +1$ and $r_1(i)=\lfloor {i/2} \rfloor+1$ for $i<s$ and even s, and $r_1(i)=\lceil {i/2} \rceil+1$ for $i<s$ and odd $s$. This function maintains the order of the search points
-  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv {s  {mod}  2}$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level.
+  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv {s  { mod }  2}$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level.
   * $r_3:[0..s] \to [0..s]$ with $r_3(s)=s$ and $r_3(s-5j+k)=s-5j+(4-k)$ for all $j \in {[s/5]}$ and $k {\in} [0..4]$ and $r_3(k)=s - (5\lfloor {s/5} \rfloor - 1 )- k$ for $k \in [0..s - 5\lfloor {s/5} \rfloor -1]$. With this function the problems become quite deceptive, since the distance between two local optima implies a difference of $5$ in the function values.
 
 F4-F17 present superpositions of individual W-model transformations to the OneMax (F1) and the LeadingOnes (F2) problem. Precisely, F4-F17 are
@@ -86,7 +86,7 @@ In PBO, we consider three instances of lattices: the one-dimensional _ring_ (F19
 
 ### F22: Maximum Independent Vertex Set
 
-Given a graph $G=([n],E)$, an independent vertex set is a subset of vertices where no two vertices are  are direct neighbors. A maximum independent vertex set (MIVS) is defined as an independent vertex set $V' \subset [n]$ having largest possible size. Using the standard binary encoding $V'=\{i\in[n]|x_i = 1\}$, solving MIVS is equivalent to maximizing the following function:
+Given a graph $G=([n],E)$, an independent vertex set is a subset of vertices where no two vertices are  are direct neighbors. A maximum independent vertex set (MIVS) is defined as an independent vertex set $V' \subset [n]$ having largest possible size. Using the standard binary encoding $V' =\{i \in[n] \colon x_i = 1\}$, solving MIVS is equivalent to maximizing the following function:
 
 $$\text{MIVS}\colon x\mapsto \sum_i x_i - n\sum_{i,j} x_i x_j e_{ij} = 0.$$
 
