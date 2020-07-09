@@ -39,8 +39,8 @@ The composition of **IOHprofiler** and the coordinations of its components are d
   * Algorithms: [https://github.com/IOHprofiler/IOHalgorithm](https://github.com/IOHprofiler/IOHalgorithm)
   * Performance data: (for the time being, these are available via the web-interface at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), or at [https://github.com/IOHprofiler/IOHdata](https://github.com/IOHprofiler/IOHdata))
 * __IOHanalyzer Online Service__: [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl)
-* __IOHanalyzer Documentation__: [will be ready soon](https://arxiv.org/abs/1810.05281)
-* __General Documentation__: [Documentation on arXiv](https://arxiv.org/abs/1810.05281)
+* __IOHanalyzer Documentation__: [https://arxiv.org/abs/2007.03953](https://arxiv.org/abs/2007.03953)
+* __General Documentation__: [https://arxiv.org/abs/1810.05281](https://arxiv.org/abs/1810.05281)
 * __Bug reports__:
   * __IOHanalyzer__: [https://github.com/IOHprofiler/IOHanalyzer/issues](https://github.com/IOHprofiler/IOHanalyzer/issues)
   * __IOHexperimenter__: [https://github.com/IOHprofiler/IOHexperimenter/issues](https://github.com/IOHprofiler/IOHexperimenter/issues)
