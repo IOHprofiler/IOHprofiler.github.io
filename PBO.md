@@ -5,7 +5,7 @@ permalink: /IOHproblem/
 --- 
 
 At this moment, we have designed and implemented the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 real-valued test problems on $\\{0,1\\}^n$. The selection of PBO problems is suggested in
-[Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1145/3319619.3326810).
+[Carola Doerr, Furong Ye, Naama Horesh, Hao Wang, Ofer M. Shir, and Thomas Bäck. "Benchmarking discrete optimization heuristics with IOHprofiler." _Applied Soft Computing_ 88 (2020): 106027](https://doi.org/10.1016/j.asoc.2019.106027).
 
 ## Pseudo-Boolean Optimization (PBO) Problem Set
 
