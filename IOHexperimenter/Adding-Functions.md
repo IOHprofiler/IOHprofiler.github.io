@@ -2,13 +2,13 @@
 layout: page
 title: Extending IOHexperimenter
 parent: IOHexperimenter
-permalink: /IOHexperimenter/extension/
+permalink: /IOHexp/extension/
 --- 
 
 
 ## <a name="adding-new-problems"></a>Add new problems
 
-To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexperimenter/Cpp//).
+To add your own problem to the __IOHexperimenter__, first make sure that the required preparation steps have been followed, as described [Here](/IOHexp/Cpp//).
 Once it is succesfully installed, please navigate to the folder `src/problems` and create the `.hpp` file of your problem there.
 
 For this tutorial, we will use the `f_one_max_dummy1.hpp` file as an example. Use this file as the baseline for your own problem. 

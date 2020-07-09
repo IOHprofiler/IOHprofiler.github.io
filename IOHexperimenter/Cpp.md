@@ -2,7 +2,7 @@
 layout: page
 title: IOHexperimenter - C++ Interface
 parent: IOHexperimenter
-permalink: /IOHexperimenter/Cpp/
+permalink: /IOHexp/Cpp/
 --- 
 
 ## Compilation the package
@@ -65,7 +65,7 @@ logger.track_problem(om);
 
 ## <a name="using-suites"></a>Using pre-installed Benchmark Suites
 
-Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties together makes it easier to test an algorithm on a set of problems. Currently, two pre-defined suites are available: [__PBO__](/Suites/PBO), consisting of 23 __pseudo Boolean problems__, and [__BBOB__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf), consisting of 24 __real-valued problems__. To find out how to create your own suites, please visit [this page](/IOHexperimenter/extension/#adding-new-suites).
+Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties together makes it easier to test an algorithm on a set of problems. Currently, two pre-defined suites are available: [__PBO__](/Suites/PBO), consisting of 23 __pseudo Boolean problems__, and [__BBOB__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf), consisting of 24 __real-valued problems__. To find out how to create your own suites, please visit [this page](/IOHexp/extension/#adding-new-suites).
 
 An example of testing an evolutionary algorithm with mutation operator on the __PBO__ suite is implemented in `IOHprofiler_run_suite.cpp`. __PBO__ suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:
 ```cpp
