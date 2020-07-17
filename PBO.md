@@ -15,15 +15,13 @@ At this moment, we have designed and implemented the _Pseudo-Boolean Optimizatio
                Hao Wang and
                Ofer M. Shir and
                Thomas B{\"{a}}ck},
-  title     = {{Benchmarking discrete optimization heuristics with IOHprofiler}},
+  title     = {Benchmarking discrete optimization heuristics with IOHprofiler},
   journal   = {Appl. Soft Comput.},
   volume    = {88},
   pages     = {106027},
   year      = {2020},
   url       = {https://doi.org/10.1016/j.asoc.2019.106027},
-  doi       = {10.1016/j.asoc.2019.106027},
-  biburl    = {https://dblp.org/rec/journals/asc/DoerrYHWSB20.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
+  doi       = {10.1016/j.asoc.2019.106027}
 }
 ```
 
