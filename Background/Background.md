@@ -20,7 +20,12 @@ Unlike in classical algorithmics, the most commonly studied performance measures
 
 As discussed above, many state-of-the-art IOHs are randomized in nature, therefore yielding random performance traces even when the underlying problem $f$ is deterministic. The performance space is therefore spanned by the number of evaluations, by the quality of the assessed solutions, and by the probability that the algorithm has found within a given budget of function evaluations a solution that is at least as good as a given quality threshold. The figure below illustrates this three-dimensional space.
 
-<center><img src="../assets/fig/performance-space.png"/></center>
+<center>
+<figure>
+	<img src="../assets/fig/performance-space.png"/>
+	<figcaption style="text-align: justify; font-size: 12px;">Three-dimensional performance space spanned by the running time ($T$), the quality of a best-so-far solution ($Q$), and the probability ($P$) of an algorithm reaching a given target within somebudget. Here, we draw an exemplary cumulative distribution surface over the $TQ$-plane. The fixed-probability analysis is performed by intersecting this surface with a horizontal plane (representing someprobability, e.g., the median success rate), where the resulting performance curve is marked in red and is also rendered in the two-dimensional space (the top sub-figure on the right). Similarly, the fixed-target and fixed-budget analyses are shown by those two vertical cutting planes and the corresponding two-dimensional renderings in blue and green (the middle two sub-figures), respectively. Here, we use 100 function evaluations (FEs) for the fixed-budget analysis and 90% accuracy of the solution quality (w.r.t. the optimal value) for the fixed-target one. In addition, we show a sub-figure of the mean quality ($\bar{Q}$) against the running time ($T$), which is also extensively used in performance analysis.</figcaption>
+</figure>
+</center>
 
 To define the performance measures covered by **IOHanalyzer** we use the following notation. 
 <ul> 
