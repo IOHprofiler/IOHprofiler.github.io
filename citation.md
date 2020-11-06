@@ -25,6 +25,24 @@ Carola Doerr, Hao Wang, Furong Ye, Sander van Rijn, Thomas Bäck: _IOHprofiler: 
 }
 ```
 
+When using IOHanalyzer in particular, please kindly cite this work as
+
+Hao Wang, Diederick Vermetten, Furong Ye, Carola Doerr, Thomas Bäck: _IOHanalyzer: Performance Analysis for Iterative Optimization Heuristic
+
+```bibtex
+@ARTICLE{IOHanalyzer,
+  author = {Hao Wang and Diederick Vermetten and Furong Ye and Carola Doerr and Thomas B{\"a}ck},
+  title = {IOHanalyzer: Performance Analysis for Iterative Optimization Heuristic},
+  journal = {arXiv e-prints:2007.03953},
+  archivePrefix = "arXiv",
+  eprint = {2007.03953},
+  year = 2018,
+  month = oct,
+  keywords = {Computer Science - Neural and Evolutionary Computing},
+  url = {https://arxiv.org/abs/2007.03953}
+}
+```
+
 ## <a name="work-using-IOHprofiler"></a>Collection of works using __IOHprofiler__
 
 ### Journal Papers
