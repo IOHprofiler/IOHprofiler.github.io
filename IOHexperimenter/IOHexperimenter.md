@@ -6,30 +6,25 @@ permalink: /IOHexp/
 description: Experimenting IOHs
 ---
 
-This is the **benchmarking framework** for <b>I</b>terative <b>O</b>ptimization <b>H</b>euristics (IOHs).
-<b>IOHexperimenter</b> provides easy-to-use benchmarking functionalities, including:
+__Experimenter__ for **I**terative **O**ptimization **H**euristics (IOHs), built natively in* `C++`.
 
-* A framework for straightforward benchmarking of any iterative optimization heuristic
-* A generic framework to generate benchmarking suite for the optimization task you're insterested in,
-* A _Pseudo-Boolean Optimization_ (PBO) problem set, containing 25 test problems of the kind $f\colon \\{0,1\\}^d \rightarrow \mathbb{R}$, and
-* The integration of 24 noiseless, single-objective _Black-Box Optimization Benchmarking_ ([BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)) functions on the continuous domain, namely $f\colon \mathbb{R}^d \rightarrow \mathbb{R}$. <b>We adopt the `C` implementation of BBOB test functions from [https://github.com/numbbo/coco](https://github.com/numbbo/coco), with some modifications to accommodate our framework.</b>
-* Logging methods to effortlessly store benchmarking data in a format compatible with __IOHanalyzer__, with future support for additional data logging options.
+* __Documentation__: [https://arxiv.org/abs/1810.05281](https://arxiv.org/abs/1810.05281)
+* __Wiki page__: [https://iohprofiler.github.io](https://iohprofiler.github.io/)
+* __General Contact__: [iohprofiler@liacs.leidenuniv.nl](iohprofiler@liacs.leidenuniv.nl)
+<!-- * __Mailing List__: [https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler](https://lists.leidenuniv.nl/mailman/listinfo/iohprofiler) -->
 
-**If you are interested in the coding details or would like to contribute to the `C++` code, please check out the [documentation](https://iohprofiler.github.io/IOHexperimenter) of the code base.**
+**IOHexperimenter** *provides*:
 
-<b>IOHexperimenter</b> is available for:
+* A framework to ease the benchmarking of any iterative optimization heuristic
+* Continuous and discrete benchmarking problems
+* [Pseudo-Boolean Optimization (PBO)](https://iohprofiler.github.io/IOHproblem/) problem set (25 pseudo-Boolean problems)
+* Integration of the well-known [Black-black Optimization Benchmarking (BBOB)](https://github.com/numbbo/coco) problem set (24 continuous problems)
+* Interface for adding new problems and suite/problem set
+* Advanced logging module that takes care of registering the data in a seamless manner
+* Data format is compatible with [IOHanalyzer](https://github.com/IOHprofiler/IOHanalyzer)
 
-* `C++` on [GitHub](https://github.com/IOHprofiler).
-* `R`, as a package on [CRAN](https://CRAN.R-project.org/package=IOHexperimenter). Also on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R).
-* `Python`, as a [pip package](https://pypi.org/project/IOHexperimenter/). Also on [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/python-interface).
+**IOHexperimenter** is available for:
 
-## Prerequisites
-
-Before installing <b>IOHexperimenter</b>, it is necessary to install the following dependencies:
-
-* A `C++` compiler (tested with `gcc 5.4.0`)
-
-## Links
-
-* __Code repository__ : [https://github.com/IOHprofiler/IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter)
-* __Bug reports__: [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter/issues)
+* `C++` manual can be found [here](https://iohprofiler.github.io/IOHexp/Cpp/)
+* `Python`: please see [here](https://github.com/IOHprofiler/IOHexperimenter/tree/master/ioh) for details user manual
+* or as a [pip package](https://pypi.org/project/ioh); [Wiki Page](https://iohprofiler.github.io/IOHexp/python/).

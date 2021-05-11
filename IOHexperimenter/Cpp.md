@@ -5,176 +5,124 @@ parent: IOHexperimenter
 permalink: /IOHexp/Cpp/
 --- 
 
-## Compilation the package
+## Installation
 
-[Cmake](https://cmake.org) is used to build this project, please make sure you have it installed.
+The following toolkits are needed for compiling IOHexperimenter:
 
-If you are using the tool for the first time, please download or clone this branch, and run `cmake .`; `make install` at the directory where the project locates.
-* If you want to set up the install directory, please run `cmake -DCMAKE_INSTALL_PREFIX=your/path .` before installation.
-* three exectuable files will be generated in `build/Cpp` for test.
+* A `C++` compiler. The minimum compiler version is g++ 7 or equivalent, but we recommend g++ 9 or equivalent.
+* [CMake](https://cmake.org), version 3.12 or higher
 
-## Use cases
+Please use the following commands to download, compile, and install this package:
 
-After installation, you can compile your project as follow (with linking IOH library):
+```sh
+> git clone --recursive https://github.com/IOHprofiler/IOHexperimenter.git
+> cd IOHexperimenter
+> mkdir build
+> cd build
+> cmake .. && make install
 ```
-g++ $CMPL_FLAGS -o IOHprofiler_run_experiment IOHprofiler_run_experiment.cpp -lIOH
+
+which installs all header files to `/usr/local/include/ioh` by default.
+If you want to change this directory, please use the following flag `cmake -DCMAKE_INSTALL_PREFIX=your/path ..`
+
+If you want to change build options, check the output of `cmake -L` or use `cmake-gui` or `ccmake`.
+
+
+<a name="using-individual-problems"></a>
+## Testing Problems 
+
+Users can test algorithms on specific __Problem__ classes. Twenty-five pseudo-Boolean optimization problems, twenty-four bbob problems, and two classes of W-Model problems are available in __IOHexperimenter__.
+
+An example of testing the random search on __OneMax__ is provided in [problem_example.h](problem_example.h). A problem class is initiated with the given instance and dimension. The following statement declares a pointer of the instance 1 of `OneMax` in dimension 10, which belongs to the `pbo` space.
+```cpp
+const auto om = std::make_shared<ioh::problem::pbo::OneMax>(1, 10);
+```
+Similarly, the following statement declares a pointer of the instance 1 of `Sphere` in dimension 5, which belongs to the `bbob` space. 
+```cpp
+const auto sp = std::make_shared<ioh::problem::bbob::Sphere>(1, 5);
 ```
 
+The `meta_data()` class provides access to useful information of the problem. The following statement can output the information of the `OneMax` class.
+```cpp
+std::cout << om->meta_data() << std::endl;
+```
 
-## <a name="using-individual-problems"></a>Using individual test problems
+To obtain the fitness of `x` on the `OneMax`, we can easily use the statement.
+```cpp
+auto y = (*om)(x).at(0)
+```
 
-To use __IOHexperimenter__ to run benchmarking on a specific problem, the template-file `IOHprofiler_run_problem.cpp` is provided. Since all problems within the __IOHexperimenter__ are defined as specific derived `class` inheriting problem `IOHprofiler_problem` class, it is quite straightforward to use them.
+<a name = "using-suites"></a>
+## Testing Suites
 
+Suites are collections of problems. Two suites, PBO for the pseudo-Boolean problems and BBOB for the continuous problems, are available in __IOHexperimenter__. An example of using suites is provided in [suite_example.h](suite_example.h).
 
-An example testing evolutionary algorithm with mutation operator on __OneMax__ is implemented in `IOHprofiler_run_problem.cpp`. To use a different function, modify the include-statement to include the problem to use, and use the corresponding class-name instead of __OneMax__.
-
-For this example, a `OneMax` class is declared and initialized with dimension 1000 on the default instance of the probelem.
+The following statements create a `bbob` consisting of 8 problems of the BBOB suite:
+1. problem 1, instance 1, dimension 5
+2. problem 1, instance 3, dimension 5
+3. problem 1, instance 1, dimension 10
+4. problem 1, instance 3, dimension 10
+5. problem 2, instance 1, dimension 5
+6. problem 2, instance 3, dimension 5
+7. problem 2, instance 1, dimension 10
+8. problem 2, instance 3, dimension 10
 
 ```cpp
-OneMax om;
-int dimension = 1000;
-om.IOHprofiler_set_number_of_variables(dimension);
+const auto &suite_factory = ioh::suite::SuiteRegistry<ioh::problem::Real>::instance();
+const auto bbob = suite_factory.create("BBOB", {1, 2}, {1, 3}, {5, 10});
 ```
 
-During the optimization process, the algorithm can acquire the fitness value through <i>evaluate()</i> function. In the example below, <i>om.evaluate(x)</i> returns the fitness of `x`. Another option is the statement <i>om.evaluate(x,y)</i>, which stores the fitness of `x` in `y`. `logger` is an __IOHprofiler_csv_logger__ class, which stores function evaluations in a format compatible with __IOHanalyzer__. <i>logger.do_log(om.loggerInfo())</i> deliveries the lastest information of tested `om` to the `logger`.  In addition, <i>om.IOHprofiler_hit_optimal()</i> is an indicator you can use to check if the optimum has been found.
+In the given example, a random search is applied across all problems within a loop :
 ```cpp
-while (!om.IOHprofiler_hit_optimal()) {
-  x = x_star;
-  if (mutation(x, mutation_rate)) {
-    y = om.evaluate(x);
-    logger.do_log(om.loggerInfo());
-  }
-  if (y[0] > best_value) {
-    best_value = y;
-    x_star = x;
-  }
+for (const auto &problem : *bbob) :
+{
+  ...
+}
+```
+The variable `problem` is a pointer of __Problem__ class upper introduced.
+
+
+<a name = "using-logger"></a>
+## Using Logger
+
+A default logger is provided to record evaluation information during the optimization process into csv files. The following statement declares a logger, which outputs files into a folder named as `logger_example` at the directory `./`. The algorithm name `random_search` and the algorithm information `a random search for ...` will be attached into the csv files.
+```cpp
+auto l = ioh::logger::Default("./", "logger_example", "random_search", "a random search for testing the bbob suite");
+```
+
+By default, evaluations when the best-found fitness is updated will be recorded into csv files. This can be changed by passing arguments to the constructor. In practice,
+
+`t_always = true` turns on the .cdat files, which record all evaluations.
+
+`t_on_interval = 0` turns off the .idat files. If a positive value i is assigned, evaluations will be recorded in .idat files every i times,
+
+`t_on_improvement = true` turns on the .dat files, which record evaluations when the best-found fitness is updated,
+
+`t_per_time_range = tp` and `t_at_time_points = ta` control the .tdat files together. The .tdat are turned off by default. Please find details in the [Sec 3. of the document](https://arxiv.org/pdf/1810.05281.pdf).
+
+The logger shall be attached to a __Problem__ class at the beginning of the experiment for a problem.
+```cpp
+problem->attach_logger(l);
+```
+
+<a name = "using-exp"></a>
+## Using Experiment
+
+__Experiment__ class automatically test the given __solver__ on the pre-defined __suite__ of problems and record the optimization process using a __logger__. The argument of a solver must be a pointer of IOH __Problem__, and the type of the __Problem__ must be consistent with the suite.
+```cpp
+// using ioh::problem::Integer for discrete optimization.
+void solver(const std::shared_ptr<ioh::problem::Real> p)
+{
+  ...
 }
 ```
 
-If, for your experiment, you want to generate data to be used in the __IOHanalyzer__, a `IOHprofiler_csv_logger` should be added to the problem you are testing on. The arguments of `IOHprofiler_csv_logger` are directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. With different setting of triggers (observer), mutilple data files are to be generated for each experiment. More details on the available triggers are available [here A.3](https://arxiv.org/pdf/1810.05281.pdf). Before optimizing a problem, `logger` must set to track the problem using the statement <i>logger.track_problem()</i>.
-
+The following statements provide an example of testing the `solver` on a bbob suite, the `solver` performs 10 independent runs on each instance, and csv files will be stored in a folder `logger-experimenter`,
 ```cpp
-std::vector<int> time_points{1,2,5};
-std::shared_ptr<IOHprofiler_csv_logger> logger(new IOHprofiler_csv_logger("./","run_problem","EA","EA"));
-logger->set_complete_flag(true);
-logger->set_interval(0);
-logger->set_time_points(time_points,10);
-logger->activate_logger();
-logger.track_problem(om);
+const auto &suite_factory = ioh::suite::SuiteRegistry<ioh::problem::Real>::instance();
+const auto suite = suite_factory.create("BBOB", {1, 2}, {1, 2}, {5, 10});
+const auto logger = std::make_shared<ioh::logger::Default>(std::string("logger-experimenter"));
+
+ioh::experiment::Experimenter<ioh::problem::Real> f(suite, logger, solver, 10);
+f.run();
 ```
-
-## <a name="using-suites"></a>Using pre-installed Benchmark Suites
-
-Suites are collections of test problems. The idea behind a suite is that packing problems with similar properties together makes it easier to test an algorithm on a set of problems. Currently, two pre-defined suites are available: [__PBO__](/Suites/PBO), consisting of 23 __pseudo Boolean problems__, and [__BBOB__](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf), consisting of 24 __real-valued problems__. To find out how to create your own suites, please visit [this page](/IOHexp/extension/#adding-new-suites).
-
-An example of testing an evolutionary algorithm with mutation operator on the __PBO__ suite is implemented in `IOHprofiler_run_suite.cpp`. __PBO__ suite includes pointers to 23 problems. To instantiate problems you want to test, the vectors of problem id, instances and dimensions need to be given as follows:
-```cpp
-std::vector<int> problem_id = {1,2};
-std::vector<int> instance_id ={1,2};
-std::vector<int> dimension = {100,200,300};
-PBO_suite pbo(problem_id,instance_id,dimension);
-```
-
-With the suite, you can test problems of the suite one by one, until all problems have been tested. In this example, the order of problem is as follow, and an `evolutionary_algorithm` is applied:
-
-1. problem id 1, instance 1, dimension 100
-2. problem id 1, instance 2, dimension 100
-3. problem id 1, instance 1, dimension 200
-4. problem id 1, instance 2, dimension 200
-5. problem id 1, instance 1, dimension 300
-6. problem id 1, instance 2, dimension 300
-7. problem id 2, instance 1, dimension 100
-8. problem id 2, instance 2, dimension 100
-9. problem id 2, instance 1, dimension 200
-10. problem id 2, instance 2, dimension 200
-11. problem id 2, instance 1, dimension 300
-12. problem id 2, instance 2, dimension 300
-
-```cpp
-while (problem = pbo.get_next_problem()) {
-  evolutionary_algorithm(problem);
-}
-```
-
-If, for your experiment, you want to generate data to be used in the __IOHanalyzer__, a `IOHprofiler_csv_logger` should be added to the suite. The arguments of `IOHprofiler_csv_logger` are the directory of result folder, name of result folder, name of the algorithm and infomation of the algorithm. In addition, you can set up mutilple triggers of recording evaluations. For the details of triggers, please visit [here A.3](https://arxiv.org/pdf/1810.05281.pdf).
-```cpp
-std::vector<int> time_points{1,2,5};
-std::shared_ptr<IOHprofiler_csv_logger> logger(new IOHprofiler_csv_logger("./","run_suite","EA","EA"));
-logger->set_complete_flag(true);
-logger->set_interval(2);
-logger->set_time_points(time_points,3);
-logger->activate_logger();
-logger->target_suite(pbo.IOHprofiler_suite_get_suite_name());
-```
-
-## <a name="using-conf"></a>Conducting experiments with a configuration file
-
-By using the provided `IOHprofiler_experiment` class, you can use a configuration file to configure both the suite and the logger for csv files.
-
-To use the provided experiment structure, you need to provide both the path to the configuration file and the pointer to your optimization algorithm to the <i>experimenter._run()</i> function, which will execute all tasks of the experiment.
-
-In addition, you can set the number of repetitions for all problems by using <i>experimenter._set_independent_runs(2)</i>.
-```cpp
-std::string configName = "./configuration.ini";
-IOHprofiler_experimenter<int> experimenter(configName,evolutionary_algorithm);
-experimenter._set_independent_runs(2);
-experimenter._run();
-```
-
-For the content of configuration file, it consists of three sections:
-
-__suite__ configures the problems to be tested.
-* __suite_name__, is the name of the suite to be used. Please make sure that the suite with the corresponding name is registered.
-* __problem_id__, configures problems to be tested. Note that id of problems are configured by the suite, please make sure that id is within the valid range.
-* __instance_id__, configures the transformation methods applied on problems. 
-  For `PBO`:
-  * `1` : no transformer operations on the problem.
-  * `2-50` :  XOR and SHIFT operations are applied on the problem.
-  * `51-100`: SIGMA and SHIFT operations are applied on the problem.
-* __dimension__, configures dimension of problems to be tested. Note that allowed dimension is not larger than 20000.
-
-__logger__ configures the setting of output csv files.
-* __result_foler__ is the directory of the folder where sotres output files.
-* __algorithm_name__, is the name of the algorithm, which is used when generating '.info' files.
-* __algorithm_info__, is additional information of the algorithm, which is used when generating '.info' files.
-
-__observer__ configures parameters of `IOHprofiler_server`, which is used in `IOHprofiler_csv_logger`,
-* __complete_triggers__ is the switch of `.cdat` files, which works with __complete tracking__ strategy. Set it as `TRUE` or `true` if you want to output `.cdat` files.
-* __update_triggers__ is the switch of `.dat` files, which works with __target-based strategy__ strategy. Set it as `TRUE` or `true` if you want to output <i>.dat</i>` files.
-* __number_interval_triggers__ configures the `.idat` files, which works with __interval tracking__  number_target_triggers sets the value of the frequecny. If you do not want to generate `.idat` files, set `number_target_triggers` as 0.
-* __number_target_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy.
-* __base_evaluation_triggers__ configures the `.tdat` files, which works with __time-based tracking__ strategy. To switch off `.tdat` files, set both __number_target_triggers__ and __base_evaluation_triggers__ as 0.
-
-## <a name="memberfunctions"></a>Useful functions
-`IOHprofiler_problem` and `IOHprofiler_suite` provide public member functions so that the optimizer can acquire useful information during optimization process.
-
-A list of useful member functions of `IOHprofiler_problem` is below:
-* <i>evaluate(x)</i>, returns a fitness values. The argument __x__ is a vector of variables.
-* <i>evaluate(x,y)</i>, updates __y__ with a fitness values, and __x__ is a vector of variables.
-* <i>reset_problem()</i>, reset the history information of problem evaluations. You should call this function at first when you plan to do another test on the same problem class.
-* <i>IOHprofiler_hit_optimal()</i>, returns true if the optimum of the problem has been found.
-* <i>IOHprofiler_get_number_of_variables(number_of_variables)</i>, returns dimension of the problem.
-* <i>IOHprofiler_get_evaluations()</i>, returns the number of function evaluations that has been used.
-* <i>loggerInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, current found raw objective, best so far found raw objective, current found transformed objective, and best of far best found transformed objective.
-* <i>loggerCOCOInfo</i>, returns a vector of information of function evaluations, which consists of evaluations, precision of current found objective, best so far found precision, current found objective, and best so far found objective.
-* <i>IOHprofiler_get_problem_id()</i>
-* <i>IOHprofiler_get_instance_id()</i>
-* <i>IOHprofiler_get_problem_name()</i>
-* <i>IOHprofiler_get_problem_type()</i>
-* <i>IOHprofiler_get_lowerbound()</i>
-* <i>IOHprofiler_get_upperbound()</i>
-* <i>IOHprofiler_get_number_of_objectives()</i>
-* <i>IOHprofiler_get_optimization_type()</i>
-
-A list of useful member functions of `IOHprofiler_suite` is below:
-* <i>get_next_problem</i>, return a shared point of problems of the suite in order.
-* <i>get_current_problem()</i>, returns current problem and reset it.
-* <i>get_problem(problem_name,instance,dimension)</i>, returns the specific problem.
-* <i>IOHprofiler_suite_get_number_of_problems</i>
-* <i>IOHprofiler_suite_get_number_of_instances</i>
-* <i>IOHprofiler_suite_get_number_of_dimensions</i>
-* <i>IOHprofiler_suite_get_problem_id</i>
-* <i>IOHprofiler_suite_get_instance_id()</i>
-* <i>IOHprofiler_suite_get_dimension()</i>
-* <i>IOHprofiler_suite_get_suite_name()</i>
-
