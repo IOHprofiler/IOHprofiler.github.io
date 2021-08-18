@@ -29,35 +29,39 @@ If you want to change build options, check the output of `cmake -L` or use `cmak
 
 
 <a name="using-individual-problems"></a>
-## Testing Problems 
+## Testing on Problems 
 
-Users can test algorithms on specific __Problem__ classes. Twenty-five pseudo-Boolean optimization problems, twenty-four bbob problems, and two classes of W-Model problems are available in __IOHexperimenter__.
+Users can test algorithms on built-in `problem` classes. Twenty-five pseudo-Boolean optimization problems ([PBO](https://www.sciencedirect.com/science/article/pii/S1568494619308099)), twenty-four continuous optimization problems ([bbob](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)), and two classes of [W-Model](https://dl.acm.org/doi/pdf/10.1145/3205651.3208240) problems are available in __IOHexperimenter__.
 
-An example of testing the random search on __OneMax__ is provided in [problem_example.h](problem_example.h). A problem class is initiated with the given instance and dimension. The following statement declares a pointer of the instance 1 of `OneMax` in dimension 10, which belongs to the `pbo` space.
+An example of testing a random search on OneMax problem is provided in [problem_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/problem_example.h).
+
+We use the following statement to declare a `problem` class of the instance 1 of onemax in dimension 10. Instances of a problem are initiated with different transformations. Details of transformations can be found in [Section 3.2](https://www.sciencedirect.com/science/article/pii/S1568494619308099) of our publication.
 ```cpp
 const auto om = std::make_shared<ioh::problem::pbo::OneMax>(1, 10);
 ```
-Similarly, the following statement declares a pointer of the instance 1 of `Sphere` in dimension 5, which belongs to the `bbob` space. 
+Similarly, the following statement declares a class of `Sphere`, which belongs to the `bbob` space. 
 ```cpp
 const auto sp = std::make_shared<ioh::problem::bbob::Sphere>(1, 5);
 ```
 
-The `meta_data()` class provides access to useful information of the problem. The following statement can output the information of the `OneMax` class.
-```cpp
-std::cout << om->meta_data() << std::endl;
-```
-
-To obtain the fitness of `x` on the `OneMax`, we can easily use the statement.
+To evaluate solutions found by the algorithms, we can obtain the fitness values of `x` as below.
 ```cpp
 auto y = (*om)(x).at(0)
 ```
 
+In addition, the `meta_data()` class provides access to useful information about the problem. For example, we can use the following statement to output information.
+```cpp
+std::cout << om->meta_data() << std::endl;
+```
+
+
+
 <a name = "using-suites"></a>
 ## Testing Suites
 
-Suites are collections of problems. Two suites, PBO for the pseudo-Boolean problems and BBOB for the continuous problems, are available in __IOHexperimenter__. An example of using suites is provided in [suite_example.h](suite_example.h).
+Suites are collections of problems. Two suites, [PBO](https://www.sciencedirect.com/science/article/pii/S1568494619308099)) for the pseudo-Boolean optimization problems and [BBOB](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf) for continuous optimization problems are available in __IOHexperimenter__. An example of using suites is provided in [suite_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/suite_example.h).
 
-The following statements create a `bbob` consisting of 8 problems of the BBOB suite:
+We declare a suite consisting of 8 problems of the BBOB suite, using the following statement:
 1. problem 1, instance 1, dimension 5
 2. problem 1, instance 3, dimension 5
 3. problem 1, instance 1, dimension 10
@@ -72,52 +76,81 @@ const auto &suite_factory = ioh::suite::SuiteRegistry<ioh::problem::Real>::insta
 const auto bbob = suite_factory.create("BBOB", {1, 2}, {1, 3}, {5, 10});
 ```
 
-In the given example, a random search is applied across all problems within a loop :
+In the example, a random search is applied across all the problems within a loop :
 ```cpp
 for (const auto &problem : *bbob) :
 {
   ...
 }
 ```
-The variable `problem` is a pointer of __Problem__ class upper introduced.
+Usage of the `problem` class is introduced [above](#using-individual-problems).
 
 
 <a name = "using-logger"></a>
 ## Using Logger
 
-A default logger is provided to record evaluation information during the optimization process into csv files. The following statement declares a logger, which outputs files into a folder named as `logger_example` at the directory `./`. The algorithm name `random_search` and the algorithm information `a random search for ...` will be attached into the csv files.
+The default logger records evaluation information during the optimization process into csv files. An example of using the default logger is provided in [logger_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/logger_example.h)
+
+
+We declare a default logger using the following statement.
 ```cpp
-auto l = ioh::logger::Default("./", "logger_example", "random_search", "a random search for testing the bbob suite");
+auto logger = ioh::logger::Default(
+        fs::current_path(), /* output_directory : fs::current_path() -> working directory */
+        "folder_name", /* folder_name */
+        "random_search", /* algorithm_name : "random search'*/
+        "a random search" /* algorithm_info : "a random search for testing the bbob suite" */
+        );
 ```
 
-By default, evaluations when the best-found fitness is updated will be recorded into csv files. This can be changed by passing arguments to the constructor. In practice,
-
-`t_always = true` turns on the .cdat files, which record all evaluations.
-
-`t_on_interval = 0` turns off the .idat files. If a positive value i is assigned, evaluations will be recorded in .idat files every i times,
-
-`t_on_improvement = true` turns on the .dat files, which record evaluations when the best-found fitness is updated,
-
-`t_per_time_range = tp` and `t_at_time_points = ta` control the .tdat files together. The .tdat are turned off by default. Please find details in the [Sec 3. of the document](https://arxiv.org/pdf/1810.05281.pdf).
-
-The logger shall be attached to a __Problem__ class at the beginning of the experiment for a problem.
+We attach the `logger` to the `suite`, to perform logging process during optimization.
 ```cpp
-problem->attach_logger(l);
+suite->attach_logger(logger);
+```
+
+Alternatively, we can attach the logger to each new problem in a suite manually using
+```cpp
+problem->attach_logger(logger);
+```
+<a name = "tracking-parameters"></a>
+### Tracking Parameters
+The default loggers provides interfaces for tracking parameters of algorithms during optimization process. An example is provided in the [logger_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/da22d89fe1673ea67962829d12873e01387f6895/example/logger_example.h#L80)
+
+
+`experiment_attribute` stores the fixed parameters for each experiment, `run_attributes` maintains the parameters of each run of an algorithm, and `logged_attributes` records the online parameters for each evaluation.
+```cpp
+// Add parameters fixed throughout the experiment.
+  logger.add_experiment_attribute("meta_data_x", 69);
+  logger.add_experiment_attribute("meta_data_y", 69);
+
+  // Initialize parameters unique for each run. 
+  logger.create_run_attributes({"run_id"});
+
+  // Initialize parameters unique for each evaluation.
+  logger.create_logged_attributes({"x1"});
+```
+
+The corresponding values of `run_attributes` and `logged_attributes` shall be set as below.
+```cpp
+// Update the variable for the run specific parameter
+logger.set_run_attributes({"run_id"}, {static_cast<double>(run_id)});
+
+// Update the variable for the evaluation specific parameter
+logger.set_logged_attributes({"x1"}, {x.at(1)});
 ```
 
 <a name = "using-exp"></a>
 ## Using Experiment
 
-__Experiment__ class automatically test the given __solver__ on the pre-defined __suite__ of problems and record the optimization process using a __logger__. The argument of a solver must be a pointer of IOH __Problem__, and the type of the __Problem__ must be consistent with the suite.
+The `Experimenter` class automatically tests a `solver` on a pre-defined `suite` and records the optimization process using a `logger`. The arguments of the `solver` must be a pointer of an ioh `problem` class, and the type of the `problem` must be identical to the type of the `suite`.
 ```cpp
-// using ioh::problem::Integer for discrete optimization.
+// using ioh::problem::Real for continuous optimization.
 void solver(const std::shared_ptr<ioh::problem::Real> p)
 {
   ...
 }
 ```
 
-The following statements provide an example of testing the `solver` on a bbob suite, the `solver` performs 10 independent runs on each instance, and csv files will be stored in a folder `logger-experimenter`,
+The following example tests the `solver` on a bbob suite. The `solver` performs 10 independent runs on each instance of problems.
 ```cpp
 const auto &suite_factory = ioh::suite::SuiteRegistry<ioh::problem::Real>::instance();
 const auto suite = suite_factory.create("BBOB", {1, 2}, {1, 2}, {5, 10});
