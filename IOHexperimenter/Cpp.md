@@ -31,9 +31,9 @@ If you want to change build options, check the output of `cmake -L` or use `cmak
 <a name="using-individual-problems"></a>
 ## Testing on Problems 
 
-Users can test algorithms on built-in `problem` classes. Twenty-five pseudo-Boolean optimization problems ([PBO](https://www.sciencedirect.com/science/article/pii/S1568494619308099)), twenty-four continuous optimization problems ([bbob](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)), and two classes of [W-Model](https://dl.acm.org/doi/pdf/10.1145/3205651.3208240) problems are available in __IOHexperimenter__.
+Users can test algorithms on built-in `problem` classes. Twenty-five pseudo-Boolean optimization problems (), twenty-four continuous optimization problems ([bbob](https://coco.gforge.inria.fr/downloads/download16.00/bbobdocfunctions.pdf)), and two classes of [W-Model](https://dl.acm.org/doi/pdf/10.1145/3205651.3208240) problems are available in __IOHexperimenter__. All these problems are built inheriting a [template class](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/problem/problem.hpp). You can also test new [customized problems](/IOHexp/extension/#adding-new-problems).
 
-An example of testing a random search on OneMax problem is provided in [problem_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/problem_example.h).
+An example of testing a random search on OneMax, that belongs to [PBO](https://www.sciencedirect.com/science/article/pii/S1568494619308099) suite, is provided in [problem_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/problem_example.h).
 
 We use the following statement to declare a `problem` class of the instance 1 of onemax in dimension 10. Instances of a problem are initiated with different transformations. Details of transformations can be found in [Section 3.2](https://www.sciencedirect.com/science/article/pii/S1568494619308099) of our publication.
 ```cpp
@@ -49,9 +49,14 @@ To evaluate solutions found by the algorithms, we can obtain the fitness values 
 auto y = (*om)(x).at(0)
 ```
 
-In addition, the `meta_data()` class provides access to useful information about the problem. For example, we can use the following statement to output information.
+In addition, the `meta_data()` class provides access to useful information about the problem including problem id, instance id, problem name, optimization type (e.g., minimization or maximization), and dimension. For example, we can use the following statement to output information.
 ```cpp
 std::cout << om->meta_data() << std::endl;
+```
+
+Also, a `Constraint` struct provides bounds of variables. Precisely, vectors of `ub` and `lb` denote each variable's upper bounds and lower bounds, respectively. A `check(x)` function returns True if variables of `x` are in the decision domain of variables; otherwise false. You can also access information of bounds using
+```cpp
+std::cout << om->constraint() << std::endl;
 ```
 
 
@@ -89,7 +94,7 @@ Usage of the `problem` class is introduced [above](#using-individual-problems).
 <a name = "using-logger"></a>
 ## Using Logger
 
-The default logger records evaluation information during the optimization process into csv files. An example of using the default logger is provided in [logger_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/logger_example.h)
+The default logger records evaluation information during the optimization process into tab-seperated files. The details of file format can be found [here](/IOHanalyzer/data/). An example of using the default logger is provided in [logger_example.h](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/logger_example.h)
 
 
 We declare a default logger using the following statement.
