@@ -128,7 +128,7 @@ The default loggers provides interfaces for tracking parameters of algorithms du
   logger.add_experiment_attribute("meta_data_y", 69);
 
   // Initialize parameters unique for each run. 
-  logger.create_run_attributes({"run_id"});
+  logger.create_run_attributes({"iteration"});
 
   // Initialize parameters unique for each evaluation.
   logger.create_logged_attributes({"x1"});
@@ -140,7 +140,23 @@ The corresponding values of `run_attributes` and `logged_attributes` shall be se
 logger.set_run_attributes({"run_id"}, {static_cast<double>(run_id)});
 
 // Update the variable for the evaluation specific parameter
-logger.set_logged_attributes({"x1"}, {x.at(1)});
+logger.set_logged_attributes({"iteration"}, {static_cast<double>(i+1)});
+```
+
+In addition, the default logger supports tracking positions (values of decision variables). An example is given in the `get_logger_with_positions()` function.
+```cpp
+inline ioh::logger::Default get_logger_with_positions()
+{
+    /// Instantiate a logger that also stores evaluated search points
+    return ioh::logger::Default(
+        fs::current_path(), /* output_directory : fs::current_path() -> working directory */
+        "logger_w_positions", /* folder_name : "logger_example" */
+        "random_search", /* algorithm_name : "random search'*/
+        "a random search", /* algorithm_info : "a random search for testing the bbob suite" */
+        ioh::common::OptimizationType::Minimization,
+        true /* store_positions: true*/
+        );
+}
 ```
 
 <a name = "using-exp"></a>
