@@ -16,9 +16,7 @@ __Experimenter__ for **I**terative **O**ptimization **H**euristics (IOHs), built
 **IOHexperimenter** *provides*:
 
 * A framework to ease the benchmarking of any iterative optimization heuristic
-* Continuous and discrete benchmarking problems
-* [Pseudo-Boolean Optimization (PBO)](https://iohprofiler.github.io/IOHproblem/) problem set (25 pseudo-Boolean problems)
-* Integration of the well-known [Black-black Optimization Benchmarking (BBOB)](https://github.com/numbbo/coco) problem set (24 continuous problems)
+* Benchmarking problems consisting of [pseudo-Boolean Optimization (PBO)](https://iohprofiler.github.io/IOHproblem/) problem set (25 pseudo-Boolean problems) and integration of the well-known [Black-black Optimization Benchmarking (BBOB)](https://github.com/numbbo/coco) problem set (24 continuous problems)
 * Interface for adding new problems and suite/problem set
 * Advanced logging module that takes care of registering the data in a seamless manner
 * Data format is compatible with [IOHanalyzer](https://github.com/IOHprofiler/IOHanalyzer)

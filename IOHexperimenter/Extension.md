@@ -5,8 +5,8 @@ parent: IOHexperimenter
 permalink: /IOHexp/extension/
 --- 
 
-
-## <a name="adding-new-problems"></a>Add new problems
+<a name="adding-new-problems"></a>
+## Adding new problems
 
 We offer a very simple and convenient interface for integrating new benchmark problems/functions. First, you could define a new `test_problem` as you like. Note that the `<vector>` header is already imported in "ioh.hpp".
 
@@ -94,3 +94,67 @@ public:
 ```
 
 Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/759750759331fff1243ef9e121209cde450b9726/example/problem_example.h#L51) for adding continuous problems in this manner.
+
+
+<a name="adding-new-loggers"></a>
+## Adding new loggers
+
+We offer a simple base class for customized loggers. You can define a new logger class inheriting the `logger` class in [base.hpp](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/base.hpp).
+
+First, you need to define a new `track_problem` function to access the [metadata](https://github.com/IOHprofiler/IOHexperimenter/blob/da22d89fe1673ea67962829d12873e01387f6895/include/ioh/problem/utils.hpp#L78) of the problem to be tested. The `track_problem` function will be revoked in the `attach_logger` function of the `problem` class. You should 
+also define a `track_suite` function for tracking information of suites for your experiment.
+```C++
+void track_problem(const problem::MetaData& problem) 
+{
+
+}
+
+void track_suite(const std::string& suite_name) 
+{
+
+}
+
+```
+
+Then you should define a `log` function performing logging operations. The `log` function will be revoked in the `evaluate` function of the `problem` class. The `LogInfo` class provides variables of the optimization state.
+
+```C++
+void log(const LogInfo& log_info)
+{
+
+}
+```
+
+```C++
+struct LogInfo
+{
+    // The number of evaluations that have been used.
+    size_t evaluations;
+
+    // The fitness values of the best-so-far solution calculating without applying transformations.
+    double y_best;
+
+    // The fitness value of the last evaluated solution.
+    double transformed_y;
+
+    // The fitness value of the best-so-far solution.
+    double transformed_y_best;
+
+    // The last evaluated solution.
+    problem::Solution<double> current;
+
+    // The optimum if it exists.
+    problem::Solution<double> objective;
+};
+
+```
+
+Also, a `flush` functions is required to close the `logger` at last.
+```C++
+void flush()
+{
+
+}
+```
+
+Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/default.hpp) for recording evaluation information during the optimization process into csv files. 
