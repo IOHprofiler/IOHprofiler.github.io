@@ -10,7 +10,7 @@ permalink: /IOHexp/python/
 This package can be installed directly from pip, using:
 
 ```cmd
-pip install IOHexperimenter
+pip install ioh
 ```
 
 ## Usage
@@ -19,44 +19,44 @@ The following walks through the typical use cases of the IOHexperimenter.
 You can find this in a jupyter notebook [on this page]() to run it in an interactive manner.
 
 ### Create a function object
-The IOHexperiment contains a few main classes, the most important of which is the IOH_function, which is the standard benchmark function.
+The structure of the IOHexperimenter in python is almost equivalent to the C++ version, but with a few ease-of-use features added, such as easy access to any existing benchmark problem usin the 'get_problem' function:
 ```python
-# Import the IOH_function class
-from IOHexperimenter import IOH_function
+# Import the get_problem function
+from ioh import get_problem
 ```
-It is highly recommended to look at the documentation for the individual classes and functions as follows:
+To check the usage and parameterization of this (and most other) functionality, we provide built-in docstrings, acessible as usual:
 
 ```python
-#View docstring of IOH_function
-?IOH_function
-
-Based on this, you can then create a an IOH_function object:
+#View docstring of get_problem
+?get_problem
+```
+Based on this, you can then create a problem:
 
 
 ```python
 #Create a function object, either by giving the function id from within the suite
-f = IOH_function(7, 5, 1, suite = 'BBOB')
-```
+f = get_problem(7, dim=5, iid=1, problem_type = 'BBOB')
 
-
-```python
 #Or by giving the function name
-f2 = IOH_function("Sphere", 5, 1)
+f2 = get_problem("Sphere", dim=5, iid=1)
 ```
-This function has many standard properties, such as number_of_variables (dimension), bounds, best-so-far value reached,...
+This problem contains a meta-data attributes, which consists of many standard properties, such as number_of_variables (dimension), name,...
 
 ```python
-#Acces properties of the function
-f.number_of_variables
+#Print some properties of the function
+print((f.meta_data.name, f.meta_data.n_variables))
 ```
 
+Additionally, the problem contains information on its bounds / conditions
 
 ```python
-f.lowerbound, f.upperbound
+#Access the box-constrains for this function
+f.constraint.lb, f.constraint.ub
 ```
+The problem also tracks the current state of the optimization, e.g. number of evaluations done so far
 
 ```python
-f.final_target_hit
+f.state.optimum_found, f.state.evaluations
 ```
 And of course, the function can be evaluated easily:
 
@@ -67,7 +67,7 @@ f([0,0,0,0,0])
 
 ## Running an algorithm
 
-We can construct a simple random-search example wich accepts an argument of class IOH_function.
+We can construct a simple random-search example wich accepts an IOHprofiler problem as its argument.
 
 
 ```python
@@ -93,24 +93,20 @@ To record data, we need to add a logger to the problem
 
 
 ```python
-from IOHexperimenter import IOH_logger
+from ioh import logger
 ```
-Again, plenty of documentation on its arguments is available:
-
-```python
-?IOH_logger
-```
+Within IOHexperimenter, several types of logger are available. Here, we will focus on the default logger, as described [in this section](/data_format)
 
 
 ```python
-l = IOH_logger("data", "run", "random_search", "test of IOHexperimenter in python")
+l = logger.Default(output_directory="data", folder_name="run", algorithm_name="random_search", algorithm_info="test of IOHexperimenter in python")
 ```
 
 This can then be attached to the problem
 
 
 ```python
-f.add_logger(l)
+f.attach_logger(l)
 ```
 
 Now, we can run the algorithm. The logger will automatically store the relevant performance data.
@@ -120,10 +116,10 @@ Now, we can run the algorithm. The logger will automatically store the relevant 
 random_search(f)
 ```
 
-To ensure all data is written, we should clear the logger after running our experiments
+To ensure all data is written, we should clear the logger after running our experiments (this will no longer be required after version 0.32)
 
 ```python
-f.clear_logger()
+l.flush()
 ```
 
 ## Tracking algorithm parameters
@@ -140,7 +136,7 @@ class opt_alg:
 
     def __call__(self, func):
         for i in range(self.budget):
-            x = np.random.uniform(func.lowerbound, func.upperbound)
+            x = np.random.uniform(func.constraint.lb, func.constraint.ub)
             f = func(x)
             if f < self.f_opt:
                 self.f_opt = f
@@ -152,88 +148,41 @@ class opt_alg:
         return np.random.randint(100)
 ```
 
-We could then use the function track_parameters of the logger to register the parameter to be tracked
+We could then use the function declare_logged_attributes of the logger to register the parameter to be tracked. Additionally, we can keep track of algorithm settings on a per-experiment or per-run level using declare_experiment_attributes and declare_run_attributes respectively.
 
 
 ```python
-?l.track_parameters
+?l.declare_logged_attributes
 ```
 
-Alternatively, we can use the IOHexperimenter class to easily run the benchmarking in multiple functions
+Alternatively, we can use the experimenter class to easily run the benchmarking in multiple functions
 
 
 ```python
-from IOHexperimenter import IOHexperimenter
+from ioh import experimenter
 ```
 
 ```python
-?IOHexperimenter
+?experimenter.Real
 ```
 
 This can be initialized to a suite (PBO or BBOB are available) by providing lists of function ids (or names), dimensions, instance ids and a number of independent repetitions as follows:
 
 
 ```python
-exp = IOHexperimenter()
-exp.initialize_BBOB([1,2], [5], [1,2], 2)
+s = suite.BBOB([1,2,3], [1,2,3,4,5], [5,10])
+l = logger.Default("temp")
+o = opt_alg(1000)
+exp = experimenter.Real(s, l, o, 5)
+e.run()
 ```
 
-There is also the option to provide a set of standard python functions, which will be transformed to custom_IOH_functions within the IOHexperimenter
-
-
-```python
-?exp.initialize_custom
-```
-
-For now, we stick with the BBOB suite. We can set up the logging as follows:
-
-
-```python
-?exp.set_logger_location
-```
-
-```python
-exp.set_logger_location("data_test", "run")
-```
-
-Parameter tracking can be set up using the following function:
-
-
-```python
-?exp.set_parameter_tracking
-```
-
-The algorithm we want to run has property "param_rate", so we can track this
-
-
-```python
-exp.set_parameter_tracking("param_rate")
-```
-
-We can customize the parallellization settings or the data storage settings using the following functions:
-
-
-```python
-?exp.set_parallel
-```
-
-
-```python
-?exp.set_logger_options
-```
-
-
-Finally, we can run the experiment by simply providing the experimenter object with a list of algorithms to run
-
-
-```python
-exp([opt_alg(1000)])
-```
-
-
-```python
-from IOHexperimenter import IOH_function
-```
 ## W-model and custom functions
 As well as the PBO and BBOB suites, the IOHexperimenter provides access to the W-model functions ('W_model_function') and even an option to 
-convert any python function into an IOH_problem-based object, such that the logging functionality can be used. This can be done using the 'custom_IOH_function' class.
+convert any python function into an IOH problem object, such that the logging functionality can be used. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions.
+
+```python
+def f_custom(x):
+    return np.sum(x)
+f_wrapped = problem.wrap_real_problem(f_custom, "custom_name", n_variables=5, optimization_type=OptimizationType.Minimization)
+```
