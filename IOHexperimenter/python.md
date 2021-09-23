@@ -138,16 +138,19 @@ class opt_alg:
         self._budget = budget
         self.f_opt = np.Inf
         self.x_opt = None
-
-    def __call__(self, func):
         self._seed = np.random.get_state()[1][0]
         self._rng = np.random.default_rng(self._seed)
+
+    def __call__(self, func):
         for i in range(self._budget):
             x = self._rng.random.uniform(func.constraint.lb, func.constraint.ub)
             f = func(x)
             if f < self.f_opt:
                 self.f_opt = f
                 self.x_opt = x
+        #Set new seed for future runs        
+        self._seed = np.random.get_state()[1][0]
+        self._rng = np.random.default_rng(self._seed)
         return self.f_opt, self.x_opt
     
     @property
@@ -245,6 +248,13 @@ f = get_problem('custom_name', iid=0, dim=10)
 ## Using the W-model functions
 In addition to the PBO and BBOB functions, the W-model problem generators (one based on OneMax and one based on LeadingOnes) are also avalable. 
 
+```python
+from ioh import problem
+?problem.WModelOneMax
+```
 
+```python
+f = problem.WModelLeadingOnes(iid = 1, dim = 100, dummy_select_rate = 0.5, epistasis_block_size = 1, neutrality_mu = 0, ruggedness_gamma = 0 )
+```
 
 
