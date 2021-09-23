@@ -56,6 +56,7 @@ f.constraint.lb, f.constraint.ub
 The problem also tracks the current state of the optimization, e.g. number of evaluations done so far
 
 ```python
+#Show the state of the optimization
 f.state.optimum_found, f.state.evaluations
 ```
 And of course, the function can be evaluated easily:
@@ -71,17 +72,18 @@ We can construct a simple random-search example wich accepts an IOHprofiler prob
 
 
 ```python
+#Create a basic random search algorithm
 import numpy as np
 
 def random_search(func, param_1 = None, budget = None):
     if budget is None:
-        budget = int(func.number_of_variables * 1e4)
+        budget = int(func.meta_data.n_variables * 1e4)
 
     f_opt = np.Inf
     x_opt = None
 
     for i in range(budget):
-        x = np.random.uniform(func.lowerbound, func.upperbound)
+        x = np.random.uniform(func.constraint.lb, func.constraint.ub)
         f = func(x)
         if f < f_opt:
             f_opt = f
@@ -93,19 +95,22 @@ To record data, we need to add a logger to the problem
 
 
 ```python
+#Import the ioh logger module
 from ioh import logger
 ```
-Within IOHexperimenter, several types of logger are available. Here, we will focus on the default logger, as described [in this section](/data_format)
+Within IOHexperimenter, several types of logger are available. Here, we will focus on the default logger (called Analyzer as of version 0.32, Default for version 0.31 and earlier), as described [in this section](/data_format). Note that the logging can be customized by adding new triggers. Additionally, starting in version 0.32, the ability to store search points directly is added by using the store_positions-parameter. 
 
 
 ```python
-l = logger.Default(output_directory="data", folder_name="run", algorithm_name="random_search", algorithm_info="test of IOHexperimenter in python")
+#Create default logger compatible with IOHanalyzer
+l = logger.Analyzer(root="data", folder_name="run", algorithm_name="random_search", algorithm_info="test of IOHexperimenter in python")
 ```
 
 This can then be attached to the problem
 
 
 ```python
+#Add the logger to the problem
 f.attach_logger(l)
 ```
 
@@ -116,7 +121,7 @@ Now, we can run the algorithm. The logger will automatically store the relevant 
 random_search(f)
 ```
 
-To ensure all data is written, we should clear the logger after running our experiments (this will no longer be required after version 0.32)
+For versions of ioh prior to 0.31, we need to explicitly ensure all data is written, so we should clear the logger after running our experiments. This is no longer be required after version 0.32.
 
 ```python
 l.flush()
@@ -130,13 +135,15 @@ If we want to track parameters of the algorithm, we need to slightly restructure
 ```python
 class opt_alg:
     def __init__(self, budget):
-        self.budget = budget
+        self._budget = budget
         self.f_opt = np.Inf
         self.x_opt = None
 
     def __call__(self, func):
-        for i in range(self.budget):
-            x = np.random.uniform(func.constraint.lb, func.constraint.ub)
+        self._seed = np.random.get_state()[1][0]
+        self._rng = np.random.default_rng(self._seed)
+        for i in range(self._budget):
+            x = self._rng.random.uniform(func.constraint.lb, func.constraint.ub)
             f = func(x)
             if f < self.f_opt:
                 self.f_opt = f
@@ -146,43 +153,98 @@ class opt_alg:
     @property
     def param_rate(self):
         return np.random.randint(100)
-```
 
-We could then use the function declare_logged_attributes of the logger to register the parameter to be tracked. Additionally, we can keep track of algorithm settings on a per-experiment or per-run level using declare_experiment_attributes and declare_run_attributes respectively.
-
-
-```python
-?l.declare_logged_attributes
-```
-
-Alternatively, we can use the experimenter class to easily run the benchmarking in multiple functions
-
-
-```python
-from ioh import experimenter
-```
-
-```python
-?experimenter.Real
-```
-
-This can be initialized to a suite (PBO or BBOB are available) by providing lists of function ids (or names), dimensions, instance ids and a number of independent repetitions as follows:
-
-
-```python
-s = suite.BBOB([1,2,3], [1,2,3,4,5], [5,10])
-l = logger.Default("temp")
+    @property
+    def seed(self):
+        return self._seed
+    
+#create an instance of this algorithm
 o = opt_alg(1000)
-exp = experimenter.Real(s, l, o, 5)
-e.run()
 ```
 
-## W-model and custom functions
-As well as the PBO and BBOB suites, the IOHexperimenter provides access to the W-model functions ('W_model_function') and even an option to 
-convert any python function into an IOH problem object, such that the logging functionality can be used. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions.
+We can then identify three different levels at which to track parameters:
+
+### Tracking adaptive parameters
+The first type of parameters are the most common: parameters which we want to track during the search procedure, e.g. an adaptive stepsize. To track this type of parameter, we can make use of the 'watch' function of the logger as follows:
 
 ```python
+l.watch(o, ['param_rate'])
+```
+
+### Tracking run parameters
+The second type of parameter is a per-run parameter. This can be something like the used random seed. To track this, we can use the following:
+
+```python
+l.add_run_attributes(o, ['seed'])
+```
+
+### Tracking experiment parameters
+The final type of parameters to track is the most high-level. This can be for example static algorithm parameters or other information about the experiment, which can be added as follows:
+
+```python
+l.add_experiment_attribute('budget', '1000')
+```
+
+## Using the experimenter module
+
+In addition to creating each problem individually, we can make use of the built-in experimenter module, which can be imported as follows:
+
+```python
+from ioh import Experiment
+```
+
+```python
+?Experiment
+```
+
+At its core, the Experimenter object contains three parts: 
+- An optimization algorithm (which takes a problem as input)
+- Information on the collection of problems to be executed
+- Information on the logging procedure
+
+The suite object can be created using the suite-module from ioh as follows:
+
+
+```python
+exp = Experiment(algorithm = o, #Set the optimization algorithm
+fids = [1,2,3], iids = [1,2,3,4,5], dims = [5,10], reps = 5, problem_type = 'BBOB', #Problem definitions
+njobs = 4, #Enable paralellization
+logged = True, folder_name = 'IOH_data', algorithm_name = 'Random_Search', store_positions = True, #Logging specifications
+experiment_attributes = {'budget' : '1000'}, run_attributes = ['seed'], logged_attributes = ['param_rate'], #Attribute tracking
+merge_output = True, zip_output = True, remove_data = True #Only keep data as a single zip-file
+)
+
+```
+
+This can be run as follows:
+
+```python
+exp.run()
+```
+
+## Using custom functions
+In addition to the interfaces to the built-in functions, IOHexperimenter provides an easy way to wrap any problem into the same ioh-problem structure for easy use with the logging and experiment modules. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions. An example is shown here:
+
+```python
+#Define an evaluation method
 def f_custom(x):
     return np.sum(x)
-f_wrapped = problem.wrap_real_problem(f_custom, "custom_name", n_variables=5, optimization_type=OptimizationType.Minimization)
+#Call the wrapper
+problem.wrap_real_problem(f_custom, "custom_name", n_variables=5, optimization_type=OptimizationType.Minimization)
+
+#Call get_problem to instantiate a version of this problem
+f = get_problem('custom_name', iid=0, dim=5)
 ```
+
+Note that changing the iid of the problem is not yet supported, but changing the dimensionality does work, assuming the evaluate function can handle inputs of the specified size.
+
+```python
+f = get_problem('custom_name', iid=0, dim=10)
+```
+
+## Using the W-model functions
+In addition to the PBO and BBOB functions, the W-model problem generators (one based on OneMax and one based on LeadingOnes) are also avalable. 
+
+
+
+
