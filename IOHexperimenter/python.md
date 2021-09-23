@@ -229,6 +229,8 @@ exp.run()
 In addition to the interfaces to the built-in functions, IOHexperimenter provides an easy way to wrap any problem into the same ioh-problem structure for easy use with the logging and experiment modules. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions. An example is shown here:
 
 ```python
+from ioh import problem, OptimizationType
+
 #Define an evaluation method
 def f_custom(x):
     return np.sum(x)
@@ -249,7 +251,6 @@ f = get_problem('custom_name', iid=0, dim=10)
 In addition to the PBO and BBOB functions, the W-model problem generators (one based on OneMax and one based on LeadingOnes) are also avalable. 
 
 ```python
-from ioh import problem
 ?problem.WModelOneMax
 ```
 
