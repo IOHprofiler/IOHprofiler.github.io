@@ -73,22 +73,22 @@ We can construct a simple random-search example wich accepts an IOHprofiler prob
 
 ```python
 #Create a basic random search algorithm
+import ioh
 import numpy as np
 
-def random_search(func, param_1 = None, budget = None):
+def random_search(problem: ioh.problem.Real, seed: int = 42, budget: int = None) -> ioh.RealSolution:
+    np.random.seed(seed)
+    
     if budget is None:
-        budget = int(func.meta_data.n_variables * 1e4)
+        budget = int(problem.meta_data.n_variables * 1e4)
 
-    f_opt = np.Inf
-    x_opt = None
-
-    for i in range(budget):
-        x = np.random.uniform(func.constraint.lb, func.constraint.ub)
-        f = func(x)
-        if f < f_opt:
-            f_opt = f
-            x_opt = x
-    return f_opt, x_opt
+    for _ in range(budget):
+        x = np.random.uniform(problem.constraint.lb, problem.constraint.ub)
+        
+        # problem automatically tracks the current best search point
+        f = problem(x)
+        
+    return problem.state.current_best
 ```
 
 To record data, we need to add a logger to the problem
@@ -129,40 +129,31 @@ l.flush()
 
 ## Tracking algorithm parameters
 
-If we want to track parameters of the algorithm, we need to slightly restructure it by turning it into a class, where the variables we want to track are properties
-
+If we want to track adaptive parameters of the algorithm, we require an object in which the parameters of the algorithm are stored. In the below example, the random search algorithm is restructured into a class for this purpose. Alternatively, we could also create a seperate object which holds the parameters.
 
 ```python
-class opt_alg:
-    def __init__(self, budget):
+class RandomSearch:
+    def __init__(self, budget: int):
         self._budget = budget
-        self.f_opt = np.Inf
-        self.x_opt = None
-        self._seed = np.random.get_state()[1][0]
+        self.seed = np.random.get_state()[1][0]
         self._rng = np.random.default_rng(self._seed)
 
-    def __call__(self, func):
+    def __call__(self, func: ioh.problem.Real):
         for i in range(self._budget):
             x = self._rng.random.uniform(func.constraint.lb, func.constraint.ub)
             f = func(x)
-            if f < self.f_opt:
-                self.f_opt = f
-                self.x_opt = x
         #Set new seed for future runs        
-        self._seed = np.random.get_state()[1][0]
-        self._rng = np.random.default_rng(self._seed)
+        self.seed = np.random.get_state()[1][0]
+        self._rng = np.random.default_rng(self.seed)
         return self.f_opt, self.x_opt
     
     @property
-    def param_rate(self):
+    def param_rate(self) -> int:
         return np.random.randint(100)
 
-    @property
-    def seed(self):
-        return self._seed
     
 #create an instance of this algorithm
-o = opt_alg(1000)
+o = RandomSearch(1000)
 ```
 
 We can then identify three different levels at which to track parameters:
@@ -187,6 +178,13 @@ The final type of parameters to track is the most high-level. This can be for ex
 ```python
 l.add_experiment_attribute('budget', '1000')
 ```
+
+---
+**NOTE**
+
+The methods for tracking parameters, e.g. `watch`, `add_run_attributes` and `add_experiment_attribute` can only be called before `f.attach_logger(l)` is called. Otherwise, the function will have no effect. 
+
+---
 
 ## Using the experimenter module
 
