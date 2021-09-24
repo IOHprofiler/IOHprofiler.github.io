@@ -44,7 +44,7 @@ This problem contains a meta-data attributes, which consists of many standard pr
 
 ```python
 #Print some properties of the function
-print((f.meta_data.name, f.meta_data.n_variables))
+print(f.meta_data)
 ```
 
 Additionally, the problem contains information on its bounds / conditions
@@ -57,7 +57,7 @@ The problem also tracks the current state of the optimization, e.g. number of ev
 
 ```python
 #Show the state of the optimization
-f.state.optimum_found, f.state.evaluations
+print(f.state)
 ```
 And of course, the function can be evaluated easily:
 
