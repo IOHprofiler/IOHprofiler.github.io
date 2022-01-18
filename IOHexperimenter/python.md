@@ -15,8 +15,9 @@ pip install ioh
 
 ## Usage
 
-The following walks through the typical use cases of the IOHexperimenter. 
-You can find this in a jupyter notebook [on this page]() to run it in an interactive manner.
+There are a few main ways of using the IOHexperimenter. All of them are based on the 'function' as defined by IOHexperimenter. 
+Then, one can either use this function directly, or, using the 'experimenter'-class, automate the entire benchmarking pipeline.
+On this page, we will first introduce the basic aspects of this 'function' object, which will be the part of the codebase which your algorithm needs to interact with. Then, we introduce several usecases of IOHexperimenter, ranging from running an algorithm on one existing problem to complete benchmarking pipelines.
 
 ### Create a function object
 The structure of the IOHexperimenter in python is almost equivalent to the C++ version, but with a few ease-of-use features added, such as easy access to any existing benchmark problem usin the 'get_problem' function:
@@ -30,15 +31,14 @@ To check the usage and parameterization of this (and most other) functionality, 
 #View docstring of get_problem
 ?get_problem
 ```
-Based on this, you can then create a problem:
-
+Based on this, you can then access a problem, for example from the 'BBOB' suite of continuous problems:
 
 ```python
 #Create a function object, either by giving the function id from within the suite
-f = get_problem(7, dim=5, iid=1, problem_type = 'BBOB')
+f = get_problem(7, dimension=5, instance=1, problem_type = 'BBOB')
 
 #Or by giving the function name
-f2 = get_problem("Sphere", dim=5, iid=1)
+f2 = get_problem("Sphere", dimension=5, instance=1)
 ```
 This problem contains a meta-data attributes, which consists of many standard properties, such as number_of_variables (dimension), name,...
 
@@ -68,7 +68,7 @@ f([0,0,0,0,0])
 
 ## Running an algorithm
 
-We can construct a simple random-search example wich accepts an IOHprofiler problem as its argument.
+To show how to use IOHexperimenter to run an algorithm on a built-in function, we can construct a simple random-search example wich accepts an IOHprofiler problem as its argument.
 
 
 ```python
@@ -136,16 +136,16 @@ class RandomSearch:
     def __init__(self, budget: int):
         self._budget = budget
         self.seed = np.random.get_state()[1][0]
-        self._rng = np.random.default_rng(self._seed)
+        self._rng = np.random.default_rng(self.seed)
 
     def __call__(self, func: ioh.problem.Real):
         for i in range(self._budget):
-            x = self._rng.random.uniform(func.constraint.lb, func.constraint.ub)
+            x = self._rng.uniform(func.constraint.lb, func.constraint.ub)
             f = func(x)
         #Set new seed for future runs        
         self.seed = np.random.get_state()[1][0]
         self._rng = np.random.default_rng(self.seed)
-        return self.f_opt, self.x_opt
+        return
     
     @property
     def param_rate(self) -> int:
@@ -199,7 +199,7 @@ from ioh import Experiment
 ```
 
 At its core, the Experimenter object contains three parts: 
-- An optimization algorithm (which takes a problem as input)
+- An optimization algorithm (which takes a ioh-based problem as input)
 - Information on the collection of problems to be executed
 - Information on the logging procedure
 
@@ -233,16 +233,64 @@ from ioh import problem, OptimizationType
 def f_custom(x):
     return np.sum(x)
 #Call the wrapper
-problem.wrap_real_problem(f_custom, "custom_name", n_variables=5, optimization_type=OptimizationType.Minimization)
+problem.wrap_real_problem(f_custom, "custom_name",  optimization_type=OptimizationType.Minimization)
 
 #Call get_problem to instantiate a version of this problem
-f = get_problem('custom_name', iid=0, dim=5)
+f = get_problem('custom_name', instance=0, dimension=5)
 ```
 
-Note that changing the iid of the problem is not yet supported, but changing the dimensionality does work, assuming the evaluate function can handle inputs of the specified size.
+Note that you can also add function transformations based on the instance id, for example as follows:
 
 ```python
-f = get_problem('custom_name', iid=0, dim=10)
+# Transformation function of x-attributes based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
+def transorm_vars(x, instance):
+    x[1] += instance
+    return x
+
+# Transformation function of x-attributes based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
+def transorm_obj(y, instance):
+    return y * instance
+
+# Function to calculate the objective (both x and corresponding objective value) based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
+def calc_obj(instance, dimension):
+    return [instance]*dimension, instance
+
+
+#We can then add these transformations when wrapping the problem:
+problem.wrap_real_problem(f_custom, name="custom_name2",
+optimization_type=OptimizationType.Minimization, 
+         transform_variables=transorm_vars, transform_objectives=transorm_obj, 
+         calculate_objective=calc_obj)
+```
+
+
+
+```python
+f = get_problem('custom_name2', instance=3, dimension=10)
+```
+
+When using custom problems, they can be used with the Experiment class just the same as pre-defined functions. Note that you can see the function id as follows:
+
+```python
+f.meta_data.problem_id
+```
+```python
+exp = Experiment(algorithm = o, #Set the optimization algorithm
+fids = [1,25], iids = [0], dims = [5,10], reps = 5, problem_type = 'BBOB', #Problem definitions
+njobs = 4, #Enable paralellization
+logged = True, folder_name = 'IOH_data', algorithm_name = 'Random_Search', store_positions = True, #Logging specifications
+experiment_attributes = {'budget' : '1000'}, run_attributes = ['seed'], logged_attributes = ['param_rate'], #Attribute tracking
+merge_output = True, zip_output = True, remove_data = True #Only keep data as a single zip-file
+)
+```
+
+Alternatively, we can use custom problems without first wrapping them, by using the 'add_custom_problem' function of Experiment:
+
+```python
+exp = ioh.Experiment(0, fids=[], iids=[1], dims=[10], njobs=4)
+    exp.add_custom_problem(problem, "problem", 
+         transform_variables=tx, transform_objectives=ty, calculate_objective=co)
+    exp.run()
 ```
 
 ## Using the W-model functions
@@ -253,7 +301,5 @@ In addition to the PBO and BBOB functions, the W-model problem generators (one b
 ```
 
 ```python
-f = problem.WModelLeadingOnes(iid = 1, dim = 100, dummy_select_rate = 0.5, epistasis_block_size = 1, neutrality_mu = 0, ruggedness_gamma = 0 )
+f = problem.WModelLeadingOnes(instance = 1, n_variables = 100, dummy_select_rate = 0.5, epistasis_block_size = 1, neutrality_mu = 0, ruggedness_gamma = 0 )
 ```
-
-
