@@ -7,6 +7,9 @@ permalink: /IOHexp/R/
 
 
 ## Installation
+
+**We do NOT recommend to use the R interface since it is not currently maintained!**
+
 The IOHexperimenter is now available on [CRAN](https://CRAN.R-project.org/package=IOHexperimenter), and can be installed using:
 
 ```r
