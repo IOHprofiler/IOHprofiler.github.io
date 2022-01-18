@@ -7,13 +7,15 @@ permalink: /IOHexp/R/
 
 
 ## Installation
+While a version of IOHexperimenter is available for R, we highly recommend to use the C++ or python version instead, since the R version is no longer maintained, and we can't guarantee the functionality is equivalent to the current version!
+
 The IOHexperimenter is now available on [CRAN](https://CRAN.R-project.org/package=IOHexperimenter), and can be installed using:
 
 ```r
 install.packages('IOHexperimenter')
 ```
 
-Alternatively, the development version can be downloaded by either cloning this repository from [GitHub](https://github.com/IOHprofiler/IOHexperimenter.git) and installing locally, or use the following commands to use devtools to install latest version from our GitHub:
+Alternatively, the development version can be downloaded by either cloning this repository from [GitHub](https://github.com/IOHprofiler/IOHexperimenter/tree/R) and installing locally, or use the following commands to use devtools to install latest version from our GitHub:
 
 If devtools is not yet installed, please first use
 
