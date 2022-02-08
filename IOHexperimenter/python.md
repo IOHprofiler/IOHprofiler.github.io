@@ -5,6 +5,10 @@ parent: IOHexperimenter
 permalink: /IOHexp/python/
 --- 
 
+## Overview
+
+This document shows the basic usecases of IOHexperimenter in python. 
+Note that the examples shown are also available as an Ipython notebook, which can be found at: https://github.com/IOHprofiler/IOHprofiler.github.io/blob/62a1d4f688dfec357630deef36d9ad2adfb190ae/IOH_Tutorial_python.ipynb
 
 ## Installation
 This package can be installed directly from pip, using:
@@ -25,12 +29,40 @@ The structure of the IOHexperimenter in python is almost equivalent to the C++ v
 # Import the get_problem function
 from ioh import get_problem
 ```
-To check the usage and parameterization of this (and most other) functionality, we provide built-in docstrings, acessible as usual:
+To check the usage and parameterization of this (and most other) functionality, we provide built-in docstrings. These are available in Ipython as follows:
 
 ```python
 #View docstring of get_problem
 ?get_problem
 ```
+
+If you are not using Ipython, you can access the docstrings using pythons built-in help-function:
+
+```python
+#View docstring of get_problem
+help(get_problem)
+```
+
+This will output the docstrings as follows:
+```
+Help on function get_problem in module ioh:
+
+get_problem(fid:Union[int, str], iid:int, dim:int, problem_type:str='Real') -> Union[ioh.iohcpp.problem.Real, ioh.iohcpp.problem.Integer]
+    Instantiate a problem based on its function ID, dimension, instance and suite
+
+    Parameters
+    ----------
+    fid: int or str
+        The function ID of the problem in the suite, or the name of the function as string
+    dim: int
+        The dimension (number of variables) of the problem
+    iid: int
+        The instance ID of the problem
+    problem_type: str
+        Which suite the problem is from. Either 'BBOB' or 'PBO' or 'Real' or 'Integer'
+        Only used if fid is an int.
+```
+
 Based on this, you can then access a problem, for example from the 'BBOB' suite of continuous problems:
 
 ```python
@@ -192,10 +224,6 @@ In addition to creating each problem individually, we can make use of the built-
 
 ```python
 from ioh import Experiment
-```
-
-```python
-?Experiment
 ```
 
 At its core, the Experimenter object contains three parts: 
