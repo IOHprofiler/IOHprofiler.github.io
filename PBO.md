@@ -36,7 +36,7 @@ In general, for a pseudo-Boolean function $f\colon \\{0,1\\}^n \rightarrow \math
 Intuitively, such transformations are devised to test the invariance property of an optimization algorithm,
 which entails that no performance difference would be measured when the objective function is modified using those
 transformations. We suggest to apply such transformations on the test functions to challenge your algorithms.
-Note that, for the continuous optimization problem, this has been practiced in the [COCO/BBOB](http://coco.lri.fr/COCOdoc/bbo_experiment.html) platform, where they applied random affine transformations to test functions.
+Note that, for the continuous optimization problems, this has been practiced in the [COCO/BBOB](http://coco.lri.fr/COCOdoc/bbo_experiment.html) platform, where they applied random affine transformations to test functions.
 <!-- Practically, for the PBO problem set, _instance 1_ in **IOHexperimenter** is the basic instance of each problem. For other instances the $\oplus$ and $\sigma$ transformations are separated. More precisely, instances 2-50 are obtained from instance 1 by a \"$\oplus z$\" rotation with a randomly chosen $z \in \{0,1\}^n$, and random fitness offsets $a\in [\frac{1}{5},5]$, $b \in [-1000,1000]$. For instances 51-100 there is no \"$\oplus z$\" rotation, but the strings are permuted by a randomly chosen $\sigma$ and the ranges for the random fitness offset are chosen as for instances 2-6. For each function and each dimension the values of $z$, $\sigma$, $a$, and $b$ are fixed per each instance, but different functions of the same dimensions may have different $z$ and $\sigma$ transformations. -->
 
 <!-- Description of problems of PBO suite is below. To add new test problems or create new benchmark suite, please follow the [Section 4.4](/IOHexperimenter/extension/). -->
@@ -63,12 +63,12 @@ The problem is a linear function with harmonic weights.
 
 The W-model comprises 4 basic transformations, each coming with different instances. We use $W(\cdot,\cdot,\cdot,\cdot)$ to denote the configuration chosen in our benchmark set.
 
-* **Dummy variables** $W(k,\ast,\ast,\ast)$: a reduction mapping each string $(x_1, \ldots, x_n)$ to a substring $(x_{i_1}, \ldots, x_{i_k})$ for randomly chosen, pairwise different $i_1,\ldots, i_k \in [n]$.
-* **Neutrality** $W(\ast,\mu,\ast,\ast)$: The bit string $(x_1,\ldots,x_n)$ is reduced to a string$(y_1,\ldots,y_m)$ with $m:=\frac{n}{\mu}$, where $\mu$ is a parameter of the transformation. For each $i \in [m]$ the value of $y_i$ is the majority of the bit values in a size-$\mu$ substring of $x$. More precisely, $y_i=1$ if and only if there are at least $\frac{\mu}{2}$ ones in the substring $(x_{(i-1)\mu+1},x_{(i-1)\mu+2},\ldots,x_{i\mu})$. When $\frac{n}{\mu} \notin \mathbb{N}$, the last bits of $x$ are $y$. In our assessment, we regard only the case $\mu=3$.
+* **Dummy variables** $W(k,\ast,\ast,\ast)$: this transformation maps each bitstring $(x_1, \ldots, x_n)$ to a substring $(x_{i_1}, \ldots, x_{i_k})$ for the indices $i_1,\ldots, i_k \in [n]$ are randomly chosen and distinct.
+* **Neutrality** $W(\ast,\mu,\ast,\ast)$: The bitstring $(x_1,\ldots,x_n)$ is reduced to a string $(y_1,\ldots,y_m)$ with $m:=\frac{n}{\mu}$, where $\mu$ is a parameter of the transformation. For each $i \in [m]$ the value of $y_i$ is the majority of the bit values in a size-$\mu$ substring of $x$. More precisely, $y_i=1$ if and only if there are at least $\frac{\mu}{2}$ ones in the substring $(x_{(i-1)\mu+1},x_{(i-1)\mu+2},\ldots,x_{i\mu})$. When $\frac{n}{\mu} \notin \mathbb{N}$, the last bits of $x$ are $y$. In our assessment, we regard only the case $\mu=3$.
 * **Epistasis** $W(\ast,\ast,\nu,\ast)$: The idea of epistasis is to introduce local perturbations to the bit strings. To this end, a string $x=(x_1,\ldots,x_n)$ is divided into subsequent blocks of size $\nu$. Using a permutation $e_{\nu}:\\{0,1\\}^{\nu} \to \\{0,1\\}^{\nu}$, each substring $(x_{(i-1)\nu+1},\ldots,x_{i\nu})$ is mapped to another string $(y_{(i-1)\nu+1},\ldots,y_{i\nu})=e_{\nu}((x_{(i-1)\nu+1},\ldots,x_{i\nu}))$. The permutation $e_{\nu}$ is chosen in a way that Hamming-1 neighbors $u,v \in \\{0,1\\}^{\nu}$ are mapped to strings of Hamming distance at least $\nu-1$. In our evaluation, we use $\nu=4$ only.
 * **Fitness perturbation** $W(\ast,\ast,\ast,r)$. With this transformation we can determine the ruggedness and deceptiveness of a function. Unlike the previous transformations, this perturbation operates on the function values, not on the bit strings. To this end, a *ruggedness* function $r:\\{f(x) \mid {x} \in \\{0,1\\}^n \\}=:V \to {V}$ is chosen. The new function value of a string $x$ is then set to $r(f(x))$ , so that effectively the problem to be solved by the algorithm becomes $r \circ f$. We use the following three ruggedness functions.
   * $r_1:[0..s] \to [0..\lceil{s/2}\rceil+1$ with $r_1(s)= \lceil {s/2} \rceil +1$ and $r_1(i)=\lfloor {i/2} \rfloor+1$ for $i<s$ and even s, and $r_1(i)=\lceil {i/2} \rceil+1$ for $i<s$ and odd $s$. This function maintains the order of the search points
-  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv {s  { mod }  2}$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level.
+  * $r_2:[0..s] \to [0..s]$ with $r_2(s)=s$, $r_2(i)=i+1$ for $i \equiv s \text{ mod } 2$ and $i<s$, and $r_2(i)=\max\{i-1,0\}$ otherwise. This function introduces moderate ruggedness at each fitness level.
   * $r_3:[0..s] \to [0..s]$ with $r_3(s)=s$ and $r_3(s-5j+k)=s-5j+(4-k)$ for all $j \in {[s/5]}$ and $k {\in} [0..4]$ and $r_3(k)=s - (5\lfloor {s/5} \rfloor - 1 )- k$ for $k \in [0..s - 5\lfloor {s/5} \rfloor -1]$. With this function the problems become quite deceptive, since the distance between two local optima implies a difference of $5$ in the function values.
 
 F4-F17 present superpositions of individual W-model transformations to the OneMax (F1) and the LeadingOnes (F2) problem. Precisely, F4-F17 are
@@ -96,9 +96,9 @@ $$\text{LABS }\colon x\mapsto\frac{n^2}{2\sum_{k=1}^{n-1}\left(\sum_{i=1}^{n-k}s
 
 ### F19-F21: The Ising Model
 
-The classical Ising model considers a set of spins placed on a regular lattice $G=([n],E)$, where each edge $(i,j) \in {E}$ is associated with an interaction strength $J_{ij}$. Given a configuration of $n$ spins, $S:=\left(s_1,\ldots,s_n\right)\in\{-1,1\}^n$, this problem poses a quadratic function, representing the system's energy and depending on its structure $J_{ij}$. Assuming zero external magnetic fields and using $x_i = (s_i + 1)/2$, we obtain the following pseudo-Boolean maximization problem:
+The classical Ising model considers a set of spins placed on a regular lattice $G=([n],E)$, where each edge $(i,j) \in {E}$ is associated with an interaction strength $J_{ij}$. Given a configuration of $n$ spins, $S:=\left(s_1,\ldots,s_n\right)\in\{-1,1\}^n$, this problem poses a quadratic function, representing the system's energy and depending on its structure $J_{ij}$. Assuming zero external magnetic fields and using $x_i = (s_i + 1)/2$ and a unit interaction strength, we obtain the following pseudo-Boolean maximization problem:
 
-$$ \text{ISING }\colon x\mapsto \sum\limits_{\\{i,j\\} \in {E}} \left[x_{i}x_{j} - \left(1-x_{i} \right)\left(1-x_{j} \right) \right].$$
+$$ \text{ISING }\colon x\mapsto \sum\limits_{\\{i,j\\} \in {E}} \left[x_{i}x_{j} + \left(1-x_{i} \right)\left(1-x_{j} \right) \right].$$
 
 In PBO, we consider three instances of lattices: the one-dimensional _ring_ (F19), the two-dimensional _torus_ (F20), and the two-dimensional _triangular lattice_ (F21).
 
@@ -121,3 +121,8 @@ Concatenated Trap (CT) is defined by partitioning a bit-string into segments of 
 ### F25: NK landscapes (NKL)
 
 The function values are defined as the average of $n$ sub-functions $F_i \colon [0..2^{k+1}-1] \rightarrow \mathbb{R}, i \in [1..n]$, where each component $F_i$ only takes as input a set of $k \in [0..n-1]$ bits that are specified by a neighborhood matrix. In this paper, $k$ is set to $1$ and entries of the neighbourhood matrix are drawn u.a.r. in $[1..n]$. The function values of $F_i$'s are sampled independently from a uniform distribution on $(0, 1)$.
+
+## Black-Box Optimization Benchmarking (BBOB) Problem Set
+
+We also incorporated the well-known [COCO/BBOB](http://coco.lri.fr/COCOdoc/bbo_experiment.html) problems in IOHexperimenter. Please see 
+[Nikolaus Hansen, Dimo Brockhoff, Olaf Mersmann, Tea Tusar, Dejan Tusar, Ouassim Ait ElHara, Phillipe R. Sampaio, Asma Atamna, Konstantinos Varelas, Umut Batu, Duc Manh Nguyen, Filip Matzner, Anne Auger. COmparing Continuous Optimizers: numbbo/COCO on Github. Zenodo, DOI:10.5281/zenodo.2594848, March 2019.](https://zenodo.org/record/2594848#.YebD_VjMK3I) for the detailed description of those test problems.
