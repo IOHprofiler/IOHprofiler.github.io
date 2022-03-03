@@ -35,8 +35,8 @@ The composition of **IOHprofiler** and the coordinations of its components are d
 In addition to this wiki page, there are a number of (more) detailed documentations to explore:
 
 * __General__: [https://arxiv.org/abs/1810.05281](https://arxiv.org/abs/1810.05281)
-* __IOHanalyzer__: [https://arxiv.org/abs/2007.03953](https://arxiv.org/abs/2007.03953)
-* __IOHexperimenter__: [https://iohprofiler.github.io/IOHexperimenter](https://iohprofiler.github.io/IOHexperimenter)
+* __IOHanalyzer__: [https://dl.acm.org/doi/abs/10.1145/3510426](https://dl.acm.org/doi/abs/10.1145/3510426)
+* __IOHexperimenter__: [https://arxiv.org/abs/2111.04077](https://arxiv.org/abs/2111.04077)
 
 ## Links
 
