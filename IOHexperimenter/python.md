@@ -19,9 +19,9 @@ pip install ioh
 
 ## Usage
 
-There are a few main ways of using the IOHexperimenter. All of them are based on the 'function' as defined by IOHexperimenter. 
+There are a few main ways of using the IOHexperimenter. All of them are based on the 'problem' as defined by IOHexperimenter. 
 Then, one can either use this function directly, or, using the 'experimenter'-class, automate the entire benchmarking pipeline.
-On this page, we will first introduce the basic aspects of this 'function' object, which will be the part of the codebase which your algorithm needs to interact with. Then, we introduce several usecases of IOHexperimenter, ranging from running an algorithm on one existing problem to complete benchmarking pipelines.
+On this page, we will first introduce the basic aspects of this 'problem' object, which will be the part of the codebase which your algorithm needs to interact with. Then, we introduce several usecases of IOHexperimenter, ranging from running an algorithm on one existing problem to complete benchmarking pipelines.
 
 ### Create a function object
 The structure of the IOHexperimenter in python is almost equivalent to the C++ version, but with a few ease-of-use features added, such as easy access to any existing benchmark problem usin the 'get_problem' function:
@@ -45,44 +45,49 @@ help(get_problem)
 
 This will output the docstrings as follows:
 ```
-Help on function get_problem in module ioh:
+Signature:
+ioh.get_problem(
+    fid: Union[int, str],
+    instance: int = 1,
+    dimension: int = 5,
+    problem_type: str = 'Real',
+) -> Union[ioh.iohcpp.problem.Real, ioh.iohcpp.problem.Integer]
+Docstring:
+Instantiate a problem based on its function ID, dimension, instance and suite
 
-get_problem(fid:Union[int, str], iid:int, dim:int, problem_type:str='Real') -> Union[ioh.iohcpp.problem.Real, ioh.iohcpp.problem.Integer]
-    Instantiate a problem based on its function ID, dimension, instance and suite
-
-    Parameters
-    ----------
-    fid: int or str
-        The function ID of the problem in the suite, or the name of the function as string
-    dim: int
-        The dimension (number of variables) of the problem
-    iid: int
-        The instance ID of the problem
-    problem_type: str
-        Which suite the problem is from. Either 'BBOB' or 'PBO' or 'Real' or 'Integer'
-        Only used if fid is an int.
+Parameters
+----------
+fid: int or str
+    The function ID of the problem in the suite, or the name of the function as string
+dimension: int
+    The dimension (number of variables) of the problem
+instance: int
+    The instance ID of the problem
+problem_type: str
+    Which suite the problem is from. Either 'BBOB' or 'PBO' or 'Real' or 'Integer'
+    Only used if fid is an int.
 ```
 
 Based on this, you can then access a problem, for example from the 'BBOB' suite of continuous problems:
 
 ```python
-#Create a function object, either by giving the function id from within the suite
-f = get_problem(7, dimension=5, instance=1, problem_type = 'BBOB')
+#Create a problem object, either by giving the problem id from within the suite
+f = get_problem(7, dimension=5, instance=1, problem_type = 'Real')
 
-#Or by giving the function name
+#Or by giving the problem name
 f2 = get_problem("Sphere", dimension=5, instance=1)
 ```
 This problem contains a meta-data attributes, which consists of many standard properties, such as number_of_variables (dimension), name,...
 
 ```python
-#Print some properties of the function
+#Print some properties of the problem
 print(f.meta_data)
 ```
 
 Additionally, the problem contains information on its bounds / conditions
 
 ```python
-#Access the box-constrains for this function
+#Access the box-constrains for this problem
 f.constraint.lb, f.constraint.ub
 ```
 The problem also tracks the current state of the optimization, e.g. number of evaluations done so far
@@ -91,16 +96,16 @@ The problem also tracks the current state of the optimization, e.g. number of ev
 #Show the state of the optimization
 print(f.state)
 ```
-And of course, the function can be evaluated easily:
+And of course, the problem can be evaluated easily:
 
 ```python
-#Evaluate the function
+#Evaluate the problem
 f([0,0,0,0,0])
 ```
 
 ## Running an algorithm
 
-To show how to use IOHexperimenter to run an algorithm on a built-in function, we can construct a simple random-search example wich accepts an IOHprofiler problem as its argument.
+To show how to use IOHexperimenter to run an algorithm on a built-in problem, we can construct a simple random-search example wich accepts an IOHprofiler problem as its argument.
 
 
 ```python
@@ -251,8 +256,8 @@ This can be run as follows:
 exp.run()
 ```
 
-## Using custom functions
-In addition to the interfaces to the built-in functions, IOHexperimenter provides an easy way to wrap any problem into the same ioh-problem structure for easy use with the logging and experiment modules. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions. An example is shown here:
+## Using custom problems
+In addition to the interfaces to the built-in problems, IOHexperimenter provides an easy way to wrap any problem into the same ioh-problem structure for easy use with the logging and experiment modules. This can be done using the 'wrap_real_problem' and 'wrap_integer_problem' functions. An example is shown here:
 
 ```python
 from ioh import problem, OptimizationType
@@ -267,16 +272,16 @@ problem.wrap_real_problem(f_custom, "custom_name",  optimization_type=Optimizati
 f = get_problem('custom_name', instance=0, dimension=5)
 ```
 
-Note that you can also add function transformations based on the instance id, for example as follows:
+Note that you can also add transformations based on the instance id, for example as follows:
 
 ```python
 # Transformation function of x-attributes based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
-def transorm_vars(x, instance):
+def transform_vars(x, instance):
     x[1] += instance
     return x
 
 # Transformation function of x-attributes based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
-def transorm_obj(y, instance):
+def transform_obj(y, instance):
     return y * instance
 
 # Function to calculate the objective (both x and corresponding objective value) based on the instance id (numeric, default is 0). Note that argument order is fixed, but names are flexible.
@@ -287,7 +292,7 @@ def calc_obj(instance, dimension):
 #We can then add these transformations when wrapping the problem:
 problem.wrap_real_problem(f_custom, name="custom_name2",
 optimization_type=OptimizationType.Minimization, 
-         transform_variables=transorm_vars, transform_objectives=transorm_obj, 
+         transform_variables=transform_vars, transform_objectives=transform_obj, 
          calculate_objective=calc_obj)
 ```
 
@@ -297,7 +302,7 @@ optimization_type=OptimizationType.Minimization,
 f = get_problem('custom_name2', instance=3, dimension=10)
 ```
 
-When using custom problems, they can be used with the Experiment class just the same as pre-defined functions. Note that you can see the function id as follows:
+When using custom problems, they can be used with the Experiment class just the same as pre-defined problems. Note that you can see the problem id as follows:
 
 ```python
 f.meta_data.problem_id
@@ -318,11 +323,11 @@ Alternatively, we can use custom problems without first wrapping them, by using 
 exp = ioh.Experiment(0, fids=[], iids=[1], dims=[10], njobs=4)
     exp.add_custom_problem(problem, "problem", 
          transform_variables=tx, transform_objectives=ty, calculate_objective=co)
-    exp.run()
+    exp()
 ```
 
-## Using the W-model functions
-In addition to the PBO and BBOB functions, the W-model problem generators (one based on OneMax and one based on LeadingOnes) are also avalable. 
+## Using the W-model problems
+In addition to the PBO and BBOB problems, the W-model problem generators (one based on OneMax and one based on LeadingOnes) are also avalable. 
 
 ```python
 ?problem.WModelOneMax
