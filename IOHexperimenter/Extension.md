@@ -13,7 +13,7 @@ We offer a very simple and convenient interface for integrating new benchmark pr
 ```C++
 #include "ioh.hpp"
 
-std::vector<double> test_problem(const std::vector<double> &)
+std::vector<double> new_problem(const std::vector<double> &)
 {
     // the actual function body start here
     // ...
@@ -23,20 +23,41 @@ std::vector<double> test_problem(const std::vector<double> &)
 Then, you only need to "wrap" this new function as follows:
 
 ```c++
-auto new_problem = ioh::problem::wrap_function<double>(
-  &test_problem,
-  "test_problem" // name for the new function
-);
-std::cout << new_problem.meta_data() << std::endl;
+ioh::problem::wrap_function<double>(&new_problem,
+                                    "new_problem" // name for the new function
+                                    );
 ```
 
-After wrapping, we could also create this `test_problem` from the problem factory. Note that,
-the instance id is ineffective in this approach since we haven't implemented it for the wrapped problem.
+In addition, you can define transformation methods for generating various instances of the function.
+
+```c++
+std::vector<double> new_transform_variables_function(const std::vector<double> &x, int instance_id) {
+  // The instance_id can be used as seed for possible randomizing process.
+  // ...
+}
+
+double new_transform_objective_functions(double y, int instance_id) {
+  // The instance_id can be used as seed for possible randomizing process.
+  // ...
+}
+
+ioh::problem::wrap_function<double>(&new_problem,  // the new function
+                                    "new_problem", // name of the new function
+                                    ioh::common::OptimizationType::Minimization, // optimization type
+                                    0,  // lowerbound  
+                                    1,  // upperbound
+                                    &new_transform_variables_function, // the variable transformation method. Optional argument when transformation is applied.
+                                    &new_transform_objective_functions // the objective transformation method. Optional argument when transformation is applied.
+                                    );
+```
+
+After wrapping, we could create this `new_problem` from the problem factory. Note that,
+the instance id is ineffective in this approach since we haven't implemented any transformations for the wrapped problem.
 
 ```c++
 auto &factory = ioh::problem::ProblemRegistry<ioh::problem::Real>::instance();
 auto new_problem_f = factory.create(
-  "test_problem",  // create by name
+  "new_problem",  // create by name
   1,               // instance id
   10               // number of search variables
 );
@@ -93,15 +114,14 @@ public:
 };
 ```
 
-Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/759750759331fff1243ef9e121209cde450b9726/example/problem_example.h#L51) for adding continuous problems in this manner.
-
+Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/8a49d76d591c52b4ae8ed0991d4b6ea8d5c3adaa/example/problem_example.h#L52) for adding continuous problems in this manner.
 
 <a name="adding-new-loggers"></a>
 ## Adding new loggers
 
-We offer a simple base class for customized loggers. You can define a new logger class inheriting the `logger` class in [base.hpp](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/base.hpp).
+We offer a simple base class for customized loggers. You can define a new logger class inheriting the `logger` class in [loggers.hpp](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/loggers.hpp).
 
-First, you need to define a new `track_problem` function to access the [metadata](https://github.com/IOHprofiler/IOHexperimenter/blob/da22d89fe1673ea67962829d12873e01387f6895/include/ioh/problem/utils.hpp#L78) of the problem to be tested. The `track_problem` function will be revoked in the `attach_logger` function of the `problem` class. You should 
+First, you need to define a new `attach_problem` function to access the [metadata](https://github.com/IOHprofiler/IOHexperimenter/blob/e28136a6c700d0c8d50855fe5724eec8e734c12e/include/ioh/logger/loggers.hpp#L190) of the problem to be tested. The `attach_problem` function will be revoked in the `attach_logger` function of the `problem` class. You should 
 also define a `track_suite` function for tracking information of suites for your experiment.
 ```C++
 void track_problem(const problem::MetaData& problem) 
@@ -116,45 +136,40 @@ void track_suite(const std::string& suite_name)
 
 ```
 
-Then you should define a `log` function performing logging operations. The `log` function will be revoked in the `evaluate` function of the `problem` class. The `LogInfo` class provides variables of the optimization state.
+Then you should define a `log` function checking if the logger should be triggered, if so, `call(log_info)` will be revoked. `call(log_info)` is the main entry performing logging process, for example, writing csv files. The `log` function will be revoked in the `evaluate` function of the `problem` class. The `logger::Info` class provides variables of the optimization state.
 
 ```C++
-void log(const LogInfo& log_info)
+void log(const logger::Info& log_info)
 {
+
+}
+
+void call(const logger::Info& log_info){
 
 }
 ```
 
 ```C++
-struct LogInfo
+struct Info
 {
-    // The number of evaluations that have been used.
+    //! Number of evaluations of the objective function so far.
     size_t evaluations;
 
-    // The fitness values of the best-so-far solution calculating without applying transformations.
-    double y_best;
-
-    // The fitness value of the last evaluated solution.
+    //! The current best internal objective function value (since the last reset).
+    double raw_y_best; // was y_best
+    
+    //! The current transformed objective function value.
     double transformed_y;
-
-    // The fitness value of the best-so-far solution.
+    
+    //! The current best transformed objective function value (since the last reset).
     double transformed_y_best;
-
-    // The last evaluated solution.
+    
+    //! Currently considered solution with the corresponding transformed objective function value.
     problem::Solution<double> current;
-
-    // The optimum if it exists.
-    problem::Solution<double> objective;
+    
+    //! Optimum to the current problem instance, with the corresponding transformed objective function value.
+    problem::Solution<double> optimum; // was objective
 };
-
 ```
 
-Also, a `flush` functions is required to close the `logger` at last.
-```C++
-void flush()
-{
-
-}
-```
-
-Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/default.hpp) for recording evaluation information during the optimization process into csv files. 
+Please check [this example](https://github.com/IOHprofiler/IOHexperimenter/blob/master/include/ioh/logger/analyzer.hpp) for recording evaluation information during the optimization process into csv files. 
