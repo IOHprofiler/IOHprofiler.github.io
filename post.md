@@ -4,8 +4,15 @@ title: News
 permalink: /News/
 ---
 
+
+# Upcoming events
+
+Tutorials on IOHprofiler have been accepted at [GECCO 2022](https://gecco-2022.sigevo.org/Tutorials#id_Benchmarking%20and%20analyzing%20iterative%20optimization%20heuristics%20with%20IOHprofiler) and [CEC 2022](https://wcci2022.org/accepted-tutorials/)!
+
+
 ## Competitions
 
+* The [Open Optimization competition 2021](http://www-ia.lip6.fr/~doerr/OpenOptimizationCompetition2021.html#:~:text=The%20Open%20Optimization%20Competition%202021%20was%20part%20of%20the%20following,July%2010%2D14%20(online)), organized in colaboration with Nevergrad
 * The [Open Optimization competition 2020](https://facebookresearch.github.io/nevergrad/opencompetition2020.html), organized in colaboration with Nevergrad
 
 ## Tutorials
@@ -25,5 +32,6 @@ permalink: /News/
 * September 2018: Carola Doerr presents IOHprofiler at PPSN '18.
 
 ## Teaching
-* *IOHprofiler* is used for teaching in the bachelor course 'Natural Computing' at LIACS, Leiden University, in 2019 and 2020
-* *IOHprofiler* is used for teaching in the master course 'Evolutionary Algorithms' at LIACS, Leiden University, in 2019 and 2020
+* *IOHprofiler* is used for teaching in the bachelor course 'Natural Computing' at LIACS, Leiden University, starting in 2019
+* *IOHprofiler* is used for teaching in the master course 'Evolutionary Algorithms' at LIACS, Leiden University, starting in 2019 
+* *IOHprofiler* is used for teaching the course 'Solving Optimization Problems with Search Heuristics' at Sorbonne University, starting in 2021
