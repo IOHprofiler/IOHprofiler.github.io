@@ -322,7 +322,7 @@ Alternatively, we can use custom problems without first wrapping them, by using 
 ```python
 exp = ioh.Experiment(0, fids=[], iids=[1], dims=[10], njobs=4)
     exp.add_custom_problem(problem, "problem", 
-         transform_variables=tx, transform_objectives=ty, calculate_objective=co)
+         transform_variables=transform_vars, transform_objectives=transform_obj, calculate_objective=calc_obj)
     exp()
 ```
 
