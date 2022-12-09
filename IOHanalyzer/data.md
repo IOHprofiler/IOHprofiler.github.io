@@ -13,6 +13,19 @@ Specific formats are required to load your benchmark data to **IOHanalyzer**. If
 
 then you could skip this section. Needless to say, **you are encouraged to convert your own benchmark data to the format regulated here!**
 
+## CSV-based data structure
+From IOHanalzyer version 0.1.7, a new option for data format has been included. This allows you to upload a csv-file containing your performance data, which offers more flexibility than the format described below.
+To use this functionality on the GUI, the checkbox 'use custom csv format' should be enabled. This then allows for uploading of the csv-file, which loads the column names. 
+The names can be arbitrary, and will be matched to the following:
+* Evaluation counter: This should denote the evaluation number at which the data was recorded. If this is not included or set to 'None', it is assumed that all evaluation counts per run are sequential. 
+* Function values: The actual performance data. This is the only required column.
+* Function ID: A column which denotes the function name or identifier on which the run was performed. If set to 'None', it is assumed all runs are on the same function (whose identifier can then be entered manually).
+* Algorithm ID: A column which denotes the name or identifier of the algorithm with which the run was performed. If set to 'None', it is assumed all runs are from the same algorithm (whose identifier can then be entered manually).
+* Problem dimension: A column which denotes the dimension of the problem on which the run was performed. If set to 'None', it is assumed all runs are on the same dimensionality (which can then be entered manually).
+* Run ID: A column which denotes the name or identifier of the run which was performed. If set to 'None', it is assumed that only one run is performed on each function / dimension / algorithm combination.
+
+Finally, a checkbox indicates whether the problem is minimization or maximization. The selected settings can then be used to process the full uploaded csv file. 
+
 ## File Structure
 
 In general, when benchmarking IOHs on several test functions/problems and dimensions, the raw data files are grouped by the test function and stored in sub-folders (the same with the **COCO/BBOB** data format). For example, one example file structure is outlined as follows:
@@ -41,6 +54,7 @@ Generally, in the data folder (<tt>./</tt> here), the following files are mandat
 
 ## <a name="meta-data"></a>Meta-data
 
+### IOHexperimenter version 0.3.2 and below:
  The meta data are implemented in a format that is very similar to that in the **COCO/BBOB** data sets. Note that one meta-data file can consist of several dimensions. Please see the detail below. An example is provided as follows:
 
 ```{bash}
@@ -70,8 +84,37 @@ A three-line structure is used for each dimension:
 
 $\text{#FE}$ stands for the number of function evaluations.
 
+### IOHexperimenter version 0.3.3 and above:
+The meta data are stored in standard 'json' format. The same data as above can be included. 
+
+```{bash}
+{
+	"version": "0.3.5", 
+	"suite": "unknown_suite", 
+	"function_id": 12, 
+	"function_name": "BentCigar", 
+	"maximization": false, 
+	"algorithm": {"name": "algorithm_name", "info": "algorithm_info"},
+	"attributes": ["evaluations", "raw_y"],
+	"scenarios": [
+		{"dimension": 2,
+		"path": "data_f12_BentCigar/IOHprofiler_f12_DIM2.dat",
+		"runs": [
+			{"instance": 1, "evals": 648, "best": {"evals": 648, "y": 8.395838469278655e-09, "x": [-0.8920357493234841, 3.9911997374078267]}},
+			{"instance": 1, "evals": 660, "best": {"evals": 659, "y": 5.715728502439972e-09, "x": [-0.8920705153336956, 3.9911996215977723]}},
+			{"instance": 1, "evals": 642, "best": {"evals": 637, "y": 3.8520665667764165e-09, "x": [-0.8919790763641989, 3.9912001624153266]}},
+			{"instance": 1, "evals": 612, "best": {"evals": 609, "y": 6.526032480998535e-09, "x": [-0.8919433049244551, 3.991200339301575]}},
+			{"instance": 1, "evals": 648, "best": {"evals": 646, "y": 6.063283992998331e-09, "x": [-0.8919741726505971, 3.9912000548845326]}},
+			{"instance": 1, "evals": 654, "best": {"evals": 654, "y": 3.4038668242174648e-09, "x": [-0.8920566463379289, 3.991199732092277]}}
+        ]}
+	]
+}
+...
+```
+
 ## <a name="raw-data"></a>Raw-data
 
+### IOHexperimenter version 0.3.2 and below:
 The format of raw data is illustrated by the example below (with dummy data records):
 
 ```{bash}
@@ -104,20 +147,30 @@ Note that, the columns and header of this format is regulated as follows:
 7. Each data line should contain a complete record. Incomplete data records will be dropped when loading the data into **IOHanalyzer**.
 8. _A single space or tab_ can be used (only one of them should be used consistently in a single data file), to separate the columns.
 
-### Two-Column Format
+### IOHexperimenter version 0.3.3 and above:
 
-The raw data file comes in its simplest form, if we only keep the mandatory items from the list above:
+From version 0.3.3 onwards, the required data format has been simplified. We only track one value per problem by default, denoted as 'raw_y'. This is the value which was denoted as 'best-so-far f(x)' above (and thus the one which enables comparison between instances).
+Additional parameters are added as additional columns, for example to track the position of the evaluated points in the search space.  
 
 ```{bash}
-"function evaluation" "best-so-far f(x)"
-1  +2.95000e+02
-2  +2.96000e+02
-4  +3.07000e+02  
-23  +3.28000e+02
-27  +3.39000e+02
-"function evaluation" "best-so-far f(x)"  
-1   +3.20000e+02
-...  ...
+evaluations raw_y x0 x1
+1 6895156.6468390366 2.445611 6.633680
+4 1070643.1062236333 0.281697 2.973091
+7 22152.7909471173 -0.118144 4.143884
+13 2779.8368648035 0.921224 3.927269
+39 43.6691054900 2.280253 4.001168
+63 10.7249333924 0.216650 3.999791
+121 7.8764397895 1.642441 4.002590
+134 6.6337496073 1.668475 4.003646
+147 5.9562390837 1.486457 4.003567
+182 5.6358495484 1.344023 4.003110
+187 5.0142960630 1.346717 4.002277
+306 5.0022631896 1.327907 4.001960
+307 4.9245811271 1.324238 4.002101
+313 4.8357629845 1.285684 4.001717
+320 4.6821891454 1.247491 4.001509
+324 4.5893709710 1.240789 4.001598
+...
 ```
 
 ### <a name="logging-events"></a>Logging Events
