@@ -10,7 +10,7 @@ nav_order: 2
 
 * [__IOHexperimenter__](IOHexp/) for generating benchmarking suites, which produce experiment data,
 * [__IOHanalyzer__](IOHanalyzer/) for the statistical analysis and visualization of the experiment data,
-* [__IOHproblem__](IOHproblem) for providing a collection of test functions.
+* [__IOHproblem__](IOHproblem/) for providing a collection of test functions.
 * [__IOHdata__](IOHdata) for hosting the benchmarking data sets from __IOHexperimenter__ as well as other platforms, e.g., [_BBOB/COCO_](https://github.com/numbbo/coco) and [_Nevergrad_](https://github.com/facebookresearch/nevergrad).
 * [__IOHalgorithm__](IOHalgorithm) for efficient implemention of various classic optimization algorithms.
   
