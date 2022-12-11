@@ -1,7 +1,7 @@
 ---
 layout: page
-title: IOHproblem
-permalink: /IOHproblem/
+title: PBO
+permalink: /IOHproblem/PBO
 --- 
 
 At this moment, we have designed and implemented the _Pseudo-Boolean Optimization_ (PBO) problem set, which contains 25 real-valued test problems on $\\{0,1\\}^n$. The selection of PBO problems is suggested in
@@ -121,8 +121,3 @@ Concatenated Trap (CT) is defined by partitioning a bit-string into segments of 
 ### F25: NK landscapes (NKL)
 
 The function values are defined as the average of $n$ sub-functions $F_i \colon [0..2^{k+1}-1] \rightarrow \mathbb{R}, i \in [1..n]$, where each component $F_i$ only takes as input a set of $k \in [0..n-1]$ bits that are specified by a neighborhood matrix. In this paper, $k$ is set to $1$ and entries of the neighbourhood matrix are drawn u.a.r. in $[1..n]$. The function values of $F_i$'s are sampled independently from a uniform distribution on $(0, 1)$.
-
-## Black-Box Optimization Benchmarking (BBOB) Problem Set
-
-We also incorporated the well-known [COCO/BBOB](http://coco.lri.fr/COCOdoc/bbo_experiment.html) problems in IOHexperimenter. Please see 
-[Nikolaus Hansen, Dimo Brockhoff, Olaf Mersmann, Tea Tusar, Dejan Tusar, Ouassim Ait ElHara, Phillipe R. Sampaio, Asma Atamna, Konstantinos Varelas, Umut Batu, Duc Manh Nguyen, Filip Matzner, Anne Auger. COmparing Continuous Optimizers: numbbo/COCO on Github. Zenodo, DOI:10.5281/zenodo.2594848, March 2019.](https://zenodo.org/record/2594848#.YebD_VjMK3I) for the detailed description of those test problems.
