@@ -6,7 +6,7 @@ permalink: /News/
 
 
 # Upcoming events
-
+* July 2023, Lisbon (Portugal): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [GECCO'23](https://gecco-2023.sigevo.org/HomePage).
 
 ## Competitions
 * The [Competition - Evolutionary Submodular Optimisation GECCO 2022](https://cs.adelaide.edu.au/~optlog/CompetitionESO2022.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China).
