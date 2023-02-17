@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Competitions and Workshops
-permalink: /competitions/
+permalink: /competitions
 ---
 
 
