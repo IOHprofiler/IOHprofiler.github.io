@@ -7,7 +7,7 @@ permalink: /competitions
 
 # Ongoing Competitions
 ## The Submodular Optization Competition
- The [Competition - Evolutionary Submodular Optimisation GECCO 2022](https://cs.adelaide.edu.au/~optlog/CompetitionESO2022.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
+ The [Competition - Evolutionary Submodular Optimisation GECCO 2023](https://cs.adelaide.edu.au/~optlog/CompetitionESO2023.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
 
 ## The Star Discrepancy competion
 
