@@ -10,18 +10,18 @@ has_children: true
 
 ## Motivation
 
-Discrepancy measures are designed to quantify how well a set of points is distributed in a given domain. One of the most widely studied discrepancy notions is the $L_\infinity$ star discrepancy, which measures the largest difference between the volume of boxes of type $[0,x)$ and the fraction $|P \cap [0,x)|/|P|$ of points in $P\subseteq [0,1]^d$ that lie inside this box.
+Discrepancy measures are designed to quantify how well a set of points is distributed in a given domain. One of the most widely studied discrepancy notions is the $L_\infty$ star discrepancy, which measures the largest difference between the volume of boxes of type $[0,x)$ and the fraction $\left|P \cap [0,x)\right|/\left|P\right|$ of points in $P\subseteq [0,1]^d$ that lie inside this box.
 
-Point sets of small $L_\infinity$ star discrepancy have **important applications** in numerical approximation, in computer vision, but also in surrogate-based optimization, where they are commonly used as initial designs (a.k.a. DoEs). Designing point sets of low $L_\infinity$ star discrepancy value is therefore an important task. Among the best-known constructions are the sequences by Sobol, by Halton, by Hammersley, etc. See [this page](https://en.wikipedia.org/wiki/Low-discrepancy_sequence) for more information about star discrepancy notions.
+Point sets of small $L_\infty$ star discrepancy have **important applications** in numerical approximation, in computer vision, but also in surrogate-based optimization, where they are commonly used as initial designs (a.k.a. DoEs). Designing point sets of low $L_\infty$ star discrepancy value is therefore an important task. Among the best-known constructions are the sequences by Sobol, by Halton, by Hammersley, etc. See [this page](https://en.wikipedia.org/wiki/Low-discrepancy_sequence) for more information about star discrepancy notions.
 
-An important bottleneck in the design of low-discrepancy point sets is the **hardness of computing the star discrepancy value for a given point set.** The best problem-specific algorithm has a runtime that scales as $|P|^{d/2+1}$, which infeasible already for moderate dimensions (around 8). 
-However, despite the difficulty of finding the global maximum that defines the $L_\infinity$ star discrepancy of the set, local evaluations of $f(x) = |P \cap [0,x)|/|P|$ at selected points are inexpensive. This makes the problem tractable by black-box optimization approaches. 
+An important bottleneck in the design of low-discrepancy point sets is the **hardness of computing the star discrepancy value for a given point set.** The best problem-specific algorithm has a runtime that scales as $\left|P\right|^{d/2+1}$, which infeasible already for moderate dimensions (around 8). 
+However, despite the difficulty of finding the global maximum that defines the $L_\infty$ star discrepancy of the set, local evaluations of $f(x) = \left|P \cap [0,x)\right|/\left|P\right|$ at selected points are inexpensive. This makes the problem tractable by black-box optimization approaches. 
 
-The objective of this GECCO 2023 competition is to identify solvers that extend the settings for which we obtain accurate estimates for the $L_\infinity$ star discrepancy of a given point set, where **setting** refers to the dimension d and the number of points in P.
+The objective of this GECCO 2023 competition is to identify solvers that extend the settings for which we obtain accurate estimates for the $L_\infty$ star discrepancy of a given point set, where **setting** refers to the dimension d and the number of points in P.
 
 Default numerical black-box optimization algorithms do not seem to be competitive for the star discrepancy problem. However, we expect that their performance can be considerably improved with moderate effort. 
 
-What makes this competition particularly interesting for evolutionary computation research is that the problem can be tackled both as a purely numerical problem $max{f(x)|x \in [0,1]^d}$ and as a purely discrete problem $max{f(x)| x \in [1..n]^d}$. 
+What makes this competition particularly interesting for evolutionary computation research is that the problem can be tackled both as a purely numerical problem $max\{f(x)\middle|x \in [0,1]^d\}$ and as a purely discrete problem $max\{f(x)\middle| x \in [1..n]^d\}$. 
 
 
 ## Participation
@@ -32,7 +32,7 @@ For this competition, we make use of the IOHprofiler environment. A python noteb
 
 We will evaluate all submissions on a number of different instances in dimensions 2 to 20. The algorithms will be evaluated with respect to the fixed budget perspective. We will consider four categories and will determine a winner for each of the four categories. We distinguish between
 * *Numerical* black-box optimization approaches, operating on $[0,1)^d$, and
-* *Discrete* black-box optimization approaches, operating on ${1,2,...,n+1}^d$
+* *Discrete* black-box optimization approaches, operating on $\{1,2,...,n+1\}^d$
 For both these categories, we consider two settings:
 * In the low budget category, each algorithm will be run for $500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
 * In the high budget category, each algorithm will be run for $2,500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
