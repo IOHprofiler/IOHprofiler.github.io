@@ -21,15 +21,17 @@ The objective of this GECCO 2023 competition is to identify solvers that extend 
 
 Default numerical black-box optimization algorithms do not seem to be competitive for the star discrepancy problem. However, we expect that their performance can be considerably improved with moderate effort. 
 
-What makes this competition particularly interesting for evolutionary computation research is that the problem can be tackled both as a purely numerical problem $max\{f(x)\lvert x \in [0,1]^d\}$ and as a purely discrete problem $max\{f(x)\lvert x \in [1..n]^d\}$. 
+What makes this competition particularly interesting for evolutionary computation research is that the problem can be tackled both as a purely numerical problem $\max\{f(x)\lvert x \in [0,1]^d\}$ and as a purely discrete problem $\max\{f(x)\lvert x \in [1..n]^d\}$. 
 
 ### Main Reference:
 François Clement, Diederick Vermetten, Jacob de Nobel, Alexandre Jesus, Luí­s Paquete, Carola Doerr 
-Computing Star Discrepancies with Numerical Black-Box Optimization Algorithms. Technical report, available at https://webia.lip6.fr/~doerr/Star-Discrepancy-BBO.pdf
+Computing Star Discrepancies with Numerical Black-Box Optimization Algorithms. Technical report, available [here](https://webia.lip6.fr/~doerr/Star-Discrepancy-BBO.pdf)
 
-## Participation
+## Competition Setup
 
 For this competition, we make use of the IOHprofiler environment. A python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb). Other examples and tutorials on IOHprofiler can be found on the links in the sidebar of this page.
+
+
 
 ## Evaluation
 
@@ -37,13 +39,17 @@ We will evaluate all submissions on a number of different instances in dimension
 * *Numerical* black-box optimization approaches, operating on $[0,1)^d$, and
 * *Discrete* black-box optimization approaches, operating on $$\{1,2,...,n+1\}^d$$
 For both these categories, we consider two settings:
-* In the low budget category, each algorithm will be run for $500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
-* In the high budget category, each algorithm will be run for $2,500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
+* In the **low budget** category, each algorithm will be run for $500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
+* In the **high budget** category, each algorithm will be run for $2,500*d$ fitness evaluations and the best solution obtained during the run will be used as the result.
 Each algorithm will be run on each test evaluation instance 3 times in each category. Algorithms will be ranked for each considered instance. The winner is the approach that has the smallest average rank in each category, i.e., low budget or high budget.
 As a default, we assume that each submission should be considered for the low and the high budget categories. If a submission should only be considered in one of the categories, i.e., either low or high budget, we ask the contributors to clearly state this in the submission email. Submission Deadlines and Modalities:
-* All submissions made on or before June 30, 2023 (AoE) participate in the competition.
+
+
+## Submission
+
+* All submissions made on or before *June 30, 2023 (AoE)* participate in the competition.
 * To submit to the competition, we recommend creating a publically visible repository (e.g. on [Zenodo](zenodo.org)) where you upload the performance data of your algorithm as a single zip-file (named according to your algorithm name and the category you are submitting to) as well as the algorithm code used to collect this data. A short readme to allow for easier reproducibility checking is highly recommended. Finally, you should email the link to your repository to the competition organizers. 
-* Competition participants may also consider submitting a short (2-page, including references) description of their submission for consideration for publication in the Companion proceedings of GECCO 2023. Note that the deadline for these submissions is considerably earlier than the competition entry deadline, on April 14, 2023. Submissions to the GECCO companion are handled via their submission system, instructions and relevant dates are similar to those of the workshop papers (see this GECCO website for details). Note, however, that competition papers are limited to 2 pages, including references.
+* Competition participants may also consider submitting a short (2-page, including references) description of their submission for consideration for publication in the **Companion proceedings of GECCO 2023**. Note that the deadline for these submissions is considerably earlier than the competition entry deadline, on *April 14, 2023*. Submissions to the GECCO companion are handled via their submission system, instructions and relevant dates are similar to those of the workshop papers (see this GECCO website for details). Note, however, that competition papers are limited to 2 pages, including references.
 
 ## Hosting Events
 
