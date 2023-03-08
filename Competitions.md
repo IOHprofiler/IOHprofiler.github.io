@@ -13,7 +13,7 @@ permalink: /competitions
 
 The $L_{\infty}$ star discrepancy is a measure for the regularity of a finite set of points taken from $[0,1)^d$. Low discrepancy point sets are highly relevant for Quasi-Monte Carlo methods in numerical integration and several other applications. Unfortunately, computing the $L_{\infty}$ star discrepancy of a given point set is known to be a hard problem, with the best exact algorithms falling short for even moderate dimensions around 8. However, despite the difficulty of finding the global maximum that defines the $L_{\infty}$ star discrepancy of the set, local evaluations at selected points are inexpensive. This makes the problem tractable by black-box optimization approaches.
 
-For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb).
+For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb). More details on this competition can be found [here](/competitions/stardiscr).
 
 # Ongoing Workshops
 
