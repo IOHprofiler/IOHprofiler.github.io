@@ -4,10 +4,6 @@ title: IOHprofiler
 nav_order: 2
 ---
 
-# Maintenence Notice
-
-Between June 11 and June 16, our server will be undergoing maintenance. During this period, the IOHanalyzer GUI will not be available. We appologize for this inconvenience.
-
 # Profiling Iterative Optimization Heuristics
 
 **IOHprofiler**, a benchmarking platform for evaluating the performance of _iterative optimization heuristics_ (IOHs), e.g., Evolutionary Algorithms and Swarm-based Algorithms. We aim to the integrate various elements of the entire benchmarking pipeline, ranging from problem (instance) generators and modular algorithm frameworks over automated algorithm configuration techniques and feature extraction methods to the actual experimentation, data analysis, and visualization. It consists of the following major components:
@@ -48,7 +44,7 @@ In addition to this wiki page, there are a number of (more) detailed documentati
   * Main repository: [https://github.com/IOHprofiler](https://github.com/IOHprofiler)
   * Algorithms: [https://github.com/IOHprofiler/IOHalgorithm](https://github.com/IOHprofiler/IOHalgorithm)
   * Performance data: (for the time being, these are available via the web-interface at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), or at [https://github.com/IOHprofiler/IOHdata](https://github.com/IOHprofiler/IOHdata))
-* __IOHanalyzer Online Service__: [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl)
+* __IOHanalyzer Online Service__: [https://iohanalyzer.liacs.nl](https://iohanalyzer.liacs.nl)
 * __Bug reports__:
   * __IOHanalyzer__: [https://github.com/IOHprofiler/IOHanalyzer/issues](https://github.com/IOHprofiler/IOHanalyzer/issues)
   * __IOHexperimenter__: [https://github.com/IOHprofiler/IOHexperimenter/issues](https://github.com/IOHprofiler/IOHexperimenter/issues)
