@@ -30,7 +30,7 @@ It is _built on_:
 
 It is _available through_:
 
-* a free online service available at [http://iohprofiler.liacs.nl](http://iohprofiler.liacs.nl), and
+* a free online service available at [http://iohanalyzer.liacs.nl](http://iohanalyzer.liacs.nl), and
 * a local [installation](#install) of the package.
 
 ## <a name="install"></a>Installation
