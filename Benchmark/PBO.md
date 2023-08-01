@@ -49,7 +49,7 @@ The problem has a very smooth and non-deceptive fitness landscape. Due to the we
 
 ### F2: LeadingOnes
 
-$$\text{LO}:\{0,1\}^n \to [0..n], x\mapsto \max \{i \in [0..n] \mid \forall {j} \le {i}: x_j=1\} = \sum_{i=1}^n{\prod_{j=1}^i{x_i}},$$
+$$\text{LO}:\{0,1\}^n \to [0..n], x\mapsto \max \{i \in [0..n] \mid \forall {j} \le {i}: x_j=1\} = \sum_{i=1}^n{\prod_{j=1}^i{x_j}},$$
 
 which counts the number of initial ones.
 
