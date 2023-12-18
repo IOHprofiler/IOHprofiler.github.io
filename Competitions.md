@@ -4,8 +4,24 @@ title: Competitions and Workshops
 permalink: /competitions
 ---
 
-
 # Ongoing Competitions
+
+We are currently hosting three competitions as part of [GECCO 2024](https://gecco-2024.sigevo.org/Competitions)
+
+## Anytime Algorithms for Many-affine BBOB Functions
+The many-affine BBOB function suite MA-BBOB extends the classic BBOB benchmark suite of the COCO environment by combining its 24 base functions. With this competition, we solicit algorithms designed to optimize anytime performance on the MA-BBOB functions. More information on this competition can be found [here](/competitions/mabbob24)
+
+
+## Evolutionary Submodular Optimisation
+ The [Competition - Evolutionary Submodular Optimisation GECCO 2024](https://cs.adelaide.edu.au/~optlog/CompetitionESO2024.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
+
+## Star Discrepancy Competion
+
+The $L_{\infty}$ star discrepancy is a measure for the regularity of a finite set of points taken from $[0,1)^d$. Low discrepancy point sets are highly relevant for Quasi-Monte Carlo methods in numerical integration and several other applications. Unfortunately, computing the $L_{\infty}$ star discrepancy of a given point set is known to be a hard problem, with the best exact algorithms falling short for even moderate dimensions around 8. However, despite the difficulty of finding the global maximum that defines the $L_{\infty}$ star discrepancy of the set, local evaluations at selected points are inexpensive. This makes the problem tractable by black-box optimization approaches.
+
+For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb). More details on this competition can be found [here](/competitions/stardiscr24).
+
+# Past Competitions
 ## The Submodular Optization Competition
  The [Competition - Evolutionary Submodular Optimisation GECCO 2023](https://cs.adelaide.edu.au/~optlog/CompetitionESO2023.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
 
@@ -13,9 +29,9 @@ permalink: /competitions
 
 The $L_{\infty}$ star discrepancy is a measure for the regularity of a finite set of points taken from $[0,1)^d$. Low discrepancy point sets are highly relevant for Quasi-Monte Carlo methods in numerical integration and several other applications. Unfortunately, computing the $L_{\infty}$ star discrepancy of a given point set is known to be a hard problem, with the best exact algorithms falling short for even moderate dimensions around 8. However, despite the difficulty of finding the global maximum that defines the $L_{\infty}$ star discrepancy of the set, local evaluations at selected points are inexpensive. This makes the problem tractable by black-box optimization approaches.
 
-For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb). More details on this competition can be found [here](/competitions/stardiscr).
+For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_StarDiscr.ipynb). More details on this competition can be found [here](/competitions/stardiscr23).
 
-# Ongoing Workshops
+# Past Workshops
 
 The [SBOX-COST workshop](https://sbox-cost.github.io/) at GECCO 2023 focusses on bound-constrained single-objective, noiseless, continuous optimization. For this workshop, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_SBOX.ipynb).
 

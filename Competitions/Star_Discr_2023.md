@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Star Discrepancy Competition
-permalink: /competitions/stardiscr
+permalink: /competitions/stardiscr23
 has_children: true
 ---
 
