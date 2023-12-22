@@ -13,7 +13,7 @@ The many-affine BBOB function suite MA-BBOB extends the classic BBOB benchmark s
 
 
 ## Evolutionary Submodular Optimisation
- The [Competition - Evolutionary Submodular Optimisation GECCO 2024](https://cs.adelaide.edu.au/~optlog/CompetitionESO2024.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
+ The [Competition - Evolutionary Submodular Optimisation GECCO 2024](https://cs.adelaide.edu.au/~optlog/CompetitionESO2024.php), supporting Aneta Neumann and Saba Sadeghi Ahouei (University of Adelaide, Australia). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
 
 ## Star Discrepancy Competion
 

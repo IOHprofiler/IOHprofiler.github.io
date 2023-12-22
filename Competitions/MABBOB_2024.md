@@ -6,7 +6,7 @@ has_children: true
 ---
 
 
-# GECCO 2024 Competition on Star Discrepancy Computation
+# GECCO 2024 Competition: Anytime Algorithms for Many-affine BBOB Functions
 
 ## Motivation
 
@@ -22,10 +22,14 @@ For this competition, we make use of the IOHprofiler environment. A python noteb
 ## Evaluation
 
 We will evaluate all submissions on a number of different instances in dimensions 2 and 5. The algorithms will be evaluated with respect to the anytime performance criterion (area over the convergence curve), with a fixed budget of $2000 \cdot d$.
-For testing, we make available 1000 instances on which several baselines have been run. The settings to generate these exact instances can be found [here](), in addition the corresponding performance files for the baselines (which have also been processed and uploaded to [IOHAnalyzer](https://iohanalyzer.liacs.nl)). 
+For testing, we make available 1000 instances on which several baselines have been run. The settings to generate these exact instances can be found [here](https://zenodo.org/records/8208572), in addition the corresponding performance files for the baselines (which have also been processed and will uploaded to [IOHAnalyzer](https://iohanalyzer.liacs.nl) soon). 
 
 For testing, we will generate a set of new instances (from the same distribution as the train instances) and evaluate the algorithms with respect to the normalized AOCC measure. Whichever algorithm reaches the highest average AOCC will be considered the winner. 
-As a default, we assume that each submission should be considered for the 2 and 5 dimensional categories. If a submission should only be considered in one of the categories, i.e., either 2 or 5D, we ask the contributors to clearly state this in the submission email. Submission Deadlines and Modalities:
+As a default, we assume that each submission should be considered for the 2 and 5 dimensional categories. If a submission should only be considered in one of the categories, i.e., either 2 or 5D, we ask the contributors to clearly state this in the submission email. 
+
+Further examples and detailed requirements will be added in January. 
+
+Submission Deadlines and Modalities:
 
 
 ## Submission
@@ -36,7 +40,7 @@ As a default, we assume that each submission should be considered for the 2 and 
 
 ## Hosting Events
 
-The Competition on Star Discrepancy Computation is co-located with the [ACM/SIGEVO Genetic and Evolutionary Computation Conference, GECCO 2024](https://gecco-2024.sigevo.org/HomePage), July 14-18 (hybrid: Melbourne, Australia, and online)
+The Competition on Anytime Algorithms for Many-affine BBOB Functions  is co-located with the [ACM/SIGEVO Genetic and Evolutionary Computation Conference, GECCO 2024](https://gecco-2024.sigevo.org/HomePage), July 14-18 (hybrid: Melbourne, Australia, and online)
 
 ## Questions
 
