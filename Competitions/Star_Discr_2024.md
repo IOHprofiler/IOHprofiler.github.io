@@ -29,7 +29,7 @@ Computing Star Discrepancies with Numerical Black-Box Optimization Algorithms. T
 
 ## Competition Setup
 
-For this competition, we make use of the IOHprofiler environment. A python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competion_examples/example/Competitions/StarDiscrepancy/example_star_discr.ipynb). Other examples and tutorials on IOHprofiler can be found on the links in the sidebar of this page.
+For this competition, we make use of the IOHprofiler environment. A python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/StarDiscrepancy/example_star_discr.ipynb). Other examples and tutorials on IOHprofiler can be found on the links in the sidebar of this page.
  
 For this years competition, we focus on *Discrete* black-box optimization approaches, operating on $$\{1,2,...,n+1\}^d$$
 
