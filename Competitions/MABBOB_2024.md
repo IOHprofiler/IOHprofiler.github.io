@@ -10,13 +10,15 @@ has_children: true
 
 ## Motivation
 
+The MA-BBOB generator has recently been proposed as a way to create large sets of benchmark problems based on the popular BBOB suite. To explore this suite, we invite the community to submit their algorithms for evaluation on a large set of problems created using this generator. 
 
 ### Main Reference:
 
+Vermetten, D., Ye, F., Bäck, T., & Doerr, C. (2023). MA-BBOB: A Problem Generator for Black-Box Optimization Using Affine Combinations and Shifts. [arXiv preprint arXiv:2312.11083](https://arxiv.org/abs/2312.11083).
 
 ## Competition Setup
 
-For this competition, we make use of the IOHprofiler environment. A python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/example_star_discr.ipynb). Other examples and tutorials on IOHprofiler can be found on the links in the sidebar of this page.
+For this competition, we make use of the IOHprofiler environment. A python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb). Other examples and tutorials on IOHprofiler can be found on the links in the sidebar of this page.
 
 
 ## Evaluation
@@ -24,10 +26,10 @@ For this competition, we make use of the IOHprofiler environment. A python noteb
 We will evaluate all submissions on a number of different instances in dimensions 2 and 5. The algorithms will be evaluated with respect to the anytime performance criterion (area over the convergence curve), with a fixed budget of $2000 \cdot d$.
 For testing, we make available 1000 instances on which several baselines have been run. The settings to generate these exact instances can be found [here](https://zenodo.org/records/8208572), in addition the corresponding performance files for the baselines (which have also been processed and will uploaded to [IOHAnalyzer](https://iohanalyzer.liacs.nl) soon). 
 
-For testing, we will generate a set of new instances (from the same distribution as the train instances) and evaluate the algorithms with respect to the normalized AOCC measure. Whichever algorithm reaches the highest average AOCC will be considered the winner. 
+For testing, we will generate a set of new instances (from the same distribution as the train instances) and evaluate the algorithms with respect to the normalized area over the convergence cuver measure. Whichever algorithm reaches the highest average AOCC will be considered the winner (note: maximizing AOCC is eqiuvalent to minimizing area under the ECDF). 
 As a default, we assume that each submission should be considered for the 2 and 5 dimensional categories. If a submission should only be considered in one of the categories, i.e., either 2 or 5D, we ask the contributors to clearly state this in the submission email. 
 
-Further examples and detailed requirements will be added in January. 
+For more technical details and examples, please look at [this notebook](https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb).
 
 Submission Deadlines and Modalities:
 
