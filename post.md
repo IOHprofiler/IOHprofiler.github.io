@@ -6,7 +6,16 @@ permalink: /News/
 
 
 # Upcoming events
-* July 2023, Lisbon (Portugal): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [GECCO'23](https://gecco-2023.sigevo.org/HomePage).
+
+## Tutorials
+* June 2025, Hangzhou (China): *Benchmarking Single- and Multi-Objective Optimization Algorithms via the (MO-)IOH-Profiler* in [CEC'25](https://www.cec2025.org/index/page.html?id=1390)
+* July 2025, Malaga (Spain): *Benchmarking single- and multi-objective optimization algorithms: how to make your experimental data more valuable* in [GECCO'25](https://gecco-2025.sigevo.org/tutorials)
+
+## Competitions
+* The [Competition - Evolutionary Submodular Optimisation GECCO 2022](https://cs.adelaide.edu.au/~optlog/CompetitionESO2022.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia).
+* The [Competition - Anytime Algorithms for Many-affine BBOB Functions GECCO 2025](/Competitions/MABBOB_2025.md).
+
+# Past events
 
 ## Competitions
 * The [Competition - Evolutionary Submodular Optimisation GECCO 2022](https://cs.adelaide.edu.au/~optlog/CompetitionESO2022.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China).
@@ -15,6 +24,9 @@ permalink: /News/
 * The [Open Optimization competition 2020](https://facebookresearch.github.io/nevergrad/opencompetition2020.html), organized in colaboration with Nevergrad
 
 ## Tutorials
+* July 2023, Melbourne (Australia): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [GECCO'23](https://gecco-2024.sigevo.org/HomePage).
+* July 2024, Yokohama (Japan): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [CEC'24](https://2024.ieeewcci.org/program/tutorials).
+* July 2023, Lisbon (Portugal): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [GECCO'23](https://gecco-2023.sigevo.org/HomePage).
 * 18 July 2022, Padua (IT): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [IEEE WCCI'22](https://wcci2022.org/accepted-tutorials/).
 * 9 July 2022, Boston (US): *Benchmarking and analyzing iterative optimization heuristics with IOHprofiler* in [ACM GECCO'22](https://gecco-2022.sigevo.org/Tutorials#id_Benchmarking%20and%20analyzing%20iterative%20optimization%20heuristics%20with%20IOHprofiler).
 * 19 July 2020, Glasgow (UK): *Benchmarking and Analyzing Iterative Optimization Heuristics with IOHprofiler*  __IEEE WCCI '20__.
