@@ -45,6 +45,11 @@ Submission Deadlines and Modalities:
 
 The Competition on Anytime Algorithms for Many-affine BBOB Functions  is co-located with the [ACM/SIGEVO Genetic and Evolutionary Computation Conference, GECCO 2025](https://gecco-2025.sigevo.org/HomePage), July 14-18 (hybrid: Malaga, Spain, and online)
 
+
+## Previous Edition
+
+The previous edition of this competition was held at GECCO 2024 (Melbourne, Australia), and won by Niki van Stein (Leiden University). The performance data from this winning algorithm in included as a baseline in the `getting started' materials. 
+
 ## Questions
 
 Please send all inquiries to [Diederick](mailto:diederick.vermetten@lip6.fr). He will coordinate your request.
