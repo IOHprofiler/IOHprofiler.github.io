@@ -36,7 +36,7 @@ Submission Deadlines and Modalities:
 
 ## Submission
 
-* All submissions made on or before *June 30, 2025 (AoE)* participate in the competition.
+* All submissions made on or before *July 6, 2025 (AoE)* participate in the competition (*Extended Dealine*).
 * To submit to the competition, we recommend creating a publically visible repository (e.g. on [Zenodo](zenodo.org)) where you upload the performance data of your algorithm as a single zip-file (named according to your algorithm name and the category you are submitting to) as well as the algorithm code used to collect this data. A short readme to allow for easier reproducibility checking is highly recommended. Finally, you should email the link to your repository to the competition organizers. 
 * Competition participants may also consider submitting a short (2-page, including references) description of their submission for consideration for publication in the **Companion proceedings of GECCO 2025**. Note that the deadline for these submissions is considerably earlier than the competition entry deadline, on *April 14, 2025*. Submissions to the GECCO companion are handled via their submission system, instructions and relevant dates are similar to those of the workshop papers (see this GECCO website for details). Note, however, that competition papers are limited to 2 pages, including references.
 * Note that each team can submit a total of **two** algorithms. For ranking, we will consider the single best of these two algorithms (not the joined virtual best).
