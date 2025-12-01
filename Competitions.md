@@ -6,20 +6,18 @@ permalink: /competitions
 
 # Ongoing Competitions
 
-We are currently hosting two competitions as part of [GECCO 2025](https://gecco-2025.sigevo.org/Competitions)
-
-## Anytime Algorithms for Many-affine BBOB Functions
-The many-affine BBOB function suite MA-BBOB extends the classic BBOB benchmark suite of the COCO environment by combining its 24 base functions. With this competition, we solicit algorithms designed to optimize anytime performance on the MA-BBOB functions. More information on this competition can be found [here](/competitions/mabbob25)
-
-
-## Evolutionary Submodular Optimisation
- The [Competition - Evolutionary Submodular Optimisation GECCO 2024](https://cs.adelaide.edu.au/~optlog/CompetitionESO2025.php), supporting Aneta Neumann and Saba Sadeghi Ahouei (University of Adelaide, Australia). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
+We have one competition which will open January 7th, 2026. This competition centers on benchmark design, and the initial information can be found [here](/Competitions/benchdesign.md)
 
 
 
 # Past Competitions
+## Anytime Algorithms for Many-affine BBOB Functions
+The many-affine BBOB function suite MA-BBOB extends the classic BBOB benchmark suite of the COCO environment by combining its 24 base functions. With this competition, we solicit algorithms designed to optimize anytime performance on the MA-BBOB functions. More information on this competition can be found [here](/competitions/mabbob25)
+
+ 
 ## The Submodular Optization Competition
- The [Competition - Evolutionary Submodular Optimisation GECCO 2023](https://cs.adelaide.edu.au/~optlog/CompetitionESO2023.php), supporting Aneta Neumann, Frank Neumann (University of Adelaide, Australia), and Chao Qian (Nanjing University, China). For this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
+
+ The [Competition - Evolutionary Submodular Optimisation GECCO 2023-24-25](https://cs.adelaide.edu.au/~optlog/CompetitionESO2025.php), supporting Aneta Neumann, Frank Neumann and Saba Sadeghi Ahouei (University of Adelaide, Australia). For the most recent edition of this competition, a python notebook with explicit examples can be found [here](https://github.com/IOHprofiler/IOHexperimenter/blob/competition_notebooks/example/Example_Submodular.ipynb).
 
 ## The Star Discrepancy competion (2023 + 2024)
 
