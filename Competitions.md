@@ -6,7 +6,7 @@ permalink: /competitions
 
 # Ongoing Competitions
 
-We have one competition which will open January 7th, 2026. This competition centers on benchmark design, and the initial information can be found [here](/Competitions/benchdesign.md)
+We have one competition which will open January 7th, 2026. This competition centers on benchmark design, and the initial information can be found [here](/competitions/benchdesign)
 
 
 
