@@ -49,11 +49,12 @@ The quality of each submitted benchmark suite will be measured by its ability to
 
 ## Materials
 
-Our getting-started materials will be made available January 7th, 2026. This will include the following:
+Our getting-started materials can be found [here](https://github.com/Dvermetten/BenchDesign) (page to be made public soon). This will include the following:
 * An example problem suite to showcase the required interface
-* A function to validate whether a problem suite is eligible for submission
 * The implementation of the used solvers, plus the code to run them on a problem suite
 * The code used to judge the problem suite quality based on the collected performance data
+
+Some additional data visualization methods, as well as a template for adding your own performance metric, will be added later.
 
 ## Submission
 
@@ -72,4 +73,5 @@ Please send all inquiries to [Diederick](mailto:diederick.vermetten@lip6.fr). He
 
 ## Organizers
 * Diederick Vermetten, CNRS and LIP6, Sorbonne University, Paris, France
+
 * Niki van Stein, LIACS, Leiden University, The Netherlands
