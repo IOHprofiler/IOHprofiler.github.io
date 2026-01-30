@@ -14,7 +14,7 @@ This competition challenges participants to design new and interesting benchmark
 
 ## Competition Setup
 
-Participation is simple: you design a set of 25 benchmark problems of the form $[0,1]^N\rightarrow\mathbb{R}$.
+Participation is simple: you design a set of 25 benchmark problems of the form $[-5,5]^N\rightarrow\mathbb{R}$.
 The quality of your problem set is then judged in terms of performance diversity of a set of 5 commonly-used algorithms (CMA-ES, DE, PSO, BFGS, COBYLA). The exact evaluation procedure is presented below. Your problem set should meet the following criteria:
 
 ### Technical requirements
@@ -60,12 +60,13 @@ Some additional data visualization methods, as well as a template for adding you
 
 * All submissions made on or before *June 29, 2026 (AoE)* participate in the competition.
 * Files to submit to the competition: simply make a copy of the problem_suite.py file and rename it to your team name. 
-* 
+* Note that each team can submit only **one** problem set.
+* Competition participants may also consider submitting a short (**2-page**, including references) description of their submission for consideration for publication in the **Companion proceedings of GECCO 2026**. Note that the deadline for these submissions is considerably earlier than the competition entry deadline (date to be announced on the GECCO website). Submissions to the GECCO companion are handled via their submission system, instructions and relevant dates are similar to those of the workshop papers (see [the GECCO website](https://gecco-2026.sigevo.org/Paper+Submission+Instructions) for details), except for the 2-page limit.
 * Note that each team can submit only **one** problem set.
 
 ## Hosting Events
 
-To be announced
+The Benchmark Design Challenge for Continuous Optimization is hosted at the [ACM/SIGEVO Genetic and Evolutionary Computation Conference, GECCO 2026](https://gecco-2026.sigevo.org/HomePage), July 13-17 (hybrid: San José, Costa Rica, and online)
 
 ## Questions
 
@@ -73,5 +74,4 @@ Please send all inquiries to [Diederick](mailto:diederick.vermetten@lip6.fr). He
 
 ## Organizers
 * Diederick Vermetten, CNRS and LIP6, Sorbonne University, Paris, France
-
 * Niki van Stein, LIACS, Leiden University, The Netherlands
